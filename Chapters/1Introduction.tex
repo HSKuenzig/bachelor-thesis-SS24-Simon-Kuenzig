@@ -35,9 +35,6 @@ This ensures that important connections between stakeholders, concepts, structur
 Definitions and explanations of technical terms or topic-related concepts are often fragmented over several sections and are not always available as a clear definition. 
 An explanation within a literature source,e.g., \citet{bb2}, usually takes place in different sections and in the course of the respective chapters.
 If the context is to be recorded, it is usually necessary to record the entire chapter or several sections in order to obtain the required information and its relationship to other concepts. 
-The work of \citet{Paul_Keller} has already addressed these issues, recognizing the challenges associated with managing information systems, especially the difficulty in translating theoretical knowledge into practical applications and dealing with fragmented definitions in the literature, particularly in \citet{bb2}. 
-In response to these challenges, the approach was to solve the problem by finetuning a pretrainded transformer in order to provide a efficient and reliable QA system built on \citet{bb2} as a literary knowledge base.
-%
 \begin{itemize}
 \item Knowledge Fragmentation: The fragmentation of definitions and explanations across multiple sections and chapters complicates the extraction of coherent and comprehensive information
 \item Inefficient Data Extraction: Traditional extraction methods are inefficient, leading to delays in accessing critical health information
@@ -49,7 +46,18 @@ In response to these challenges, the approach was to solve the problem by finetu
 
 \end{itemize}
 \section{Motivation}
+The continuous shift towards digital information systems, as well as the growing demands posed by demographic changes and an increasing number of patients, has lead to greater complexity and therefore to a constant evolution of healthcare information systems. 
+These developements pose significant challenges in managing and utilising vast amounts of knowledge effectively. Previous projects, such as the \ac{snik} ontology, have made substantial progress in structuring knowledge for hospital information systems management. 
+The integration of natural language processing in context of a \acro{bell} resulting in the \enquote{Question Answering on \ac{snik}} \citep{hannesbell, hannesbell_skill}, attempted to combine complex knowledge networks and user-friendly access through natural English language queries. 
+These methods enabled basic question answering but were limited in the explainability and handling of complex queries.
+The work of \citet{Paul_Keller} has already addressed these issues, recognizing the challenges associated with managing information systems, especially the difficulty in translating theoretical knowledge into practical applications and dealing with fragmented definitions in the literature, particularly in \citet{bb2}. 
+In response to these challenges, the approach was to solve the problem by finetuning a pretrainded transformer in order to provide a efficient and reliable QA system built on \citet{bb2} as a literary knowledge base.
+His approach demonstrated that while these \ac{llm}'s can provide more intuitive and comprehensible responses, they still fall short in terms of accuracy. 
+The results suggests the potential for improvement. 
+Such improvement may be reach through either a better training technique and the use of large scale hardware to fully exploit the potential of \ac{llm}'s, or to expand the model with further technics in order to reduce the occurrence of incorrect answers while.
 
+Retrieval-Augmented Generation (RAG) offers a promising solution to these issues. 
+By combining the strengths of retrieval-based systems, which ensure accuracy through access to structured knowledge sources, with the generative capabilities of language models, RAG can enhance both the comprehensibility and correctness of responses. 
 
 \section{Zielsetzung}\label{sec:zielsetzung}
 
