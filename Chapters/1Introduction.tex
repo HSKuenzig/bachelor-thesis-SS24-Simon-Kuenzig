@@ -2,17 +2,14 @@
 \chapter{Einleitung}\label{ch:introduction}
 %************************************************
 \section{Subject Matter}
-\todo{Bitte diesen Abschnitt noch nachschärfen, momentan schweift es mir noch zu weit ab in Teile, die für uns nicht so relevant sind.}
-\todo{Achtung: data und information nicht austauschbar verwendbar}
-In the constantly and rapidly changing healthcare sector, the effective management and efficient acquisition of data is essential. 
-\todo{absatz geht einfach mit newlines, keine Doppelbackslashes nötig}
-\todo{jeder Satz auf eine neue Zeile: das ist effizienter mit Git für diffs und so}
-Health information includes all information relating to a person's health or the accurate provision of healthcare services. This includes clinical and outpatient records, diagnostic images, laboratory results and administrative details.\\
+\todo{Bitte diesen Abschnitt noch nachschärfen, momentan schweift es mir noch zu weit ab in Teile, die für uns nicht so relevant sind. --> Hier habe ich einiges ruasgeworfen und es auf die essentiellen Dinge runter gebrochen. Würdest du es so lassen? }
+\todo{Achtung: data und information nicht austauschbar verwendbar --> Ich habe nochmal versucht, die Begriffe im richtigen Kontext zu verwenden, gerne nochmal drüber gehen, danke }
+In the constantly and rapidly changing healthcare sector, the effective management and efficient acquisition of information is essential. 
+Health information includes all information relating to a person's health or the accurate provision of healthcare services. 
+This includes clinical and outpatient records, diagnostic images, laboratory results and administrative details.
 %
-\todo{information singular: this information is...}
-These informations are relevant to a variety of stakeholders, including healthcare professionals, administrators, patients and researchers. 
+This information is relevant to a variety of stakeholders, including healthcare professionals, administrators, patients and researchers. 
 The continuous flow of health and professional information from various sources is then the basis for subsequent diagnosis and treatment. 
-As digitalization progresses, new technologies are being introduced that enable the continuous flow of health and professional information from various sources.\\
 %
 The goal of Health informatics is to study and pursue~\enquote{[$\dots$]the effective uses of biomedical data, information, and knowledge for scientific inquiry, problem-solving, decision making, motivated by efforts to improve human health}\ \citet{jen_informatics_2024}.
 In educational contexts such as universities, the basic practical and theoretical approach to medical informatics is developed through literature such as \citet{bb2}. 
@@ -20,17 +17,17 @@ The ontology \ac{snik} \citep{semantischesnetz}, following the \ac{snik} meta-on
 The use of this network enables a systematic representation of roles, entities, and functions of information management in hospitals, independent of the definition of the underlying literature sources. 
 The interdependence of health information and medical informatics in today's world highlights the importance of striving to progress and adapt to current demands in collaboration with modern technologies.
 %
-%
-Large language models, such as GPT-4, machine learning algorithms and deep learning are increasingly influencing our everyday interaction and communication and opening up a wide range of possible applications. 
-The capacity of AI to analyse vast quantities of data and transform its discoveries into user-friendly visual formats can expedite the decision-making process. 
+% 
+The capacity of AI to analyse vast quantities of data and transform its discoveries into user-friendly visual formats can expedite the decision-making process among others in the area of health care. 
 In order to take advantage of this, Artificial intelligence is increasingly being integrated into existing systems and processes.
-\todo{Ist das für unser Thema relevant?}
+\todo{Ist das für unser Thema relevant? 
+Da hier ein Einblick in das Thema erfolgt, erscheint es mir als explizites Beispiel im Zusammenhang zum vorhergehenden Satz passend. Eine Relevanz in Bezug auf das darauffolgenden Ziel ist fraglich, aber im Abschnitt "Subject Matter" als Information angebracht? }
 For instance in a medical context by drug interaction warnings\citep{akyon_polypharmacy_2023} and the use of computer-assisted diagnosis (CAD) in Radiology\citep{amisha_ai_medicine_2019}.
 %
 \section{Problem Statement}
 Due to the constant demands on the healthcare system, such as challenges posed by demographic changes and a growing population, healthcare information systems are becoming more complex and tailored to organizational needs. 
 As a result, the importance of efficient data extraction, analysis, and accessibility continues to increase. 
-These systems must not only support patient data management and treatment documentation but must also be of help in decision-making, research, and improved healthcare outcomes. 
+These systems must not only support patient information management and treatment documentation but must also be of help in decision-making, research, and improved healthcare outcomes. 
 However, despite the ongoing adjustment process and adaptation of technological possibilities, significant gaps still exist in how health information is effectively utilised, highlighting the need for ongoing development to optimise system use, enhance decision-making, and support academic and research activities. 
 A robust knowledge base is critical to ensure these systems can evolve to meet the increasing demands of the healthcare sector.
 Machine learning algorithms embeded and scaled into Large Language Models \ac{llm}, can analyze scientific informaion, such as books, e.g., \citet{bb2}, to make health information more accessible and increase the efficiency of retrieving essential knowledge. 
@@ -54,7 +51,8 @@ If the context is to be recorded, it is usually necessary to record the entire c
 \end{itemize}
 \section{Motivation}
 The continuous shift towards digital information systems, as well as the growing demands posed by demographic changes and an increasing number of patients, has lead to greater complexity and therefore to a constant evolution of healthcare information systems. 
-These developements pose significant challenges in managing and utilising vast amounts of knowledge effectively. Previous projects, such as the \ac{snik} ontology, have made substantial progress in structuring knowledge for hospital information systems management. 
+These developements pose significant challenges in managing and utilising vast amounts of knowledge effectively. 
+Previous projects, such as the \ac{snik} ontology, have made substantial progress in structuring knowledge for hospital information systems management. 
 The integration of natural language processing in context of a \ac{bell} resulting in the \enquote{Question Answering on \ac{snik}} \citep{hannesbell, hannesbell_skill}, attempted to combine complex knowledge networks and user-friendly access through natural English language queries. 
 These methods enabled basic question answering but were limited in the explainability and handling of complex queries.
 The work of \citet{Paul_Keller} has already addressed these issues, recognizing the challenges associated with managing information systems, especially the difficulty in translating theoretical knowledge into practical applications and dealing with fragmented definitions in the literature, particularly in \citet{bb2}. 
@@ -62,10 +60,9 @@ In response to these challenges, the approach was to solve the problem by finetu
 His approach demonstrated that while these \ac{llm}'s can provide more intuitive and comprehensible responses, they still fall short in terms of accuracy. 
 The results suggests the potential for improvement. 
 Such improvement may be reach through either a better training technique and the use of large scale hardware to fully exploit the potential of \ac{llm}'s, or to expand the model with further technics in order to reduce the occurrence of incorrect answers while.
-
 Retrieval-Augmented Generation (RAG) offers a promising solution to these issues. 
 By combining the strengths of retrieval-based systems, which ensure accuracy through access to structured knowledge sources, with the generative capabilities of language models, RAG can enhance both the comprehensibility and correctness of responses. 
-
+%
 \section{Zielsetzung}\label{sec:zielsetzung}
 
 
