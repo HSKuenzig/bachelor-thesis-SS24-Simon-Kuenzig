@@ -1,3 +1,26 @@
+# LaTeX auxiliary files
+*.aux
+*.bbl
+*.blg
+*.brf
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.toc
+*.lof
+*.lot
+*.out
+*.log
+*.dvi
+*.ps
+*.pdf
+*.gz
+
+# LaTeX intermediate and backup files
+*.backup
+*.bak
+*.sav
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
