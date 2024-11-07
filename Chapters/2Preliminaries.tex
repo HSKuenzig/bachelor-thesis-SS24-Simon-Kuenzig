@@ -1,6 +1,106 @@
 %*****************************************
-\chapter{Grundlagen}\label{ch:preliminaries}
+\chapter{Preliminaries}\label{ch:preliminaries}
 %*****************************************
+This chapter provides the foundational terms and concepts in order to understand the aims and objectives of this thesis.
+The  content is structured as follows: \cref{sec:language-models} introduces the general definition of language models
+In \cref{sec:databases}, a introduction to databases is provided, followed by an overview of retrieval methods for accessing relevant information and a discussion of database architectures and the concepts underlying \ac{rag}.
+
+\section{Language Models}\label{sec:language-models}
+
+\begin{definition}\label{def:language-model}
+    \textbf{Language Models} are machine learning models designed to understand and generate human language.
+\end{definition}
+Language models are built on artificial intelligence techniques and are typically trained using machine learning algorithms to understand and generate human language. 
+They have a wide range of applications, including translation, text generation, speech recognition, and text classification.
+
+\begin{definition}\label{def:transformer}
+    A \textbf{Transformer} is a deep learning architecture that forms the foundation of many modern language models, allowing for efficient training on large-scale data by using attention mechanisms to process data in parallel.
+
+\textbf{Transformer} is a deep learning architecture widely used as the basis for contemporary language models. 
+It leverages attention mechanisms, specifically self-attention, to efficiently process and analyse large-scale datasets by examining relationships between data elements in parallel.
+\end{definition}
+Transformers are based on an architecture that handles entire sequences of text simultaneously, enabling the model to capture complex patterns and dependencies in language. 
+By leveraging self-attention, Transformers can weigh the importance of different words in a sentence, making them especially effective for tasks like translation and text generation. 
+Transformer-based models, such as \ac{bert} and \ac{gpt}, are typically trained on extensive datasets to understand statistical patterns within the training data.
+\todo{Hier wird dann eine weitere Einführung in die Sprachmodelle folgen, allerdings weniger ausführlich als bspw. bei Paul Keller, da hier eher sein Ansatz genutzt werden soll und mehr in die Datenbankerweiterung geht}
+\section{Databases}\label{sec:databases}
+
+\begin{definition}\label{def:database}
+    A \textbf{database} is a collection of related data\citep{limited2010introduction}. 
+    It is used and designed to efficiently handle data storage, retrieval, and management on computer systems. 
+    It contains and arranges data in a manner, that makes it accessible by a variety of applications.
+\end{definition}
+Databases are essential tools for the storage and management of large volumes of information. 
+Their structures vary significantly, with relational databases organising data in table formats, while \ac{nosql} databases offer more adaptable frameworks suited to diverse data types. 
+The way data is stored, is influenced by both the specific demands of the application and the architectural design of the chosen database model.
+\section{Database Management System}\label{sec:Database Management System}
+\begin{definition}\label{def:Database Management System}
+    A \ac{dbms}  is a software system designed to create a database and subsequently execute operations that allow for the definition, manipulation, and efficient retrieval of the stored data. 
+    At the same time, database security and potential recovery must be guaranteed during a failure or unforeseen process sequence. \citep{limited2010introduction}
+\end{definition}
+A database and \ac{dbms} together are defined as a database system.  
+
+\subsection{Database Architectures}\label{sec:database-architectures}
+Databases can be classified into different architectures, including relational and \ac{nosql} databases. 
+Relational databases use a table-based structure with predefined schema. 
+They are widely used for applications that require consistency and follow a clear, generic pattern, such as SQL-based systems.
+\ac{nosql} databases offer more flexibility and can store unstructured data. 
+For example, graph databases are designed to efficiently model and navigate complex networks of interconnected data, making them ideal for applications that require understanding relationships, such as social networks, recommendation systems, and knowledge graphs.
+\subsubsection{Unstructured data}\label{sec:unstructured-data}
+\begin{definition}\label{def:unstructured-data}
+    \textbf{Unstructured data} refers to information that does not have a predefined data model or organised structure, making it more challenging to store, search, and analyse using traditional database systems.
+\end{definition}
+Unstructured data includes formats such as text documents, images, audio, and video files, where the data is not organised in a tabular or relational structure. 
+Due to its lack of a fixed schema, unstructured data often requires specialised processing techniques, such as \ac{nlp} or machine learning, to extract meaningful information and be able to further process those.
+\section{Databases for Retrieval-Augmented Generation}\label{sec:databases-rag}
+
+\subsection{Relational Databases}\label{sec:relational-databases}
+Relational databases organise data into tables with predefined schemas, allowing for structured data storage. 
+
+\subsection{NoSQL Databases}\label{sec:nosql-databases}
+\ac{nosql} databases provide a more flexible approach to data storage, supporting various data structures such as documents, key-value pairs, and graphs. 
+They are particularly suitable for handling unstructured or semi-structured data and are frequently used in \ac{rag} implementations for efficient storage and retrieval.
+
+\subsection{Document Stores}\label{sec:document-stores}
+Document-oriented databases, like MongoDB and Elasticsearch, are optimised for storing and querying large amounts of unstructured text data. 
+These databases allow efficient indexing and retrieval of documents, making them highly suitable for \ac{rag}, where retrieving relevant text passages is a priority.
+\subsection{Graph Databases}\label{sec:graph-databases}
+Graph databases are designed to store and manage data as a collection of nodes, representing entities, and edges, which capture the relationships between these entities \citep{Robinson2015}. This structure enables efficient handling of highly interconnected data, making graph databases particularly well-suited for applications such as social networks, recommendation engines, and knowledge graphs \citep{Angles2008}. In the context of \ac{rag}, graph databases support the retrieval of contextually relevant information by leveraging the natural relationships embedded within the data, thereby improving the coherence and accuracy of generated responses. Prominent graph database systems include Neo4j and Amazon Neptune, which are widely used for their scalability and performance in handling large-scale graph-based queries.
+
+\subsection{Vector Databases}\label{sec:vector-databases}
+Vector databases are specialised systems designed to store and manage data as high-dimensional vectors, facilitating efficient similarity searches by measuring distances between these vectors. 
+This capability is crucial in applications like \ac{rag}, where embedding-based retrieval methods are employed to swiftly access semantically relevant documents. 
+Notable examples of vector databases include Pinecone and FAISS, both optimised for large-scale, real-time vector retrieval tasks \citep{Johnson2019}.
+
+\subsection{Retrieval Methods}\label{sec:retrieval-methods}
+
+Various retrieval methods are used to extract data or information from a data source, such as databases. Depending on the database architecture and the level of detail of the query, different methods are used, including keyword search, Boolean search and vector-based similarity search. Each method is suitable for specific data types and query requirements.
+\section{Concepts for Data Extraction}\label{sec:data-extraction-concepts}
+
+\subsection{Keyword-Based Search}\label{sec:keyword-search}
+Keyword-based search is a fundamental retrieval method that retrieves documents or records containing specific keywords. It offers a simple approach, but is often less effective for complex queries where semantic understanding of context is required.
+
+\subsection{Vector-Based Similarity Search}\label{sec:vector-similarity-search}
+Vector-based similarity search retrieves relevant data by comparing vector embeddings of text. Embeddings represent the semantic meaning of text, allowing for more accurate retrieval in cases where traditional keyword searches provide inaccurate results.
+
+\subsection{Neural Retrieval Methods}\label{sec:neural-retrieval}
+Neural retrieval models, such as \ac{dpr}, use deep learning to learn vector embeddings for queries and documents. These embeddings are used for high-accuracy retrieval, where the model ranks documents based on their semantic relevance to a given query.
+
+\section{Underlying Aim of Retrieval-Augmented Generation}\label{sec:aim-of-rag}
+
+\begin{definition}\label{def:rag}
+    \textbf{\ac{rag}} is a technique that integrates information retrieval with language generation, enabling models to produce responses grounded in relevant external data, thereby enhancing the factual accuracy and contextual relevance of generated content.
+\end{definition}
+
+The primary objective of \ac{rag} is to combine the generative capabilities of \ac{llm}'s with the precision of retrieval systems. 
+By accessing external knowledge bases, a \ac{rag}-system retrieves pertinent information to inform and refine generated responses, ensuring they are both contextually appropriate and factually correct \citep{Lewis2020}.
+
+
+\subsection{Combining Retrieval and Generation}\label{sec:combining-retrieval-generation}
+In \ac{rag}, the system first retrieves relevant documents or passages from a database and then uses a generative language model, such as \ac{llm}'s, to create responses based on this content. This approach allows \ac{rag} to produce answers that are both contextually relevant and factually accurate.
+
+
+\section{Medical Informatics}\label{sec:medical-informatics}
 
 Das Grundlagenkapitel soll den Stand der Forschung erläutern und mit Literatur belegen.
 Auf diesem Kapitel bauen die Erkenntnisse der Arbeit auf.
