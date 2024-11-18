@@ -7,24 +7,26 @@ In \cref{sec:databases}, a introduction to databases is provided, followed by an
 
 \section{Language Models}\label{sec:language-models}
 
-\begin{definition}\label{def:language-model}
+\begin{definition}\label{def:language-models}
     \textbf{Language Models} are machine learning models designed to understand and generate human language.
 \end{definition}
 Language models are built on artificial intelligence techniques and are typically trained using machine learning algorithms to understand and generate human language. 
 They have a wide range of applications, including translation, text generation, speech recognition, and text classification.
-
+\subsection{transformer}\label{transformer}
 \begin{definition}\label{def:transformer}
     A \textbf{Transformer} is a deep learning architecture that forms the foundation of many modern language models, allowing for efficient training on large-scale data by using attention mechanisms to process data in parallel.
-
-\textbf{Transformer} is a deep learning architecture widely used as the basis for contemporary language models. 
-It leverages attention mechanisms, specifically self-attention, to efficiently process and analyse large-scale datasets by examining relationships between data elements in parallel.
 \end{definition}
-Transformers are based on an architecture that handles entire sequences of text simultaneously, enabling the model to capture complex patterns and dependencies in language. 
-By leveraging self-attention, Transformers can weigh the importance of different words in a sentence, making them especially effective for tasks like translation and text generation. 
-Transformer-based models, such as \ac{bert} and \ac{gpt}, are typically trained on extensive datasets to understand statistical patterns within the training data.
-\todo{Hier wird dann eine weitere Einführung in die Sprachmodelle folgen, allerdings weniger ausführlich als bspw. bei Paul Keller, da hier eher sein Ansatz genutzt werden soll und mehr in die Datenbankerweiterung geht}
-\section{Databases}\label{sec:databases}
+The architecture transformers are based on, introduced by \citet{vaswani2017attention}, allows to processes entire sequences of text simultaneously, thereby enabling the model to recognise and connect complex patterns and dependencies in natural languages. 
+By leveraging self-attention, Transformers can weigh the importance of different words, described as token, in a certain sized context window. 
+Transformer-based models, such as \ac{bert} and \ac{gpt}, are typically trained on extensive datasets to understand statistical patterns within the training data.\citep{atallah2023impact}
 
+\paragraph{Notable LLMs} Building on the transformer foundation, various prominent LLMs have emerged, each bringing unique features and contributions to the field. \textbf{BERT} (Bidirectional Encoder Representations from Transformers), developed by Google, introduced bidirectional training, allowing the model to consider both left and right context for each word. This bidirectional approach significantly improved performance across numerous NLP tasks, including question answering and text classification \citep{devlin2019bert}. 
+
+Another influential model, \textbf{GPT-4} (Generative Pre-trained Transformer 4) by OpenAI, further expanded on the capabilities of transformers by an estimated around 1 trillion parameter architecture. GPT-4 demonstrated few-shot learning capabilities, enabling it to perform well on new tasks with minimal fine-tuning, thus broadening its applicability in various domains \citep{brown2020gpt3}. 
+
+Additionally, \textbf{T5} (Text-To-Text Transfer Transformer), created by Google, approached NLP tasks through a unified text-to-text framework, in which both inputs and outputs are treated as text. This framework allowed T5 to be highly versatile, performing tasks such as translation, summarisation, and even sentiment analysis within a single model \citep{raffel2020t5}. Each of these models represents a key milestone in the evolution of LLM architectures, demonstrating how advancements in transformer-based designs have expanded the practical applications of artificial intelligence across diverse fields.
+
+\section{Databases}\label{sec:databases}
 \begin{definition}\label{def:database}
     A \textbf{database} is a collection of related data\citep{limited2010introduction}. 
     It is used and designed to efficiently handle data storage, retrieval, and management on computer systems. 
@@ -102,22 +104,3 @@ In \ac{rag}, the system first retrieves relevant documents or passages from a da
 
 \section{Medical Informatics}\label{sec:medical-informatics}
 
-Das Grundlagenkapitel soll den Stand der Forschung erläutern und mit Literatur belegen.
-Auf diesem Kapitel bauen die Erkenntnisse der Arbeit auf.
-Gerade in den Grundlagen wird man häufig Quellen benennen, aus denen die Aussagen letztlich stammen.
-Im Kapitel \enquote{Literaturverzeichnis} dieser Vorlage wird beschrieben, wie eine Quellenangabe zu erfolgen hat.
-
-Da sich die Medizinische Informatik mit der Lösung medizinischer Probleme befasst, sollen hier auch die Hintergründe des medizinischen Problems so dargestellt und erläutert werden, dass sie auch für Leser der Arbeit, die nicht Mediziner sind, verständlich sind.
-
-In diesem Kapitel werden auch die Methoden erläutert, die zur Lösung der Probleme eingesetzt wurden.
-Stellen Sie sicher, dass hier alle, aber auch nur die Grundlagen und Methoden erläutert werden, die in der Arbeit verwendet wurden.
-Stellen Sie im weiteren Text der Arbeit auch sicher, dass der Leser erkennen kann, wie Sie unter Verwendung der Methoden zu Ihren Ergebnissen gekommen sind.
-So sollten z.B. Modellierungsmethoden nur verwendet werden, wenn die Modelle nachvollziehbar dazu genutzt werden, die Ergebnisse zu erzielen.
-
-Bedenken Sie, dass Sie diese Arbeit zum Abschluss eines umfangreichen Studiums schreiben, das vor allem dazu diente, sie mit einem reichen Methodenrepertoire auszustatten.
-Wählen Sie aus den Methoden, die Sie gelernt haben, aus, benennen Sie die Methoden korrekt und wenden Sie sie an! Aber gehen sie auch kritisch mit dem um, was Ihnen gelehrt wurde.
-Wenn Sie feststellen, dass gelehrte Methoden ungeeignet sind, diskutieren Sie dies und suchen passendere Methoden! Wenn Sie Methoden benötigen, die nicht gelehrt wurden, suchen Sie nach passenden Methoden oder -- wenn Sie nicht fündig werden -- entwickeln Sie die für Ihr Problem passende Methode selbst!
-
-\begin{definition}[Beispieldefinition]
-Dies ist eine Beispieldefinition.
-\end{definition}
