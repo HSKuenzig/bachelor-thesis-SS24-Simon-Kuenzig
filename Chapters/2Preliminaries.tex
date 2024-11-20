@@ -57,7 +57,7 @@ Due to its lack of a fixed schema, unstructured data often requires specialised 
 \section{Databases for Retrieval-Augmented Generation}\label{sec:databases-rag}
 
 \subsection{Relational Databases}\label{sec:relational-databases}
-Relational databases organise data into tables with predefined schemas, allowing for structured data storage. 
+Relational databases organise data into tables with predefined\\ schemas, allowing for structured data storage. 
 
 \subsection{NoSQL Databases}\label{sec:nosql-databases}
 \ac{nosql} databases provide a more flexible approach to data storage, supporting various data structures such as documents, key-value pairs, and graphs. 
@@ -67,7 +67,10 @@ They are particularly suitable for handling unstructured or semi-structured data
 Document-oriented databases, like MongoDB and Elasticsearch, are optimised for storing and querying large amounts of unstructured text data. 
 These databases allow efficient indexing and retrieval of documents, making them highly suitable for \ac{rag}, where retrieving relevant text passages is a priority.
 \subsection{Graph Databases}\label{sec:graph-databases}
-Graph databases are designed to store and manage data as a collection of nodes, representing entities, and edges, which capture the relationships between these entities \citep{Robinson2015}. This structure enables efficient handling of highly interconnected data, making graph databases particularly well-suited for applications such as social networks, recommendation engines, and knowledge graphs \citep{Angles2008}. In the context of \ac{rag}, graph databases support the retrieval of contextually relevant information by leveraging the natural relationships embedded within the data, thereby improving the coherence and accuracy of generated responses. Prominent graph database systems include Neo4j and Amazon Neptune, which are widely used for their scalability and performance in handling large-scale graph-based queries.
+Graph databases are designed to store and manage data as a collection of nodes, representing entities, and edges, which capture the relationships between these entities \citep{Robinson2015}. 
+This structure enables efficient handling of highly interconnected data, making graph databases particularly well-suited for applications such as social networks, recommendation engines, and knowledge graphs \citep{Angles2008}. 
+In the context of \ac{rag}, graph databases support the retrieval of contextually relevant information by leveraging the natural relationships embedded within the data, thereby improving the coherence and accuracy of generated responses. 
+Prominent graph database systems include Neo4j and Amazon Neptune, which are widely used for their scalability and performance in handling large-scale graph-based queries.
 
 \subsection{Vector Databases}\label{sec:vector-databases}
 Vector databases are specialised systems designed to store and manage data as high-dimensional vectors, facilitating efficient similarity searches by measuring distances between these vectors. 
@@ -76,17 +79,21 @@ Notable examples of vector databases include Pinecone and FAISS, both optimised 
 
 \subsection{Retrieval Methods}\label{sec:retrieval-methods}
 
-Various retrieval methods are used to extract data or information from a data source, such as databases. Depending on the database architecture and the level of detail of the query, different methods are used, including keyword search, Boolean search and vector-based similarity search. Each method is suitable for specific data types and query requirements.
+Various retrieval methods are used to extract data or information from a data source, such as databases. 
+Depending on the database architecture and the level of detail of the query, different methods are used, including keyword search, Boolean search and vector-based similarity search. Each method is suitable for specific data types and query requirements.
 \section{Concepts for Data Extraction}\label{sec:data-extraction-concepts}
 
 \subsection{Keyword-Based Search}\label{sec:keyword-search}
-Keyword-based search is a fundamental retrieval method that retrieves documents or records containing specific keywords. It offers a simple approach, but is often less effective for complex queries where semantic understanding of context is required.
+Keyword-based search is a fundamental retrieval method that retrieves documents or records containing specific keywords. 
+It offers a simple approach, but is often less effective for complex queries where semantic understanding of context is required.
 
 \subsection{Vector-Based Similarity Search}\label{sec:vector-similarity-search}
-Vector-based similarity search retrieves relevant data by comparing vector embeddings of text. Embeddings represent the semantic meaning of text, allowing for more accurate retrieval in cases where traditional keyword searches provide inaccurate results.
+Vector-based similarity search retrieves relevant data by comparing vector embeddings of text. 
+Embeddings represent the semantic meaning of text, allowing for more accurate retrieval in cases where traditional keyword searches provide inaccurate results.
 
 \subsection{Neural Retrieval Methods}\label{sec:neural-retrieval}
-Neural retrieval models, such as \ac{dpr}, use deep learning to learn vector embeddings for queries and documents. These embeddings are used for high-accuracy retrieval, where the model ranks documents based on their semantic relevance to a given query.
+Neural retrieval models, such as \ac{dpr}, use deep learning to learn vector embeddings for queries and documents. 
+These embeddings are used for high-accuracy retrieval, where the model ranks documents based on their semantic relevance to a given query.
 
 \section{Underlying Aim of Retrieval-Augmented Generation}\label{sec:aim-of-rag}
 
@@ -99,7 +106,8 @@ By accessing external knowledge bases, a \ac{rag}-system retrieves pertinent inf
 
 
 \subsection{Combining Retrieval and Generation}\label{sec:combining-retrieval-generation}
-In \ac{rag}, the system first retrieves relevant documents or passages from a database and then uses a generative language model, such as \ac{llm}'s, to create responses based on this content. This approach allows \ac{rag} to produce answers that are both contextually relevant and factually accurate.
+In \ac{rag}, the system first retrieves relevant documents or passages from a database and then uses a generative language model, such as \ac{llm}'s, to create responses based on this content. 
+This approach allows \ac{rag} to produce answers that are both contextually relevant and factually accurate.
 
 
 \section{Medical Informatics}\label{sec:medical-informatics}
