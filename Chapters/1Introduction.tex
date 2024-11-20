@@ -4,72 +4,70 @@
 1. "Information retrieval from textbooks using state-of-the-art AI resources: 
 A QA framework/system in the context of medical informatics for a resource-constrained educational environment"
 2"Information retrieval from textbooks using state-of-the-art AI resources: 
-A QA framework/system for the domain specifc field of medical informatics in a resource-constrained educational environment"
+A QA framework/system for the domain specific field of medical informatics in a resource-constrained educational environment"
 %
-\todo{das wären die beiden Titel, die ich aus den gesammelten Anforderungen jetzt eingegrenzt habe. Hast du einen Favouriten bzw. noch eine Anmerkung?}
+A Resource-Efficient Framework for Domain-Specific Educational Content"
 \chapter{Introduction}\label{ch:introduction}
 %************************************************
-\section{Subject Matter}
+\section{Subject Matter}\label{sec:subject matter}
 In healthcare sector and educational landscape, the efficient acquisition of domain-specific information is essential. 
 In educational contexts such as universities, the basic practical and theoretical approach to complex domains, for example, medical informatics is mostly developed through literature such as \citet{bb2}.
 However, it is not merely the retrieval of information from such sources that matters, but also the ability to integrate and synthesise this information into actionable knowledge.
 This process ensures that fragmented information sources, such as textbooks and academic literature, where relevant information is complex and interconnected throughout sections, can be transformed into coherent and contextually relevant insights.
-Resource constraint methods are not sufficient to meet the current demands of information retrieval in complex domains.\todo{eventuell zu knapp, hier könnte noch ein Beispiel oder detailliertere Angaben mit rein} 
 %
 Large context window \ac{llm}'s, as well as various improved \ac{rag}-systems are recent advancements of AI to analyse vast quantities of data.
 They open up new possibilities for overcoming the challenge of recognising complex contextual relationships, making connections and presenting the extracted information in context.
 %
-\section{Problem Statement}\label{ch:problem statement}
+\section{Problem Statement}\label{sec:problem statement}
 Despite significant advancements in artificial intelligence and information retrieval technologies, the practical implementation of these systems in resource-constrained environments, such as smaller educational institutions or even private learning settings, remains a considerable challenge. 
 Limited access to high-performance hardware necessitates a focus on cost-effective and accessible solutions for any stakeholder.
 %
 In addition, the retrieval and synthesis of complex domain-specific informations, as for example in medical informatics literature and the intended increase in knowledge, is often held up by the fragmentation and dispersion of relevant information across multiple sections and chapters. 
-Resource-restricted,e.g, \ac{snik} ontology, \citet{Paul_Keller}, approaches towards the process of extracting and integrating this information remains inefficient, particularly when the relevant interconnected information is widely spread throughout the source.
+Resource-constrained approaches, as mentioned in \cref{sec:motivation}, towards the process of extracting and integrating this information remain inefficient, particularly when the relevant interconnected information is widely spread throughout the source.
 %
 State-of-the-art Large Language Models \ac{llm}'s with extended context windows, solely or even further extended by combining them with databases into a (\ac{rag}) system offer promising solutions for overcoming these challenges. 
-However, the integration of such systems into real-world educational and healthcare environments requires further exploration to determine their feasibility and effectiveness, particularly under the constraints of limited hardware resources.
+However, the integration of such systems into real-world educational and healthcare environments requires further exploration to determine their feasibility and effectiveness, particularly under the constraints of limited resources.
 %
 \todo{Klare Problemstellung formulieren}Key issues include:
 \begin{itemize}
-    \item \textbf{Knowledge Fragmentation}: 
+    \item \textbf{Knowledge Fragmentation}:\\
     The fragmentation of definitions and explanations across multiple sections and chapters complicates the extraction of coherent and comprehensive information 
-    \item \textbf{Inefficient Resources and Limited Expertise}: 
+    \item \textbf{Inefficient Resources and Limited Expertise}:\\ 
     Resource-constrained settings lack the high-end hardware  to individually advance \ac{llm}s and \ac{rag} systems for retrieving interconnected information from scientific literature.
     
-    \item \textbf{Inefficient Retrieval Methods}: Traditional methods are slow and impractical for small-scale setups lacking high-performance hardware and specialised expertise.\todo{Is das hier die Problematik, die ich klären möchte? }
+    \item \textbf{Inefficient Retrieval Methods}:\\ Traditional methods are slow and impractical for small-scale setups lacking high-performance hardware and specialised expertise.\todo{Is das hier die Problematik, die ich klären möchte? }
 \end{itemize}
 
-Addressing these challenges is essential for enhancing the accessibility and utility of domain-specific knowledge, ultimately supporting both learning and research activities. 
+Addressing these challenges is vital for enhancing the accessibility and utility of domain-specific knowledge, ultimately supporting both learning and research activities. 
 
-\section{Motivation}\label{motivation}
+\section{Motivation}\label{sec:motivation}
 By leveraging these technologies, it becomes possible to retrieve relevant information from fragmented sources, as well as recognise, combine and precisely return contextual connections provided from the source as factually correct information. 
-The central challenge remains in detecting a retrieval model that not only addresses the issue of fragmented knowledge but also ensures accessibility and factual reliability to a degree, where academic standards can be met. 
+The central challenge remains in detecting a retrieval model that not only addresses the issue of fragmented knowledge but also ensures accessibility and factual reliability to a degree, where academic standards can be met.\\ 
 In this context, \ac{qa} systems provide a practical and measurable approach for evaluating such information retrieval. 
 These systems enable targeted queries to be processed efficiently, offering insights into their applicability in educational scenarios, as well as private settings.
 % 
 Previous projects, such as the \ac{snik} ontology, have made substantial progress in structuring information for hospital information systems management and therefore reach a certain level of accessibility. 
-The integration of natural language processing in the context of a \ac{bell} resulting in the \enquote{Question Answering on \ac{snik}} \citep{hannesbell, hannesbell_skill}, as well as a similar approach in \citet{snikquiz}, attempted to combine complex knowledge networks with user-friendly access through natural English language queries. \citet{arneba}, on the other hand, explored an inverse approach using the \ac{snik} system. Instead of focusing on retrieving specific information through queries, this work aimed to provide the automatic generation of relevant questions, enhancing the system's usability in educational and training contexts.
- 
-These methods enabled are more structured approach to the information from the given sources and further a basic question answering, but are limited in the handling of complex queries and interconnected information, which is scattered over sections.
+The integration of natural language processing in the context of a \ac{bell} resulting in the \enquote{Question Answering on \ac{snik}} \citep{hannesbell, hannesbell_skill}, as well as a similar approach in \citet{snikquiz}, attempted to combine complex knowledge networks with user-friendly access through natural English language queries. \citet{arneba}, on the other hand, explored an inverse approach using the \ac{snik} system. Instead of focusing on retrieving specific information through queries, this work aimed to provide the automatic generation of relevant questions, enhancing the system's usability in educational and training contexts.\\
+%
+These methods enabled are more structured approach to the information from the given sources and further a basic question answering but are limited in the handling of complex queries and interconnected information, which is scattered over sections.
 The work of \citet{Paul_Keller} has already addressed these issues, recognizing the challenges associated with managing information systems, especially the difficulty in translating theoretical information into practical applications and dealing with fragmented definitions in the literature, particularly in \citet{bb2}. 
-In response to these challenges, the attempt was to solve the issue by finetuning a pretrained transformer in order to provide a efficient and reliable \ac{qa}-system built on \citet{bb2} as a literary information base.
-\citet{Paul_Keller} demonstrated that while these \ac{llm}'s can provide more intuitive and comprehensible responses, they still fall short in terms of accuracy and require high level hardware to meet the initial requirements. 
+In response to these challenges, the attempt was to solve the issue by fine tuning a pre-trained transformer in order to provide a efficient and reliable \ac{qa}-system built on \citet{bb2} as a literary information base.
+\citet{Paul_Keller} demonstrated that while these \ac{llm}'s can provide more intuitive and comprehensible responses, they still fall short in terms of accuracy and require high level hardware to meet the initial requirements.\\ 
 %
 The results suggests the potential for improvement. 
-Such improvement may be reached through either a better training technique and the use of large scale hardware to fully exploit the potential of \ac{llm}'s, or to expand the model with further technics in order to reduce the occurrence of incorrect answers.
+Such improvement may be reached through either a better training technique and the use of large scale hardware to fully exploit the potential of \ac{llm}'s, or to expand the model with further technics in order to reduce the occurrence of incorrect answers.\\
 %
 However, feasibility should be the focus for the stakeholders described, as currently available models already have the potential to represent the required standards for the scenarios under consideration. 
  
 \section{Objective}\label{sec:objective}
 The following objectives of this work are assigned to the problem shown in {problem statement}.
 \begin{itemize}
-  \item Objective O1: 
+  \item Objective O1:\\ 
   Evaluate freely available models in relation to academic standards and requirements.
-  \item Objective O2: 
+  \item Objective O2:\\ 
   Set up a \ac{qa}-system for possible comparisons with previous work.
 \end{itemize}
 \section{Aufgabenstellung}
-\section{Aufbau der Arbeit}
 
 
 
