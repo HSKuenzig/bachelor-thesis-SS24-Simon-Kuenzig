@@ -2,11 +2,21 @@
 \chapter{Preliminaries}\label{ch:preliminaries}
 %*****************************************
 This chapter provides the foundational terms and concepts in order to understand the aims and objectives of this thesis.
-The  content is structured as follows: \cref{sec:language-models} introduces the general definition of language models
-In \cref{sec:databases}, a introduction to databases is provided, followed by an overview of retrieval methods for accessing relevant information and a discussion of database architectures and the concepts underlying \ac{rag}.
-
+%
+The content is structured as follows: \cref{sec:information retrieval} briefly introduces the field of information retrieval. This is followed by \cref{sec:language-models}, providing an insight into language models. 
+Finally,in \cref{sec:databases} database architectures and the concepts underlying \ac{rag} are discuessed. 
+%
+\begin{definition}\label{def:information retrieval}
+Information retrieval is the process of identifying, retrieving, and ranking relevant information from resources in response to a previous query. 
+\end{definition}
+%
+Traditional \ac{ir} used to rely on a single stage term-based system, which were first applied in scientific research. Matching phrases and terms from the source were searched for according to the search term and generated as direct output.
+However, the quality of the output suffered from simple linguistic hurdles, e.g. polysemy, synonymy, and lexical gaps, and was therefore limited in their effectiveness. 
+The addition of ranking mechanisms led to more accurate results, as ranking is carried out in a second stage. The matching terms and retrieved documents are pre-sorted by ranking algorithms, e.g. BM25, on the basis of a relevance score. 
+Over time, advanced ranking and sorting algorithms have been integrated to further improve the results. \citep{hambardeIR2023}
+Starting with simple text retrieval, multi-modal retrieval is now possible.
 \section{Language Models}\label{sec:language-models}
-
+%
 \begin{definition}\label{def:language-models}
     \textbf{Language Models} are machine learning models designed to understand and generate human language.
 \end{definition}
