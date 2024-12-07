@@ -2,53 +2,54 @@
 \chapter{Introduction}\label{ch:introduction}
 %************************************************
 \section{Subject Matter}\label{sec:subject matter}
-In healthcare sector and educational landscape, the efficient acquisition of domain-specific information is essential. 
-In educational contexts such as universities, the basic practical and theoretical approach of students and teachers to complex domains, for example, medical informatics is mostly developed through literature such as \citet{bb2}.
+In the healthcare sector and educational landscape, the efficient acquisition of domain-specific information is essential. 
+In educational contexts such as universities, the basic practical and theoretical approach of students and teachers to complex domains, for example, medical informatics, is mostly developed through literature such as \citet{bb2}.
 %
 Several approaches already exist, as mentioned in \cref{sec:motivation}, to make the information accessible without having to manually read a textbook, such as \citet{bb2}.
-This aspect is so relevant because the content is mainly to be repeatetly viewed and accessed in short time windows, in scenarios such as exam or academic debate preparation. 
+This element holds significant relevance, as scenarios like exam or academic debate preparation primarily require reiterating and accessing the content within brief timeframes.
 %
-The process of extracting information not only requires accessibility for every user and short response times, but also has correctness and completeness, due to the need for academic consistency, as its highest goal. 
+The process of extracting information not only requires accessibility for all users and short response times, but it also requires correctness and completeness, as academic consistency is its highest goal. 
 Textbooks and academic literature are fragmented information sources, where relevant information is complex and interconnected throughout sections. 
-Combining these fragments completely and correctly in context and therefore achieve these highest goals pose the decisive issues to overcome. 
+Combining these fragments completely and correctly in context and therefore achieving the highest goals poses the decisive issues to overcome. 
 %
-Large context window \ac{llm}'s, as well as various improved \ac{rag}-systems are recent advancements of AI to analyse vast quantities of data.
-They open up new possibilities for overcoming the challenge of recognising complex contextual relationships, presenting the extracted information in context and at the same time, provide accessibility for any stakeholder.
+Large context window \ac{llm}'s, as well as various improved \ac{rag}-systems, are recent advancements of AI to analyse vast quantities of data.
+They open up new possibilities for overcoming the challenge of recognising complex contextual relationships, presenting the extracted information in context, and, at the same time, providing accessibility for any stakeholder.
 
 \section{Problem Statement}\label{sec:problem statement}
 For students and practitioners in particular, practical application requires a deep understanding of the interrelationships and the applicability of the concepts presented to specific work environments.
-The existing literature is frequently extensive and the retrieval and synthesis of complex domain-specific information, such as within the field of medical informatics, is often hindered by the fragmentation and dispersion of relevant information across multiple sections and chapters.
+The existing literature is often extensive, and the fragmentation and dispersion of relevant information across multiple sections and chapters often hinders the retrieval and synthesis of complex domain-specific information, such as within the field of medical informatics.
 Identifying relevant knowledge for specific problems requires students and practitioners to read large parts of a book in order to fully grasp individual concepts and their relationships to other topics.
 The scope of the literature sources and the fragmentation in the definition of technical terms make it difficult to acquire knowledge quickly, especially for students who want to understand basic concepts correctly.
 %
-In response to the previous need for manual source research, recent resource-constrained approaches, as mentioned in \cref{sec:motivation}, towards the process of extracting and integrating relevant information to an adequate answer, were developed but could not constantly satisfy certain criteria for the provided demands. 
-Firstly, they remain incomplete, inaccurate and often do not meet academic standards, particularly when the relevant interconnected information is widely spread throughout the source.
+In response to the need for manual source research in the past, new, mostly resource-limited approaches, as mentioned in \cref{sec:motivation}, were developed. 
+These mostly solved partial problems, but always showed limitations, inaccuracies in their answers and incompleteness with regard to the requirements. 
 %
-Particulary \citet{Paul_Keller} showed that the issue of inaccuracy exists but emphasised that It could be overcome by using state-of-the-art models and with that an increase of hardware resources. 
-\citet{Paul_Keller}'s conclusion leads us to another problem.   
+Particularly, \citet{Paul_Keller} showed that the issue of inaccuracy exists but emphasised that it could be overcome by using state-of-the-art models and, with that, increasing the hardware resources. 
+His conclusion leads us to another problem.   
 Despite significant advancements in artificial intelligence and information retrieval technologies, the practical implementation of these systems in resource-constrained environments, such as smaller educational institutions or even private learning settings, remains a considerable challenge. 
 Limited availability of high-performance hardware necessitates a focus on cost-effective and especially accessible solutions for real-world educational and healthcare environments and the targeted stakeholders, students, teachers and researchers.
 %
-Key issues:
+Key problems:
 \begin{itemize}
-    \item \textbf{Academic standards}:\\
+    \item \textbf{Porblem 1}:\\
     Previous approaches do not meet the demands of academic standards in their provided responses. 
-    \item \textbf{Fast applicability in resource-limited environments}:\\ 
-    Resource-constrained settings lack the high-end hardware and often the time to individually advance \ac{llm}s and \ac{rag} systems for retrieving interconnected information from scientific literature.
+    \item \textbf{Problem 2}:\\ 
+    Resource-constrained settings often lack the high-end hardware and the time necessary to individually advance algorithms for retrieving interconnected information from scientific literature.
 \end{itemize}
 %
 Addressing these challenges is vital for enhancing the accessibility and utility of domain-specific knowledge, ultimately supporting both learning and research activities. 
 
 \section{Motivation}\label{sec:motivation}
 By leveraging these technologies, it becomes possible to retrieve relevant information from fragmented sources, as well as recognise, combine and precisely return contextual connections provided from the source as factually correct information. 
-The central challenge remains in detecting a retrieval model that not only addresses the issue of fragmented knowledge but also ensures accessibility and factual reliability to a degree, where academic standards can be met.\\ 
+The key challenge is to find a retrieval model that not only solves the problem of fragmented knowledge, but also ensures accessibility and scientific and factual reliability.\\ 
 In this context, \ac{qa} systems provide a practical and measurable approach to evaluate such information retrieval. 
-These systems enable targeted queries to be processed efficiently, offering insights into their applicability in educational scenarios, as well as private settings.
+These systems efficiently process targeted queries, providing insights into their applicability in educational scenarios and private settings.
 % 
 Previous projects, such as the \ac{snik} ontology, have made substantial progress in structuring information for hospital information systems management and therefore reach a certain level of accessibility. 
-The integration of natural language processing in the context of a \ac{bell} resulting in the \enquote{Question Answering on \ac{snik}} \citep{hannesbell, hannesbell_skill}, as well as a similar approach in \citet{snikquiz}, attempted to combine complex knowledge networks with user-friendly access through natural English language queries. \citet{arneba}, on the other hand, explored an inverse approach using the \ac{snik} system. Instead of focusing on retrieving specific information through queries, this work aimed to provide the automatic generation of relevant questions, enhancing the system's usability in educational and training contexts.\\
+The integration of natural language processing in the context of a \ac{bell} resulting in the \enquote{Question Answering on \ac{snik}} \citep{hannesbell, hannesbell_skill}, as well as a similar approach in \citet{snikquiz}, attempted to combine complex knowledge networks with user-friendly access through natural English language queries. \citet{arneba}, on the other hand, explored an inverse approach using the \ac{snik} system. 
+Instead of focusing on retrieving specific information through queries, this work aimed to provide the automatic generation of relevant questions, enhancing the system's usability in educational and training contexts.\\
 %
-These methods enabled are more structured approach to the information from the given sources and further a basic \ac{qa} but are limited in the handling of complex queries and interconnected information, which is scattered over sections.
+These methods enabled a more structured approach to the information provided by the sources, as content was pre-processed and thus enabled, among other things, a basic \ac{qa}. Nevertheless, they are limited when processing complex queries and cross-linked information scattered across sections.
 The work of \citet{Paul_Keller} has already addressed these issues, recognizing the challenges associated with managing information systems, especially the difficulty in translating theoretical information into practical applications and dealing with fragmented definitions in the literature, particularly in \citet{bb2}. 
 In response to these challenges, the attempt was to solve the issue by fine tuning a pre-trained transformer in order to provide a efficient and reliable \ac{qa}-system built on \citet{bb2} as a literary information base.
 \citet{Paul_Keller} demonstrated that while these \ac{llm}'s can provide more intuitive and comprehensible responses, they still fall short in terms of accuracy and demand high-level hardware to meet the initial requirements.\\ 
