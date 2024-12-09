@@ -8,9 +8,10 @@ In educational contexts such as universities, the basic practical and theoretica
 Several approaches already exist, as mentioned in \cref{sec:motivation}, to make the information accessible without having to manually read a textbook, such as \citet{bb2}.
 This element holds significant relevance, as scenarios like exam or academic debate preparation primarily require reiterating and accessing the content within brief time-frames.
 %
-The process of extracting information not only requires accessibility for all users and short response times, but it also requires correctness and completeness, as academic consistency is its highest goal. 
+The process of extracting information not only requires accessibility for all users and short response times, but it also demands factual accuracy and completeness to ensure that scientific and academic information standards are met, providing reliable and consistent information based on the source material.
+ 
 Textbooks and academic literature are fragmented information sources, where relevant information is complex and interconnected throughout sections. 
-Combining these fragments completely and correctly in context and therefore achieving the highest goals poses the decisive issues to overcome. 
+Combining these fragments completely and correctly in context poses the decisive issues to overcome. 
 %
 Large context window \ac{llm}'s, as well as various improved \ac{rag}-systems, are recent advancements of AI to analyse vast quantities of data.
 They open up new possibilities for overcoming the challenge of recognising complex contextual relationships, presenting the extracted information in context, and, at the same time, providing accessibility for any stakeholder.
@@ -51,12 +52,12 @@ These methods enabled a more structured approach to the information provided by 
 Nevertheless, they are limited when processing complex queries and cross-linked information scattered across sections.
 The work of \citet{Paul_Keller} has already addressed these issues, recognising the challenges associated with managing information systems, especially the difficulty in translating theoretical information into practical applications and dealing with fragmented definitions in the literature, particularly in \citet{bb2}.
 As a response to these challenges, the attempt was to solve the issue by fine-tuning a pre-trained transformer in order to provide an efficient and reliable \ac{qa}-system built on \citet{bb2} as a literary information base.
-In \citet{Paul_Keller}, it was shown that with training and fine-tuning these \ac{llm}'s can provide more comprehensible responses with an improvemed accuracy in explicit, limited reference to \citet{bb2}, as \enquote{[$\dots$]a MacroF1 value of \num{0.45} and answers \num{12} of \num{22} questions with at least one correct answer[$\dots$]} was achieved.
+In \citet{Paul_Keller}, it was shown that with training and fine-tuning these \ac{llm}'s can provide more comprehensible responses with an improved accuracy in explicit, limited reference to \citet{bb2}, as \enquote{[$\dots$]a MacroF1 value of \num{0.45} and answers \num{12} of \num{22} questions with at least one correct answer[$\dots$]}\citep{Paul_Keller} was achieved.
 \enquote{The models presented [in \citet{Paul_Keller}] represent a snapshot in a specific environment but cannot make a general statement about the expected performance of continuous pre-training}\citep{Paul_Keller}.\\
 They outperform untrained models, but compared to the GPT-4 model, which~achieved~\enquote{a MacroF1 value of \num{0.64} and \num{17} of \num{22} correctly answered questions [$\dots$]}\citep{Paul_Keller}, the self-training approach in a hardware-limited environment is confronted with clear capability differences.
 %
 The results suggest the potential for improvement. 
-Such improvement may be reached through either the use of large scale hardware to fully exploit the capabilities of the previously used \ac{llm} models or by expanding the models with further techniques in order to reduce the occurrence of incorrect answers. \\
+Such improvement may be reached through either the use of large scale hardware to fully exploit the capabilities of the previously used \ac{llm} models or by expanding the models with further techniques in order to reduce the occurrence of incorrect answers.\\
 %
 However, feasibility should be the focus for the stakeholders described, as currently available state-of-the-art models already have the potential to both further improve the result of the tests already carried out, e.g., \citet{Paul_Keller}, and at the same time be accessible by any stakeholder for any scenarios under consideration.
 
