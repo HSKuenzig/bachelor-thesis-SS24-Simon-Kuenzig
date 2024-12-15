@@ -39,7 +39,13 @@ They have a wide range of applications, including translation, text generation, 
 The architecture transformers are based on, introduced by \citet{vaswani2017attention}, allows to processes entire sequences of text simultaneously, thereby enabling the model to recognise and connect complex patterns and dependencies in natural languages. 
 By leveraging self-attention, Transformers can weigh the importance of different words, described as token, in a certain sized context window. 
 Transformer-based models, such as \ac{bert} and \ac{gpt}, are typically trained on extensive datasets to understand statistical patterns within the training data.\citep{atallah2023impact}
-
+\subsection{inputs from Transformer models}
+\begin{definition}\label{def:token}
+    A \textbf{token} represents a subset of a word and is used in Transformer models to divide the input into logical units.
+\end{definition}
+Transformer models cannot process input without additional conversion.
+In addition to generating input vectors, the input must first be broken down into smaller units, so-called tokens.
+%
 \paragraph{Notable LLMs} Building on the transformer foundation, various prominent LLMs have emerged, each bringing unique features and contributions to the field. \textbf{BERT} (Bidirectional Encoder Representations from Transformers), developed by Google, introduced bidirectional training, allowing the model to consider both left and right context for each word. This bidirectional approach significantly improved performance across numerous NLP tasks, including question answering and text classification \citep{devlin2019bert}. 
 
 Another influential model, \textbf{GPT-4} (Generative Pre-trained Transformer 4) by OpenAI, further expanded on the capabilities of transformers by an estimated around 1 trillion parameter architecture. GPT-4 demonstrated few-shot learning capabilities, enabling it to perform well on new tasks with minimal fine-tuning, thus broadening its applicability in various domains \citep{brown2020gpt3}. 
