@@ -40,26 +40,22 @@ Key problems:
 Addressing these challenges is vital for enhancing the accessibility and utility of domain-specific knowledge, ultimately supporting both learning and research activities. 
 
 \section{Motivation}\label{sec:motivation}
-By leveraging these technologies, it becomes possible to retrieve relevant information from fragmented sources, as well as recognise, combine and precisely return contextual connections provided from the source as factually correct information. 
-The key challenge is to find a retrieval model that not only solves the problem of fragmented knowledge, but also ensures accessibility and scientific and factual reliability.\\ 
-In this context, \ac{qa} systems provide a practical and measurable approach to evaluate such information retrieval. 
-These systems efficiently process targeted queries, providing insights into their applicability in educational scenarios and private settings.
-% 
-Previous projects, such as the \ac{snik} ontology, have made substantial progress in structuring information for hospital information systems management and therefore reach a certain level of accessibility. 
-The integration of natural language processing in the context of a \ac{bell} resulting in the \enquote{Question Answering on \ac{snik}} \citep{hannesbell, hannesbell_skill}, as well as a similar approach in \citet{snikquiz}, attempted to combine complex knowledge networks with user-friendly access through natural English language queries. 
-\citet{arneba}, on the other hand, explored an inverse approach using the \ac{snik} system. 
-Instead of focusing on retrieving specific information through queries, this work aimed to provide the automatic generation of relevant questions, enhancing the system's usability in educational and training contexts.\\
+The key challenge is to find a retrieval model that not only solves the problem of fragmented knowledge and scientific and factual reliability, but also ensures accessibility, as well as availability at any time and in any application scenario. 
 %
-These methods enabled a more structured approach to the information provided by the sources, as content was pre-processed and thus enabled, among other things, a basic \ac{qa}.
-Nevertheless, they are limited when processing complex queries and cross-linked information scattered across sections.
-The work of \citet{Paul_Keller} has already addressed these issues, especially the difficulty in translating theoretical information into practical applications and dealing with fragmented definitions in the literature, particularly in \citet{bb2}.
-It was shown that with training and fine-tuning an open-source \ac{llm} was able to outperform its untrained version and could provide more comprehensible responses with an improved accuracy in explicit, limited reference to \citet{bb2}.
-At the same time, in comparison to the GPT-4 model during inference, the self-training approach in a hardware-limited environment is confronted with clear capability differences.
-\todo{Hier sind einige Sätze rausgeflogen um im Rahmen der "Motivation" zu bleiben und weitere Details in "related wordk" etc. zu erläutern.}
+Previous projects, such as the \ac{snik} ontology, were able to structure the knowledge from literature sources, for example \citet{bb2}, about the management of health information systems. 
+The work of \citep{hannesbell, hannesbell_skill} in the context of a \ac{bell} made use of that structured knowledge base and aimed to further improve accessibility of \ac{snik} through the integration of natural language processing.    It resulted in the \enquote{Question Answering on \ac{snik}}. \citet{snikquiz} attempted a gamified access to the knowledge contained within \ac{snik}. As \citet{arneba}, on the other hand, explored an inverse approach with the automatic generation of relevant questions as output, enhancing the \ac{snik} system's usability in educational and training contexts.
+These projects focused on providing knowledge more intuitively, applying a user-friendly layer by using natural language queries.
 %
-Improvements may be reached either through the use of large-scale hardware to fully exploit the capabilities of larger open-source \ac{llm}-models with more parameters, or by further expanding advanced, commercial API-accessible models, such as GPT-4, with novel techniques to reduce the occurrence of incorrect answers.\\
+However, they are limited when processing complex queries and cross-linked information scattered across sections.
+The work of \citet{Paul_Keller} has already addressed these issues. The challenges associated with managing health information systems, especially the difficulty in translating theoretical information into practical applications and dealing with fragmented definitions in the literature.
+Although his work focuses particularly on \citet{bb2} instead of \ac{snik}.
 %
-In any future approach feasibility and accessibility should be the focus for stakeholders who lack the time, expertise, or infrastructure to train models independently.
+In \citet{Paul_Keller}, it was shown that with training and fine-tuning an open source \ac{llm} was able to outperform its untrained version and could provide more comprehensible responses with improved accuracy in explicit and limited reference to \citet{bb2}.
+At the same time, compared to the GPT-4 model during inference, the self-training approach in a hardware-limited environment is confronted with clear capability differences.
+%
+Improvements may be reached through the use of large-scale hardware to fully exploit the capabilities of larger open-source \ac{llm}-models with more parameters, or by further expanding advanced, commercial API-accessible models, such as GPT-4, with novel techniques to reduce the occurrence of incorrect answers.\\
+%
+All future concepts should focus on feasibility and accessibility, as users do not have the time, expertise, or infrastructure to train models on their own.
 
 \section{Goals}\label{sec:goals}
 The following goals of this work are assigned to the problems shown in \cref{sec:problem statement}.
