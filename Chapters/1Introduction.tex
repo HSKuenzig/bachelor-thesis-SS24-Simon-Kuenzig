@@ -75,21 +75,26 @@ The following goals of this work are assigned to the problems shown in \cref{sec
     Answering questions about healthcare information systems in natural language using state-of-the-art language models with \citet{bb2} as the literature information source. 
   \item goal G2:\\
    Solving a sample exam of the module \enquote{Architecture of Information Systems in Healthcare}\footnote{\raggedright{}a module of the Master's program in Medical Informatics at the University of Leipzig, which is based on \citet{bb2}} with the help of state-of-the-art language models.
-   The main goal is to compare with previous approaches.
-   The setup created in the process does not primarily claim to be generally reproducible.
+   The main goal in this context is to compare with the previous approach of \citet{Paul_Keller} .
    \item goal G3:\\
-   Set up a reproducible application scenario for the efficient use of selected state-of-the-art \ac{llm} for self-selected domain specific sources.
+   Set up a reproducible application scenario for the efficient use of selected state-of-the-art \ac{llm} for self-selected domain-specific sources.
 \end{itemize}
 \section{Task}
 \begin{itemize}
   \item Task for goal G1
         \begin{itemize}
-          \item Task A1.1:\\Evaluate the answer options of exam questions according to the same criteria as in \citet{Paul_Keller}.
-          Current state-of-the-art language models are to be compared. Within the scope of this work, no claim to completeness with regard to these models can be made. 
+        \item Task A1.1:\\
+          Current state-of-the-art language models are to be compared and selected based on an analysis of their availability and accessibility. Within the scope of this work, no claim of completeness can be made regarding these models.
+        \item Task A1.2:\\
+        The selected models are then used to answer the question regarding \citet{bb2}. This means that the understanding of the question, as well as the evaluation and retrieval of important knowledge from the input source \citet{bb2} is carried out solely through the model.
+        \item Task A1.3:\\
+        Evaluate the answer options of the exam questions according to the same criteria as in \citet{Paul_Keller}.
           \end{itemize}
  \item Task for goal G2
     \begin{itemize}
-          \item Task A2.1: The language models selected in this thesis are evaluated with regard to their ability to answer questions correctly in comparison to each other and to the results of \citet{Paul_Keller}.\@
+          \item Task A2.2: Evaluation of selected language models in this thesis with regard to their ability to answer questions correctly applying the same criteria as \citet{Paul_Keller}.
+          \item Task A2.3:
+          Comparison of the output results of the selected models. A comparison is made between the models and \citet{Paul_Keller} results.
           This enables a statement to be made about the possible use of these models in an academic and scientific environment.
         \end{itemize}
   \item Task for goal G3
