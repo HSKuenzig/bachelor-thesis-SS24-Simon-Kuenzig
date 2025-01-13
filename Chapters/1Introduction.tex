@@ -32,9 +32,7 @@ The limited availability of high-performance hardware requires a focus on cost-e
 %
 Key problems:
 \begin{itemize}
-  \item \textbf{Problem 1:} Fragmentation of information in \citet{bb2}, still makes it difficult to extract coherent and relevant information.
-  \item \textbf{Problem 2:} Resource constraints prevent students and teachers from effectively using advanced techniques and applying them on \citet{bb2}.
-  \todo{Habe die Probleme nochmal angepasst. Sie passen nun mehr zum Rahmen der Arbeit}
+  \item \textbf{Problem 1:} Fragmentation of knowledge and resource constraints still makes it difficult to effectively extract coherent and relevant information from \citet{bb2}.
 \end{itemize}
 %
 Addressing these challenges is vital for enhancing the accessibility and utility of domain-specific knowledge, ultimately supporting both learning and research activities. 
@@ -44,17 +42,22 @@ Addressing these challenges is vital for enhancing the accessibility and utility
 Ich dachte unsere key challenge ist, das mit limited resources hinzubekommen?
 Bitte korrigiere mich, wenn ich da was übersehen habe.
 Das mit den limited resources kommt mir hier noch viel zu wenig zur Geltung.}
+\todo{Ich habe Resource-limited nochmal expliziter aufgenommen. "Retrieval model" geht für mich an dieser Stelle noich weiter als die reinen LLM´s, also auch die Art und Weise, wie man diese verwenden kann, also auch die Anwendung (App, RAG, etc.). Soll ich das ausformulieren? }
 The key challenge is to find a retrieval model that not only solves the problem of fragmented knowledge and scientific and factual reliability, but also ensures accessibility, as well as availability at any time and in any application scenario. 
+Since the need for this application exists above all for resource-limited target groups. 
+The student who needs explicit domain-specific information from selected sources quickly and easily in preparation for an exam or when working on an exercise. The teacher who wants to prepare a lecture, discussion or exam and does not have time to look up complex contexts or details from a source.
+They need this information as quickly and accurately as possible and do not have the resources to train language models themselves or use advanced technologies to the extent required.
 %
 Previous projects, such as the \ac{snik} ontology, were able to structure the knowledge from literature sources, for example \citet{bb2}, about the management of health information systems. 
 \todo{Ich empfehle immer einen Satz pro Zeile maximal außer in todonotes.
-Das minimiert git diffs und erhöht die Übersichtlichkeit.
-Für mich ist es kaum lesbar, da ich kein auto wrapping aktiviert habe im Texteditor.
-Außerdem hast du dann mehrere todonotes von mir hintereinander und weißt nicht, auf welchen Satz sie sich beziehen.}
+Entschuldige, die Sätze sind mir beim Schreiben verrutscht und ich hatte die geänderten Sätze vor dem Pushen nicht alle Zeile für Zeile getrennt. Sonst achte ich da drauf. }
 \todo{Der Satz 'it resulted in...' klingt unglücklich, kannst du das noch besser formulieren?}
 \todo{Die Sätze zu SNIK Quiz sind sehr verwirrend, es klingt als wäre SNIK Quiz und Arnes BA was unterschiedliches aber genau das war doch sein Thema.}
+\todo{Ich habe um den eindeutig Zusammenhang klar zu machen, den Satz zu Arnes BA nochmal ergänzt.}
 \todo{Achtung! Bitte nicht citep und citet verwechseln.}
-The work of \citep{hannesbell, hannesbell_skill} in the context of a \ac{bell} made use of that structured knowledge base and aimed to further improve accessibility of \ac{snik} through the integration of natural language processing.    It resulted in the \enquote{Question Answering on \ac{snik}}. \citet{snikquiz} attempted a gamified access to the knowledge contained within \ac{snik}. As \citet{arneba}, on the other hand, explored an inverse approach with the automatic generation of relevant questions as output, enhancing the \ac{snik} system's usability in educational and training contexts.
+The work of \citep{hannesbell, hannesbell_skill} in the context of a \ac{bell} made use of that structured knowledge base and aimed to further improve accessibility of \ac{snik} through the integration of natural language processing.    
+It resulted in the \enquote{Question Answering on \ac{snik}}. \citep{snikquiz} attempted a gamified access to the knowledge contained within \ac{snik}. 
+As \citet{arneba}, on the other hand, explored an inverse approach with the automatic generation of questions relevant to \citep{snikquiz} as output, enhancing the \ac{snik} system's usability in educational and training contexts.
 These projects focused on providing knowledge more intuitively, applying a user-friendly layer by using natural language queries.
 %
 However, they are limited when processing complex queries and cross-linked information scattered across sections.
