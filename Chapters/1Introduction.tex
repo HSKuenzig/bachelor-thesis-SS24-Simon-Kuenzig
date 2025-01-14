@@ -40,20 +40,20 @@ Addressing these challenges is vital for enhancing the accessibility and utility
 \section{Motivation}\label{sec:motivation}
 \todo{Also da bin ich skeptisch. LLMs sind doch ziemlich eindeutig ein sinnvolles Retrieval Model für den Zweck.
 Das mit den limited resources kommt mir hier noch viel zu wenig zur Geltung.}
-\todo{Ich habe Resource-limited nochmal expliziter aufgenommen. "Retrieval model" geht für mich an dieser Stelle noich weiter als die reinen LLM´s, also auch die Art und Weise, wie man diese verwenden kann, also auch die Anwendung (App, RAG, etc.). 
-Ich habe es nun aber doch umformulier }
-The key challenge is to find an application model that ensures accessibility and availability at all times and in any application scenario, while solving the problem of fragmented knowledge and scientific and factual reliability.
+\todo{Ich habe Resource-limited nochmal expliziter aufgenommen. "Retrieval model" geht für mich an dieser Stelle noch weiter als die reinen LLM´s, damit inbegriffen sind auch die Art und Weise, wie man diese in einer verwenden kann (App, RAG, etc.). 
+Ich habe es nun aber doch umformuliert }
+The key challenge is to find an application model that ensures accessibility and availability in any application scenario, while solving the problem of fragmented knowledge and scientific and factual reliability.
 \todo{Dieser Satz fokussiert sich nun auf die Problematik, die ich lösen möchte. }
-The need for this application exists above all for resource-limited target groups. 
-The student who needs explicit domain-specific information from selected sources quickly and easily in preparation for an exam or when working on an exercise. 
-The teacher who wants to prepare a lecture, discussion or exam and does not have time to look up complex contexts or details from a source.
-They need this information as quickly and accurately as possible and do not have the resources to train language models themselves or use advanced technologies to the extent required.
+The need for this application in the context of this work is primarily for resource-limited target groups, teachers and students.
+They often need explicit and complex domain-specific information from selected sources as quickly and accurately as possible. 
+However, they do not have the resources to train language models themselves or to use advanced technologies to the extent required.
 %
 Previous projects, such as the \ac{snik} ontology, already address these issues within the context of medical informatics.
 Through the development of \ac{snik}, knowledge from sources from the literature on the management of health information systems, e.g., \citet{bb2}, was accumulated, processed and restructured.    
-It enabled a new approach and use of the knowledge it contained. 
+It enabled a new approach to and use of the knowledge it contained. 
 \todo{Ich empfehle immer einen Satz pro Zeile maximal außer in todonotes.
-Entschuldige, die Sätze sind mir beim Schreiben verrutscht und ich hatte die geänderten Sätze vor dem Pushen nicht alle Zeile für Zeile getrennt. Sonst achte ich darauf. }
+Entschuldige, die Sätze sind mir beim Schreiben verrutscht und ich hatte die geänderten Sätze vor dem Pushen nicht alle Zeile für Zeile getrennt. 
+Sonst achte ich darauf. }
 \todo{Der Satz 'it resulted in...' klingt unglücklich, kannst du das noch besser formulieren?}
 \todo{Ich habe um den eindeutig Zusammenhang klar zu machen, den Satz zu Arnes BA nochmal ergänzt.}
 \todo{Achtung! Bitte nicht citep und citet verwechseln.}
@@ -73,7 +73,11 @@ At the same time, compared to the GPT-4 model during inference, the self-trainin
 %
 Improvements may be reached through the use of large-scale hardware to fully exploit the capabilities of larger open-source \ac{llm}-models with more parameters, or by further expanding advanced, commercial API-accessible models, such as GPT-4, with novel techniques to reduce the occurrence of incorrect answers.\\
 %
-All future concepts should focus on feasibility and accessibility, as users do not have the time, expertise, or infrastructure to train models on their own.
+Students and teachers have limited resources and are restricted in terms of implementing these solutions.
+The current state-of-the-art models show promising capabilities in dealing with fragmented knowledge and, as potential ready-to-use applications, do not require additional training or fine-tuning. 
+It remains to be clarified to what extent these capabilities can be used in the resource-limited use cases considered here and to what results they lead to in these explicit application scenarios.
+/todo{Hier nochmal die klare Darstellung der Problematik und dem Zusammenhang zum Ansatz dieser Arbeit.}
+%
 
 \section{Goals}\label{sec:goals}
 The following goals of this work are assigned to the problems shown in \cref{sec:problem statement}.
