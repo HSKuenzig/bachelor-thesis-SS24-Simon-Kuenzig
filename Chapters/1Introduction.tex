@@ -2,6 +2,7 @@
 \chapter{Introduction}\label{ch:introduction}
 %************************************************
 \section{Subject Matter}\label{sec:subject matter}
+
 In the healthcare sector and educational landscape, the efficient acquisition of domain-specific information is essential. 
 In educational contexts such as universities, the basic practical and theoretical approach of students and teachers to complex domains, for example, medical informatics, is mainly developed through the literature such as \citet{bb2}.
 %
@@ -17,6 +18,7 @@ Large context window \ac{llm}'s, as well as various improved \ac{rag}-systems, a
 They open up new possibilities for overcoming the challenge of recognising complex contextual relationships, presenting the extracted data in context, and, at the same time, providing accessibility for any stakeholder.
 
 \section{Problem Statement}\label{sec:problem statement}
+
 For students and practitioners in particular, practical application requires a deep understanding of the interrelationships and the applicability of the concepts presented to specific work environments.
 The existing literature is often extensive, and the fragmentation and dispersion of relevant information across multiple sections and chapters often hinders the retrieval and synthesis of complex domain-specific information, such as within the field of medical informatics.
 Identifying relevant information for specific problems requires students and practitioners to read large parts of a book in order to fully grasp individual concepts and their relationships to other topics.
@@ -29,15 +31,101 @@ In particular, \citet{Paul_Keller} showed that the inaccuracy problem exists but
 His conclusion leads to another problem.    
 Despite significant advancements in artificial intelligence and information retrieval technologies, the practical implementation of these systems in resource-constrained environments, such as smaller educational institutions or even private learning settings, remains a considerable challenge. 
 The limited availability of high-performance hardware requires a focus on cost-effective and especially accessible solutions for real-world educational and healthcare environments and the targeted stakeholders, students, teachers and researchers.
-%
+
 Key problems:
 \begin{itemize}
   \item \textbf{Problem:} Fragmentation of knowledge and resource constraints still makes it difficult to effectively extract coherent and relevant information from \citet{bb2}.
 \end{itemize}
-%
+
 Addressing these challenges is vital for enhancing the accessibility and utility of domain-specific knowledge, ultimately supporting both learning and research activities. 
 
 \section{Motivation}\label{sec:motivation}
+
+\todo{Also da bin ich skeptisch. LLMs sind doch ziemlich eindeutig ein sinnvolles Retrieval Model für den Zweck.
+Das mit den limited resources kommt mir hier noch viel zu wenig zur Geltung.}
+\todo{Ich habe Resource-limited nochmal expliziter aufgenommen. "Retrieval model" geht für mich an dieser Stelle noch weiter als die reinen LLM´s, damit inbegriffen sind auch die Art und Weise, wie man diese verwenden kann (App, RAG, etc.). 
+Ich habe es nun aber doch umformuliert }
+The key challenge is to find an application model that solves the problem of fragmented knowledge and scientific and factual reliability while being available above all for resource-limited target groups, teachers and students.
+\todo{Dieser Satz fokussiert sich nun auf die Problematik, die ich lösen möchte. }
+They often need explicit and complex domain-specific information from selected sources as quickly and accurately as possible. 
+However, they neither have the time nor the resources to train language models themselves or to use advanced technologies to the extent required.
+%
+Previous projects, such as the \ac{snik} ontology, already address these issues within the context of medical informatics.
+Through the development of \ac{snik}, knowledge from sources from the literature on the management of health information systems, e.g., \citet{bb2}, was accumulated, processed and restructured.    
+It enabled a new approach to and use of the knowledge it contained. 
+\todo{Ich empfehle immer einen Satz pro Zeile maximal außer in todonotes.
+Entschuldige, die Sätze beim Schreiben verrutscht und ich hatte die geänderten Sätze vor dem Pushen nicht nochmal alle Zeile für Zeile getrennt. 
+Sonst achte ich darauf. }
+\todo{Der Satz 'it resulted in...' klingt unglücklich, kannst du das noch besser formulieren? --> Ich habe es umformuliert.}
+\todo{Ich habe, um den eindeutigen Zusammenhang klar zu machen, den Satz zu Arnes BA nochmal ergänzt.}
+\todo{Achtung! Bitte nicht citep und citet verwechseln.}
+The work of \citep{hannesbell, hannesbell_skill} in the context of a \ac{bell} made use of that structured knowledge base and aimed to further improve accessibility of \ac{snik} through the integration of natural language processing.    
+The results were implemented in a \ac{qas} QAnswer \citep{qanswer}, but show deficits in the explainability and comprehensibility of more complex questions. 
+\citet{snikquiz} attempted a gamified access to the knowledge contained within \ac{snik}. 
+As \citet{arneba}, on the other hand, explored an inverse approach with the automatic generation of questions relevant to \citep{snikquiz} as output, enhancing the \ac{snik} system's usability in educational and training contexts.
+These projects focused on providing knowledge more intuitively, applying a user-friendly layer by using natural language queries.
+%
+However, they are limited when processing complex queries and cross-linked information scattered across sections.
+The work of \citet{Paul_Keller} has already addressed these issues. 
+The challenges associated with managing health information systems, especially the difficulty in translating theoretical information into practical applications and dealing with fragmented definitions in the literature.
+Although his work focuses particularly on \citet{bb2} instead of \ac{snik}.
+%
+In \citet{Paul_Keller}, it was shown that with training and fine-tuning an open source \ac{llm} was able to outperform its untrained version and could provide more comprehensible responses with improved accuracy in explicit and limited reference to \citet{bb2}.
+At the same time, compared to the GPT-4 model during inference, the self-training approach in a hardware-limited environment is confronted with clear capability differences.
+%
+Improvements may be reached through the use of large-scale hardware to fully exploit the capabilities of larger open-source \ac{llm}-models with more parameters, or by further expanding advanced, commercial API-accessible models, such as GPT-4, with novel techniques to reduce the occurrence of incorrect answers.\\
+%
+Students and teachers have limited resources and are restricted in terms of implementing these solutions.
+The current state-of-the-art models show promising capabilities in dealing with fragmented knowledge and, as potential ready-to-use applications, do not require additional training or fine-tuning. 
+It remains to be clarified to what extent these capabilities can be used in the resource-limited use cases considered here and to what results they lead to in these explicit application scenarios.
+/todo{Hier nochmal die klare Darstellung der Problematik und dem Zusammenhang zum Ansatz dieser Arbeit.}
+%
+
+\section{Goals}\label{sec:goals}
+
+The following goals of this work are assigned to the problems shown in \cref{sec:problem statement}.
+\begin{itemize}
+  \item goal G1:\\
+    Answering questions about healthcare information systems in natural language using state-of-the-art language models with \citet{bb2} as the literature information source. 
+  \item goal G2:\\
+   Solving a sample exam of the module \enquote{Architecture of Information Systems in Healthcare}\footnote{\raggedright{}a module of the Master's program in Medical Informatics at the University of Leipzig, which is based on \citet{bb2}} with the help of state-of-the-art language models.
+   The main goal in this context is to compare with the previous approach of \citet{Paul_Keller} .
+   \item goal G3:\\
+   Set up a reproducible application scenario for the efficient use of selected state-of-the-art \ac{llm} for self-selected domain-specific sources.
+\end{itemize}
+
+\section{Task}
+
+\begin{itemize}
+  \item Task for target G1
+        \begin{itemize}
+        \item Task A1.1:\\
+          Current state-of-the-art language models are to be compared and selected based on an analysis of their availability and accessibility. Within the scope of this work, no claim of completeness can be made regarding these models.
+        \item Task A1.2:\\
+        The selected models are then used to answer the question regarding \citet{bb2}. 
+        This means that the understanding of the question, as well as the evaluation and retrieval of important knowledge from the input source \citet{bb2} is carried out solely through the model.
+        \item Task A1.3:\\
+        Evaluate the answer options of the exam questions according to the same criteria as in \citet{Paul_Keller}.
+          \end{itemize}
+ \item Task for target G2
+    \begin{itemize}
+          \item Task A2.1: Execution of the test scenario with the selected models. 
+          The given conditions and requirements are the same each time, where the same criteria as \citet{Paul_Keller} are applied.
+          \item Task A2.2: Evaluation of selected language models in this thesis with regard to their ability to answer the exam questions.
+          \item Task A2.3:
+          Comparison of the output results of the selected models. 
+          A comparison is made between the models and \citet{Paul_Keller} results.
+          This enables a statement to be made about the possible use of these models in an academic and scientific environment.
+        \end{itemize}
+  \item Task for goal G3
+        \begin{itemize}
+          \item Task A3.1:\\Investigate reproducible approaches for the efficient use of the selected models.
+          \item Task A3.2:\\Evaluate the reproducible approaches for the efficient use of the selected models and, if necessary or more efficient, set up an \ac{api} and \ac{gui}.
+        \end{itemize}
+\end{itemize}
+
+\section{Motivation}\label{sec:motivation}
+
 \todo{Also da bin ich skeptisch. LLMs sind doch ziemlich eindeutig ein sinnvolles Retrieval Model für den Zweck.
 Das mit den limited resources kommt mir hier noch viel zu wenig zur Geltung.}
 \todo{Ich habe Resource-limited nochmal expliziter aufgenommen. "Retrieval model" geht für mich an dieser Stelle noch weiter als die reinen LLM´s, damit inbegriffen sind auch die Art und Weise, wie man diese verwenden kann (App, RAG, etc.). 
@@ -76,7 +164,6 @@ Students and teachers have limited resources and are restricted in terms of impl
 The current state-of-the-art models show promising capabilities in dealing with fragmented knowledge and, as potential ready-to-use applications, do not require additional training or fine-tuning. 
 It remains to be clarified to what extent these capabilities can be used in the resource-limited use cases considered here and to what results they lead to in these explicit application scenarios.
 /todo{Hier nochmal die klare Darstellung der Problematik und dem Zusammenhang zum Ansatz dieser Arbeit.}
-%
 
 \section{Goals}\label{sec:goals}
 The following goals of this work are assigned to the problems shown in \cref{sec:problem statement}.
@@ -117,8 +204,6 @@ The following goals of this work are assigned to the problems shown in \cref{sec
           \item Task A3.2:\\Evaluate the reproducible approaches for the efficient use of the selected models and, if necessary or more efficient, set up an \ac{api} and \ac{gui}.
         \end{itemize}
 \end{itemize}
-
-
 
 \section{Structure of the thesis}
 
