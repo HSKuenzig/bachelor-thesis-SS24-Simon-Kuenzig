@@ -1,11 +1,154 @@
 %*****************************************
-\chapter{Grundlagen}\label{ch:preliminaries}
+\chapter{Preliminaries}\label{ch:preliminaries}
 %*****************************************
+This chapter provides the foundational terms and concepts in order to understand the aims and objectives of this thesis.
+%
+The content is structured as follows: \cref{sec:information retrieval} briefly introduces the field of information retrieval. This is followed by \cref{sec:language-models}, providing an insight into language models. 
+Finally,in \cref{sec:databases} database architectures and the concepts underlying \ac{rag} are discussed. 
+%
+\section{Information Retrieval}\label{sec:information retrieval}
+\begin{definition}\label{def:information retrieval}
+Information retrieval is the process of identifying, retrieving and ranking relevant information from resources in response to a previous query. 
+\end{definition}
+%
+The traditional \ac{ir} was based on a single-stage term-based system, which was first applied in scientific research. The matching phrases and terms from the source were searched according to the search term and generated as direct output.
+However, the quality of the output suffered from simple linguistic hurdles, e.g., polysemy, synonymy, and lexical gaps, and was therefore limited in their effectiveness. 
+The addition of ranking mechanisms led to more accurate results, as ranking is carried out in a second stage. 
+The matching terms and retrieved documents are pre-sorted by ranking algorithms, e.g., BM25, on the basis of a relevance score. 
+Over time, advanced ranking and sorting algorithms have been integrated to further improve the results. \citep{hambardeIR2023}
+Starting with simple text retrieval, multi-modal retrieval is now possible.
+%
+\subsection{Question Answering}\label{subsec:question answering}
+\begin{definition}
+\ac{qa} is an area within \ac{nlp} and \ac{ir} that focuses on the development of systems in which questions posed by the user in natural language are to be answered. 
+The entered question is first analysed in order to extract the intention of the query. 
+Based on this, relevant information is retrieved from a source, processed further using \ac{ir} technologies and then combined into a coherent answer.\citep{Manning2008}.
+\end{definition}
+%
+\section{Language Models}\label{sec:language-models}
+\begin{definition}\label{def:language-models}
+    \textbf{Language Models} are machine learning models designed to understand and generate human language.
+\end{definition}
+Language models are built on artificial intelligence techniques and are typically trained using machine learning algorithms to understand and generate human language. 
+They have a wide range of applications, including translation, text generation, speech recognition, and text classification.
+\subsection{transformer}\label{transformer}
+\begin{definition}\label{def:transformer}
+    A \textbf{Transformer} is a deep learning architecture that forms the foundation of many modern language models, allowing efficient training in large-scale data by using attention mechanisms to process data in parallel.
+\end{definition}
+The architecture transformers are based on, introduced by \citet{vaswani2017attention}, which allows one to process entire sequences of text simultaneously, thereby enabling the model to recognise and connect complex patterns and dependencies in natural languages. 
+By leveraging self-attention, Transformers can weigh the importance of different words, described as token, in a certain-sized context window. 
+Transformer-based models, such as \ac{bert} and \ac{gpt}, are typically trained on extensive data sets to understand statistical patterns within training data.\citep{atallah2023impact}
+\begin{definition}\label{def:continuous-pretraining}
+    \textbf{Continual Pretraining} describes the process of continuous, self-monitored training of a pre-trained model.
+\end{definition}
+In continuous pre-training, only the hyper-parameters of the model are adjusted and new data sets are used, while training continues based on the parameters of the model that have already been learned.
+\subsection{Inputs from Transformer models}
+\begin{definition}\label{def:token}
+    A \textbf{token} represents a subset of a word and is used in transformer models to divide the input into logical units.
+\end{definition}
+Transformer models cannot process input without additional conversion.
+In addition to generating input vectors, the input must first be broken down into smaller units, the so-called tokens.
+\todo{Add example}
+%
+\section{neural networks}\label{sec:neural-networks}
+To understand the architecture of the transformer, it is necessary to know the basics of neural networks.
+Neural networks were first described by \citet{neuronal_networks_first} in 1943 and have undergone many changes and improvements since then.
+A description of the basic techniques can be found in \citet{neuronale-netze}.
+Building on this book, an overview of how neural networks work is given below.
 
-Das Grundlagenkapitel soll den Stand der Forschung erläutern und mit Literatur belegen.
-Auf diesem Kapitel bauen die Erkenntnisse der Arbeit auf.
-Gerade in den Grundlagen wird man häufig Quellen benennen, aus denen die Aussagen letztlich stammen.
-Im Kapitel \enquote{Literaturverzeichnis} dieser Vorlage wird beschrieben, wie eine Quellenangabe zu erfolgen hat.
+\subsection{Architecture}
+Neural networks mimic the functioning of the human brain with the help of mathematical equations.
+A network consists of a number of neurons that have both input and output connections to other neurons.
+Neurons have the property of sending an impulse from certain inputs to the outputs when a threshold value is exceeded.
+In contrast to the brain, however, normal neural networks have a more logical structure.
+The neurons are arranged in layers, with the first layer being the input layer with the input neurons $E_N$ and the last layer being the output layer with the output neurons $A_N$.
+The layers between these two boundaries are called hidden layers with neurons $H^L_N$.
+\todo{Add example}
+%
+\paragraph{Notable LLMs} Building on the foundation of the transformer, various prominent LLMs have emerged, each bringing unique features and contributions to the field. \textbf{BERT} (Bidirectional Encoder Representations from Transformers), developed by Google, introduced bidirectional training, allowing the model to consider the context on the left and right for each word. This bidirectional approach significantly improved performance on numerous \ac{nlp} tasks, including answering questions and classification of texts \citep{devlin2019bert}. 
+
+Another influential model, \textbf{GPT-4} (Generative Pre-trained Transformer 4) by OpenAI, further expanded on the capabilities of transformers by an estimated around 1 trillion parameter architecture. GPT-4 demonstrated few-shot learning capabilities, allowing it to perform well on new tasks with minimal fine-tuning, thus broadening its applicability in various domains \citep{brown2020gpt3}. 
+
+Additionally, \textbf{T5} (Text-To-Text Transfer Transformer), created by Google, approached \ac{nlp} tasks through a unified text-to-text framework, in which both inputs and outputs are treated as text. This framework allowed T5 to be highly versatile, performing tasks such as translation, summarisation, and even sentiment analysis within a single model \citep{raffel2020t5}. Each of these models represents a key milestone in the evolution of \ac{llm} architectures, demonstrating how advances in transformer-based designs have expanded the practical applications of artificial intelligence in diverse fields.
+
+\section{Databases}\label{sec:databases}
+\begin{definition}\label{def:database}
+    A \textbf{database} is a collection of related data\citep{limited2010introduction}. 
+    It is used and designed to efficiently handle data storage, retrieval, and management on computer systems. 
+    It contains and arranges data in a manner that makes it accessible by a variety of applications.
+\end{definition}
+Databases are essential tools for the storage and management of large volumes of information. 
+Their structures vary significantly, with relational databases that organise data in table formats, while \ac{nosql} databases offer more adaptable frameworks suited to diverse data types. 
+The way data are stored is influenced by both the specific demands of the application and the architectural design of the chosen database model.
+\section{Database Management System}\label{sec:Database Management System}
+\begin{definition}\label{def:Database Management System}
+    A \ac{dbms}  is a software system designed to create a database and subsequently execute operations that allow the definition, manipulation, and efficient retrieval of the stored data. 
+    At the same time, database security and potential recovery must be ensured during a failure or unforeseen process sequence. \citep{limited2010introduction}
+\end{definition}
+A database and \ac{dbms} together are defined as a database system.  
+
+\subsection{Database Architectures}\label{sec:database-architectures}
+Databases can be classified into different architectures, including relational and \ac{nosql} databases. 
+Relational databases use a table-based structure with a predefined schema. 
+They are widely used for applications that require consistency and follow a clear generic pattern, such as \ac{sql}-based systems.
+\ac{nosql} databases offer more flexibility and can store unstructured data. 
+For example, graph databases are designed to efficiently model and navigate complex networks of interconnected data, making them ideal for applications that require understanding relationships, such as social networks, recommendation systems, and knowledge graphs.
+\subsubsection{Unstructured data}\label{sec:unstructured-data}
+\begin{definition}\label{def:unstructured-data}
+    \textbf{Unstructured data} refers to information that does not have a predefined data model or organized structure, making it more challenging to store, search and analyze using traditional database systems.
+\end{definition}
+Unstructured data includes formats such as text documents, images, audio, and video files, where the data is not organised in a tabular or relational structure. 
+Due to its lack of a fixed schema, unstructured data often requires specialised processing techniques, such as \ac{nlp} or machine learning, to extract meaningful information and be able to process those further.
+\section{Databases for Retrieval-Augmented Generation}\label{sec:databases-rag}
+
+\subsection{Relational Databases}\label{sec:relational-databases}
+Relational databases organise data into tables with predefined\\ schemas, allowing for structured data storage. 
+
+\subsection{NoSQL Databases}\label{sec:nosql-databases}
+\ac{nosql} databases provide a more flexible approach to data storage, supporting various data structures such as documents, key-value pairs, and graphs. 
+They are particularly suitable for handling unstructured or semi-structured data and are frequently used in \ac{rag} implementations for efficient storage and retrieval.
+
+\subsection{Document Stores}\label{sec:document-stores}
+Document-oriented databases, like MongoDB and Elasticsearch, are optimised for storing and querying large amounts of unstructured text data. 
+These databases allow efficient indexing and retrieval of documents, making them highly suitable for \ac{rag}, where retrieving relevant text passages is a priority.
+\subsection{Graph Databases}\label{sec:graph-databases}
+Graph databases are designed to store and manage data as a collection of nodes, representing entities, and edges, which capture the relationships between these entities \citep{Robinson2015}. This structure enables efficient handling of highly interconnected data, making graph databases particularly suitable for applications such as social networks, recommendation engines, and knowledge graphs \citep{Angles2008}. In the context of \ac{rag}, graph databases support the retrieval of contextually relevant information by leveraging the natural relationships embedded within the data, thus improving the coherence and accuracy of generated responses. Prominent graph database systems include Neo4j and Amazon Neptune, which are widely used for their scalability and performance in handling large-scale graph-based queries.
+
+\subsection{Vector Databases}\label{sec:vector-databases}
+Vector databases are specialised systems designed to store and manage data as high-dimensional vectors, facilitating efficient similarity searches by measuring distances between these vectors. 
+This capability is crucial in applications like \ac{rag}, where embedding-based retrieval methods are used to quickly access semantically relevant documents. 
+Notable examples of vector databases include Pinecone and FAISS, both optimised for large-scale real-time vector retrieval tasks \citep{Johnson2019}.
+
+\subsection{Retrieval Methods}\label{sec:retrieval-methods}
+
+Various retrieval methods are used to extract data or information from a data source, such as databases. Depending on the database architecture and the level of detail of the query, different methods are used, including keyword search, Boolean search, and vector-based similarity search. Each method is suitable for specific data types and query requirements.
+\section{Concepts for Data Extraction}\label{sec:data-extraction-concepts}
+
+\subsection{Keyword-Based Search}\label{sec:keyword-search}
+Keyword-based search is a fundamental retrieval method that retrieves documents or records containing specific keywords. It offers a simple approach but is often less effective for complex queries where semantic understanding of context is required.
+
+\subsection{Vector-Based Similarity Search}\label{sec:vector-similarity-search}
+Vector-based similarity search retrieves relevant data by comparing text vector embeddings. Embeddings represent the semantic meaning of text, allowing for more accurate retrieval in cases where traditional keyword searches provide inaccurate results.
+
+\subsection{Neural Retrieval Methods}\label{sec:neural-retrieval}
+Neural retrieval models, such as \ac{dpr}, use deep learning to learn vector embeddings for queries and documents. These embeddings are used for high-accuracy retrieval, where the model ranks documents based on their semantic relevance to a given query.
+
+\section{Underlying Aim of Retrieval-Augmented Generation}\label{sec:aim-of-rag}
+
+\begin{definition}\label{def:rag}
+    \textbf{\ac{rag}} is a technique that integrates information retrieval with language generation, allowing models to produce responses grounded in relevant external data, thus enhancing the factual accuracy and contextual relevance of generated content.
+\end{definition}
+
+The primary objective of \ac{rag} is to combine the generative capabilities of \ac{llm}'s with the precision of retrieval systems. 
+By accessing external knowledge bases, a \ac{rag}-system retrieves pertinent information to inform and refine generated responses, ensuring that they are both contextually appropriate and factually correct \citep{Lewis2020}.
+
+
+\subsection{Combining Retrieval and Generation}\label{sec:combining-retrieval-generation}
+In \ac{rag}, the system first retrieves relevant documents or passages from a database and then uses a generative language model, such as \ac{llm}'s, to create responses based on this content. This approach allows \ac{rag} to produce answers that are contextually relevant and factually accurate.
+
+
+\section{Medical Informatics}\label{sec:medical-informatics}
+
 
 Da sich die Medizinische Informatik mit der Lösung medizinischer Probleme befasst, sollen hier auch die Hintergründe des medizinischen Problems so dargestellt und erläutert werden, dass sie auch für Leser der Arbeit, die nicht Mediziner sind, verständlich sind.
 
@@ -13,11 +156,3 @@ In diesem Kapitel werden auch die Methoden erläutert, die zur Lösung der Probl
 Stellen Sie sicher, dass hier alle, aber auch nur die Grundlagen und Methoden erläutert werden, die in der Arbeit verwendet wurden.
 Stellen Sie im weiteren Text der Arbeit auch sicher, dass der Leser erkennen kann, wie Sie unter Verwendung der Methoden zu Ihren Ergebnissen gekommen sind.
 So sollten z.B. Modellierungsmethoden nur verwendet werden, wenn die Modelle nachvollziehbar dazu genutzt werden, die Ergebnisse zu erzielen.
-
-Bedenken Sie, dass Sie diese Arbeit zum Abschluss eines umfangreichen Studiums schreiben, das vor allem dazu diente, sie mit einem reichen Methodenrepertoire auszustatten.
-Wählen Sie aus den Methoden, die Sie gelernt haben, aus, benennen Sie die Methoden korrekt und wenden Sie sie an! Aber gehen sie auch kritisch mit dem um, was Ihnen gelehrt wurde.
-Wenn Sie feststellen, dass gelehrte Methoden ungeeignet sind, diskutieren Sie dies und suchen passendere Methoden! Wenn Sie Methoden benötigen, die nicht gelehrt wurden, suchen Sie nach passenden Methoden oder -- wenn Sie nicht fündig werden -- entwickeln Sie die für Ihr Problem passende Methode selbst!
-
-\begin{definition}[Beispieldefinition]
-Dies ist eine Beispieldefinition.
-\end{definition}
