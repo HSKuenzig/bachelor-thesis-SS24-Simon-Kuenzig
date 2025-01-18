@@ -7,18 +7,22 @@ The content is structured as follows: \cref{sec:information retrieval} briefly i
 Finally,in \cref{sec:databases} database architectures and the concepts underlying \ac{rag} are discussed. 
 %
 \section{Information Retrieval}\label{sec:information retrieval}
+
 \begin{definition}\label{def:information retrieval}
 Information retrieval is the process of identifying, retrieving and ranking relevant information from resources in response to a previous query. 
 \end{definition}
 %
-The traditional \ac{ir} was based on a single-stage term-based system, which was first applied in scientific research. The matching phrases and terms from the source were searched according to the search term and generated as direct output.
+The traditional \ac{ir} was based on a single-stage term-based system, which was first applied in scientific research. 
+The matching phrases and terms from the source were searched according to the search term and generated as direct output.
 However, the quality of the output suffered from simple linguistic hurdles, e.g., polysemy, synonymy, and lexical gaps, and was therefore limited in their effectiveness. 
 The addition of ranking mechanisms led to more accurate results, as ranking is carried out in a second stage. 
 The matching terms and retrieved documents are pre-sorted by ranking algorithms, e.g., BM25, on the basis of a relevance score. 
 Over time, advanced ranking and sorting algorithms have been integrated to further improve the results. \citep{hambardeIR2023}
 Starting with simple text retrieval, multi-modal retrieval is now possible.
 %
+
 \subsection{Question Answering}\label{subsec:question answering}
+
 \begin{definition}
 \ac{qa} is an area within \ac{nlp} and \ac{ir} that focuses on the development of systems in which questions posed by the user in natural language are to be answered. 
 The entered question is first analysed in order to extract the intention of the query. 
@@ -26,18 +30,22 @@ Based on this, relevant information is retrieved from a source, processed furthe
 \end{definition}
 %
 \section{Language Models}\label{sec:language-models}
+
 \begin{definition}\label{def:language-models}
     \textbf{Language Models} are machine learning models designed to understand and generate human language.
 \end{definition}
 Language models are built on artificial intelligence techniques and are typically trained using machine learning algorithms to understand and generate human language. 
 They have a wide range of applications, including translation, text generation, speech recognition, and text classification.
 \subsection{transformer}\label{transformer}
+
 \begin{definition}\label{def:transformer}
     A \textbf{Transformer} is a deep learning architecture that forms the foundation of many modern language models, allowing efficient training in large-scale data by using attention mechanisms to process data in parallel.
+
 \end{definition}
 The architecture transformers are based on, introduced by \citet{vaswani2017attention}, which allows one to process entire sequences of text simultaneously, thereby enabling the model to recognise and connect complex patterns and dependencies in natural languages. 
 By leveraging self-attention, Transformers can weigh the importance of different words, described as token, in a certain-sized context window. 
 Transformer-based models, such as \ac{bert} and \ac{gpt}, are typically trained on extensive data sets to understand statistical patterns within training data.\citep{atallah2023impact}
+
 \begin{definition}\label{def:continuous-pretraining}
     \textbf{Continual Pretraining} describes the process of continuous, self-monitored training of a pre-trained model.
 \end{definition}
