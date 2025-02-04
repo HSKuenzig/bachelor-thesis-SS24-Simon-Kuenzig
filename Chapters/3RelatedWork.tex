@@ -1,17 +1,33 @@
 %*****************************************
-\chapter{Stand der Forschung}\label{ch:relatedWork}
+\chapter{Related work}\label{ch:relatedWork}
 %*****************************************
+This chapter presents current articles and research results on the topics of language models and the processing and preparation of information from various knowledge sources.
+\section{Processing and Preparation of Knowledge}
+\subsection{The SNIK-Ontology}
+The \ac{snik} ontology is a domain ontology developed at the Institute of Medical Informatics, Statistics and Epidemiology (IMISE) at the University of Leipzig.
+An expert interview dealing with \ac{him}, text books on \ac{him} and frameworks were converted to a domain ontology.
+The knowledge of these entities was concentrated and modeled as a \ac{rdf}, while each entity is represented as a sub-ontology within \ac{snik}.
+The sub-ontologies are theoretically independent, but in practical applications content-related relationships between the entities can be extracted.
 
-Kann auch im Grundlagenkapitel mit integriert werden! Wenn es zwei Kapitel sind, ist das Grundlagenkapitel für bekanntes \enquote{Lehrbuchwissen} gedacht, der \enquote{Stand der Forschung} für Vorarbeiten in Publikationen.
+\subsection{The SNIK-Graph}
+Upon that structure, by the interactive visualisation of the graph, the potential for tuition scenarios was demonstrated\citep{snikgraphposter}.\\
+\enquote{[E]asy access over a multi-view web interface and [visual accessibility to extracted knwoledge, relations and the intertwined content-related connections \ac{snik} provides and supports teaching and learning [applications][\dots]}\citep{sniktec}.
+Hence, it enables \enquote{users to interact with the ontology without installing specialized tools.}
+The work of \citet{snikgraphposter} emphasised the requirement to provide the knowledge within the ontology more intuitively to students and teachers by reducing the prior skills needed to use and interact with the knowledge base, \ac{snik}.\\[1em]
+%
 
-Grundlage für eine Abschlussarbeit ist eine gründliche Recherche im Themenumfeld.
-Dabei ist es ausdrücklich nicht hinreichend, mit bekannten Suchmaschinen im Internet zu recherchieren.
-Vielmehr wird von den Studierenden erwartet, dass sie auch referierte Veröffentlichungen (wissenschaftliche Zeitschriften (auch elektronisch), Bücher) in die Erarbeitung einbeziehen (und mit entsprechenden Quellenangaben belegen).
-Informationen zum Thema der Literaturrecherche finden sich in den \href{http://www.imise.uni-leipzig.de/Lehre/MedInf/Abschlussarbeiten/Literaturrecherche}{Hinweisen zur Literaturrecherche}.
-Wir empfehlen Ihnen, Kurse zur Literaturrecherche zu belegen, z.B. beim \href{https://home.uni-leipzig.de/academiclab/}{Academic Lab} oder der \href{https://www.ub.uni-leipzig.de/service/workshops-und-online-tutorials/}{Universitätsbibliothek}.
-Im \href{https://home.uni-leipzig.de/schreibportal/}{Onlineportal zum Wissenschaftlichen Schreiben der Uni Leipzig} finden Sie wertvolle Hinweise und Übungen zu Textstruktur, Stilistik, Schreibprozess sowie Quellen und Zitaten.
+\subsection{The SNIK-Quiz}
 
-\paragraph{Beispielzitierungen}
-\citet{sniktec} beschreiben ein Verfahren zur X von Y auf Basis von Z.
-Alternativ: X von Y lässt sich auf Basis von Z ermitteln~\citep{sniktec}.
-
+\citet{snikquiz} was developed to further simplify and diversify access to the knowledge contained in \ac{snik} for students of medical informatics. 
+\endquote{[It] is designed as a multiple choice quiz with at most four possible answers and published as an open source web application[\dots]}\citep{snikquiz}.
+Students can interact with the application without a background in semantic web technologies and use it with various end devices.
+Direct feedback on the complexity of the questions and their respective category, while using the application, allows for a personalised experience. 
+The results show success as \ac{him} knowledge within \ac{snik} can be extended in an application, processing the knowledge and then semi-automatically generating individualised questions.  
+Although preferentially basic questions referring to singular facts were mainly positively evaluated by users, qualitative feedback on complex questions is mixed.\citep{snikquiz}
+Further integration into courses and evaluation will show the possibilities of the application and possibly highlight its limitations.\\
+%
+\citet{snikquiz} supports the target group of students to understand and learn the knowledge contained in \ac{snik} and thus the basic relationships and structures in the domain-specific area of \ac{him}. 
+In particular, enabling access to a comprehensive knowledge base for resource-restricted target groups, such as students, is an important opportunity in tuition scenarios.\\[1em]
+%
+The \enquote{\ac{snik}[-project] help[´s] health informatics students [to] acquire and practice the terminology of \ac{him}}\citep{sniktec}.
+It shows how domain-specific knowledge can be extracted from literature sources using advanced techniques to allow new access to it obtained in this way. 
