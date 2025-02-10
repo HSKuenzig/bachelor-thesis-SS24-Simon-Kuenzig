@@ -37,3 +37,64 @@ Increased computational demands, potential retrieval inefficiencies, and memory 
 Given these developments, the application of extended context window models in domain-specific \ac{qa} tasks presents an opportunity to enhance accessibility and retrieval accuracy for stakeholders in resource-constrained environments.
 Their ability to process entire academic texts directly, without the need for preprocessing or fine-tuning, represents a potential solution to the challenges outlined in \cref{sec:problem statement}.
 
+\section{Retrieval-Augmented Generation for QA}
+
+Pre-trainig language models with billion-level parameters on huge amounts of training data as well as extending context windows have demonstrated impressive performance.
+Despite vast capabilities, limitations remain, such as factual inaccuracies \citep{augenstein2023factualitychallengeseralarge}, hallucinations \citep{fan2024surveyragmeetingllms}, enormous demands on computational resources to continuously improve the models and the inability to expand and revise their memory.\citep{lewis2020ragnlp}
+In \citet{lewis2020ragnlp} a parametric-memory generation model in form of pre-trained \textit{seq2seq} transformer was extended with non-parametric memory, a dense vector index of Wikipedia.
+The non-parametric memory is accessed via a pre-trained neural retriever.
+The resulting system is referenced as retrieval-augmented generation (RAG).
+Finally, all components are combined into an end-to-end probabilistic model. 
+\citet{lewis2020ragnlp}s approach differs from previous work on proposed architectures to enrich the system with non-parametric memory by the ability to access knowledge without training the models used for specific tasks from scratch.
+The clear benefits of combining parametric and non-parametric memory with generation for knowledge-intensive tasks are shown, as the developed \ac{rag} system achieved state-of-the-art results in the open domain \ac{ qa}, as well as abstractice \ac{qa}.
+It was also found that \ac{rag} hallucinate less and generate factually correct text more often compared to \ac{ bart} \citep{lewis2020ragnlp}.
+Technological sustainability is achieved through the possibility of exchanging the non-parametric memory.
+As a result, adaptability to evolving knowledge bases remains.
+New domain-specific datasets can be integrated and advanced retrieval mechanism, such as dynamically structured knowledge graphs or optimised vector databases, can enhance the accuracy and relevance of responses while maintaining computational efficiency.
+%
+In the continuous progress and research of \ac{rag} since \citet{lewis2020ragnlp} several approaches to optimise the \ac{rag}-setup were researched.
+\citet{izacard2022unsupervised, Karpukhin2020DensePR}, focused on improving the retriever that identifies relevant information, as \citet{Agarwal2024ManyShotIL, liu2024lostmiddle} investigated the other side, the generator, both do so in approaching the topic isolated with regard to their focus.
+%
+As existing work mainly proposes tuning \ac{llm}s for \ac{rag}, \citet{Asai2023SelfRAGLT} explored and introduced a framework, \textit{SELF-RAG} to enhance an \ac{lm}'s quality and factuality through retrieval optimisation and and \textit{self-reflection}.
+A generator \ac{llm} is trained on a corpus consisting of diverse text data that is combined with reflection tokens and, depending on queries and context, relevant passages. 
+The reflection tokens are inserted offline into the original corpus, an additional host of a critic model is therefore not needed, which reduces the overhead.
+\textit{SELF-RAG} enables retrieval on demand, processes passages in parallel, filters through self-reflection and also further evaluates the output quality aspects, such as factuality.
+While other works, \citet{lu2022QuarkCT, Korbak2023PretrainingLM} try to guide the \ac{lm} generation via use of general control tokens, \citet{Asai2023SelfRAGLT}  allows for the prior evaluation of whether retrieval is needed and then self-evaluate the quality of the generation.
+\citet{Asai2023SelfRAGLT} is able to outperform \textit{ChatGPT} in Benchmarks like PopQA and ASQA (Rouge and MAUVE) and also comparatively surpasses on PubHealth and biograpgy generation.
+Their framework trains a single \ac{lm} that retrieves the 
+In applying the developed framework at the time available \ac{sota} \ac{lm} used within \textit{ChatGPT}, as well as the \textit{retrieval-augmented Llama2-chat}, were outperformed on open-domain \ac{qa}, as well as reasoning and fact verification tasks.\citep{jin2024longcontextllmsmeetrag}.
+%
+The particular implementation of long-context- \ac{llm}s as generator in \ac{rag} and thus an optimal design of \ac{rag} remained under-explored.\citep{jin2024longcontextllmsmeetrag}
+%
+Therefore, \citet{jin2024longcontextllmsmeetrag}, among other techniques, shows the potential of \textit{positioning engineering} and provides a training-free solution, \textit{retrieval reordering}, to leverage the inherent lost-in-the-middle problem observed in \ac{llm}s to minimise the negative effects of \textit{hard negatives}.
+Retrieval reordering modifies the construction of the input sequence for an \ac{llm}.
+Initially, such an input sequence would contain the retrieved passages in decreasing order based on their relevance score.
+Placing prioritised passages with higher scores at the beginning and end of the sequence proves to significantly improve \ac{rag} performance.\citep{jin2024longcontextllmsmeetrag}
+%
+Particularly important for the named problem of this work are the distinct improvements in factuality and citation accuracy relative to the compared models in \citet{jin2024longcontextllmsmeetrag}.
+%
+Another work with relevance to resource-constrained solution approaches provides \citet{Ma2023QueryRF}.
+In the stage of the pre-retrieval process \textit{query optimisation} is used to make the original question more suitable for the retrieval task.
+\citet{Ma2023QueryRF} extended the traditional \textit{retrieve-then-read} approach by adding a query rewriting step.
+A small \ac{lm}, trained via reinforcement learning based on \ac{llm} reader feedback, acts as a rewriter, that generates a rewritten query from the original input to improve retrieval techniques. 
+Putting emphasis on the importance of query adaptation and offering a new perspective on enhancing retrieval-augmented LLMs, \citet{Ma2023QueryRF} introduced the framework \textit{Rewrite-Retrieve-Read}.
+Tested on open-domain and multiple-choice \ac{qa} tasks, the method shows consistent performance improvements, demonstrating its effectiveness and scalability.
+%
+While significant advancements have been made in both \ac{ac}-based and \ac{lcllm} architectures, no universally optimal approach has emerged due to the variety of applications, requirements and continuous progress in both areas (\ac{rag, llm}. 
+\citet{Li2024RetrievalAG} gives a detailed analysis of the advantages and disadvantage of \ac{rag} and \ac{llm}s respectively.
+Their findings confirm that, under optimal computational conditions, long-context \ac{llm}s generally outperform retrieval-based approaches
+However, \ac{rag} remains more efficient for short quires or limited computation scenarios.
+The direct comparison shows that the use of the respective method in applications such as information retrieval or \ac{qa} is accompanied by compromises on both sides:
+\begin{itemize}
+    \item Intensive computing cost and time expenditure due to pre-training and fine-tuning (\ac{lcllm}).
+    \item Hallucinations while generating output (\ac{lcllm}).
+    \item Closed-source \ac{llm} models do not allow for further usage and extension (\ac{lcllm}).
+    \item Outdated knowledge and no access to real-time updates (\ac{lcllm}).
+    \item Lower accuracy for knowledge-intensive tasks (\ac{lcllm}).
+    \item Lower overall response quality due to disjoint retrieval fragments (\ac{rag}).
+    \item Retrieval errors (\ac{rag}).
+    \item Dependency on external databases (\ac{rag}).
+\end{itemize}
+%
+In response to these limitations, \citet{Li2024RetrievalAG} using the hybrid approach, \textit{SELF-ROUTE}, attempt to dynamically select the most suitable method, either \ac{rag}, or \ac{lcllm}, to optimise based on the specific requirements of the input query. 
+
