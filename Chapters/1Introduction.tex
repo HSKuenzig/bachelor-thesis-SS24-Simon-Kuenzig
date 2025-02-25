@@ -2,111 +2,122 @@
 \chapter{Introduction}\label{ch:introduction}
 %************************************************
 \section{Subject Matter}\label{sec:subject matter}
-In the healthcare sector and educational landscape, the efficient acquisition of domain-specific information is essential. 
-In educational contexts such as universities, the basic practical and theoretical approach of students and teachers to complex domains, for example, medical informatics, is mainly developed through the literature such as \citet{bb2}.
+%%%
+Data, information and knowledge are the basis of all interaction, e.g. diagnosis of a patient or treatment documentation by a physician, in any area of healthcare.
+Their intuitive, effective and efficient access, management, storage, processing and provision is therefore crucial to provide a high quality of practice in all healthcare institutions and education.
 %
-Several approaches already exist, as mentioned in \cref{sec:motivation}, to make the information accessible without having to manually read a textbook, such as \citet{bb2}.
-This element holds significant relevance, as scenarios like exam or academic debate preparation primarily require reiterating and accessing the content within brief time-frames.
+Medical informatics plays a decisive role in this by developing and implementing efficient information systems and technologies within these institutions. 
+Thereby using theories and methods, procedures and techniques from computer science and other sciences to contribute to the best possible healthcare. 
 %
-The process of extracting information not only requires accessibility for all users and short response times, but also factual accuracy and completeness to ensure that scientific and academic information standards are met, providing reliable and consistent information based on the source material.
- 
-Textbooks and academic literature are fragmented information sources, where the relevant information is complex and interconnected throughout the sections. 
-Combining these fragments completely and correctly in context poses one of the decisive issues to overcome. 
+In educational contexts such as universities, the basic practical and theoretical approach of students and teachers to knowledge about domains like medical informatics, is mainly developed through the literature, such as \citet{bb2}.
 %
-Large context window \ac{llm}'s, as well as various improved \ac{rag}-systems, are recent advancements of AI to analyse vast quantities of data.
-They open up new possibilities for overcoming the challenge of recognising complex contextual relationships, presenting the extracted data in context, and, at the same time, providing accessibility for any stakeholder.
+Various approaches to intuitive, efficient and effective knowledge retrieval and processing in the field of medical informatics without having to manually read a textbook, such as \citet{bb2}, have been researched and developed.
+%
+One such initiative is the \ac{snik}-project and the ontology \ac{snik} contained therein, developed at the Institute for Medical Informatics, Statistics and Epidemiology (IMISE) of the University of Leipzig.
+\ac{snik} contains and provides concentrated knowledge from various sources and thus allows efficient access to technical terms, as well as to roles and their functions and interconnected dependencies in healthcare institutions. 
+%
+\textit{Efficient access} holds significant relevance, as education and research scenarios such as preparation for exams or academic debates primarily require reiterating and accessing relevant knowledge sources efficiently and intuitively within brief time-frames.
+%
+Large language models, such as GPT-4 (ChatGPT), are recent advancements in the field of artificial intelligence.
+They are able to analyse and process large amounts of information and data in order to then, among other things, provide insight into the information and knowledge contained therein based on user queries. 
+
+The resulting possibilities are transformative for how we learn, research, and communicate knowledge.
+Providing the opportunity to overcome challenges like complex contextual relationships within literature, while enabling intuitive access without time restrictions to knowledge to everyone.
 
 \section{Problem Statement}\label{sec:problem statement}
-For students and practitioners in particular, practical application requires a deep understanding of the interrelationships and the applicability of the concepts presented to specific work environments.
-The existing literature is often extensive, and the fragmentation and dispersion of relevant information across multiple sections and chapters often hinders the retrieval and synthesis of complex domain-specific information, such as within the field of medical informatics.
-Identifying relevant information for specific problems requires students and practitioners to read large parts of a book in order to fully grasp individual concepts and their relationships to other topics.
-The scope of the literature sources and the fragmentation in the definition of technical terms make it difficult to acquire knowledge quickly, especially for students who want to understand basic concepts correctly.
+For students and practitioners of medical information systems and their management, practical application and further development of existing systems require a deep understanding of the interrelationships and applicability of the concepts presented for specific work environments, such as medical institutions.
+
+The corresponding literature, such as \citet{bb2} in the field of medical informatics, is often extensive, and fragmentation and dispersion of relevant information in multiple sections and chapters often hinders a fast and intuitive retrieval and synthesis of complex information.
 %
-In response to the need for manual source research in the past, new approaches, mostly resource-limited, as mentioned in \cref{sec:motivation}, were developed. 
-These mainly solved partial problems but always showed limitations such as inaccuracies in their answers or incompleteness with respect to the requirements. 
+Identifying relevant information for specific and individual problems and demands requires students and practitioners to read large parts of a book to fully grasp individual concepts and their relationships to other topics manually.
 %
-In particular, \citet{Paul_Keller} showed that the inaccuracy problem exists but emphasised that it could be overcome by using state-of-the-art models and, with that, increasing hardware resources. 
-His conclusion leads to another problem.    
-Despite significant advancements in artificial intelligence and information retrieval technologies, the practical implementation of these systems in resource-constrained environments, such as smaller educational institutions or even private learning settings, remains a considerable challenge. 
-The limited availability of high-performance hardware requires a focus on cost-effective and especially accessible solutions for real-world educational and healthcare environments and the targeted stakeholders, students, teachers and researchers.
+For example, if a student needs a clear definition of a role in hospital management and the additional functions and responsibilities associated with this role, relevant information is often mentioned and explained in various sections of \citet{bb2}.\\
 %
+It is therefore difficult for students and practitioners to acquire knowledge from \citet{bb2} quickly, intuitively and completely at any time.\\
+%
+Considerable advances, as mentioned in \cref{sec:motivation}, have been achieved in the development of methodologies for knowledge retrieval and processing in medical informatics. 
+%
+However, these existing solutions restrict, among other things, individual queries especially the spontaneous, natural-language formulation of these to extract relevant knowledge (\citet{snikquiz}).
+At the same time, the retrieved information and knowledge is still either factually incomplete, misaligned with the original source (\citet{Paul_Keller}), or fails to provide a coherent, well-structured and, above all, automatically generated explanation of the requested concept, fact or context(\citet{snikquiz}, \citet{hannesbell}).
+In particular, \citet{Paul_Keller} has shown that the problem of inaccuracy in the answers and results produced by his application persists when using a less capable open-source \ac{lm} for knowledge extraction and processing, as implemented in its underlying technology.
+The fragmentation and dispersion of relevant information in \citet{bb2} as well as complex queries revealed the limitations of capability of the language model used in \citet{Paul_Keller}.\\
+Large language models with the capability to receive huge context inputs, such as whole books, within the users quiery and far more comprehensive analytical and reasoning abilities are significant advancements in artificial intelligence and information retrieval technologies.
+At the same time, the practical implementation of these advanced language models in an educational or scientific environment is primarily constrained by their limited accessibility and thus individual usability and applicability.
+Consequently, the limited availability of advanced language models for the individual application and implementation of these is a clear resource constraint. 
+ 
 Key problems:
 \begin{itemize}
-  \item \textbf{Problem:} Fragmentation of knowledge and resource constraints still makes it difficult to effectively extract coherent and relevant information from \citet{bb2}.
+  \item \textbf{Problem 1:} Fragmentation of knowledge still makes it difficult to intuitively and effectively extract coherent and relevant information from \citet{bb2}.
+  \item \textbf{Problem 2:} Limited availability of advanced Large language models for the individual application and implementation of these is a clear resource constraint for scientific development and research.\todo{Sollte das als separates Problem laufen.}
 \end{itemize}
 %
 Addressing these challenges is vital for enhancing the accessibility and utility of domain-specific knowledge, ultimately supporting both learning and research activities. 
-
+%
 \section{Motivation}\label{sec:motivation}
 
-The key challenge is to find an application model that solves the problem of fragmented knowledge and scientific and factual reliability while being available above all for resource-limited target groups, teachers and students.
-They often need explicit and complex domain-specific information from selected sources as quickly and accurately as possible. 
-However, they neither have the time nor the resources to train language models themselves or to use advanced technologies to the extent required.
+The key challenge is to provide an application model that is always available and overcomes the resource constraint problem to intuitively and quickly extract fragmented knowledge and provide automatically generated explanation of the requested concept, fact, or context with scientific and factual reliability.
 %
-Previous projects, such as the \ac{snik} ontology, already address these issues within the context of medical informatics.
-Through the development of \ac{snik}, knowledge from sources from the literature on the management of health information systems, e.g., \citet{bb2}, was accumulated, processed and restructured.    
-It enabled a new approach to and use of the knowledge it contained. 
-The work of \citet{hannesbell, hannesbell_skill} in the context of a \ac{bell} made use of that structured knowledge base and aimed to further improve accessibility of \ac{snik} through the integration of natural language processing.    
+Previous projects in the context of medical informatics, such as the \ac{snik} ontology, solved crucial aspects of knowledge extraction that are relevant to these demands.
+Through the development of \ac{snik}, knowledge from sources on health information systems and their management (HIM), e.g., \citet{bb2}, has been accumulated, processed and restructured.    
+\ac{snik} has enabled a new approach to the knowledge it contains and its use, transforming previously isolated information into a machine-accessible and networked resource.
+The work of \citet{hannesbell, hannesbell_skill} in the context of a \ac{bell} made use of that structured knowledge base and aimed to further improve accessibility of \ac{snik} through the integration of natural language processing. 
 The results were implemented in a \ac{qas} QAnswer \citep{qanswer}, but show deficits in the explainability and comprehensibility of more complex questions. 
 \citet{snikquiz} attempted a gamified access to the knowledge contained within \ac{snik}. 
-As \citet{arneba}, on the other hand, explored an inverse approach with the automatic generation of questions relevant to \citep{snikquiz} as output, enhancing the \ac{snik} system's usability in educational and training contexts.
-These projects focused on providing knowledge more intuitively, applying a user-friendly layer by using natural language queries.
+As \citet{arneba}, on the other hand, explored an inverse approach with the automatic generation of questions relevant to \citep{snikquiz} as output, enhancing the \ac{snik} system's usability in educational and training contexts.\\
+The knowledge base \ac{snik} provides a valuable foundation for further research and development of medical informatics.
+Building on this, \citet{hannesbell, hannesbell_skill}, \citep{qanswer} show possible applications to make the knowledge it contains more intuitive and understandable.
+However, they are limited when processing complex queries, cross-linked information scattered across sections and the automatic generation of answers that meet individual requirements.
 %
-However, they are limited when processing complex queries and cross-linked information scattered across sections.
-The work of \citet{Paul_Keller} has already addressed these issues. 
-The challenges associated with managing health information systems, especially the difficulty in translating theoretical information into practical applications and dealing with fragmented definitions in the literature.
-Although his work focuses particularly on \citet{bb2} instead of \ac{snik}.
+A self-trained open-source \ac{llm} (Llama-2) demonstrates improved performance over the untrained version, but as shown in \citet{Paul_Keller}, still shows significant performance differences compared to more capable language models, such as current commercially available models (e.g., GPT-4 / ChatGPT, Gemini-1.5 / Google Gemini)
+
+While self-trained open-source \ac{llm}s demonstrate improved performance over untrained versions, \citet{Paul_Keller} highlights their accuracy limitations compared to models like GPT-4 during inference in explicit reference to \citet{bb2}.
+In conclusion, \citet{Paul_Keller}, suggest leveraging more capable language models, such as current commercially available models (e.g., GPT-4 / ChatGPT, Gemini-1.5 / Google Gemini) to improve and overcome these deficiencies in knowledge extraction and processing.
+In addition, more advanced techniques such as \ac{rag} in conjunction with \ac{llm}s promise even greater potential, allowing further refinement of factual accuracy, improvement of intuitive extraction and optimisation of automatic answer generation beyond the inherent strengths of these models.\\
 %
-In \citet{Paul_Keller}, it was shown that with training and fine-tuning an open source \ac{llm} was able to outperform its untrained version and could provide more comprehensible responses with improved accuracy in explicit and limited reference to \citet{bb2}.
-At the same time, compared to the GPT-4 model during inference, the self-training approach in a hardware-limited environment is confronted with clear capability differences.
-%
-Improvements may be reached through the use of large-scale hardware to fully exploit the capabilities of larger open-source \ac{llm}-models with more parameters, or by further expanding advanced, commercial API-accessible models, such as GPT-4, with novel techniques to reduce the occurrence of incorrect answers.\\
-%
-Students and teachers have limited resources and are restricted in terms of implementing these solutions.
-The current state-of-the-art models show promising capabilities in dealing with fragmented knowledge and, as potential ready-to-use applications, do not require additional training or fine-tuning. 
-It remains to be clarified to what extent these capabilities can be used in the resource-limited use cases considered here and to what results they lead to in these explicit application scenarios.
 
 \section{Goals}\label{sec:goals}
-The following goals of this work are assigned to the problems shown in \cref{sec:problem statement}.
+The following goals of this work are assigned to the problem shown in \cref{sec:problem statement}.
 \begin{itemize}
   \item goal G1:\\
-    Answering questions about healthcare information systems in natural language using state-of-the-art language models with \citet{bb2} as the literature information source. 
-  \item goal G2:\\
-   Solving a sample exam of the module \enquote{Architecture of Information Systems in Healthcare}\footnote{\raggedright{}a module of the Master's program in Medical Informatics at the University of Leipzig, which is based on \citet{bb2}} with the help of state-of-the-art language models.
-   The main goal in this context is to compare with the previous approach of \citet{Paul_Keller} .
-   \item goal G3:\\
-   Set up a reproducible application scenario for the efficient use of selected state-of-the-art \ac{llm} for self-selected domain-specific sources.
+    A reproducible application scenario, which is available at any time, based on selected language models for efficient and intuitive knowledge extraction from \citet{bb2}.
+   \item goal G2:\\
+    Automatic answering of questions about healthcare information systems and their management with \citet{bb2} as knowledge source. 
+  \item goal G3:\\
+   Solving a sample exam of the module \enquote{Architecture of Information Systems in Healthcare}\footnote{\raggedright{}a module of the Master's program in Medical Informatics at the University of Leipzig, which is based on \citet{bb2}} with the help of language models.
+   The main goal in this context is to compare with the previous approach of \citet{Paul_Keller}.
+   
 \end{itemize}
 \section{Task}
 \begin{itemize}
   \item Task for target G1
         \begin{itemize}
-        \item Task A1.1:\\
-          Current state-of-the-art language models are to be compared and selected based on an analysis of their availability and accessibility. Within the scope of this work, no claim of completeness can be made regarding these models.
-        \item Task A1.2:\\
-        The selected models are then used to answer the question regarding \citet{bb2}. 
+          \item Task A1.1:\\
+          Current Large language models must be compared and selected based on an analysis of their availability and accessibility. 
+          Within the scope of this work, no claim of completeness can be made regarding these models.
+          \item Task A1.2:\\Investigate reproducible applications for the efficient and intuitive use of selected language models for knowledge extraction from \citet{bb2} as knowledge base.
+          \item Task A1.3:\\Evaluate the reproducible applications for the efficient and intuitive use of the selected models. 
+          \item Task A1.4:\\Set up the application, based on the previous evaluation. 
+        \end{itemize}
+  \item Task for goal G2
+        \begin{itemize}
+        \item Task A2.1:\\
+        The selected models integrated into the application are then used to automatically answer the same questions \citet{Paul_Keller} used, regarding \citet{bb2}. 
         This means that the understanding of the question, as well as the evaluation and retrieval of important knowledge from the input source \citet{bb2} is carried out solely through the model.
-        \item Task A1.3:\\
-        Evaluate the answer options of the exam questions according to the same criteria as in \citet{Paul_Keller}.
-          \end{itemize}
- \item Task for target G2
+        \item Task A2.2:\\
+        Evaluate the output of the large language models integrated into the application in response to the questions according to the same criteria as in \citet{Paul_Keller}.
+        \end{itemize}
+ \item Task for target G3
     \begin{itemize}
-          \item Task A2.1: Execution of the test scenario with the selected models. 
+          \item Task A3.1: Execution of the test scenario with the selected models integrated into the application to automatically solve an exam. 
           The given conditions and requirements are the same each time, where the same criteria as \citet{Paul_Keller} are applied.
-          \item Task A2.2: Evaluation of selected language models in this thesis with regard to their ability to answer the exam questions.
-          \item Task A2.3:
-          Comparison of the output results of the selected models. 
+          \item Task A2.2: Evaluation of selected language models with regard to their ability to answer the exam questions.
+          \item Task A3.3:
+          Comparison of the statements output by the selected models in relation to the exam.
           A comparison is made between the models and \citet{Paul_Keller} results.
           This enables a statement to be made about the possible use of these models in an academic and scientific environment.
-        \end{itemize}
-  \item Task for goal G3
-        \begin{itemize}
-          \item Task A3.1:\\Investigate reproducible approaches for the efficient use of the selected models.
-          \item Task A3.2:\\Evaluate the reproducible approaches for the efficient use of the selected models and, if necessary or more efficient, set up an \ac{api} and \ac{gui}.
         \end{itemize}
 \end{itemize}
 
 
 
-\section{Structure of the thesis}
-
+\section{structure of the thesis}
