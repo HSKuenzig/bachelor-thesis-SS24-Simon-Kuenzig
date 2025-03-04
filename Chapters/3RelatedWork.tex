@@ -55,7 +55,7 @@ New domain-specific datasets can be integrated and advanced retrieval mechanism,
 In the continuous progress and research of \ac{rag} since \citet{lewis2020ragnlp} several approaches to optimise the \ac{rag}-setup were researched.
 \citet{izacard2022unsupervised, Karpukhin2020DensePR}, focused on improving the retriever that identifies relevant information, as \citet{Agarwal2024ManyShotIL, liu2024lostmiddle} investigated the other side, the generator, both do so in approaching the topic isolated with regard to their focus.
 %
-As existing work mainly proposes tuning \ac{llm}s for \ac{rag}, \citet{Asai2023SelfRAGLT} explored and introduced a framework, \textit{SELF-RAG} to enhance an \ac{lm}'s quality and factuality through retrieval optimisation and and \textit{self-reflection}.
+As existing work mainly proposes tuning \ac{llm}s for \ac{rag}, \citet{Asai2023SelfRAGLT} explored and introduced a framework, \textit{SELF-RAG} to enhance an \ac{lm}'s quality and factuality through retrieval optimisation and \textit{self-reflection}.
 A generator \ac{llm} is trained on a corpus consisting of diverse text data that is combined with reflection tokens and, depending on queries and context, relevant passages. 
 The reflection tokens are inserted offline into the original corpus, an additional host of a critic model is therefore not needed, which reduces the overhead.
 \textit{SELF-RAG} enables retrieval on demand, processes passages in parallel, filters through self-reflection and also further evaluates the output quality aspects, such as factuality.
