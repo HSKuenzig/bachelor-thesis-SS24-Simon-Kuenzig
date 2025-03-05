@@ -16,6 +16,7 @@
 *.pdf
 *.gz
 *.blx
+*.thesis-blx.bib
 *.run.xml
 
 # LaTeX intermediate and backup files
