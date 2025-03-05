@@ -15,6 +15,8 @@
 *.ps
 *.pdf
 *.gz
+*.blx
+*.run.xml
 
 # LaTeX intermediate and backup files
 *.backup
