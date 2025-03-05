@@ -37,8 +37,8 @@ It is therefore difficult for students and practitioners to acquire knowledge fr
 %
 Considerable advances, as mentioned in \cref{sec:motivation}, have been achieved in the development of methodologies for knowledge retrieval and processing in medical informatics. 
 %
-However, these existing solutions restrict, among other things, individual queries especially the spontaneous, natural-language formulation of these to extract relevant knowledge (\citet{snikquiz}).
-At the same time, the retrieved information and knowledge is still either factually incomplete, misaligned with the original source (\citet{Paul_Keller}), or fails to provide a coherent, well-structured and, above all, automatically generated explanation of the requested concept, fact or context(\citet{snikquiz}, \citet{hannesbell}).
+However, these existing solutions restrict, among other things, individual queries especially the spontaneous, natural-language formulation of these to extract relevant knowledge \citet{snikquiz}.
+At the same time, the retrieved information and knowledge is still either factually incomplete, misaligned with the original source ~\citep[cf.]{Paul_Keller}, or fails to provide a coherent, well-structured and, above all, automatically generated explanation of the requested concept, fact or context ~\citep[cf.]{snikquiz}, \citep[cf.]{hannesbell}.
 In particular, \citet{Paul_Keller} has shown that the problem of inaccuracy in the answers and results produced by his application persists when using a less capable open-source \ac{lm} for knowledge extraction and processing, as implemented in its underlying technology.
 The fragmentation and dispersion of relevant information in \citet{bb2} as well as complex queries revealed the limitations of capability of the language model used in \citet{Paul_Keller}.\\
 Large language models with the capability to receive huge context inputs, such as whole books, within the users quiery and far more comprehensive analytical and reasoning abilities are significant advancements in artificial intelligence and information retrieval technologies.
@@ -47,25 +47,24 @@ Consequently, the limited availability of advanced language models for the indiv
  
 Key problems:
 \begin{itemize}
-  \item \textbf{Problem 1:} Fragmentation of knowledge still makes it difficult to intuitively and effectively extract coherent and relevant information from \citet{bb2}.
-  \item \textbf{Problem 2:} Limited availability of advanced Large language models for the individual application and implementation of these is a clear resource constraint for scientific development and research.\todo{Sollte das als separates Problem laufen.}
+  \item \textbf{Problem 1:} Fragmentation of knowledge still makes it difficult for students to intuitively and effectively extract coherent and relevant information from \citet{bb2}.
 \end{itemize}
 %
 Addressing these challenges is vital for enhancing the accessibility and utility of domain-specific knowledge, ultimately supporting both learning and research activities. 
 %
 \section{Motivation}\label{sec:motivation}
 
-The key challenge is to provide an application model that is always available and overcomes the resource constraint problem to intuitively and quickly extract fragmented knowledge and provide automatically generated explanation of the requested concept, fact, or context with scientific and factual reliability.
+The key challenge is to provide an application that is always available and overcomes the resource constraint problem to intuitively and quickly extract fragmented knowledge and provide automatically generated explanation of the requested concept, fact, or context with scientific and factual reliability.
 %
 Previous projects in the context of medical informatics, such as the \ac{snik} ontology, solved crucial aspects of knowledge extraction that are relevant to these demands.
 Through the development of \ac{snik}, knowledge from sources on health information systems and their management (HIM), e.g., \citet{bb2}, has been accumulated, processed and restructured.    
 \ac{snik} has enabled a new approach to the knowledge it contains and its use, transforming previously isolated information into a machine-accessible and networked resource.
 The work of \citet{hannesbell, hannesbell_skill} in the context of a \ac{bell} made use of that structured knowledge base and aimed to further improve accessibility of \ac{snik} through the integration of natural language processing. 
-The results were implemented in a \ac{qas} QAnswer \citep{qanswer}, but show deficits in the explainability and comprehensibility of more complex questions. 
+The results were implemented in a \ac{qas} QAnswer ~\citep{qanswer}, but show deficits in the explainability and comprehensibility of more complex questions. 
 \citet{snikquiz} attempted a gamified access to the knowledge contained within \ac{snik}. 
 As \citet{arneba}, on the other hand, explored an inverse approach with the automatic generation of questions relevant to \citep{snikquiz} as output, enhancing the \ac{snik} system's usability in educational and training contexts.\\
 The knowledge base \ac{snik} provides a valuable foundation for further research and development of medical informatics.
-Building on this, \citet{hannesbell, hannesbell_skill}, \citep{qanswer} show possible applications to make the knowledge it contains more intuitive and understandable.
+Building on this, \citet{hannesbell, hannesbell_skill}, ~\citep{qanswer} show possible applications to make the knowledge it contains more intuitive and understandable.
 However, they are limited when processing complex queries, cross-linked information scattered across sections and the automatic generation of answers that meet individual requirements.
 %
 A self-trained open-source \ac{llm} (Llama-2) demonstrates improved performance over the untrained version, but as shown in \citet{Paul_Keller}, still shows significant performance differences compared to more capable language models, such as current commercially available models (e.g., GPT-4 / ChatGPT, Gemini-1.5 / Google Gemini)
@@ -76,7 +75,7 @@ In addition, more advanced techniques such as \ac{rag} in conjunction with \ac{l
 %
 
 \section{Goals}\label{sec:goals}
-The following goals of this work are assigned to the problem shown in \cref{sec:problem statement}.
+The following goals of this work are assigned to the problems shown in \cref{sec:problem statement}.
 \begin{itemize}
   \item goal G1:\\
     A reproducible application scenario, which is available at any time, based on selected language models for efficient and intuitive knowledge extraction from \citet{bb2}.
