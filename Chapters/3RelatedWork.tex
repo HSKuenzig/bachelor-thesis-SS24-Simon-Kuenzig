@@ -38,7 +38,16 @@ Given these developments, the application of extended context window models in d
 Their ability to process entire academic texts directly, without the need for pre-processing or fine-tuning, represents a potential solution to the challenges outlined in \cref{sec:problem statement}.
 
 \section{Retrieval-Augmented Generation for QA}
+\subsection{Question Answering}
 
+Traditionally, data, information and knowledge were managed using conventional data records with descriptive fields and sortable characteristics. 
+However, the constantly growing volume of data and the ongoing need for fast data access have led to the development of new types of data structures and extraction processes. Modern \ac{qa} systems are an example of such advances. 
+They enable users to retrieve data, information and knowledge from large databases in the shortest possible time with the help of various and constantly evolving technical approaches.
+The storage of data, information and knowledge in the form of graphs (e.g. knowledge graphs and ontologies) makes it possible to graphically represent relationships between stored entities and to be recognized as such by the retrieval system and made available to the user upon request.
+The potential of creating and building appliactions for \ac{qa} upon an ontology as knowledge base was demonstrated by the \ac{snik} project. 
+The development of knowledge retrieval system, such as \ac{QA}, for the \ac{snik}-ontology lead to recurring problems associated with \ac{sqa} using knowledge graphs and ontologies, which were investigated and described in 
+\citet{Hoffner2016QASurvey}.
+%%%
 Pre-trainig language models with billion-level parameters on huge amounts of training data as well as extending context windows have demonstrated impressive performance.
 Despite vast capabilities, limitations remain, such as factual inaccuracies \citep{augenstein2023factualitychallengeseralarge}, hallucinations \citep{fan2024surveyragmeetingllms}, enormous demands on computational resources to continuously improve the models and the inability to expand and revise their memory \citep{lewis2020ragnlp}.
 In \citet{lewis2020ragnlp} a parametric-memory generation model in form of pre-trained \textit{seq2seq} transformer was extended with non-parametric memory, a dense vector index of Wikipedia.
@@ -61,7 +70,6 @@ The reflection tokens are inserted offline into the original corpus, an addition
 \textit{SELF-RAG} enables retrieval on demand, processes passages in parallel, filters through self-reflection and also further evaluates the output quality aspects, such as factuality.
 While other works, \citet{lu2022QuarkCT, Korbak2023PretrainingLM} try to guide the \ac{lm} generation via use of general control tokens, \citet{Asai2023SelfRAGLT}  allows for the prior evaluation of whether retrieval is needed and then self-evaluate the quality of the generation.
 \citet{Asai2023SelfRAGLT} is able to outperform \textit{ChatGPT} in Benchmarks like PopQA and ASQA (Rouge and MAUVE) and also comparatively surpasses on PubHealth and biograpgy generation.
-Their framework trains a single \ac{lm} that retrieves the 
 In applying the developed framework at the time available \ac{sota} \ac{lm} used within \textit{ChatGPT}, as well as the \textit{retrieval-augmented Llama2-chat}, were outperformed on open-domain \ac{qa}, as well as reasoning and fact verification tasks.\citep{jin2024longcontextllmsmeetrag}.
 %
 The particular implementation of long-context- \ac{llm}s as generator in \ac{rag} and thus an optimal design of \ac{rag} remained under-explored \citep{jin2024longcontextllmsmeetrag}.
