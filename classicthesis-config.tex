@@ -45,7 +45,7 @@
 % ****************************************************************************************************
 \newcommand{\myTitle}{Question Answering on the textbook ‘Health Information Systems’ using state-of-the-art Large language models in a resource-constrained educational environment\xspace}
 \newcommand{\mySubtitle}{\xspace}
-\newcommand{\myDegree}{DEGREE\xspace}
+\newcommand{\myDegree}{\xspace}
 \newcommand{\myName}{Simon Künzig\xspace}
 \newcommand{\mybirthday}{18.12.1993}
 \newcommand{\mybirthtown}{Hannover}
@@ -93,7 +93,7 @@
 % ********************************************************************
 % Packages with options that might require adjustments
 % ********************************************************************
-\PassOptionsToPackage{ngerman, american}{babel} % change this to your language(s), main language last
+\PassOptionsToPackage{american}{babel} % change this to your language(s), main language last
 % Spanish languages need extra options in order to work with this template
 %\PassOptionsToPackage{spanish,es-lcroman}{babel}
 \usepackage{babel}
@@ -239,20 +239,29 @@
       \renewcommand*{\sectionautorefname}{Section}%
       \renewcommand*{\subsectionautorefname}{Section}%
       \renewcommand*{\subsubsectionautorefname}{Section}%
-    }%
-    \addto\extrasngerman{%
-      \renewcommand*{\paragraphautorefname}{Absatz}%
-      \renewcommand*{\subparagraphautorefname}{Unterabsatz}%
-      \renewcommand*{\footnoteautorefname}{Fu\"snote}%
-      \renewcommand*{\FancyVerbLineautorefname}{Zeile}%
+      \renewcommand*{\paragraphautorefname}{Paragraph}%
+      \renewcommand*{\subparagraphautorefname}{Subparagraph}%
+      \renewcommand*{\footnoteautorefname}{Footnote}%
+      \renewcommand*{\FancyVerbLineautorefname}{Line}%
       \renewcommand*{\theoremautorefname}{Theorem}%
-      \renewcommand*{\appendixautorefname}{Anhang}%
-      \renewcommand*{\equationautorefname}{Gleichung}%
-      \renewcommand*{\itemautorefname}{Punkt}%
-    }%
+      \renewcommand*{\appendixautorefname}{Appendix}%
+      \renewcommand*{\equationautorefname}{Equation}%
+      \renewcommand*{\itemautorefname}{Item}%
+     %\renewcommand*{\crefname{section}{Section}{Sections}} Die beiden haben nicht funktoniert
+     %\renewcommand*{\Crefname{section}{Section}{Sections}} 
+   % \addto\extrasngerman{%
+     % \renewcommand*{\paragraphautorefname}{Absatz}%
+     %\renewcommand*{\subparagraphautorefname}{Unterabsatz}%
+      %\renewcommand*{\footnoteautorefname}{Fu\"snote}%
+     % \renewcommand*{\FancyVerbLineautorefname}{Zeile}%
+     % \renewcommand*{\theoremautorefname}{Theorem}%
+     % \renewcommand*{\appendixautorefname}{Anhang}%
+      %\renewcommand*{\equationautorefname}{Gleichung}%
+     % \renewcommand*{\itemautorefname}{Punkt}%
+   % }%
       % Fix to getting autorefs for subfigures right (thanks to Belinda Vogt for changing the definition)
       \providecommand{\subfigureautorefname}{\figureautorefname}%
-    }{\relax}
+    }}{\relax}
 \makeatother
 
 

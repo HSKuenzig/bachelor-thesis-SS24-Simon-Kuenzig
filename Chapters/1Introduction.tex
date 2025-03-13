@@ -4,25 +4,31 @@
 \section{Subject Matter}\label{sec:subject matter}
 %%%
 Data, information and knowledge are the basis of all interaction, e.g. diagnosis of a patient or treatment documentation by a physician, in any area of healthcare.
-Their intuitive, effective and efficient access, management, storage, processing and provision is therefore crucial to provide a high quality of practice in all healthcare institutions and education.
+Their reliable, efficient and intuitive access, management, storage, processing and provision is therefore crucial to provide a high quality of practice in all healthcare institutions and education.
 %
 Medical informatics plays a decisive role in this by developing and implementing efficient information systems and technologies within these institutions. 
 Thereby using theories and methods, procedures and techniques from computer science and other sciences to contribute to the best possible healthcare. 
 %
 In educational contexts such as universities, the basic practical and theoretical approach of students and teachers to knowledge about domains like medical informatics, is mainly developed through the literature, such as \citet{bb2}.
 %
-Various approaches to intuitive, efficient and effective knowledge retrieval and processing in the field of medical informatics without having to manually read a textbook, such as \citet{bb2}, have been researched and developed.
+Various approaches to reliable, efficient and intuitive knowledge retrieval and processing in the field of medical informatics without having to manually read a textbook, such as \citet{bb2}, have been researched and developed.
 %
 One such initiative is the \ac{snik}-project and the ontology \ac{snik} contained therein, developed at the Institute for Medical Informatics, Statistics and Epidemiology (IMISE) of the University of Leipzig.
 \ac{snik} contains and provides concentrated knowledge from various sources and thus allows efficient access to technical terms, as well as to roles and their functions and interconnected dependencies in healthcare institutions. 
 %
-\textit{Efficient access} holds significant relevance, as education and research scenarios such as preparation for exams or academic debates primarily require reiterating and accessing relevant knowledge sources efficiently and intuitively within brief time-frames.
+\textit{Efficient and reliable access} to knowledge is of significant relevance in educational and research scenarios, such as preparation for exams or academic discussions.
+Therefore, the ability to process and retrieve relevant knowledge through available applications quickly and intuitively must be complemented by a reproducible uniform and comparable evaluation of the results of such applications.
 %
-Large language models, such as GPT-4 (ChatGPT), are recent advancements in the field of artificial intelligence.
+Large Language Models, such as GPT-4 (ChatGPT), are recent advancements in the field of artificial intelligence.
 They are able to analyse and process large amounts of information and data in order to then, among other things, provide insight into the information and knowledge contained therein based on user queries. 
-
+%
 The resulting possibilities are transformative for how we learn, research, and communicate knowledge.
+%
 Providing the opportunity to overcome challenges like complex contextual relationships within literature, while enabling intuitive access without time restrictions to knowledge to everyone.
+%
+To ensure that these possibilities for knowledge retrieval and processing using Large Language Models provide and meet individual requirements, such as reliability and efficiency, a structured, repeatable, and reproducible evaluation is necessary. 
+Only through such an assessment can different approaches be objectively compared.
+This evaluation serves as the foundation for understanding how these approaches can be leveraged to provide accurate, intuitive, and reliable access to domain-specific knowledge.
 
 \section{Problem Statement}\label{sec:problem statement}
 
@@ -38,17 +44,18 @@ It is therefore difficult for students and practitioners to acquire knowledge fr
 %
 Considerable advances, as mentioned in \cref{sec:motivation}, have been achieved in the development of methodologies for knowledge retrieval and processing in medical informatics. 
 %
-However, these existing solutions restrict, among other things, individual queries, especially the spontaneous, natural-language formulation of these to extract relevant knowledge \citep{snikquiz}.
-At the same time, the retrieved information and knowledge is still either factually incomplete,  not saligned with the original source ~\citep[cf.]{Paul_Keller}, or does not provide a coherent, well-structured and, above all, automatically generated explanation of the requested concept, fact or context ~\citep[cf.]{snikquiz}, \citep[cf.]{hannesbell}.
-In particular, \citet{Paul_Keller} has shown that the problem of inaccuracy in the answers and results produced by his application persists when using a less capable open-source \ac{lm} for knowledge extraction and processing, as implemented in its underlying technology.
-The fragmentation and dispersion of relevant information in \citet{bb2} as well as complex queries revealed the limitations of the capability of the language model used in \citet{Paul_Keller}.\\
+At the same time, the retrieved information and knowledge is still either factually incomplete or not aligned with the original source ~\citep[cf.]{Paul_Keller}, or does not provide a coherent, well-structured and, above all, automatically generated explanation of the requested concept, fact or context ~\citep[cf.]{snikquiz}, \citep[cf.]{hannesbell}.
+%
 Large language models with the capability to receive huge context inputs, such as whole books, within the user query, and far more comprehensive analytical and reasoning abilities are significant advancements in artificial intelligence and information retrieval technologies.
 At the same time, the practical implementation of these advanced language models in an educational or scientific environment is primarily constrained by their limited accessibility and thus individual usability and applicability.
 Consequently, the limited availability of advanced language models for the individual application and implementation of these is a clear resource constraint. 
- 
-Key problems:
+%
+Furthermore, in the application of \ac{llms} for knowledge retrieval from \citet{bb2}, an automatic, objective and repeatable evaluation and further comparison to a benchmark of the generated results is necessary, but not available to users, such as students and practitioners. 
+%
+Key problem:
 \begin{itemize}
   \item \textbf{Problem 1:} Fragmentation of knowledge still makes it difficult for students to intuitively and effectively extract coherent and relevant information from \citet{bb2}.
+  \item \textbf{Problem 2:} Existing \ac{llm}-based retrieval approaches for \citet{bb2} as a knowledge base lack a standardised and reproducible evaluation framework.
 \end{itemize}
 %
 Addressing these challenges is vital for enhancing the accessibility and utility of domain-specific knowledge, ultimately supporting both learning and research activities. 
