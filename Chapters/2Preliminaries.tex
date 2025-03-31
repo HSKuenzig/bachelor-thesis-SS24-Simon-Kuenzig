@@ -3,9 +3,201 @@
 %*****************************************
 This chapter provides the foundational terms and concepts in order to understand the aims and objectives of this thesis.
 %
-The content is structured as follows: \cref{sec:information retrieval} briefly introduces the field of information retrieval. This is followed by \cref{sec:language-models}, providing an insight into language models. 
+The content is structured as follows: First, an overview of the \ac{snik}-project. Then, \cref{sec:information retrieval} briefly introduces the field of information retrieval. This is followed by \cref{sec:language-models}, providing an insight into language models.
 Finally,in \cref{sec:databases} database architectures and the concepts underlying \ac{rag} are discussed. 
 %
+\section{Natural Language Processing (NLP) - Introduction}
+\begin{definition}
+    \ac{nlp} is a subfield of artificial intelligence that addresses the interaction between human language and machines.
+    The goal of \ac{nlp} is to enable computer systems to process, interpret, and generate natural language in a meaningful and contextually appropriate way. 
+\end{definition}
+%
+Its importance for current research and application has increased significantly, particularly with the development of powerful language models that can accomplish complex linguistic tasks.
+Central to the field are tasks such as question answering, summarisation, named entity recognition, and machine translation, all of which necessitate a nuanced understanding of both syntax and semantics.
+The complexity of natural language, which is based on its ambiguity, variability and context dependency, presents computer systems with a variety of challenges.
+Words and phrases often have multiple meanings that can only be grasped and resolved by the surrounding text or situational context.
+These challenges have led to the development of increasingly sophisticated architectures, such as the transformer model, which has established itself as the basis for current state-of-the-art \ac{nlp} systems due to its scalability and its ability to model contextual relationships more effectively than previous approaches \citep{vaswani2017attention}.
+%
+\subsection{Tokens and Tokenisation}
+Understanding how natural language is transformed into computationally interpretable representations requires a basic knowledge of tokens and tokenisation.
+This section introduces the concept, relevant tokenisation algorithms and explains their importance in the architecture and functionality of \ac{llm}.
+
+\begin{definition}
+    In \ac{nlp}, a \textit{token} is a discrete lingustically meaningfull unit of text that serves as input to computational models.
+
+Tokens can represent various linguistic units, including:
+\begin{itemize}
+  \item \textbf{Full words} (e.g., \textit{hospital})
+  \item \textbf{Subwords:} (e.g., \texttt{inter} + \texttt{oper} + \texttt{ability} (interoperability)
+  \item \textbf{Individual characters}, especially in character-level models (e.g., \textit{a,e,i,o,!?.-})
+\end{itemize}
+\end{definition}
+%
+The way in which text is segmented directly affects the quality and interpretability of the model output because language models process sequences of numerical vectors derived from these tokens.
+Tokens, therefore, form the atomic building blocks for \ac{llm} and are essential to enable structured data processing.
+%
+\subsubsection{The Necessity of Tokenisation}
+
+\begin{definition}
+    \textit{Tokenisation} is the process of converting the initial input text into \textit{tokens}.
+\end{definition}
+%
+\ac{lm} process text in the form of \textbf{token}. 
+The efficient and structured conversion of potentially huge text input into token via the process of \textit{tokenisation} is therefore essential to control memory and computational requirements.
+%
+The division of the raw text into \textit{tokens} is done according to a specific tokenisation algorithm.
+For example, in the case of the \ac{bpe}-algorithm, frequent character sequences are iteratively merged to form subword tokens.
+This allows for efficient handling of out-of-vocabulary (\textit{OOV}), as unfamiliar words can be decomposed into known subwords or, in rare cases, replaced by special unknown tokens, while preserving semantic structure.\\
+\textit{Text Chunking $\rightarrow$ textual Tokens}
+\begin{itemize}
+    \item \textbf{Example (BPE-based tokenisation):}\\
+    Compound form - \enquote{\textit{telemonitoringprocess}}
+    \begin{quote}
+    \texttt{['tele', 'monitor', 'ing', 'process']}
+    \end{quote}
+\end{itemize}
+%
+Without \textit{tokenisation}, \ac{llm} would be unable to recognise word boundaries or semantic subcomponents, especially in morphologically rich or compound-heavy languages.
+Robust \textit{tokenisation} methods ensure that even rare or unseen terms can be correctly and effectively segmented and interpreted.
+%
+\subsection{Tokenisation Algorithms}
+Modern \ac{llm} rely on data-driven tokenisation techniques to handle vast and diverse vocabularies efficiently. 
+Two of the most prominent algorithms are:
+
+\subsubsection{Byte-Pair Encoding (BPE)}
+\begin{definition}
+    \textbf{Byte-Pair Encoding} is a frequency-based compression algorithm adapted for \ac{nlp} by \citet{sennrich2016neural}. 
+\end{definition}
+
+The algorithm begins with creating a character- and byte-level representation of the input text.
+Then, the most frequent pairs of adjacent characters and bytes are iteratively merged into new tokens.
+The process continues until a predefined vocabulary size is reached, resulting in a compress representation of the original text that balances vocabulary compactness and semantic expressiveness.\\
+%
+\ac{bpe} is deterministic and scalable, making it widely adopted in \textit{Transformer}-based models such as GPT-2 and GPT-3.
+It efficiently reduces the number of unknown tokens while avoiding an unmanageably large vocabulary.
+
+\subsubsection{WordPiece}
+\begin{definition}
+    \textbf{WordPiece} is a subword tokenisation algorithm developed by \textit{Google}, which selects merges based on likelihood maximisation rather than frequency, and was popularised through its use in \ac{bert} \citep{devlin2019bert}.
+\end{definition}
+\textit{WordPiece} was originally developed for machine translation tasks at \textit{Google} and later popularised by the \ac{bert} model \citep{devlin2019bert}.
+Similarly to \ac{bpe}, \textit{WordPiece} creates subword units, but selects merge operations based on likelihood maximisation rather than simple frequency.
+\textit{WordPiece} ensures that commonly occurring word fragments and roots are retained, improving both model generalisation and semantic understanding.
+
+\subsection{Importance of Consistent Tokenisation in \ac{lm}}
+Consistent tokenisation is essential to ensure that the input to the \ac{lm} is standardises and can thus be processed reliably and repeatably processed by it.
+Since \textit{Transformer}-based models operate on \textit{token}-level \textit{embeddings}, any discrepancy in \textit{token} boundaries can lead to significantly different outputs for the same input text.
+
+This is particularly relevant for:
+\begin{itemize}
+    \item Reproducible benchmarking, as pursued in this thesis
+    \item objective model comparison, when evaluating multiple \ac{llm} or configurations
+    \item Resource efficiency, since longer token sequences incur greater memory and computational costs
+\end{itemize}
+
+In practice, an input that results in 120 tokens for one model may be split into 180 tokens by another model based on differences in tokenisation.
+This variation affects latency, inference cost, and model comprehension, especially in length-sensitive architectures with fixed \textit{input windows}.
+%
+
+\subsubsection{Predefined Vocabulary and Token-to-ID Mapping}
+
+\begin{definition}
+    A \textbf{predefined vocabulary} is a finite list of textual tokens established during the tokeniser's construction, typically before model training.
+    It may include full words, frequent subwords, punctuation marks, and domain-specific terminology
+\end{definition}
+
+Each token is assigned a unique integer identifier (token ID), enabling the transformation of natural language input into numerical form.
+In \ac{lm}, such as \textit{GPT} and \textit{BERT} using static tokenisation algorithms like \textit{BPE} or \textit{Wordpiece}, this vocabulary remains unchanged during inference, ensuring consistency between training and follow-up application.
+%
+The composition of this vocabulary depends on the applied tokenisation algorithm.
+For example, tokens such as \enquote{inter}, \enquote{oper}, and \enquote{ability} may represent common subword components, while \enquote{hospital} and \enquote{systems} could be preserved as individual tokens.
+%
+Vocabulary sizes typically range between $10,000$ and $50,000$ entries, balancing coverage and computational efficiency.
+%
+Each \textit{token ID} serves as an index in the model embedding matrix, which stores the corresponding high-dimensional vector representations.
+This mapping is foundational for \textit{Transformer}-based architectures, allowing them to convert human language into a mathematically machine-processable format.
+
+\section{Embeddings}\label{sec:embeddings}
+
+\subsection{Encoding}\label{sec:encoding}
+
+\begin{definition}
+    \textbf{Encoding} is conversion of \textit{token} into numerical identifiers.
+\end{definition}
+
+During \textbf{Encoding} each textual token is mapped to a unique integer identifier (\textit{ID}) using a predefined vocabulary.
+A \textit{predefined vocabulary} consists of a finite list of tokens that are known to the language model and are introduced pre-training.
+In this list, which serves as a search table for mapping between textual units and numerical representation, each token is assigned a unique numerical \textit{ID}.\\
+
+Numerical Encoding $\rightarrow$ Token IDs
+
+\begin{center}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{>{\ttfamily}l c >{\ttfamily}l}
+\textbf{Token} & $\Rightarrow$ & \textbf{Token ID} \\
+\hline
+tele        & $\Rightarrow$ & 1021 \\
+monitor         & $\Rightarrow$ & 2044 \\
+ing      & $\Rightarrow$ & 3090 \\
+process           & $\Rightarrow$ & 89 \\
+\end{tabular}
+\end{center}
+
+These \textit{IDs} serve as input to the model’s \textit{embedding layer}.
+In \ac{nlp}, \textit{embeddings} serve as the essential bridge between symbolic representations of language—such as tokens—and the numerical input required by machine learning models. 
+These vector-based representations encode both semantic and syntactic information, allowing models to capture relationships between words and contextual nuances in language. 
+In the context of Transformer-based architectures and retrieval-augmented generation (RAG), embeddings are fundamental to understanding meaning, managing context, and enabling attention-based processing over long sequences.
+
+\subsection{Semantic Embeddings}
+
+\begin{definition}\label{def:semantic-embeddings}
+\textbf{Semantic embeddings} are dense vector representations of individual \textit{tokens} (e.g., words, subwords) that encode syntactic and semantic relationships based on distributional properties of language~\citep{Mikolov2013EfficientEO, pennington2014glove}.
+\end{definition}
+
+\subsubsection{Static Semantic Embeddings}
+
+In earlier neural models, such as \textit{Word2Vec}~\citep{Mikolov2013EfficientEO} and \textit{GloVe}~\citep{pennington2014glove}, \textit{embeddings} are learned by predicting word co-occurrence patterns. 
+These static \textit{embeddings} assign a single vector to each word, independent of linguistic context, which limits their ability to disambiguate polysemous terms (e.g., \endquote{bank} as a financial institution versus a riverbank).
+
+\subsubsection{Contextual Semantic Embeddings}
+
+\textit{Transformer}-based models overcome this limitation with \textbf{contextual embeddings}, where each \textit{token}'s \textit{embedding} dynamically reflects its meaning based on the surrounding text. 
+These contextualised vectors are generated dynamically as the model processes input sequences through \textit{self-attention} layers. 
+For example, in a sentence from medical literature, the \textit{token} \textit{admission} may yield different embeddings when used in the context of \enquote{hospital admission} compared to \enquote{patient admission of symptoms}.
+
+\subsection{Positional Embeddings}
+
+\subsubsection{Necessity of Positional Information}
+
+Unlike recurrent or convolutional models, \textit{Transformer} architectures lack an inherent mechanism to capture the sequential order of tokens. 
+Attention mechanisms operate in parallel, all input tokens are processed simultaneously, making it impossible for \ac{ lm} to recognise word order unless it is explicitly encoded. 
+Therefore, \textit{Transformers} require an additional mechanism to inject sequence information into the \ac{lm}’s input.
+This is achieved by using \textbf{positional embeddings}.
+
+\begin{definition}
+\textit{Positional embeddings} are vector representations added to or concatenated with \textit{token} embeddings to encode the position of a \textit{token} in a sequence, enabling order-aware processing in models based on self-attention~\citep{vaswani2017attention}.
+\end{definition}
+
+\subsubsection{Types of Positional Embeddings}
+
+There are two primary types of \textit{positional embeddings}:
+\begin{itemize}
+    \item \textbf{Absolute positional embeddings:} Each position in the sequence is assigned a unique, fixed vector, often derived from sinusoidal functions as introduced by \citet{vaswani2017attention}.
+    \item \textbf{Relative positional embeddings:} These embeddings encode the relative distance between \textit{tokens}, rather than their absolute positions. This formulation has been shown to improve generalisation across sequence lengths~\citep{shaw2018self, dai2019transformer}.
+\end{itemize}
+
+Relative positional representations allow the \ac{lm} to focus on inter-token relations and dependencies without being limited by fixed input lengths, enhancing traditional \textit{Transformers} by generalising to longer or variable-length inputs, which makes them particularly useful in \ac{lm} designed for long-context retrieval.
+
+\subsection{Embeddings in Large-Context Models and RAG Systems}
+
+In large-context models, such as \textit{GPT-4} or \textit{Claude} and in \ac{rag} systems, \textit{embeddings} are essential to manage and attend to extended sequences as it is the fundamental mechanism through which semantic meaning and positional context are encoded.
+It allows \ac{lm} to process and reason over large inputs and their content with coherence and relevance.
+These \ac{lm} rely on both \textit{token} and \textit{positional embeddings} to maintain and ensure semantic precision and provide contextual relevance over potentially thousands of tokens.
+
+In \ac{rag}, embeddings are also used for information retrieval, where a query embedding is compared with pre-computed document embeddings, for example, when the relevant document is stored in a \textit{vector database}, using techniques such as vector similarity search to select the most relevant context for generation.
+The quality and structure of these embeddings have a direct impact on the retrieval accuracy and the quality of the subsequent generation~\citep{Lewis2020}.
+%
+
 \section{Information Retrieval}\label{sec:information retrieval}
 
 \begin{definition}\label{def:information retrieval}
@@ -24,9 +216,9 @@ Starting with simple text retrieval, multi-modal retrieval is now possible.
 \subsection{Question Answering}\label{subsec:question answering}
 
 \begin{definition}
-\ac{qa} is an area within \ac{nlp} and \ac{ir} that focuses on the development of systems in which questions posed by the user in natural language are to be answered. 
-The entered question is first analysed in order to extract the intention of the query. 
-Based on this, relevant information is retrieved from a source, processed further using \ac{ir} technologies and then combined into a coherent answer.\citep{Manning2008}.
+\ac{qa} is an area within \ac{nlp} and \ac{ir} that focusses on the development of systems in which questions posed by the user in natural language are to be answered. 
+The entered question is first analysed to extract the intention of the query. 
+Based on this, relevant information is retrieved from a source,  further processed using \ac{ir} technologies and then combined into a coherent answer.\citep{Manning2008}.
 \end{definition}
 %
 \section{Language Models}\label{sec:language-models}
@@ -103,7 +295,7 @@ They are widely used for applications that require consistency and follow a clea
 For example, graph databases are designed to efficiently model and navigate complex networks of interconnected data, making them ideal for applications that require understanding relationships, such as social networks, recommendation systems, and knowledge graphs.
 \subsubsection{Unstructured data}\label{sec:unstructured-data}
 \begin{definition}\label{def:unstructured-data}
-    \textbf{Unstructured data} refers to information that does not have a predefined data model or organized structure, making it more challenging to store, search and analyze using traditional database systems.
+    \textbf{Unstructured data} refers to information that does not have a predefined data model or organised structure, making it more challenging to store, search and analyze using traditional database systems.
 \end{definition}
 Unstructured data includes formats such as text documents, images, audio, and video files, where the data is not organised in a tabular or relational structure. 
 Due to its lack of a fixed schema, unstructured data often requires specialised processing techniques, such as \ac{nlp} or machine learning, to extract meaningful information and be able to process those further.
