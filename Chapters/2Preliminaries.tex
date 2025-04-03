@@ -6,7 +6,7 @@ This chapter provides the foundational terms and concepts in order to understand
 The content is structured as follows: First, an overview of the \ac{snik}-project. Then, \cref{sec:information retrieval} briefly introduces the field of information retrieval. This is followed by \cref{sec:language-models}, providing an insight into language models.
 Finally,in \cref{sec:databases} database architectures and the concepts underlying \ac{rag} are discussed. 
 %
-\section{Natural Language Processing (NLP) - Introduction}
+\\section{Natural Language Processing (NLP) - Introduction}
 \begin{definition}
     \ac{nlp} is a subfield of artificial intelligence that addresses the interaction between human language and machines.
     The goal of \ac{nlp} is to enable computer systems to process, interpret, and generate natural language in a meaningful and contextually appropriate way. 
@@ -17,6 +17,39 @@ Central to the field are tasks such as question answering, summarisation, named 
 The complexity of natural language, which is based on its ambiguity, variability and context dependency, presents computer systems with a variety of challenges.
 Words and phrases often have multiple meanings that can only be grasped and resolved by the surrounding text or situational context.
 These challenges have led to the development of increasingly sophisticated architectures, such as the transformer model, which has established itself as the basis for current state-of-the-art \ac{nlp} systems due to its scalability and its ability to model contextual relationships more effectively than previous approaches \citep{vaswani2017attention}.
+%
+\section{Language Models}\label{sec:language-models}
+%
+\begin{definition}\label{def:language-models}
+    \textbf{Language Models} are machine learning models designed to understand and generate human language.
+\end{definition}
+Language models are built on artificial intelligence techniques and are typically trained using machine learning algorithms to understand and generate human language. 
+They have a wide range of applications, including translation, text generation, speech recognition, and text classification.
+
+\subsection{transformer}\label{transformer}
+%
+\begin{definition}\label{def:transformer}
+    A \textbf{Transformer} is a neural network architecture introduced by \citet{vaswani2017attention} that uses attention mechanisms to model dependencies within sequences of text.
+\end{definition}
+
+Unlike earlier approaches based on recurrent or convolutional structures, the \textit{Transformer} processes all elements of the input text simultaneously, avoiding the need for sequential computation.
+This parallelism, combined with the use of self-attention, allows the model to capture both local and long-range dependencies between textual elements more effectively. 
+Due to its scalability and performance, the \textit{Transformer} architecture forms the foundation of many state-of-the-art large language models such as \textit{BERT}, \textit{GPT} and \textit{T5} and are typically trained on extensive data sets to understand statistical patterns within training data.
+
+\section{neural networks}\label{sec:neural-networks}
+To understand the architecture of the transformer, it is necessary to know the basics of neural networks.
+Neural networks were first described by \citet{neuronal_networks_first} in 1943 and have undergone many changes and improvements since then.
+A description of the basic techniques can be found in \citet{neuronale-netze}.
+Building on this book, an overview of how neural networks work is given below.
+
+\subsection{Architecture}
+Neural networks mimic the functioning of the human brain with the help of mathematical equations.
+A network consists of a number of neurons that have both input and output connections to other neurons.
+Neurons have the property of sending an impulse from certain inputs to the outputs when a threshold value is exceeded.
+In contrast to the brain, however, normal neural networks have a more logical structure.
+The neurons are arranged in layers, with the first layer being the input layer with the input neurons $E_N$ and the last layer being the output layer with the output neurons $A_N$.
+The layers between these two boundaries are called hidden layers with neurons $H^L_N$.
+\todo{Add example}
 %
 \subsection{Tokens and Tokenisation}
 Understanding how natural language is transformed into computationally interpretable representations requires a basic knowledge of tokens and tokenisation.
@@ -86,7 +119,7 @@ Similarly to \ac{bpe}, \textit{WordPiece} creates subword units, but selects mer
 
 \subsection{Importance of Consistent Tokenisation in \ac{lm}}
 Consistent tokenisation is essential to ensure that the input to the \ac{lm} is standardises and can thus be processed reliably and repeatably processed by it.
-Since \textit{Transformer}-based models operate on \textit{token}-level \textit{embeddings}, any discrepancy in \textit{token} boundaries can lead to significantly different outputs for the same input text.
+Since transformer-based models rely on token-level embeddings, inconsistencies in the segmentation from text to tokens can lead to significantly different results, even if the underlying input text remains unchanged.
 
 This is particularly relevant for:
 \begin{itemize}
@@ -122,7 +155,7 @@ This mapping is foundational for \textit{Transformer}-based architectures, allow
 \subsection{Encoding}\label{sec:encoding}
 
 \begin{definition}
-    \textbf{Encoding} is conversion of \textit{token} into numerical identifiers.
+    \textbf{Encoding} is the conversion of \textit{token} into numerical identifiers.
 \end{definition}
 
 During \textbf{Encoding} each textual token is mapped to a unique integer identifier (\textit{ID}) using a predefined vocabulary.
@@ -144,8 +177,8 @@ process           & $\Rightarrow$ & 89 \\
 \end{center}
 
 These \textit{IDs} serve as input to the model’s \textit{embedding layer}.
-In \ac{nlp}, \textit{embeddings} serve as the essential bridge between symbolic representations of language—such as tokens—and the numerical input required by machine learning models. 
-These vector-based representations encode both semantic and syntactic information, allowing models to capture relationships between words and contextual nuances in language. 
+In \ac{nlp}, \textit{embeddings} serve as the essential bridge between symbolic representations of language—such as tokens—and the numerical input required by machine learning models.
+These vector-based representations encode both semantic and syntactic information, allowing models to capture relationships between words and contextual nuances in language.
 In the context of Transformer-based architectures and retrieval-augmented generation (RAG), embeddings are fundamental to understanding meaning, managing context, and enabling attention-based processing over long sequences.
 
 \subsection{Semantic Embeddings}
@@ -156,13 +189,13 @@ In the context of Transformer-based architectures and retrieval-augmented genera
 
 \subsubsection{Static Semantic Embeddings}
 
-In earlier neural models, such as \textit{Word2Vec}~\citep{Mikolov2013EfficientEO} and \textit{GloVe}~\citep{pennington2014glove}, \textit{embeddings} are learned by predicting word co-occurrence patterns. 
+In earlier neural models, such as \textit{Word2Vec}~\citep{Mikolov2013EfficientEO} and \textit{GloVe}~\citep{pennington2014glove}, \textit{embeddings} are learned by predicting word co-occurrence patterns.
 These static \textit{embeddings} assign a single vector to each word, independent of linguistic context, which limits their ability to disambiguate polysemous terms (e.g., \endquote{bank} as a financial institution versus a riverbank).
 
 \subsubsection{Contextual Semantic Embeddings}
 
-\textit{Transformer}-based models overcome this limitation with \textbf{contextual embeddings}, where each \textit{token}'s \textit{embedding} dynamically reflects its meaning based on the surrounding text. 
-These contextualised vectors are generated dynamically as the model processes input sequences through \textit{self-attention} layers. 
+\textit{Transformer}-based models overcome this limitation with \textbf{contextual embeddings}, where each \textit{token}'s \textit{embedding} dynamically reflects its meaning based on the surrounding text.
+These contextualised vectors are generated dynamically as the model processes input sequences through \textit{self-attention} layers.
 For example, in a sentence from medical literature, the \textit{token} \textit{admission} may yield different embeddings when used in the context of \enquote{hospital admission} compared to \enquote{patient admission of symptoms}.
 
 \subsection{Positional Embeddings}
@@ -170,7 +203,7 @@ For example, in a sentence from medical literature, the \textit{token} \textit{a
 \subsubsection{Necessity of Positional Information}
 
 Unlike recurrent or convolutional models, \textit{Transformer} architectures lack an inherent mechanism to capture the sequential order of tokens. 
-Attention mechanisms operate in parallel, all input tokens are processed simultaneously, making it impossible for \ac{ lm} to recognise word order unless it is explicitly encoded. 
+Attention mechanisms operate in parallel, all input tokens are processed simultaneously, making it impossible for \ac{lm} to recognise word order unless it is explicitly encoded.
 Therefore, \textit{Transformers} require an additional mechanism to inject sequence information into the \ac{lm}’s input.
 This is achieved by using \textbf{positional embeddings}.
 
@@ -197,14 +230,81 @@ These \ac{lm} rely on both \textit{token} and \textit{positional embeddings} to 
 In \ac{rag}, embeddings are also used for information retrieval, where a query embedding is compared with pre-computed document embeddings, for example, when the relevant document is stored in a \textit{vector database}, using techniques such as vector similarity search to select the most relevant context for generation.
 The quality and structure of these embeddings have a direct impact on the retrieval accuracy and the quality of the subsequent generation~\citep{Lewis2020}.
 %
+\section{Sequence Input and Chunking}
+
+\subsection{Context Windows and Maximum Token Limits}
+
+\textit{Transformer}-based \ac{llm} operate on fixed-length \textit{token} sequences, which are constrained by a predefined \textit{context window}.
+
+\begin{definition}
+A \textbf{context window} refers to the maximum number of input \textit{tokens} a \textit{Transformer} model can attend to at any point in time.
+In autoregressive models, this includes both the input prompt and all tokens generated during the inference process.
+\end{definition}
+
+The \textit{BERT-base} model supports $512$ \textit{tokens}~\citep{devlin2019bert}, OpenAI's older \textit{GPT-3} is limited to $2048$ \textit{tokens}~\citep{gpt3} during a single inference pass.
+Current models, such as \textit{GPT-4} and Anthropics \textit{Claude 3} are capable of handling $32,000$ to $200,000$ tokens~\citep{gpt4, anthropic2024claude3} allowing for significantly larger \textit{context windows}.
+Despite such advances, limitations persist due to computational complexity, memory requirements, and model degradation at extreme lengths~\citep{liu2024lostmiddle}.
+
+\subsection{The Need for Chunking}
+
+The size of the context windows has been constantly extended through development iterations.
+Nevertheless, the demand for even larger inputs does not match the available options.
+Therefore, if the input sequences exceed the context window, the input must be modified.
+\begin{definition}
+\textbf{Chunking} is the process of dividing longer textual sequences into smaller, contextually meaningful segments (\textit{chunks}) that fit within a \ac{lm}'s context window.
+\end{definition}
+The quality and effectiveness of the \textit{chunking} algorithms has a significant impact on the information and knowledge extraction, as well as on the generated output of the respective language model.
+Depending of the chunking process truncated information, loss of context, or semantic drift—particularly may occur and are particualry problematic in high-stakes domains such as medical texts.
+
+\subsection{Chunking Techniques}
+
+Several chunking strategies are used to structure input sequences appropriately:
+
+\begin{itemize}
+    \item \textbf{Fixed-size chunking:} Text is divided into equal-sized chunks (e.g., 512 tokens).
+    This approach is simple but may split sentences or logical units, therefore disrupting and loosing the coherent contextual meaning.
+    
+    \item \textbf{Sliding window:} Overlapping chunks are created by shifting a fixed window across the input with some adaptable overlap (e.g., $512$-token chunks with $128$-token overlap).
+    In this process, each token attends to a fixed-size window of tokens around it and with that stacking multiple layers of overlapping attention allows for a large receptive field.
+    This approach helps maintain contextual continuity across boundaries~\citep{beltagy2020longformerlongdocumenttransformer}.
+    \item \textbf{Sentence- or paragraph-based chunking:} Input is segmented based on natural linguistic units, preserving semantic integrity.
+    Although more coherent, by creating chunks with inconsistent size due to varying sentence- and paragraph length, this method may lead to uneven token distribution and inefficient memory use.
+\end{itemize}
+
+\subsection{Trade-offs in Context Length and Performance}
+
+There exists a trade-off between longer context windows and model performance.
+Longer sequences allow more complete and coherent context.
+At the same time, they come with increased memory usage, computational cost, and potential attention diffusion~\citep{liu2024lostmiddle}.
+Models may struggle to retain or prioritise relevant information across extended inputs, especially without mechanisms such as \textit{recurrence} or \textit{global attention}.
+
+\subsection{Recurrence and Global Attention in Transformer Architectures}
+
+Transformer-based models process sequences in parallel, which makes them efficient to compute and process, but poses challenges in preserving dependencies and context over long distances, especially in expanded input contexts.
+To address this limitation, architectural extensions such as \textit{recurrence} and \textit{global attention} have been proposed to improve information storage and prioritisation.
+
+\subsubsection{Recurrence}
+
+\begin{definition} \textbf{Recurrence} in Transformers refers to a mechanism where representations from previous input segments (e.g., past chunks or text sequences) are recurrently fed into the \ac{lm} to preserve historical context.
+\end{definition}
+
+This technique allows the model to incorporate information from already processed segments without reprocessing the entire sequence.
+\citet{dai2019transformerxl} introduced segment-level recurrence by caching hidden states from previous segments, enabling learning across longer contexts without compromising computational efficiency.
+This recurrent memory leads to better modelling of temporal dependencies and improves performance in long-form text generation and reasoning.
+
+\subsubsection{Global Attention}
+
+\begin{definition} \textbf{Global attention} is a modification of the self-attention mechanism that designates a subset of tokens, predominantly structurally or semantically important \textit{token} in form a internal representation, to attend to all other tokens in the input sequence, while also allowing all \textit{tokens} to attend to these designated internal representations.
+\end{definition}
+
 
 \section{Information Retrieval}\label{sec:information retrieval}
 
 \begin{definition}\label{def:information retrieval}
-Information retrieval is the process of identifying, retrieving and ranking relevant information from resources in response to a previous query. 
+Information retrieval is the process of identifying, retrieving and ranking relevant information from resources in response to a previous query.
 \end{definition}
 %
-The traditional \ac{ir} was based on a single-stage term-based system, which was first applied in scientific research. 
+The traditional \ac{ir} was based on a single-stage term-based system, which was first applied in scientific research.
 The matching phrases and terms from the source were searched according to the search term and generated as direct output.
 However, the quality of the output suffered from simple linguistic hurdles, e.g., polysemy, synonymy, and lexical gaps, and was therefore limited in their effectiveness. 
 The addition of ranking mechanisms led to more accurate results, as ranking is carried out in a second stage. 
@@ -221,56 +321,6 @@ The entered question is first analysed to extract the intention of the query.
 Based on this, relevant information is retrieved from a source,  further processed using \ac{ir} technologies and then combined into a coherent answer.\citep{Manning2008}.
 \end{definition}
 %
-\section{Language Models}\label{sec:language-models}
-
-\begin{definition}\label{def:language-models}
-    \textbf{Language Models} are machine learning models designed to understand and generate human language.
-\end{definition}
-Language models are built on artificial intelligence techniques and are typically trained using machine learning algorithms to understand and generate human language. 
-They have a wide range of applications, including translation, text generation, speech recognition, and text classification.
-\subsection{transformer}\label{transformer}
-
-\begin{definition}\label{def:transformer}
-    A \textbf{Transformer} is a deep learning architecture that forms the foundation of many modern language models, allowing efficient training in large-scale data by using attention mechanisms to process data in parallel.
-
-\end{definition}
-The architecture transformers are based on, introduced by \citet{vaswani2017attention}, which allows one to process entire sequences of text simultaneously, thereby enabling the model to recognise and connect complex patterns and dependencies in natural languages. 
-By leveraging self-attention, Transformers can weigh the importance of different words, described as token, in a certain-sized context window. 
-Transformer-based models, such as \ac{bert} and \ac{gpt}, are typically trained on extensive data sets to understand statistical patterns within training data.\citep{atallah2023impact}
-
-\begin{definition}\label{def:continuous-pretraining}
-    \textbf{Continual Pretraining} describes the process of continuous, self-monitored training of a pre-trained model.
-\end{definition}
-In continuous pre-training, only the hyper-parameters of the model are adjusted and new data sets are used, while training continues based on the parameters of the model that have already been learned.
-\subsection{Inputs from Transformer models}
-\begin{definition}\label{def:token}
-    A \textbf{token} represents a subset of a word and is used in transformer models to divide the input into logical units.
-\end{definition}
-Transformer models cannot process input without additional conversion.
-In addition to generating input vectors, the input must first be broken down into smaller units, the so-called tokens.
-\todo{Add example}
-%
-\section{neural networks}\label{sec:neural-networks}
-To understand the architecture of the transformer, it is necessary to know the basics of neural networks.
-Neural networks were first described by \citet{neuronal_networks_first} in 1943 and have undergone many changes and improvements since then.
-A description of the basic techniques can be found in \citet{neuronale-netze}.
-Building on this book, an overview of how neural networks work is given below.
-
-\subsection{Architecture}
-Neural networks mimic the functioning of the human brain with the help of mathematical equations.
-A network consists of a number of neurons that have both input and output connections to other neurons.
-Neurons have the property of sending an impulse from certain inputs to the outputs when a threshold value is exceeded.
-In contrast to the brain, however, normal neural networks have a more logical structure.
-The neurons are arranged in layers, with the first layer being the input layer with the input neurons $E_N$ and the last layer being the output layer with the output neurons $A_N$.
-The layers between these two boundaries are called hidden layers with neurons $H^L_N$.
-\todo{Add example}
-%
-\paragraph{Notable LLMs} Building on the foundation of the transformer, various prominent LLMs have emerged, each bringing unique features and contributions to the field. \textbf{BERT} (Bidirectional Encoder Representations from Transformers), developed by Google, introduced bidirectional training, allowing the model to consider the context on the left and right for each word. This bidirectional approach significantly improved performance on numerous \ac{nlp} tasks, including answering questions and classification of texts \citep{devlin2019bert}. 
-
-Another influential model, \textbf{GPT-4} (Generative Pre-trained Transformer 4) by OpenAI, further expanded on the capabilities of transformers by an estimated around 1 trillion parameter architecture. GPT-4 demonstrated few-shot learning capabilities, allowing it to perform well on new tasks with minimal fine-tuning, thus broadening its applicability in various domains \citep{brown2020gpt3}. 
-
-Additionally, \textbf{T5} (Text-To-Text Transfer Transformer), created by Google, approached \ac{nlp} tasks through a unified text-to-text framework, in which both inputs and outputs are treated as text. This framework allowed T5 to be highly versatile, performing tasks such as translation, summarisation, and even sentiment analysis within a single model \citep{raffel2020t5}. Each of these models represents a key milestone in the evolution of \ac{llm} architectures, demonstrating how advances in transformer-based designs have expanded the practical applications of artificial intelligence in diverse fields.
-
 \section{Databases}\label{sec:databases}
 \begin{definition}\label{def:database}
     A \textbf{database} is a collection of related data\citep{limited2010introduction}. 
