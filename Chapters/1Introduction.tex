@@ -1,0 +1,145 @@
+%************************************************
+\chapter{Introduction}\label{ch:introduction}
+%************************************************
+\section{Subject Matter}\label{sec:subject matter}
+%%%
+Data, information and knowledge are the basis of all interaction, e.g. diagnosis of a patient or treatment documentation by a physician, in any area of healthcare.
+Their reliable, efficient and intuitive access, management, storage, processing and provision is therefore crucial to provide a high quality of practice in all healthcare institutions and education.
+%
+Medical informatics plays a decisive role in this by developing and implementing efficient information systems and technologies within these institutions.
+Thereby using theories and methods, procedures and techniques from computer science and other sciences to contribute to the best possible healthcare.
+%
+In educational contexts such as universities, the basic practical and theoretical approach of students and teachers to knowledge about domains like medical informatics, is mainly developed through the literature, such as \citet{bb2}.
+%
+Various approaches to reliable, efficient and intuitive knowledge retrieval and processing in the field of medical informatics without having to manually read a textbook, such as \citet{bb2}, have been researched and developed.
+%
+One such initiative is the \ac{snik}-project and the ontology \ac{snik} contained therein, developed at the Institute for Medical Informatics, Statistics and Epidemiology (IMISE) of the University of Leipzig.
+\ac{snik} contains and provides concentrated knowledge from various sources and thus allows efficient access to technical terms, as well as to roles and their functions and interconnected dependencies in healthcare institutions.
+%
+\textit{Efficient and reliable access} to knowledge is of significant relevance in educational and research scenarios, such as preparation for exams or academic discussions.
+Therefore, the ability to process and retrieve relevant knowledge through available applications quickly and intuitively must be complemented by a reproducible, uniform and comparable evaluation of the results of such applications.
+%
+Large Language Models, such as GPT-4 (ChatGPT), are recent advancements in the field of artificial intelligence.
+They are able to analyse and process large amounts of information and data in order to then, among other things, provide insight into the information and knowledge contained therein based on user queries.
+%
+The resulting possibilities are transformative for how we learn, research, and communicate knowledge.
+%
+Providing the opportunity to overcome challenges like complex contextual relationships within literature, while enabling intuitive access without time restrictions to knowledge to everyone.
+%
+To ensure that these possibilities for knowledge retrieval and processing using Large Language Models provide and meet individual requirements, such reliability and efficiency, a structured, repeatable, and reproducible evaluation is necessary. 
+Only through such an assessment can different approaches be objectively compared.
+%
+\section{Problem Statement}\label{sec:problem statement}
+
+For students and practitioners of medical information systems and their management, practical application and further development of existing systems require a deep understanding of the interrelationships and applicability of the concepts presented for specific work environments, such as medical institutions.
+
+The corresponding literature, such as \citet{bb2} in the field of medical informatics, is often extensive, and fragmentation and dispersion of relevant information in multiple sections and chapters often hinders a fast and intuitive retrieval and synthesis of complex information.
+%
+Identifying relevant information for specific and individual problems and demands requires students and practitioners to read large parts of a book to fully grasp individual concepts and their relationships to other topics manually.
+%
+For example, if a student needs a clear definition of a role in hospital management and the additional functions and responsibilities associated with this role, relevant information is often mentioned and explained in various sections of \citet{bb2}.
+%
+It is therefore difficult for students and practitioners to acquire reliable knowledge from \citet{bb2} quickly, intuitively and completely at any time.
+%
+Considerable advances, as mentioned in \cref{sec:motivation}, have been achieved in the development of methodologies for knowledge retrieval and processing in medical informatics. 
+%
+At the same time, the retrieved information and knowledge is still either factually incomplete or not aligned with the original source ~\citep[cf.]{Paul_Keller}, or does not provide a coherent, well-structured and, above all, automatically generated explanation of the requested concept, fact or context ~\citep[cf.]{snikquiz}, \citep[cf.]{hannesbell}.
+%
+Large language models with the capability to receive huge context inputs, such as whole books, within the user query, and far more comprehensive analytical and reasoning abilities are significant advancements in artificial intelligence and information retrieval technologies.
+At the same time, the practical implementation of these advanced language models in an educational or scientific environment is primarily constrained by their limited accessibility and thus individual usability and applicability.
+Consequently, the limited availability of advanced language models for the individual application and implementation of these is a clear resource constraint.
+%
+When using \ac{llm} to retrieve knowledge from \citet{bb2}, an automatic, objective and repeatable evaluation and comparison of the generated results with a benchmark is required.
+However, this is not available to resource-constrained users, such as students and practitioners.
+%
+Key problem:
+\begin{itemize}
+\item \textbf{Problem 1:}\ac{llm}-based knowledge retrieval for \citet{bb2} lacks a standardized and reproducible evaluation, hindering objective assessment and comparison of its capabilities.
+\end{itemize}
+
+  %\item \textbf{Problem 2:} Fragmentation of knowledge still makes it difficult for students to intuitively and effectively extract coherent and relevant information from \citet{bb2}.
+%\end{itemize}
+%
+Addressing these challenges is essential for enhancing the accessibility and utility of domain-specific knowledge, ultimately supporting both learning and research activities.
+%
+\section{Motivation}\label{sec:motivation}
+ 
+Previous projects in the context of medical informatics, such as the \ac{snik} ontology, solved crucial aspects of knowledge extraction that are relevant to these demands.
+Through the development of \ac{snik}, knowledge from sources on health information systems and their management (HIM), e.g., \citet{bb2}, has been accumulated, processed and transformed into a machine-accessible, networked resource.
+
+\citet{hannesbell, hannesbell_skill, qanswer} exemplify through practical applications the considerable possibilities of \ac{snik} for more intuitive knowledge retrieval but are limited when processing complex queries, cross-linked information scattered across sections and the automatic generation of answers that meet individual requirements.
+%
+To further address these limitations and the fragmentation of domain-specific knowledge in \cite{bb2}, advanced \ac{llm} with the ability to process quiries containing entire chapters or books at once, promise more intuitive, on-demand access to complex information.
+Individually fine-tuning an open-source \ac{llm}, such as Llama-2, has demonstrated improved performance over untrained versions.
+However, still showing significant performance differences compared to more powerful language models, such as OpenAI's GPT-4.
+In conclusion, \citep{Paul_Keller} suggests that more capable language models should be used to improve and overcome these deficiencies in knowledge extraction and processing.
+Furthermore, the results of \citet{Paul_Keller} provide a comparable benchmark to make current and subsequent approaches to the application of \ac{llm} for knowledge extraction from \citet{bb2} objectively comparable for users.
+Continuous adaptation and advancements of \ac{llm} in knowledge retrieval contribute to overcome the problem of intuitively and quickly extracting fragmented knowledge and providing an automatically generated explanation of the requested concept, fact or context with scientific and factual reliability.
+Thus, the key challenge is to automatically and systematically evaluate \ac{llm}-based knowledge retrieval approaches for \citet{bb2} as a knowledge base to allow objective comparison of different retrieval methods.
+This evaluation serves as the foundation for understanding how these approaches can be leveraged to provide accurate, intuitive, and reliable access to domain-specific knowledge.
+%
+
+\section{Goals}\label{sec:goals}
+The following goals of this work are assigned to the problems shown in \cref{sec:problem statement}.
+\begin{itemize}
+  \item goal G1\label{def:goal 1}:\\
+    A reproducible, open-source application based on selected language models for automatic, efficient and intuitive knowledge extraction from \citet{bb2} and automatic evaluation of the generated results.
+    The application evaluates the results provided by the selected \ac{llm} in comparison to \citet{Paul_Keller} as a benchmark.
+    The application has to be accessible and executable with limited resources and available at any time.
+   \item goal G2\label{def:goal 2}:\\
+    Automatic answering by the application of questions about information systems in healthcare and their management using \citet{bb2} as a knowledge base.
+  \item goal G3\label{def:goal 3}:\\
+   Solving a sample exam of the module \enquote{Architecture of Information Systems in Healthcare}\footnote{\raggedright{}a module of the Master's program in Medical Informatics at the University of Leipzig, which is based on \citet{bb2}} with the help of large language models.
+   \item goal G4\label{def:goal 4}:\\
+   A Comparable evaluation of the results provided by the \ac{llm} used in the application based on an assessment by experts and metrics used in \citet{Paul_Keller}.
+   During the evaluation and comparison, the results of \citet{Paul_Keller} are referenced as a benchmark.
+   
+\end{itemize}
+\section{Task}
+\begin{itemize}
+  \item Tasks for Goal G1
+        \begin{itemize}
+          \item Task A1.1:\label{task:1_1_llm_comparison}\\
+            Current language models must be compared and selected based on an analysis of their availability and accessibility.
+            Within the scope of this work, no claim of completeness can be made regarding these models.
+          \item Task A1.2:\label{task:1_2_reproducible}\\
+            Setup an open-source application that is reproducible and executable by resource-constrained users.
+          \item Task A1.3:\label{task:1_3_answer_generation_llm}\\
+            Enable automatic generation of answers via selected \ac{llm} to predefined question from \citet{Paul_Keller}.  
+          \item Task A1.4:\label{task:1_4_automatic_eval}\\
+            Enable automatic evaluation of the generated answers due to the predefined criteria from \citet{Paul_Keller}.
+          \item Task A1.5:\label{task:1_5_intuitive_comparison}\\
+            Enable an intuitive comparison of the selected \ac{llm} to each other and the benchmark.
+        \end{itemize}
+  \item Task for goal G2
+        \begin{itemize}
+            \item Task A2.1:\\
+            The selected language models integrated in the application are then used to automatically answer the same questions \citet{Paul_Keller} used, regarding \citet{bb2}.
+            This means that the understanding of the question, as well as the evaluation and retrieval of important knowledge from \citet{bb2} is carried out solely through the language model.
+            \item Task A2.2:\\
+            Processing of the generated answers for further evaluation.
+        \end{itemize}
+ \item Task for target G3
+        \begin{itemize}
+        \item Task A3.1:\label{task:3_1_exam}\\
+            Automatically solving the exam with the application.
+        \item Task A3.2:\label{task:3_2_processing_results}\\
+            Processing of the generated results for further evaluation.
+        \end{itemize}
+ \item Tasks for target G4
+    \begin{itemize}
+         \item Task A4.1: 
+            Automatically evaluate the generated answers of the language models integrated in the application in response to the questions according to the same criteria as in \citet{Paul_Keller}.   
+          \item Task A4.2:
+          Evaluation of the test answers generated by the \ac{llm}
+          The evaluation of the  must be carried out by experts and is assessed using the sample solution.  
+          \item Task A4.3:
+            Provide an intuitive comparison of the automatic evaluations and the expert evaluation.
+            A comparison between the models is provided, as well as a comparison between the models and the results of \citet{Paul_Keller} as a benchmark.
+            This allows a statement to be made about the possible use of these language models in an academic and scientific environment.
+        \end{itemize}
+\end{itemize}
+
+
+
+\section{Structure of the thesis}

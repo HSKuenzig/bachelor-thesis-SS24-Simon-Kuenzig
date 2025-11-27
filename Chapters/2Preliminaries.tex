@@ -1,0 +1,584 @@
+%*****************************************
+\chapter{Preliminaries}\label{ch:preliminaries}
+%*****************************************
+
+This chapter provides the foundational terms and concepts in order to understand the goals and objectives of this thesis.
+%
+The content is structured as follows: \todo{Will be provided when chapter is finished}
+%
+\section{Natural Language Processing (NLP) - Introduction}
+\begin{definition}
+    \ac{nlp} is a subfield of artificial intelligence that addresses the interaction between human language and machines.
+    The goal of \ac{nlp} is to enable computer systems to process, interpret, and generate natural language in a meaningful and contextually appropriate way. 
+\end{definition}
+%
+Its importance for current research and application has increased significantly, particularly with the development of powerful language models that can accomplish complex linguistic tasks.
+Central to the field are tasks such as question answering, summarisation, named entity recognition, and machine translation, all of which necessitate a nuanced understanding of both syntax and semantics.
+The complexity of natural language, which is based on its ambiguity, variability and context dependency, presents computer systems with a variety of challenges.
+Words and phrases often have multiple meanings that can only be grasped and resolved by the surrounding text or situational context.
+These challenges have led to the development of increasingly sophisticated architectures, such as the transformer model, which has established itself as the basis for current state-of-the-art \ac{nlp} systems due to its scalability and its ability to model contextual relationships more effectively than previous approaches \citep{vaswani2017attention}.
+%
+\subsection{Tokens and Tokenisation}
+Understanding how natural language is transformed into computationally interpretable representations and processed by a \ac{lm} requires a basic knowledge of tokens and tokenisation.
+This section introduces the concept, relevant tokenisation algorithms and explains their importance in the architecture and functionality of \ac{llm}.
+
+\begin{definition}\label{def:token}
+    In \ac{nlp}, a \textit{token} is a discrete linguistically meaningful subunit of text that serves as input to computational models.
+
+Tokens can represent various linguistic units, including:
+\begin{itemize}
+  \item \textbf{Full words} (e.g., \textit{hospital})
+  \item \textbf{Subwords:} (e.g., \texttt{inter} + \texttt{oper} + \texttt{ability} (interoperability)
+  \item \textbf{Individual characters}, especially in character-level models (e.g., \textit{a,e,i,o,!?})
+\end{itemize}
+\end{definition}
+%
+The way in which text is segmented directly affects the quality and interpretability of the model output because language models process sequences of numerical vectors derived from these tokens.
+Tokens, therefore, form the atomic building blocks for \ac{llm} and are essential to enable structured data processing.
+%
+\subsubsection{The Necessity of Tokenisation}
+
+\begin{definition}
+    \textit{Tokenisation} is the process of converting the initial input text into \textit{tokens}.
+\end{definition}
+%
+\ac{lm} process text in the form of \textbf{token}. 
+The efficient and structured conversion of potentially huge text input into token via the process of \textit{tokenisation} is therefore essential to control memory and computational requirements.
+%
+The division of the raw text into \textit{tokens} is done according to a specific tokenisation algorithm.
+For example, in the case of the \ac{bpe}-algorithm, frequent character sequences are iteratively merged to form subword tokens.
+This allows for efficient handling of out-of-vocabulary (\textit{OOV}), as unfamiliar words can be decomposed into known subwords or, in rare cases, replaced by special unknown tokens, while preserving semantic structure.\\
+\textit{Text Chunking $\rightarrow$ textual Tokens}
+\begin{itemize}
+    \item \textbf{Example (BPE-based tokenisation):}\\
+    Compound form - \enquote{\textit{telemonitoringprocess}}
+    \begin{quote}
+    \texttt{['tele', 'monitor', 'ing', 'process']}
+    \end{quote}
+\end{itemize}
+%
+Without \textit{tokenisation}, \ac{llm} would be unable to recognise word boundaries or semantic subcomponents, especially in morphologically rich or compound-heavy languages.
+Robust \textit{tokenisation} methods ensure that even rare or unseen terms can be correctly and effectively segmented and interpreted.
+%
+\subsection{Tokenisation Algorithms}
+Modern \ac{llm} rely on data-driven tokenisation techniques to handle vast and diverse vocabularies efficiently. 
+Two of the most prominent algorithms are:
+
+\subsubsection{Byte-Pair Encoding (BPE)}
+\begin{definition}
+    \textbf{Byte-Pair Encoding} is a frequency-based compression algorithm adapted for \ac{nlp} by \citet{sennrich2016neural}. 
+\end{definition}
+
+The algorithm begins with creating a character- and byte-level representation of the input text.
+Then, the most frequent pairs of adjacent characters and bytes are iteratively merged into new tokens.
+The process continues until a predefined vocabulary size is reached, resulting in a compress representation of the original text that balances vocabulary compactness and semantic expressiveness.\\
+%
+\ac{bpe} is deterministic and scalable, making it widely adopted in \textit{Transformer}-based models such as GPT-2 and GPT-3.
+It efficiently reduces the number of unknown tokens while avoiding an unmanageably large vocabulary.
+
+\subsubsection{WordPiece}
+\begin{definition}
+    \textbf{WordPiece} is a subword tokenisation algorithm developed by \textit{Google}, which selects merges based on likelihood maximisation rather than frequency, and was popularised through its use in \ac{bert} \citep{devlin2019bert}.
+\end{definition}
+\textit{WordPiece} was originally developed for machine translation tasks at \textit{Google} and later popularised by the \ac{bert} model \citep{devlin2019bert}.
+Similarly to \ac{bpe}, \textit{WordPiece} creates subword units, but selects merge operations based on likelihood maximisation rather than simple frequency.
+\textit{WordPiece} ensures that commonly occurring word fragments and roots are retained, improving both model generalisation and semantic understanding.
+
+\subsection{Importance of Consistent Tokenisation in Large Language Models}
+Consistent tokenisation is essential to ensure that the input to the \ac{lm} is standardises and can thus be processed reliably and repeatably.
+Since transformer-based models rely on token-level embeddings, inconsistencies in the segmentation from text to tokens can lead to significantly different results, even if the underlying input text remains unchanged.
+
+This is particularly relevant for:
+\begin{itemize}
+    \item Reproducible benchmarking, as pursued in this thesis
+    \item objective model comparison, when evaluating multiple \ac{llm} or configurations
+    \item Resource efficiency, since longer token sequences incur greater memory and computational costs
+\end{itemize}
+
+In practice, an input that results in 120 tokens for one model may be split into 180 tokens by another model based on differences in tokenisation.
+This variation affects latency, inference cost, and model comprehension, especially in length-sensitive architectures with fixed \textit{input windows}.
+%
+
+\subsubsection{Predefined Vocabulary and Token-to-ID Mapping}
+
+\begin{definition}
+    A \textbf{predefined vocabulary} is a finite list of textual tokens established during the tokeniser's construction, typically before model training.
+    It may include full words, frequent subwords, punctuation marks, and domain-specific terminology
+\end{definition}
+
+Each token is assigned a unique integer identifier (token ID), enabling the transformation of natural language input into numerical form.
+In \ac{lm}, such as \textit{GPT} and \textit{BERT} using static tokenisation algorithms like \textit{BPE} or \textit{Wordpiece}, this vocabulary remains unchanged during inference, ensuring consistency between training and follow-up application.
+%
+The composition of this vocabulary depends on the applied tokenisation algorithm.
+For example, tokens such as \enquote{inter}, \enquote{oper}, and \enquote{ability} may represent common subword components, while \enquote{hospital} and \enquote{systems} could be preserved as individual tokens.
+%
+Vocabulary sizes typically range between $10,000$ and $50,000$ entries, balancing coverage and computational efficiency.
+%
+Each \textit{token ID} serves as an index in the model embedding matrix, which stores the corresponding high-dimensional vector representations.
+This mapping is foundational for \textit{Transformer}-based architectures, allowing them to convert human language into a mathematically machine-processable format.
+
+\section{Embeddings}\label{sec:embeddings}
+
+\subsection{Encoding}\label{sec:encoding}
+
+\begin{definition}
+    \textbf{Encoding} is the conversion of \textit{token} into numerical identifiers.
+\end{definition}
+
+During \textbf{Encoding} each textual token is mapped to a unique integer identifier (\textit{ID}) using a predefined vocabulary.
+A \textit{predefined vocabulary} consists of a finite list of tokens that are known to the language model and are introduced pre-training.
+In this list, which serves as a search table for mapping between textual units and numerical representation, each token is assigned a unique numerical \textit{ID}.\\
+
+Numerical Encoding $\rightarrow$ Token IDs
+
+\begin{center}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{>{\ttfamily}l c >{\ttfamily}l}
+\textbf{Token} & $\Rightarrow$ & \textbf{Token ID} \\
+\hline
+tele        & $\Rightarrow$ & 1021 \\
+monitor         & $\Rightarrow$ & 2044 \\
+ing      & $\Rightarrow$ & 3090 \\
+process           & $\Rightarrow$ & 89 \\
+\end{tabular}
+\end{center}
+
+These \textit{IDs} serve as input to the model’s \textit{embedding layer}.\\
+In \ac{nlp}, \textit{embeddings} serve as the essential bridge between symbolic representations of language, such as \textit{tokens}, and the numerical input required by machine learning models.
+These vector-based representations encode both semantic and syntactic information, allowing models to capture relationships between words and contextual nuances in language.
+In the context of \textit{Transformer}-based architectures and \ac{rag}, embeddings are fundamental to understanding meaning, managing context, and enabling attention-based processing over long sequences.
+
+\subsection{Semantic Embeddings}
+
+\begin{definition}\label{def:semantic-embeddings}
+\textbf{Semantic embeddings} are dense vector representations of individual \textit{tokens} (e.g., words, subwords) that encode syntactic and semantic relationships based on distributional properties of language~\citep{Mikolov2013EfficientEO, pennington2014glove}.
+\end{definition}
+
+\subsubsection{Static Semantic Embeddings}
+
+In earlier neural models, such as \textit{Word2Vec}~\citep{Mikolov2013EfficientEO} and \textit{GloVe}~\citep{pennington2014glove}, \textit{embeddings} are learned by predicting word co-occurrence patterns.
+These static \textit{embeddings} assign a single vector to each word, independent of linguistic context, which limits their ability to disambiguate polysemous terms (e.g., \enquote{bank} as a financial institution versus a \enquote{riverbank}).
+
+\subsubsection{Contextual Semantic Embeddings}
+
+\textit{Transformer}-based models overcome this limitation with \textit{contextual embeddings}, where each \textit{token}'s \textit{embedding} dynamically reflects its meaning based on the surrounding text.
+These contextualised vectors are generated dynamically as the model processes input sequences through \textit{self-attention} layers.
+For example, in a sentence from medical literature, the \textit{token} \textit{admission} may yield different embeddings when used in the context of \enquote{hospital admission} compared to \enquote{patient admission of symptoms}.
+
+\subsection{Positional Embeddings}
+
+\subsubsection{Necessity of Positional Information}
+
+Unlike recurrent or convolutional models, \textit{Transformer} architectures lack an inherent mechanism to capture the sequential order of tokens. 
+Attention mechanisms operate in parallel, all input tokens are processed simultaneously, making it impossible for \ac{lm} to recognise word order unless it is explicitly encoded.
+Therefore, \textit{Transformers} require an additional mechanism to inject sequence information into the \ac{lm}’s input.
+This is achieved by using \textit{positional embeddings}.
+
+\begin{definition}
+\textbf{Positional embeddings} are vector representations added to or concatenated with \textit{token} embeddings to encode the position of a \textit{token} in a sequence, enabling order-aware processing in models based on self-attention~\citep{vaswani2017attention}.
+\end{definition}
+
+\subsubsection{Types of Positional Embeddings}
+
+There are two primary types of \textit{positional embeddings}:
+\begin{itemize}
+    \item \textbf{Absolute positional embeddings:} Each position in the sequence is assigned a unique, fixed vector, often derived from sinusoidal functions as introduced by \citet{vaswani2017attention}.
+    \item \textbf{Relative positional embeddings:} These embeddings encode the relative distance between \textit{tokens}, rather than their absolute positions. This formulation has been shown to improve generalisation across sequence lengths~\citep{shaw2018self, dai2019transformer}.
+\end{itemize}
+
+Relative positional representations allow the \ac{lm} to focus on inter-token relations and dependencies without being limited by fixed input lengths, enhancing traditional \textit{Transformers} by generalising to longer or variable-length inputs, which makes them particularly useful in \ac{lm} designed for long-context retrieval.
+
+\subsection{Embeddings in Large-Context Models and RAG Systems}
+
+In large-context models, such as \textit{GPT-4} or \textit{Claude} and in \ac{rag} systems, \textit{embeddings} are essential to manage and attend to extended sequences as it is the fundamental mechanism through which semantic meaning and positional context are encoded.
+It allows \ac{lm} to process and reason over large inputs and their content with coherence and relevance.
+These \ac{lm} rely on both \textit{token} and \textit{positional embeddings} to maintain and ensure semantic precision and provide contextual relevance over potentially thousands of tokens.
+
+In \ac{rag}, embeddings are also used for information retrieval, where a query embedding is compared with pre-computed document embeddings, for example, when the relevant document is stored in a \textit{vector database}, using techniques such as vector similarity search to select the most relevant context for generation.
+The quality and structure of these embeddings have a direct impact on the retrieval accuracy and the quality of the subsequent generation~\citep{Lewis2020}.
+%
+\section{Sequence Input and Chunking}\label{sec:context_windows_chunking}
+
+\subsection{Context Windows and Maximum Token Limits}
+
+\textit{Transformer}-based \ac{llm} operate on fixed-length \textit{token} sequences, which are constrained by a predefined \textit{context window}.
+
+\begin{definition}
+A \textbf{context window} refers to the maximum number of input \textit{tokens} a \textit{Transformer} model can attend to at any point in time.
+In autoregressive models, this includes both the input prompt and all tokens generated during the inference process.
+\end{definition}
+
+The \textit{BERT-base} model supports $512$ \textit{tokens}~\citep{devlin2019bert}, OpenAI's older \textit{GPT-3} is limited to $2048$ \textit{tokens}~\citep{gpt3} during a single inference pass.
+Current models, such as \textit{GPT-4} and Anthropics \textit{Claude 3} are capable of handling $32,000$ to $200,000$ tokens~\citep{gpt4, anthropic2024claude3} allowing for significantly larger \textit{context windows}.
+Despite such advances, limitations persist due to computational complexity, memory requirements, and model degradation at extreme lengths~\citep{liu2024lostmiddle}.
+
+\subsection{The Need for Chunking}\label{subsec:need_for_chunking}
+%
+The size of the context windows has been constantly extended through iterations of development.
+However, the demand for even larger inputs does not match the available options.
+Therefore, if the input sequences exceed the context window, the input must be modified.
+\begin{definition}
+\textbf{Chunking} is the process of dividing longer textual sequences into smaller, contextually meaningful segments (\textit{chunks}) that fit within a \ac{lm}'s context window.
+\end{definition}
+The quality and effectiveness of the \textit{chunking} algorithms has a significant impact on information and knowledge extraction, as well as on the generated output of the respective language model.
+Depending on the chunking process, truncated information, loss of context, or semantic drift may occur and are particularly problematic in high-stakes domains such as medical texts.
+
+\subsection{Chunking Techniques}\label{subsec:chunking_technique}
+
+Several chunking strategies are used to structure input sequences appropriately:
+%
+\begin{itemize}
+    \item \textbf{Fixed-size chunking:} Text is divided into equal-sized chunks (e.g., $512$ tokens).
+    This approach is simple but may split sentences or logical units, therefore disrupting and loosing the coherent contextual meaning.
+    
+    \item \textbf{Sliding window:} Overlapping chunks are created by shifting a fixed window across the input with some adaptable overlap (e.g., $512$-token chunks with $128$-token overlap).
+    In this process, each token attends to a fixed-size window of tokens around it and with that stacking multiple layers of overlapping attention allows for a large receptive field.
+    This approach helps maintain contextual continuity across boundaries~\citep{beltagy2020longformerlongdocumenttransformer}.
+    \item \textbf{Sentence- or paragraph-based chunking:} Input is segmented based on natural linguistic units, preserving semantic integrity. 
+    Although more coherent, by creating chunks with inconsistent size due to varying sentence- and paragraph length, this method may lead to uneven token distribution and inefficient memory use.
+\end{itemize}
+
+\subsection{Trade-offs in Context Length and Performance}
+
+There exists a trade-off between longer context windows and model performance. 
+Longer sequences allow more complete and coherent context.
+At the same time, they come with increased memory usage, computational cost, and potential attention diffusion~\citep{liu2024lostmiddle}.
+Models may struggle to retain or prioritise relevant information across extended inputs, especially without mechanisms such as \textit{recurrence} or \textit{global attention}.
+
+\subsection{Recurrence and Global Attention in Transformer Architectures}
+
+Transformer-based models process sequences in parallel, which makes them efficient to compute and process, but poses challenges in preserving dependencies and context over long distances, especially in expanded input contexts.
+To address this limitation, architectural extensions such as \textit{recurrence} and \textit{global attention} have been proposed to improve information storage and prioritisation.
+
+\subsubsection{Recurrence}
+
+\begin{definition} \textbf{Recurrence} in Transformers refers to a mechanism where representations from previous input segments (e.g., past chunks or text sequences) are recurrently fed into the \ac{lm} to preserve historical context. \end{definition}
+
+This technique allows the model to incorporate information from already processed segments without reprocessing the entire sequence. 
+ %introduced segment-level recurrence by caching hidden states from previous segments, enabling learning across longer contexts without compromising computational efficiency.
+This recurrent memory leads to better modelling of temporal dependencies and improves performance in long-form text generation and reasoning.
+
+\subsubsection{Global Attention}
+
+\begin{definition} \textbf{Global attention} is a modification of the self-attention mechanism that designates a subset of tokens, predominantly structurally or semantically important \textit{token} in form a internal representation, to attend to all other tokens in the input sequence, while also allowing all \textit{tokens} to attend to these designated internal representations.
+\end{definition}
+
+This approach, as implemented in models such as \textit{Longformer}~\citep{beltagy2020longformerlongdocumenttransformer}, combines limited, local attention with global attention to maintain efficiency and thus improve the model's ability to focus on critical tokens (e.g., titles, entity names or section headings). 
+By incorporating these global attention patterns, relevant information can be obtained across long inputs without incurring quadratic computational costs.
+%
+Recurrence and global attention mitigate the challenge of information dilution across lengthy sequences and support more robust and semantically aligned language understanding in long-context settings.
+Furthermore, longer input sequences can exacerbate tokenisation inconsistencies and positional encoding limitations, which impact downstream tasks such as summarisation, retrieval-augmented generation (\ac{rag}), or \ac{qa}.
+
+\begin{quote}
+\small
+\textit{“Beyond a certain length, longer isn’t always better.”} – \citet{liu2024lostmiddle}
+\end{quote}
+
+Hence, careful balancing of input segmentation, semantic coherence, and computational constraints is essential when designing systems for long-context retrieval and generation.
+\section{Language Models}\label{sec:language-models}
+%
+\begin{definition}\label{def:language-models}
+    \textbf{Language Models} are machine learning models designed to understand and generate human language.
+\end{definition}
+Language models are built on artificial intelligence techniques and are typically trained using machine learning algorithms to understand and generate human language. 
+They have a wide range of applications, including translation, text generation, speech recognition, and text classification.
+
+\subsection{Transformer}\label{transformer}
+%
+\begin{definition}\label{def:transformer}
+    A \textbf{Transformer} is a neural network architecture introduced by \citet{vaswani2017attention} that uses attention mechanisms to model dependencies within sequences of text.
+\end{definition}
+
+Unlike earlier approaches based on recurrent or convolutional structures, the \textit{transformer} processes all elements of the input text simultaneously, avoiding the need for sequential computation.
+This parallelism, combined with the use of self-attention, allows the model to capture both local and long-range dependencies between textual elements more effectively. 
+Due to its scalability and performance, the \textit{transformer} architecture forms the foundation of many state-of-the-art large language models such as \textit{BERT}, \textit{GPT} and \textit{T5} and are typically trained on extensive data sets to understand statistical patterns within training data.
+\section{Neural Networks}\label{sec:neural-networks}
+
+To understand the architecture of the transformer, it is necessary to know the basics of neural networks.
+Neural networks were first described by \citet{neuronal_networks_first} in 1943 and have undergone many changes and improvements since then.
+A description of the basic techniques can be found in \citet{neuronale-netze}.
+
+\subsection{Architecture}
+
+Neural networks mimic the functioning of the human brain with the help of mathematical equations.
+A network consists of a number of neurons that have both input and output connections to other neurons.
+Neurons have the property of sending an impulse from certain inputs to the outputs when a threshold value is exceeded.
+In contrast to the brain, however, normal neural networks have a more logical structure.
+The neurons are arranged in layers, with the first layer being the input layer with the input neurons $E_N$ and the last layer being the output layer with the output neurons $A_N$.
+The layers between these two boundaries are called hidden layers with neurons $H^L_N$.
+\todo{Add example}
+%
+\subsection{Encoder and Decoder in Transformer Models}
+
+The original \textit{Transformer} architecture, introduced by \citet{vaswani2017attention}, is composed of two principal components: the \textbf{encoder} model and the \textbf{decoder} model.
+These components build a bidirectional architecture to process input sequences and generate appropriate outputs.
+
+\begin{itemize}
+    \item \textbf{Encoder:} The encoder consists of a stack of identical layers that process the input sequence in parallel. 
+    Each layer applies \textit{self-attention} mechanisms and \textit{feed-forward} networks to build contextualised representations of input \textit{token}\ref{def:token}.
+    The encoder captures structural and semantic relationships between tokens and outputs them as compact representation in the form of a context vector.
+%
+    \item \textbf{Decoder:} The decoder is also composed of a stack of layers, but in addition to the self-attention and feedforward sublayers, it includes a cross-attention mechanism. 
+    This mechanism allows the decoder to attend to the encoder's output, integrating information from the input sequence to generate the target output sequentially.
+\end{itemize}
+
+The foundational model, presented with encoder-decoder architecture, was particularly idealised for sequence-to-sequence tasks, such as translating languages~\citep{vaswani2017attention}.
+However, many later models have adapted and repurposed it for more specific applications. 
+For example, \textit{ERT} uses only the encoder to generate deep bidirectional representative representations of the captured context, making it ideal for language comprehension tasks such as text classification and knowledge extraction.
+
+In contrast, models like \textit{GPT} predominantly build upon the decoder structure~\citep{brown2020gpt3}.
+Their strength lies in sequentially generating text, predicting subsequent \textit{tokens} based on preceding ones, which is referred to as \textit{autoregression}.
+The inherent flexibility and potential of the original transformer architecture is demonstrated by the continuous adaptation and expansion of the model to address a variety of \ac{nlp} problems~\citep{raffel2020exploring}.
+
+A visualisation of the original transformer architecture is provided in \todo{add visualisation}%\cref{bild:transformer}.
+\subsection{Functionality of Transformer Models}
+%
+\textit{Transformer}-based models process sequences of initial vector embeddings from input tokens by transforming each token into a contextual representation through stacked layers that incorporate two main computational subprocesses: \textit{self-attention} and a \textit{position-specific feedforward neural network}~\citep{vaswani2017attention}.
+The initial \textit{tokens} are progressively refined by infusing each vector representation of the token with contextual information from the entire input sequence.
+The fundamental operation of a \textit{transformer} model can be divided into two phases: \textbf{training} period and \textbf{inference} stage. 
+During \textbf{training}, the internal model parameters are adjusted and optimised to minimise the prediction error.
+The process is guided by exposure to a large amount of training data (e.g, GPT-3 training corpus $\sim300$ billion \textit{token}~\citep{brown2020gpt3}.
+\begin{definition}\label{def:training}
+    \textbf{Training} is the essential learning period in which a model iteratively adjusts its internal \textit{learnable parameters}~\ref{def:learnable-parameters}) based on exposure to a large dataset, referred to as the \textit{training corpus}.
+\end{definition}
+The primary goal of the training process is to minimise a measure of prediction error, assessed by comparing the model's generated outputs against the known correct values in the training data.
+Thereby improving the model's ability to generalise to new, unseen data.\\
+%
+\begin{definition}\label{def:inference}
+\textbf{Inference} describes the application phase of a finalised trained model to process a new input and compute output based on previously learned parameters.
+\end{definition}
+
+At the point of inference, a textual input sequence is initially tokenised and embedded.
+The embedded representations of the initial sequence are then processed through the network layers.
+Inside each layer, the model applies multi-head self-attention to assess how much each token should influence the vectorised representation of every other token in the sequence.
+Simultaneously, a feedforward network applies further computations independently at each token's position.
+This comprehensive process inside each layer allows the model to capture hierarchical and long-range dependencies within the input.
+%
+\begin{definition}\label{def:learnable-parameters}
+\textbf{Learnable parameters} are internal model variables that are adjusted during \textit{training} to minimise a measure of prediction error.
+\end{definition}
+%
+\paragraph{Notable Large Language Models} Building on the foundation of the transformer, various prominent \ac{llm}s have emerged, each bringing unique features and contributions to the field. 
+\textbf{BERT} (Bidirectional Encoder Representations from Transformers), developed by \textit{Google}, introduced bidirectional training, allowing the model to consider the context on the left and right for each word. 
+This bidirectional approach significantly improved performance on numerous \ac{nlp} tasks, including answering questions and classification of texts \citep{devlin2019bert}. 
+
+Another influential model, \textit{GPT-4 (Generative Pre-trained Transformer 4)} by OpenAI, further expanded on the capabilities of transformers by an estimated around 1 trillion parameter architecture. 
+\textit{GPT-4} demonstrated few-shot learning capabilities, allowing it to perform well on new tasks with minimal fine-tuning, thus broadening its applicability in various domains \citep{brown2020gpt3}. 
+
+Additionally, \textit{T5 (Text-To-Text Transfer Transformer)}, created by \textit{Google}, approached \ac{nlp} tasks through a unified text-to-text framework, in which both inputs and outputs are treated as text. This framework allowed T5 to be highly versatile, performing tasks such as translation, summarisation, and even sentiment analysis within a single model \citep{raffel2020t5}. 
+Each of these models represents a key milestone in the evolution of \ac{llm} architectures, demonstrating how advances in transformer-based designs have expanded the practical applications of artificial intelligence in diverse fields.
+\section{Information Retrieval}\label{sec:information retrieval}
+
+\begin{definition}\label{def:information retrieval}
+Information retrieval is the process of identifying, retrieving and ranking relevant information from resources in response to a previous query. 
+\end{definition}
+%
+The traditional \ac{ir} was based on a single-stage term-based system, which was first applied in scientific research. 
+The matching phrases and terms from the source were searched according to the search term and generated as direct output.
+However, the quality of the output suffered from simple linguistic hurdles, e.g., polysemy, synonymy, and lexical gaps, and was therefore limited in their effectiveness. 
+The addition of ranking mechanisms led to more accurate results, as ranking is carried out in a second stage. 
+The matching terms and retrieved documents are pre-sorted by ranking algorithms, e.g., BM25, on the basis of a relevance score. 
+Over time, advanced ranking and sorting algorithms have been integrated to further improve the results. \citep{hambardeIR2023}
+Starting with simple text retrieval, multi-modal retrieval is now possible.
+%
+\subsection{Question Answering}\label{subsec:question answering}
+
+\begin{definition}
+\ac{qa} is an area within \ac{nlp} and \ac{ir} that focusses on the development of systems in which questions posed by the user in natural language are to be answered. 
+The entered question is first analysed to extract the intention of the query. 
+Based on this, relevant information is retrieved from a source, further processed using \ac{ir} technologies and then combined into a coherent answer \citep{Manning2008}.
+\end{definition}
+%
+
+\section{Databases}\label{sec:databases}
+
+\begin{definition}\label{def:database}
+    A \textbf{database} is a collection of related data\citep{limited2010introduction}. 
+    It is used and designed to efficiently handle data storage, retrieval, and management on computer systems. 
+    It contains and arranges data in a manner that makes it accessible to a variety of applications.
+\end{definition}
+\subsection{Unstructured data}\label{sec:unstructured-data}
+
+\begin{definition}\label{def:unstructured-data}
+    \textbf{Unstructured data} refers to information that does not have a predefined data model or organised structure, making it more challenging to store, search and analyse using traditional database systems.
+\end{definition}
+Unstructured data includes formats such as text documents, images, audio, and video files, where the data is not organised in a tabular or relational structure. 
+Due to its lack of a fixed schema, unstructured data often requires specialised processing techniques, such as \ac{nlp} or machine learning, to extract meaningful information and be able to process those further.
+Databases are essential tools for the storage and management of large volumes of information. 
+Their structures vary significantly, with relational databases that organise data in table formats, while \ac{nosql} databases offer more adaptable frameworks suited to diverse data types. 
+The way data are stored is influenced by both the specific demands of the application and the architectural design of the chosen database model.
+
+\subsection{Database Management System}\label{sec:Database Management System}
+
+\begin{definition}\label{def:Database Management System}
+    A \ac{dbms}  is a software system designed to create a database and subsequently execute operations that allow the definition, manipulation, and efficient retrieval of the stored data. 
+    At the same time, database security and potential recovery must be ensured during a failure or unforeseen process sequence. \citep{limited2010introduction}
+\end{definition}
+A database and \ac{dbms} together are defined as a database system.  
+
+\subsection{Database Architectures}\label{sec:database-architectures}
+
+Databases can be classified into different architectures, including relational and \ac{nosql} databases. 
+Relational databases use a table-based structure with a predefined schema. 
+They are widely used for applications that require consistency and follow a clear generic pattern, such as \ac{sql}-based systems.
+\ac{nosql} databases offer more flexibility and can store unstructured data. 
+For example, graph databases are designed to efficiently model and navigate complex networks of interconnected data, making them ideal for applications that require understanding relationships, such as social networks, recommendation systems, and knowledge graphs.
+
+\section{Databases for Retrieval-Augmented Generation}\label{sec:databases-rag}
+
+\subsection{Relational Databases}\label{sec:relational-databases}
+
+Relational databases organise data into tables with predefined\\ schemas, allowing for structured data storage. 
+
+\subsection{NoSQL Databases}\label{sec:nosql-databases}
+
+\ac{nosql} databases provide a more flexible approach to data storage, supporting various data structures such as documents, key-value pairs, and graphs. 
+They are particularly suitable for handling unstructured or semi-structured data and are frequently used in \ac{rag} implementations for efficient storage and retrieval.
+
+\subsection{Document Stores}\label{sec:document-stores}
+
+Document-oriented databases, like MongoDB and Elasticsearch, are optimised for storing and querying large amounts of unstructured text data. 
+These databases allow efficient indexing and retrieval of documents, making them highly suitable for \ac{rag}, where retrieving relevant text passages is a priority.
+
+\subsection{Graph Databases}\label{sec:graph-databases}
+
+Graph databases are designed to store and manage data as a collection of nodes, representing entities and edges, which capture the relationships between these entities \citep{Robinson2015}. This structure enables efficient handling of highly interconnected data, making graph databases particularly suitable for applications such as social networks, recommendation engines, and knowledge graphs \citep{Angles2008}. In the context of \ac{rag}, graph databases support the retrieval of contextually relevant information by leveraging the natural relationships embedded within the data, thus improving the coherence and accuracy of generated responses. Prominent graph database systems include Neo4j and Amazon Neptune, which are widely used for their scalability and performance in handling large-scale graph-based queries.
+
+\subsection{Vector Databases}\label{sec:vector-databases}
+
+Vector databases are specialised systems designed to store and manage data as high-dimensional vectors, facilitating efficient similarity searches by measuring distances between these vectors. 
+This capability is crucial in applications like \ac{rag}, where embedding-based retrieval methods are used to quickly access semantically relevant documents. 
+Notable examples of vector databases include Pinecone and FAISS, both optimised for large-scale real-time vector retrieval tasks \citep{Johnson2019}.
+
+\subsection{Retrieval Methods}\label{sec:retrieval-methods}
+
+Various retrieval methods are used to extract data or information from a data source, such as databases. Depending on the database architecture and the level of detail of the query, different methods are used, including keyword search, Boolean search, and vector-based similarity search. Each method is suitable for specific data types and query requirements.
+
+\section{Concepts for Data Extraction}\label{sec:data-extraction-concepts}
+
+\subsection{Keyword-Based Search}\label{sec:keyword-search}
+
+Keyword-based search is a fundamental retrieval method that retrieves documents or records containing specific keywords. 
+It offers a simple approach but is often less effective for complex queries where semantic understanding of context is required.
+
+\subsection{Vector-Based Similarity Search}\label{sec:vector-similarity-search}
+Vector-based similarity search retrieves relevant data by comparing text vector embeddings. Embeddings represent the semantic meaning of text, allowing for more accurate retrieval in cases where traditional keyword searches provide inaccurate results.
+
+\subsection{Neural Retrieval Methods}\label{sec:neural-retrieval}
+
+Neural retrieval models, such as \ac{dpr}, use deep learning to learn vector embeddings for queries and documents. These embeddings are used for high-accuracy retrieval, where the model ranks documents based on their semantic relevance to a given query.
+
+\section{Retrieval-Augmented Generation (RAG}\label{sec:rag}
+
+\ac{llm}s have shown significant capabilities but operate based on the knowledge acquired from large data sets during their training phase \ref{def:learnable-parameters}.
+This inherent property means that their internal knowledge base is static and potentially outdated.
+\ac{lm} must be trained iteratively with new and current data to generate up-to-date factual correct answers.
+Missing data can lead to plausible but incorrect answers, which is referred to as \textit{hallucination} and is a major problem in \ac{lm} application.
+Methods, such as \textit{continuous pre-training} on specific corpora, which was investigated in the approach by \citet{Paul_Keller} using the \citet{bb2} textbook, can incorporate domain-specific knowledge.
+This continuous training and fine-tuning requires significant computational resources and carries the risk of degrading the \ac{lm}'s general abilities through \textit{over-adaptation} (learning new data too specifically, limiting generalisation) or \textit{catastrophic forgetting} (losing prior knowledge).
+%
+\ac{rag} presents an alternative architectural strategy specifically designed to address these limitations by dynamically integrating up-to-date and external information and knowledge into the \ac{llm}'s generation process~\citep{Lewis2020}.
+
+\begin{definition}\label{def:rag}
+    \textbf{Retrieval-Augmented Generation} refers to a hybrid approach where a \ac{lm}'s generation process is not only based on the initial prompt but is also conditioned on additional relevant information or knowledge.
+    This additional input is dynamically retrieved from an external knowledge corpus.
+\end{definition}
+
+A \ac{rag} system integrates two key functional units:
+
+\begin{itemize}
+    \item \textbf{The Retriever:} 
+    This unit acts as an information seeker.
+    Given an input query, its task is to search within a designated external knowledge source (e.g., the digital version of \citetitle{bb2}) and identify text passages or data snippets most relevant to the initial user query.
+    The method involves creating a vector embedding (see \cref{sec:embeddings}) of both the query and the external knowledge base to then find relevant information through a vector similarity search.
+    \item \textbf{The Generator:} This is typically a pre-trained generative \ac{llm} (as discussed in \cref{sec:language-models}).
+    Rather than processing the user's query in isolation, using pre-integrated and pre-trained parameters, it receives an augmented input that combines the original query with contextual information provided by the retriever.
+   The task of the generator is to then synthesise these inputs to produce a coherent, relevant, and factually accurate response, using the external knowledge to improve accuracy and specificity beyond the pre-trained internal parameters.
+\end{itemize}
+
+The potential \textbf{benefits of \ac{rag}} include enhanced factual consistency and scope of knowledge in highly specific domains, as well as the ability to provide answers based on current data without additional costly training.
+However, the effectiveness and quality of a \ac{rag} system are fundamentally dependent on the performance of its components: 
+The \textit{retriever} must first provide a relevant and contextually accurate context.
+The \textit{generator} must then integrate this context into its response in a targeted, meaningful and efficient manner and finally generate output corresponding to the initial query.
+As an alternative to resource-intensive continual pre-training, \ac{rag} offers a more flexible and efficient approach to knowledge augmentation, which has been pointed out as a promising direction for future work by \citet{Paul_Keller}.
+
+\section{Interacting with Language Models: Inference}\label{sec:inference}
+
+As explained in \cref{def:inference}, an \ac{lm} applies its learned knowledge in the \textit{inference phase} to perform tasks based on new inputs, usually referred to as \textbf{prompts}.
+
+\subsection{Prompting Techniques}
+The formulation of the input prompt guides the \ac{llm} response generation.
+Key strategies for prompting:
+\begin{enumerate}
+
+    \item \textbf{Zero-shot Prompting:}\label{item:zero-shot} The \ac{lm} receives only the direct query with the included instruction and demands without any additional illustrative examples.
+    Therefore, success relies only on the \ac{lm}'s inherent understanding and instruction-following capabilities developed during \textit{pre-training}.
+    \citet{Paul_Keller} applied the \textit{zero-shot} method to assess the domain-specific knowledge gained by the \textit{Llama 2} model through continual pre-training.
+    \item \textbf{Few-shot Prompting:}\label{item:few-shot} This time the prompt is augmented with a certain number of input-output examples.
+    These examples are intended to show how the task was previously or may be solved in a different scenario or the same, thus demonstrating an exemplary solution path or reasoning pattern.
+This contextual learning can guide the model to more accurate or appropriate responses.
+    \item \textbf{Chain-of-Thought (CoT) Prompting:}\label{item:cot} This more advanced technique requires the model to articulate its thought process step by step in response to the task at hand before providing the final answer.
+This is often done by including examples of such reasoning in the prompt or explicitly instructing the model to \enquote{think step by step}.
+\ac{cot} can improve performance on tasks that require multi-step logic.
+\end{enumerate}
+Effective prompting can sometimes involve adapting the input format to the specific model's characteristics. 
+For example, \citet{Paul_Keller} found it necessary to rephrase direct questions into sentence completions for the base \textit{Llama 2} model.
+
+\subsection{Generation Parameters}
+The process of selecting subsequent tokens during text generation is typically probabilistic (see \cref{def:inference} and can be modulated using several parameters:
+\begin{enumerate}
+    \item \textbf{Temperature:}\label{item:temperature} This parameter scales the probabilities of the next potential tokens.
+    \textit{Lower temperatures}, approaching a \textit{temp} value of $0$ make the selection process more deterministic.
+    The most probable tokens are favoured, thereby leading to more focused, yet potentially more repetitive outputs.
+    \textit{Higher temperatures} increase randomness.
+    Less likely tokens may be selected, which can improve diversity and creativity but the output might suffer from an increased incoherence.
+    \citet{Paul_Keller} utilised a temperature of 0.9 for the evaluations, indicating that some level of variability was accepted.
+    The settings of the \textit{temperature} have a direct effect on the reproducibility and become apparent through non-deterministic, non-comparable results or statically monotonous formulations when generating output multiple times for the same prompt.
+    \item \textbf{Top-k Sampling:}\label{item:top-k} The choice for the next token to be predicted is limited to the top \textit{k} options.
+    \item \textbf{Top-p (Nucleus) Sampling:}\label{item:top-p} This technique selects the next token from the smallest possible set of tokens whose cumulative probability value exceeds a threshold \textit{p}.
+\end{enumerate}
+To ensure reproducibility of the evaluation results, accurate documentation and adjustment of these parameters are important.
+
+\subsection{Access and Deployment of Language Models}
+The method of accessing and using a language model for inference influences accessibility and control in a potential application, as it clearly highlights possibilities and limitations, especially for resource-constrained users.
+\begin{itemize}
+    \item \textbf{API-based Inference:} Through \ac{api}s, language models that are provided and hosted by third-party providers (such as \textit{GPT-4} from \textit{OpenAI}, which \citet{Paul_Keller} referenced as a benchmark) can be accessed.
+This allows the use of high-performance language models, but usually comes with usage costs, privacy considerations, and limited control over the execution environment.
+\item \textbf{Local Inference:} Execution of open-source models (such as the \textit{Llama-2} variants trained and evaluated by \citet{Paul_Keller}) on user-controlled hardware, ranging from single-user computers to institutional computing clusters (such as those used by \citeauthor{Paul_Keller} at the University of Leipzig). 
+This approach offers better control, improves data security and avoids direct costs per use, but is fundamentally associated with indirect costs and resources, such as available computing power (GPU memory, processing speed) and is thus often limited.
+Techniques such as model quantisation, which reduces the numerical precision of model parameters (e.g., to 8-bit or 4-bit integers), can significantly reduce memory and computational requirements for local inference, despite potentially minor performance implications.
+\citet{Paul_Keller} pointed to \textit{$8$-bit} quantisation for inference tasks in certain hardware configurations.
+\end{itemize}
+Developing a resource-efficient application that is suitable for local execution (\cref{def:goal 1}) is a central goal of this work.
+%
+\section{Medical Informatics}\label{sec:medical-informatics}
+
+\section{The SNIK-project}
+\subsection{The SNIK-Ontology}
+The \ac{snik} ontology is a domain ontology developed at the Institute of Medical Informatics, Statistics and Epidemiology (IMISE) at the University of Leipzig.
+An expert interview dealing with \ac{him}, text books on \ac{him} and frameworks were converted to a domain ontology.
+The knowledge of these entities was concentrated and modeled as a \ac{rdf}, while each entity is represented as a sub-ontology within \ac{snik}.
+The sub-ontologies are theoretically independent, but in practical applications content-related relationships between the entities can be extracted.
+
+\subsection{The SNIK-Graph}
+Upon that structure, by the interactive visualisation of the graph, the potential for tuition scenarios was demonstrated\citep{snikgraphposter}.\\
+\enquote{[E]asy access over a multi-view web interface and [visual accessibility to extracted knwoledge, relations and the intertwined content-related connections \ac{snik} provides and supports teaching and learning [applications][\dots]}\citep{sniktec}.
+Hence, it enables \enquote{users to interact with the ontology without installing specialized tools.}
+The work of \citet{snikgraphposter} emphasised the requirement to provide the knowledge within the ontology more intuitively to students and teachers by reducing the prior skills needed to use and interact with the knowledge base, \ac{snik}.\\[1em]
+%
+
+\subsection{The SNIK-Quiz}
+
+\citet{snikquiz} was developed to further simplify and diversify access to the knowledge contained in \ac{snik} for students of medical informatics. 
+\endquote{[It] is designed as a multiple choice quiz with at most four possible answers and published as an open source web application[\dots]}\citep{snikquiz}.
+Students can interact with the application without a background in semantic web technologies and use it with various end devices.
+Direct feedback on the complexity of the questions and their respective category, while using the application, allows for a personalised experience. 
+The results show success as \ac{him} knowledge within \ac{snik} can be extended in an application, processing the knowledge and then semi-automatically generating individualised questions.  
+Although preferentially basic questions referring to singular facts were mainly positively evaluated by users, qualitative feedback on complex questions is mixed.\citep{snikquiz}
+Further integration into courses and evaluation will show the possibilities of the application and possibly highlight its limitations.\\
+%
+\citet{snikquiz} supports the target group of students to understand and learn the knowledge contained in \ac{snik} and thus the basic relationships and structures in the domain-specific area of \ac{him}. 
+In particular, enabling access to a comprehensive knowledge base for resource-restricted target groups, such as students, is an important opportunity in tuition scenarios.\\[1em]
+%
+The \enquote{\ac{snik}[-project] help[´s] health informatics students [to] acquire and practice the terminology of \ac{him}} \citep{sniktec}.
+It shows how domain-specific knowledge can be extracted from literature sources using advanced techniques to allow new access to it obtained in this way.

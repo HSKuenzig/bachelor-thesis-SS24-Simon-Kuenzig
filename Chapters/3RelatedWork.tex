@@ -1,0 +1,104 @@
+%*****************************************
+\chapter{Related work}\label{ch:relatedWork}
+%*****************************************
+
+\section{Large Context Window Models and Their Advancements}\label{sec:large-context}
+
+Recent advances in language model architectures have led to a significant increase in context window sizes, enabling more efficient processing of long and complex input sequences. 
+Previous models were restricted to relatively short token limits, such as the 2,048 tokens of \textit{GPT-3}, which limited the possibilities and thus capabilities due to the limited input.
+The latest iterations of \ac{sota}\ac{llm}s, such as \textit{Gemini 1.5 Pro} and \textit{GPT-4o}, have expanded these capabilities, achieving context windows of $128,000$ tokens, which would already approximately equal \cite{bb2}, and $1{,}000{,}000$ tokens, respectively. 
+%
+Large context windows are a desirable feature in \ac{llm} s, but due to, for example, high fine-tuning costs, the scarcity of long text context windows is limited\citep{ding2024longrope}.
+Therefore, \citet{ding2024longrope} introduced \ac{longrope}, a \ac{rope} extension capable of scaling context windows beyond two million tokens.
+The performance of the models used is maintained in the process, while significantly improving long-text processing efficiency\citep{ding2024longrope}.
+\citet{peng2024yarn}, emphasises that \ac{rope} effectively encodes positional information in transformer-based language models to extend the initial smaller context window. 
+Due to the remaining limitations of \ac{rope} in generalising past the initial context encodings, \citet{peng2024yarn} demonstrates a compute-efficient adaptation for long-context applications.
+Reaching state-of-the-art performances after fine-tuning on less than $\sim0.1\%$ of the original pre-training data significantly reduces the overhead.\citep{peng2024yarn}
+The Fine-tuned models that were fine-tuned during the development and testing of \ac{yarn} have been made available online.
+By making the technology available as open source material, the context window extension has been reproduced using \ac{yarn} with other language models of individual choice to a context length of $128,000$ token \citep{peng2024yarn}.
+This is particularly relevant for \ac{rag} or \ac{qa} setups in resource-constrained environments.
+%
+Similarly, \citet{zhu2024poseefficientcontextwindow} proposed \ac{pose}, a framework optimised for training long-context models with lower computational overhead. 
+\ac{pose}-training decouples train length from target length for efficient context window extension while during the process simulating long inputs using a fixed context window.
+Experimental adaptation shows that \ac{pose} significantly reduces overhead compared to full-length fine-tuning\citep{zhu2024poseefficientcontextwindow}.
+Therefore, possibly allowing implementation of less capable open-source \ac{llm} s with thus extended context windows in projects with small hardware and time capabilities.
+In \citet{kinikogluI2025GPTGemini}, the performance of four of today's most advanced models, \textit{ChatGPT-4o} (San Francisco, CA: OpenAI), \textit{ChatGPT-o1}, Gemini 1.5 Pro (Mountain View, CA: Google LLC) and \textit{Gemini 2.0 Advanced}, on the Turkish Dental Specialist Examination (DUS) for 2020 and 2021 was analyzed.
+All models demonstrated a high level of proficiency in answering the examination question with notable differences in their performance metrics.
+%
+The \textit{overall accuracy} of \textit{ChatGPT-o1} and \textit{Gemini 2.0 Advanced} remained above $93$ for the exams evaluated outperforming the less advanced models \textit{ChatGPT-4o} and \textit{Gemini 1.5 Pro}.
+Further studies of the ability of \ac{llm}s and their potential in medical education and assessment have shown similar results.
+%
+\citet{USMLE2023, chatgpt2023USMLE} demonstrated that \textit{ChatGPT} achieves passing scores on medical licensing examinations, such as the three US medical licensing examinations (USMLE), even without specific training. 
+Therefore, \citet{kinikogluI2025GPTGemini} resumes that such \ac{sota} \ac{llm}s can be adapted to create interactive and personalised learning experiences for students.
+%
+Despite these improvements, challenges remain in fully leveraging extended context window models. 
+Increased computational demands, potential retrieval inefficiencies, and memory constraints must be addressed to ensure effective application in educational and research environments. 
+
+Given these developments, the application of extended context window models in domain-specific \ac{qa} tasks presents an opportunity to enhance accessibility and retrieval accuracy for stakeholders in resource-constrained environments.
+Their ability to process entire academic texts directly, without the need for preprocessing or fine-tuning, represents a potential solution to the challenges outlined in \cref{sec:problem statement}.
+
+\section{Retrieval-Augmented Generation for QA}\label{sec:rag for qa}
+
+
+\subsection{Question Answering}
+
+
+Pre-trainig language models with billion-level parameters on huge amounts of training data as well as extending context windows have demonstrated impressive performance.
+Despite vast capabilities, limitations remain, such as factual inaccuracies \citep{augenstein2023factualitychallengeseralarge}, hallucinations \citep{fan2024surveyragmeetingllms}, enormous demands on computational resources to continuously improve the models and the inability to expand and revise their memory.\citep{lewis2020ragnlp}
+In \citet{lewis2020ragnlp} a parametric-memory generation model in form of pre-trained \textit{seq2seq} transformer was extended with non-parametric memory, a dense vector index of Wikipedia.
+The non-parametric memory is accessed via a pre-trained neural retriever.
+The resulting system is referenced as retrieval-augmented generation (RAG).
+Finally, all components are combined into an end-to-end probabilistic model. 
+\citet{lewis2020ragnlp}s approach differs from previous work on proposed architectures to enrich the system with non-parametric memory by the ability to access knowledge without training the models used for specific tasks from scratch.
+The clear benefits of combining parametric and non-parametric memory with generation for knowledge-intensive tasks are shown, as the developed \ac{rag} system achieved state-of-the-art results in the open domain \ac{qa}, as well as abstractice \ac{qa}.
+It was also found that \ac{rag} hallucinate less and generate factually correct text more often compared to \ac{bart} \citep{lewis2020ragnlp}.
+Technological sustainability is achieved through the possibility of exchanging the non-parametric memory.
+As a result, adaptability to evolving knowledge bases remains.
+New domain-specific datasets can be integrated and advanced retrieval mechanism, such as dynamically structured knowledge graphs or optimised vector databases, can enhance the accuracy and relevance of responses while maintaining computational efficiency.
+%
+In the continuous progress and research of \ac{rag} since \citet{lewis2020ragnlp} several approaches to optimise the \ac{rag}-setup were researched.
+\citet{izacard2022unsupervised, Karpukhin2020DensePR}, focused on improving the retriever that identifies relevant information, as \citet{Agarwal2024ManyShotIL, liu2024lostmiddle} investigated the other side, the generator, both do so in approaching the topic isolated with regard to their focus.
+%
+As existing work mainly proposes tuning \ac{llm}s for \ac{rag}, \citet{Asai2023SelfRAGLT} explored and introduced a framework, \textit{SELF-RAG} to enhance an \ac{lm}'s quality and factuality through retrieval optimisation and \textit{self-reflection}.
+A generator \ac{llm} is trained on a corpus consisting of diverse text data that is combined with reflection tokens and, depending on queries and context, relevant passages. 
+The reflection tokens are inserted offline into the original corpus, an additional host of a critic model is therefore not needed, which reduces the overhead.
+\textit{SELF-RAG} enables retrieval on demand, processes passages in parallel, filters through self-reflection and also further evaluates the output quality aspects, such as factuality.
+While other works, \citet{lu2022QuarkCT, Korbak2023PretrainingLM} try to guide the \ac{lm} generation via use of general control tokens, \citet{Asai2023SelfRAGLT}  allows for the prior evaluation of whether retrieval is needed and then self-evaluate the quality of the generation.
+\citet{Asai2023SelfRAGLT} is able to outperform \textit{ChatGPT} in Benchmarks like PopQA and ASQA (Rouge and MAUVE) and also comparatively surpasses on PubHealth and biograpgy generation.
+Their framework trains a single \ac{lm} that retrieves the 
+In applying the developed framework at the time available \ac{sota} \ac{lm} used within \textit{ChatGPT}, as well as the \textit{retrieval-augmented Llama2-chat}, were outperformed on open-domain \ac{qa}, as well as reasoning and fact verification tasks.\citep{jin2024longcontextllmsmeetrag}.
+%
+The particular implementation of long-context- \ac{llm}s as generator in \ac{rag} and thus an optimal design of \ac{rag} remained under-explored.\citep{jin2024longcontextllmsmeetrag}
+%
+Therefore, \citet{jin2024longcontextllmsmeetrag}, among other techniques, shows the potential of \textit{positioning engineering} and provides a training-free solution, \textit{retrieval reordering}, to leverage the inherent lost-in-the-middle problem observed in \ac{llm}s to minimise the negative effects of \textit{hard negatives}.
+Retrieval reordering modifies the construction of the input sequence for an \ac{llm}.
+Initially, such an input sequence would contain the retrieved passages in decreasing order based on their relevance score.
+Placing prioritised passages with higher scores at the beginning and end of the sequence proves to significantly improve \ac{rag} performance.\citep{jin2024longcontextllmsmeetrag}
+%
+Particularly important for the named problem of this work are the distinct improvements in factuality and citation accuracy relative to the compared models in \citet{jin2024longcontextllmsmeetrag}.
+%
+Another work with relevance to resource-constrained solution approaches provides \citet{Ma2023QueryRF}.
+In the stage of the pre-retrieval process \textit{query optimisation} is used to make the original question more suitable for the retrieval task.
+\citet{Ma2023QueryRF} extended the traditional \textit{retrieve-then-read} approach by adding a query rewriting step.
+A small \ac{lm}, trained via reinforcement learning based on \ac{llm} reader feedback, acts as a rewriter, that generates a rewritten query from the original input to improve retrieval techniques. 
+Putting emphasis on the importance of query adaptation and offering a new perspective on enhancing retrieval-augmented LLMs, \citet{Ma2023QueryRF} introduced the framework \textit{Rewrite-Retrieve-Read}.
+Tested on open-domain and multiple-choice \ac{qa} tasks, the method shows consistent performance improvements, demonstrating its effectiveness and scalability.
+%
+While significant advancements have been made in both \ac{qa}-based and \ac{lcllm} architectures, no universally optimal approach has emerged due to the variety of applications, requirements and continuous progress in both areas (\ac{rag}, \ac{llm}. 
+\citet{Li2024RetrievalAG} gives a detailed analysis of the advantages and disadvantage of \ac{rag} and \ac{llm}s respectively.
+Their findings confirm that, under optimal computational conditions, long-context \ac{llm}s generally outperform retrieval-based approaches
+However, \ac{rag} remains more efficient for short quires or limited computation scenarios.
+The direct comparison shows that the use of the respective method in applications such as information retrieval or \ac{qa} is accompanied by compromises on both sides:
+\begin{itemize}
+    \item Intensive computing cost and time expenditure due to pre-training and fine-tuning (\ac{lcllm}).
+    \item Hallucinations while generating output (\ac{lcllm}).
+    \item Closed-source \ac{llm} models do not allow for further usage and extension (\ac{lcllm}).
+    \item Outdated knowledge and no access to real-time updates (\ac{lcllm}).
+    \item Lower accuracy for knowledge-intensive tasks (\ac{lcllm}).
+    \item Lower overall response quality due to disjoint retrieval fragments (\ac{rag}).
+    \item Retrieval errors (\ac{rag}).
+    \item Dependency on external databases (\ac{rag}).
+\end{itemize}
+%
+In response to these limitations, \citet{Li2024RetrievalAG} using the hybrid approach, \textit{SELF-ROUTE}, attempt to dynamically select the most suitable method, either \ac{rag}, or \ac{lcllm}, to optimise based on the specific requirements of the input query. 
+

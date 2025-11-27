@@ -1,0 +1,383 @@
+
+%*****************************************
+\chapter{Approach}\label{ch:approach}
+
+\section{Overview of the Approach}\label{sec:approach_overview}
+
+This chapter details the approach to address the problem described and identified in \cref{sec:problem statement}: the need for a standardised and reproducible method to evaluate \ac{llm} based knowledge extraction from the domain-specific textbook \citet{bb2}, particularly within a resource-constrained environment for students and practitioners of medical informatics.
+The primary goal is therefore to develop and use a reproducible evaluation process and code base which are capable of comparing different \ac{qa}-methods, \ac{rag} and the direct inference of the \ac{llm}, using selected and accessible \ac{llm}s. 
+The performance of these approaches is evaluated against the benchmark results documented by \citet{Paul_Keller}. 
+
+To achieve the goals defined in \cref{sec:goals} related to the formulated problem \cref{sec:problem statement}, the approach involves several sub-steps, which are explained in more detail in the following sections of this chapter. 
+\textbf{First}, a cleaned version (plain text) of the primary knowledge source, \citetitle{bb2} as knowledge base will be used for the methods applied in \ac{qa}.\\
+\textbf{Second}, determine and select appropriate \ac{llm}s, focussing on large context capabilities and open accessibility further defined criteria (\cref{sec:model_selection}, Task A1.1).\\
+\textbf{Third}, the technical implementations to use the respective \ac{llm} for the retrieval and evaluation process are described (\cref{sec:method_implementation}).\\
+\textbf{Fourth}, the design of the application framework, including backend orchestration, a minimal frontend interface for research management, and \textit{Docker} containerisation for reproducibility, is outlined (\cref{sec:framework_design}.\\
+\textbf{Fifth}, the evaluation methodology, which includes automated and custom metrics through the \textit{DeepEval} framework supported and extended by manual expert evaluation is specified in \cref{sec:evaluation_methodology_approach}.\\
+Finally, the commitment to reproducibility through a public code repository that can be executed on a machine with modest computational (resource constraint) capabilities ($\leq24$GB GPU) is stated in (\cref{sec:reproducibility_approach}).
+
+% Section 4.2
+\section{Knowledge Base Preparation}\label{sec:knowledge_base_prep}
+
+The knowledge base on which the \ac{qa} methods will be applied and evaluated in this thesis is the textbook \citetitle{bb2} by \citeauthor{bb2}. 
+Only by using the same source as \citet{Paul_Keller} a direct comparison and reasonable evaluation of the respective generated \ac{llm} output to the benchmark study by \citet{Paul_Keller} is possible.
+A significant preparatory step, the conversion of \citetitle{bb2} from its original format into a cleaned, machine-readable plain text format, has been completed by \citet{Paul_Keller} and will be implemented in this work.
+The pre-processing completed in \citet{Paul_Keller}, involved extracting the core textual content while removing elements unsuitable for automated processing, such as images, complex visual tables, page headers/footers, indices and extensive bibliographies.
+Although currently available models allow for \textit{multi-modal} input, such features are not considered due to the focus on direct comparison to \citet{Paul_Keller}.
+%
+Further processing, such as chunking, embedding and database integration for the \ac{rag} method, will be applied to this existing text as described in \cref{sec:method_implementation}.
+
+\section{Evaluation Dataset Input}\label{sec:approach:questions}
+Since a comparison and evaluation of the generated output of the models based on the benchmark provided by \citet{Paul_Keller} are to be carried out as part of this work, it is also essential to use the same test questions as in \citet{Paul_Keller}.
+These questions will be used inside the \ac{rag} and \ac{lcw} pipelines.
+The evaluation dataset will consist of the exam question for the module \enquote{Architecture of Information Systems in Healthcare}, the written exam questions for the module \enquote{Information Systems in Medical Care and Research} and parts of the book \citetitle{bb2}, as they were used in \citet{Paul_Keller}, as well as the ground truth answers from \citet{Paul_Keller}.
+%
+The questions are divided into three categories:
+\begin{enumerate}
+    \item \textit{Single} questions that ask about a specific fact
+    \item \textit{Multi} - fact questions that ask about several facts
+    \item \textit{Transfer} questions that transfer a fact from one context to another
+    \end{enumerate}
+
+\begin{table}
+\begin{tabularx}{\textwidth}{p{2.5cm}p{3cm}X}
+\toprule
+\textbf{Category} & \textbf{Question} & \textbf{Answer} \\
+\midrule
+Single Question & Define the term \enquote{tHIS} & tHIS stands for transinstitutional health information system, an information system of a health care network which consists of multiple health care settings (contexts). It comprises all data, information, and knowledge processing as well as the associated human or technical actors in their respective data, information, and knowledge processing roles. \\
+Multi-Fact Question & Compare HL7 V2 and HL7 FHIR. Explain at least three differences & Both used to exchange health information between application systems\newline
+Syntax HL7 v2: proprietay, ASCII-text\newline
+Syntax HL7 FHIR: XML / JSON = easier to implement\newline
+Structure HL7 v2: fixed, hierarchical, fixed amount of segments and codes\newline
+Structure HL7 FHIR: flexible, modular, resource/element based \\
+Transferring Question & When is a model good in the context of health information systems? & A good models should be able to help understand and predict the behavior of the system or process. It should also be able to help design and evaluate health information systems. A reference architecture can be used to support the design of a proper HIS architecture that meets the various stakeholder concerns of HISs. This architecture should be able to show the HIS from a different angle, suitable for various stakeholders. \\
+\bottomrule
+\end{tabularx}
+\caption[Example question for each of the three catagory]{Example question for each catagory}\label{tab:question-category}
+\end{table}
+%
+Although the number of available exams has increased, the additional tests and questions they contain are not included in the direct comparison.
+This will lead to a lower quality of the evaluation, as previously described by \citet{Paul_Keller}.
+Examples of the three categories can be found in \todo %\cref{tab:question-category}.
+The questions will be formatted appropriately for the selected \ac{api} models by extracting and parsing the individual questions from the respective \textit{JSON} question files iteratively in combination with the instructions within the prompt.
+%
+\section{Language Model Selection}\label{sec:model_selection}
+
+A crucial step in establishing the evaluation approach is the selection of appropriate \ac{llm}s.
+In general, manual training (\textit{continous pre-training}) of any chosen \ac{lm} is explicitly excluded as a solution approach in the context of this work.
+Instead, the focus is on the existing pre-trained models that are used (\enquote{out of the box}).
+The choice will mainly be guided by the specific goals and constraints of the target group, students and practitioners.
+The size of \textit{context windows} of language models has been significantly expanded since \citet{Paul_Keller}, so that much more than just small parts of \citetitle{bb2} can be integrated into the prompt.
+However, there is no uniform definition or threshold for \enquote{large context windows}. 
+In order to compare generated results to \citet{Paul_Keller}, it is essential to create conditions that allow a direct comparison.
+\citet{Paul_Keller}, referred to as \textit{benchmark}, applied \textit{continuous pre-training} \textit{Llama 2} using \citet{bb2}, thus embedding the book's knowledge directly into the model parameters for \enquote{constant access}.
+In order to replicate this level of permanent knowledge access within the \ac{lcw} method in this thesis, the entire pre-processed text of \citet{bb2} is supposed to be provided as context within each prompt to the selected \ac{api}-accessed \ac{llm}.
+This ensures comparable experimental conditions with regard to the availability of the knowledge source during \ac{qa}.\\
+%
+The size of the \textit{context window} of the models for the direct one-shot and multi-shot inference test run must therefore be sufficient to process the book in the provided plain text format and size, as well as the user query within a combined prompt.
+The context window of the used \ac{llm}for the \ac{rag} method generally has low size requirements.
+The only relevant requirement here is that the initial user prompt and retrieved document parts from the respective database can be processed within the context window simultaneously.
+The majority of \ac{sota} \ac{llm}s meet this requirement, so the focus here can be on accessibility,  the size of the available context window provided by potential aggregators, overall performance on common benchmarks for \ac{qa}, cost and simple implementation.
+To further enable a direct comparison between the \ac{rag} and \textit{Large Context Window} methods using the same underlying generative capabilities, this thesis will use a selected set of advanced \ac{llm}s accessed exclusively through \ac{api} for both methods.
+%
+Possible techniques for improving or adapting the performance of the respective models (e.g, fine-tuning), as well as the pre-processing of user input (e.g, \textit{enhanced prompting}) are also not considered, as the selected models are used (\enquote{out of the box}).
+%
+The \textit{llm}s must be chosen accordingly.
+It is beyond the scope of this work to integrate and test the number and respective subtleties of available language models in their entirety.
+%
+\subsection{Selection Criteria}\label{subsec:model_criteria_api}
+The selection focusses on models available "out of the box" via \ac{api}.
+The primary criteria for selecting suitable \ac{api}-accessible \ac{llm}s are:
+        \begin{itemize}
+            \item \textbf{Accessibility \& Cost:} 
+            The latest models released by the respective AI company are often not immediately available for public and general application.
+            Therefore, investigated and models considered must be available through public \ac{api}s with preferable low-cost pricing structures (e.g., competitive per-token rates, potentially via aggregators like \textit{OpenRouter}) suitable for academic research budgets and aligned with the challenges of resource accessibility for students (\cref{def:goal 1}).
+            \item \textbf{Large Context Window size}: Minimal requirement is native support for a \textit{context window} of at least $120000$ tokens to accommodate \citetitle{bb2} in the prepared plain text format plus prompt overhead for the \textit{Large Context Window} method.
+            \item \textbf{Performance Potential:} Demonstrated high performance on relevant benchmarks (\ac{qa}, reasoning, instruction following) to provide a meaningful basis for evaluating both \ac{qa} approaches.
+            \item \textbf{Implemenation}: Reasonable expectation of a fairly simple implementation of the selected models including \ac{api} stability of performance and context window and preferable access through one aggregator.
+        \end{itemize}
+
+Based on these criteria, particularly the need for large context capabilities combined with open accessibility and feasibility for local execution, this thesis will investigate models such as those from the \textit{Deepseek} family (e.g., Deepseek Coder variants known for context length), \textit{OpenAI}'s \textit{GPT} series (e.g., \textit{GPT-4} models with varying sizes and context windows), potentially newer Llama family variants (e.g., Llama 3) or other suitable models emerging from the open-source community that fit the resource and context-length requirements. 
+Specific models will be chosen based on availability, reported performance, and successful deployment within the specified hardware constraints at the time of implementation.
+% 
+\newpage
+\section{QA Methods}\label{sec:method_implementation}
+
+This section details the planned technical implementation of the two \ac{qa} methods:
+%
+\begin{enumerate}
+    \item \textbf{Retrieval-Augmented Generation (RAG)}
+    \item \textbf{Large Context Window}
+\end{enumerate}
+
+In the context of this work, both methods will use the same set of selected \ac{llm}s allowing for a direct comparison of the impact of the models on the generated results.
+%
+% Subsection 4.4.1 
+\paragraph{Rationale for API-Based Generation}\label{par:api_generation_rationale}
+
+Reflecting the focus on prioritising accessibility (\cref{sec:motivation}) for the defined target group (\cref{sec:motivation}), all interactions involving the core generative capabilities of the selected \ac{llm}s will be conducted via \ac{api} calls through the aggregator \textit{OpenRouter} in both implemented method pipelines.
+This decision had to be taken due to the infeasibility of locally running \ac{lm}s that can handle the full context of \citet{bb2} (>\kern-0.1em 160k tokens) within hardware constraints (~24GB VRAM).
+By leveraging \ac{api}s, advanced \ac{lm} capable of processing the entire knowledge base can be utilised and evaluated in both methods.
+%
+
+\subsection{Retrieval-Augmented Generation (RAG) Pipeline}\label{subsec:rag_pipeline}
+    The \ac{rag} pipeline will retrieve text snippets from the \textit{Qdrant} database that are relevant to the user prompt.
+    The received text snippets will then be combined with the initial prompt and parsed to a selected \ac{api} model called via \textit{OpenRouter} for the generation step.
+    Furthermore, individual customised, as well as \textit{LangChain} components will facilitate the orchestration of the local knowledge retrieval and remote generation workflow within the constraints of the defined computational capabilities and general accessibility for the target group (e.g, low-cost).
+    The key steps for the implementation of the \ac{rag} pipeline are as follows:\\\\
+    %
+\noindent\textbf{Text Chunking:}\label{par:chunking_approach}\\
+    The knowledge base \citet{bb2} must first be prepared by segmenting it into smaller \textit{chunks} (see \cref{subsec:chunking_technique} and \cref{subsec:need_for_chunking}.\\
+    %
+    \paragraph{Selection of Chunking Method}
+        The division of the text into adaptable fixed chunk lengths and a conceptual \textit{overlap} could be based on an individual assessment of the possible average complexity and length of elaboration of various topics within the book.
+        The evaluation of such \enquote{ideal} chunk sizes would be simplified by execution of \ac{lm}s.
+        Even if the values obtained for \enquote{chunk\_size} and \enquote{overlap} were individually customised for the book, the probability of ideas, topics and related descriptions being unintentionally divided is decisively high.
+        Even the artificial connection created by the \textit{overlap} can not avoid a regular break in context.
+        \textit{LangChains} frameworks offers a range of \textit{chunking} methods within its \enquote{SemanticChunker} (e.g., \textit{percentile}, \textit{standard deviation}) to optimise the \textit{chunking} process and minimise contextual breaks in the respective text.
+        \citet{qu2025semantic_chunking} has shown that \enquote{\textit{semantic chunking} [has] occasionally improved performance} while being \enquote{highly context-dependent}.
+        Selecting the optimal method from the \textit{LangChain} framework for dividing text into chunks based on semantic similarity in relation to the scientific text (\citet{bb2}) that is being used here, requires extensive comparison.
+        The only guiding reference is \citet{langchainsemantic2024comparison} where no clear superior method could be identified but rather that the ideal choice of a chunking method should be made by considering domain-specific characteristics.
+        However, \textit{interquartile} semantic chunking showed slightly better performance when used for technical content.
+        Characterising \citet{bb2} as rather technical than clear medical, within the scope of this work, the semantic chunking method \textit{interquartile} is chosen and the results obtained with it are made available for future comparisons and subject of \cref{ch:discussion}.
+        \\\\
+%
+\noindent\textbf{Embedding Generation:}\\
+    The selected knowledge base, as well as the user query have to be initially embedded (\cref{sec:embeddings}) to be then stored inside the \textit{Qdrant} Vector-\ac{db}.
+    \endquote{FastEmbed} is \textit{Qdrant}s standard method to enable quick embeddings without the need for more powerful computational resources and advanced embedding methods.
+    \textit{Qdrant}s default embedding model (language - English, parameters - $364$ Million , size - $133$MB) within \textit{FastEmbed} creates vectors with $384$ dimensions.
+    The use of such a small embedding model remains within local resource constraints and keeps costs to a minimum (see \cref{par:embedding_rationale}.
+    Comparison and analysis of advanced embedding techniques are not subject of this work (see \cref{ch:discussion}).\\
+%
+    \paragraph{Rationale for Dedicated Embedding Model}\label{par:embedding_rationale}
+    Ideally, for a direct unaltered comparison of both methods and as originally intended, the same \ac{llm} might be used for all steps.
+    Using the selected \ac{api} models (from \cref{subsec:selected_api_models}) for \textit{embedding} generation presents significant drawbacks.
+    The \ac{api} costs associated with \textit{embedding} numerous text \textit{chunks} (\texttildelow{}$120-160$k tokens) would far exceed the predefined low-cost constraint.
+    Furthermore, \ac{llm}s often differ in their specialised capabilities based on their design goals.
+    Although selected \ac{llm}s excel in complex reasoning and text generation, they on the other hand are not optimised for other distinct tasks necessary for the \ac{rag} pipeline, such as \textit{chunking} or \textit{vector embeddings}. 
+    The \ac{rag} application demands high-quality retrieval via similarity search using \textit{embeddings}, in which dedicated \textit{embedding} models, such as the \textit{BAAI (Beijing Academy of Artificial Intelligence) General Embedding model \enquote{bge-large-en-v1.5}} provide superior performance. 
+    The decision to use a specialised, high-performance open-source embedding model represents a pragmatic choice that optimises retrieval quality and cost-effectiveness for the \ac{rag} pipeline.
+    %
+    As the final generation step still uses the same \ac{api} models for both \ac{rag} and \textit{Large Context Window} methods, the core comparison is not compromised.
+    Despite the claim of a comparison through the continuous implementation of the same language models in each \ac{qa} approach, the need to recreate a real application scenario of the target group in the context of this scientific study prevails.
+    A deliberate departure from best practice and ideal conditions for the best possible outcome as the goal of such a \ac{qa} application contradicts all rationality. 
+    The decision to rely on a particularised embedding model instead of the \ac{llm} used for generation is therefore more beneficial than disadvantageous for a comparison for the selected target group.\\\\
+    %
+\noindent\textbf{Vector Storage and Indexing:}\\
+    The generated embeddings will be stored inside the \textit{Qdrant} \ac{db}.
+    \textit{Qdrant} stores vectors and associated metadata in collections.
+    The respective input data will have to be prepared to comply with the expected data formats.
+    The \textit{Qdrant} \ac{db} runs locally within a \textit{Docker Volume}, providing persistent and reproducible storage.\\\\
+%
+\noindent\textbf{Retrieval Process:}\\
+    The retrieval process will also be facilitated by \textit{Qdrants FastEmbed}
+    {Qdrant} integrated similarity metric, such as \textit{cosine similarity}, will handle the process of identifying relevant snippets from the \ac{db} according to the respective query and retrieving the \textit{top-k} relevant document chunks.
+    As the same \ac{llm}s will be used for both method pipelines, the respective \textit{context window} allows for the choice of a high value for \textit{top\_k}.
+    It should be noted that the quantity of chunks is not guaranteed to be proportional to the quality of output generated by \ac{lm} based on the quantity of chunks.
+    An unlimited increase or high number of chunks will at some point lead to a loss of quality, as their relevancy to the initial question decreases.
+    \textit{FastEmbed} provides a \enquote{score} value in the output, which allows a threshold to be defined that determines the minimum relevance for the respective query.
+    Therefore, the threshold can lead to the exclusion of additional chunks even before the \textit{top-k} value is reached, as they are below the set value.
+    This prevents the \ac{llm} from being diluted by irrelevant input, but chunks that are still above the threshold value may be excluded, leading to a loss of knowledge.
+    Finding the perfect balance requires further experimentation (\cref{ch:discussion}.\\\\
+%
+\noindent\textbf{API Call and Generation:}\\
+    The retrieved knowledge from the \ac{db} in the form of relevant chunks matching or surpassing the threshold value will then be combined with the query and further parsed to the \ac{api}-accessed \ac{llm}.
+    Based on the respective question in combination with the augmented knowledge in form of the chunks retrieved from the \textit{Qdrant} \ac{db} the \ac{lm} generates an answer.
+    The generated answers received will be stored within dedicated \textit{JSON} files with all defined metadata to identify retrieved chunks, its content, source and the achieved \enquote{score} to analyse the quality and quantity of knowledge input for the generation process. 
+%
+\subsection{Large Context Window Pipeline}\label{subsec:large_context_api_pipeline}
+    This method utilises the selected large-context window \ac{api}-accessed \ac{llm}s (\cref{subsec:selected_api_models}) to directly process the entire text of the knowledge base, in the prepared plain text format, combined with the user query and potentially additional context.
+    
+    
+    The \ac{lcw} pipeline includes the following sub-steps. 
+    \begin{enumerate}
+        \item \textbf{API Input Formatting:}
+            The respective questions from the data set will combined and formatted with the book content as context within the prompt template from \citet{Paul_Keller}. will be parsed to the target \ac{api}-accessed \ac{lm}, containing the respective query  to 
+        \item \textbf{API Call and Generation:}
+            \textit{LangChain} will send the compounded prompt via \ac{api} call to the selected \ac{api} accessed \ac{lm}.
+            The \ac{lm} then generates the answer based on the combined content within the prompt.
+            The generated answers will be extracted from the \ac{api} response and stored within dedicated \textit{JSON} files. 
+    \end{enumerate}
+    This approach tests the "out of the box" ability of the \ac{api} models to perform \ac{qa} when provided directly with the complete source text.
+    Therefore, makes the knowledge base fully accessible for the respective \ac{lm} model in every user request, as in the continuous pre-training method conducted in \citet{Paul_Keller}.
+%
+\section{Application Setup for Evaluation Management}\label{sec:framework_design}
+
+This section describes the application in which the respective generation method pipelines (\ac{rag} and \ac{lcw}), as well as the evaluation setup are implemented to be reproducible (\cref{def:goal 1}.
+While primarily serving as a tool and interface for the researcher, the application may possibly be utilised as a basis for further development.
+%
+\subsection{Minimal Frontend Interface for Researcher Workflow}\label{subsec:frontend_interface}
+
+A minimal frontend using \textit{Streamlit} will provide the researcher interface.
+It allows selecting the \ac{qa} method (\ac{rag} or \ac{lcw}), question (\textit{single, multi, transfer, spelling}) type, as well as choosing the \ac{api}-accessed \ac{llm} and entering files to be processed for question retrieval or as a knowledge base.
+%
+\subsection{Backend Service for Orchestration}\label{subsec:backend_service} 
+    The \textit{backend}s responsibilities include:\\
+    managing and formatting user queries and questions in form of prompts, accessing the \citet{bb2} text, performing local \ac{rag} retrieval (\textit{embedding} generation, interacting with \textit{Qdrant}), handling external \ac{api} calls to the selected \ac{llm}s (including key management for models like \textit{Llama} 4 or \textit{DeepSeek}, receiving generated responses, and triggering evaluation scripts (\textit{DeepEval} framework).
+%
+\subsection{Docker Containerisation for Reproducibility}\label{subsec:docker}
+
+To ensure an easy setup and reproducibility of the evaluation process, the backend service, the local \ac{rag} components (\textit{Qdrant} \ac{db} setup, \textit{embedding} logic), evaluation scripts (\textit{DeepEval} framework) and the frontend interface will be packaged using \textit{Docker}.
+Local resource requirements will mainly be determined by the \textit{vector database}, \textit{embedding} and the retrieval process.
+%
+\section{Evaluation Methodology}\label{sec:evaluation_methodology_approach}
+
+This section details the comprehensive evaluation strategy.
+The evaluation is explicitly linked to the benchmark (\citet{Paul_Keller}) and predefined metrics. 
+The focus is on using the \textit{DeepEval} framework for automated and customised assessment, where possible.
+
+\subsection{Automated Evaluation Metrics}\label{subsec:auto_eval_approach}
+
+The \textit{DeepEval} framework provides a feature called \enquote{LLM-as-a-judge} to provide reliable, scalable and time-saving assessments of the respective \ac{llm} outputs using predefined and customisable metrics. 
+The \textit{LLM-as-a-judge} feature allows the use of a \ac{llm} to assess the generated answers and a few optional framework specific properties that can be configured and displayed post-evaluation, either locally or on \textit{Confident AI}. 
+As custom metrics will be applied that match \citet{Paul_Keller}, the evaluation \ac{llm} will be guided by predefined and customised instructions, formulated in dedicated  prompts. 
+Considering the extensive \ac{nlp} and reasoning capabilities of current modern \ac{llm}s, the \textit{LLM-as-a-judge} feature can provide nuanced assessments that equate to \enquote{human expert} judgement with considerable reliability.
+This approach leads to great time savings without compromising quality.
+%
+In addition, \textit{DeepEval} offers a built-in suite of metrics relevant to \textit{faithfulness}, \textit{relevance} and other quality measurements to further advance the set of metrics as needed.
+Its integration into the application pipeline via \textit{Python} ensures the possibility of a systematic evaluation process.
+
+\subsection{Applied Metrics and Evaluation}\label{subsec:metrics_eval_approach}
+The generated answers are divided into three categories:
+%
+\begin{enumerate}
+    \item \textit{Correct}, if the answer matches the answer in the book \citetitle{bb2}
+    \item \textit{Incorrect}, if the answer contains incorrect knowledge
+    \item \textit{Not answered}, if the generated text has no relation to the initial user question
+\end{enumerate}
+%
+Questions are considered \textit{answered} if they correspond to categories $1$ and $2$.
+The same calculations are performed in total and separately for $3$ question categories: (see %\cref{})
+\\
+\noindent\textbf{Precision:}\\
+\label{def:precision_approach}
+    \textit{Precision} is defined as the proportion of retrieved or generated facts within an answer that are actually correct in relation to the ground truth.
+    \textit{Precision} measures the accuracy of the generated information.
+    In fields such as medicine, where scientific and factual correctness and completeness are always sought, maximising precision is often prioritised, as highlighted by\citet{Paul_Keller}:\\
+    \( \text{Precision} = \frac{|\text{Correct Items}|}{|\text{Generated Items}|} \).
+    %
+ \noindent\textbf{Recall:}\\
+ \label{def:recall_approach}
+    Recall measures the completeness of the generated information.
+    For this purpose, the proportion of all expected correct facts (for a complete answer) that the model has successfully included in its answer is calculated:\\
+    %
+    \( \text{Recall} = \frac{|\text{Correct Items}|}{|\text{Expected Correct Items}|} \).
+    %
+\noindent\textbf{F1-Score:}\\
+    \label{def:F1-score_approach}
+    Represents the harmonic mean of precision and recall, offering a single, balanced measure of performance:\\ \( F_1 = 2 \times \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}} \).
+    %
+
+Although the final output of a \ac{lm} is a generated text, the underlying retrieval processes, as in \ac{rag} and the evaluation of the correctness and precision of the generated response often rely on standard metrics from \ac{ir} and classification tasks:
+\paragraph{Macro-F1 vs. Micro-F1:}
+%
+When evaluating the performance of a system, such as the \ac{qa}-system, usually sets of queries are used for the assessment of continuous and overall quality of output.
+Therefore, individual \textit{F1-scores} need to be accumulated and calculated into an overall average.\\
+There are two main methods for this aggregation, \textit{Micro F1-score and Macro F1-score} :\\
+To create the \textit{Micro-average/Micro F1}, all individually correctly generated and expected items are collected together across all questions and finally a uniting \textit{Micro F1-Score} is calculated:\\
+\begin{align}
+    C      & = S \cap G                                 \\
+    prec   & = \frac{|C_{q}|}{|S_{q}|}                  \\
+    recall & = \frac{|C_{q}|}{|G_{q}|}                  \\
+    F1     & = 2\frac{prec \cdot recall}{prec + recall}
+\end{align}
+
+Where $S_q$ is the set of answers generated for the question $q$, $G_q$ is the set of correct answers from the book \citet{bb} and $C_q$ is the set of correct answers contained in both $S_q$ and $G_q$.
+$prec$ is the \textit{precision}, $recall$ is the \textit{recall} and $F1$ is the \textit{F1-score} per question.\\
+%
+\textbf{Macro-averaging} first determines the \textit{F1-score} for each question in the set and then calculates the \textit{Macro F1-score} by averaging these individual question scores.
+\citet{Paul_Keller} specifically integrated the \textit{Macro-F1 score} into his evaluation, which is common practice in \ac{qa} benchmarking~\citep{Usbeck2019}.
+This approach ensures an equal weighting of individual often variable queries.
+%
+The different \ac{lm}s are then compared using the \textit{Macro-F1} evaluation.\\
+Further metrics, as presented and applied in \citet{Paul_Keller}, included in the evaluation process are:
+
+\noindent\textbf{Correctness:}\\
+\label{def:correctness_approach}
+    \textit{The fundamental assessment of factual accuracy against a reliable source (e.g., \citet{bb2}) or expert consensus (e.g, official sample solutions for exam questions).}\\
+    \citet{Paul_Keller} implemented this through manual comparison, classifying each generated answer as \enquote{Correct}, \enquote{False} or \enquote{Not Answered}.
+    This forms a core part of the evaluation necessary for the \textit{Macro-F1 score}.
+    %
+    \textit{Correctness} measures (\textit{Precision, Recall, Macro F1}) will be calculated and then compared between the models used and \citeauthor{Paul_Keller}s benchmark results.
+    In this comparison, as in \citet{Paul_Keller}, the particular focus is on achieving high \textit{precision} rather than high \textit{recall}.
+    From the perspective of the target group under consideration, students and practitioners, who cannot be assumed to be experts in the domain, factually incorrect answers are clearly more detrimental than no answers.
+    \textit{Incorrect} answers must be identified as such by the target group and require further investigation, which is counterproductive to the goal of such an application.
+    The models should always favour no answer over an incorrect answer.
+    %
+\noindent\textbf{Determinism:}\\
+\label{def:determenism_approach}
+    \textit{Determinism describes the reproducibility of an answer.
+    An answer is considered deterministic if the same facts are contained in the answer with slight reformulations.}\\
+    Due to different predefined hyper-parameter settings (e.g., \texttt{temperature}, \texttt{temperature=1}) for the \ac{llm}s and thereby caused variability in the generated answers, \ac{llm}s to some extent show intended or not intended nondeterministic behaviour.
+    Low \textit{temperature} settings (e.g., \textit{temperature}$=0$) are generally expected to be deterministic.
+    In order to evaluate \enquote{determinism} in the evaluation process, the models assessed in \citet{Paul_Keller} were presented the same question $3$ times.
+    By calling the respective \ac{llm}s via \ac{api}, hyper-parameters, such as the \textit{temperature} variable, can be set individually.
+    A similar approach as in \citet{Paul_Keller} (by asking the question $3$ times) will not be applied.
+    Since slight reformulations within the answers to the same questions are within the scope of \textit{determinism}, the significance of this statistic is limited due to the expected homogeneity of the answers to the same question several times as \textit{temperature} will be set to $0$, and thus decisive for this exclude decision.
+        %
+\noindent\textbf{Robustness:}
+\label{def:robustness_approach}\\
+    \textit{An answer is considered \textit{robust} if it is correct even with incorrect or disrupted question input.}\\
+    In a real-world application scenario, human users will not be able to provide ideal query inputs without corrective \textit{prompting techniques}. 
+    Grammar errors and typos may occur. 
+    \citet{Paul_Keller} tested this by evaluating the performance of \ac{llm}s on queries where such mistakes were deliberately introduced.
+    The deliberately and wrongfully altered questions from \citet{Paul_Keller} will also be included into the respective generation and evaluation pipelines.
+    \begin{lstlisting}[language=json, caption={Example Intentional Errors and Typos}, label={lst:ex_intentional_errors_typos}]
+    Example:
+        {
+        "transformed": "How would you discribe the scope an tasks of the following activites of manageing information system: from the startegic project portfollio Initiating project?"
+        }
+    \end{lstlisting}
+        %
+\noindent\textbf{Explainability:}
+\label{def:explainability_approach}\\
+    \textit{The extent to which the \ac{lm} provides plausible and appropriate reasoning or argumentation within the answer.
+    An answer is considered \textit{explainable} if it contains an explanation.}\\
+    \citet{Paul_Keller} has provided a manual evaluation of this quality.
+    Due to the focus on the medical domain, the importance of this measure should be further emphasised. 
+    Relevant knowledge in medical informatics is often complex, comprehensive and multifaceted.
+    Therefore, the ability to make the extracted and accumulated knowledge understandable to the user is crucial in the evaluation of the \ac{lm} and its generated answer.
+    Due to the immense time consumption of this approach, the assessment will be established using the \enquote{LLM-as-a-judge} feature.
+    %
+\noindent\textbf{Question understanding:}\label{def:qu_understanding_approach}\\
+    \textit{Question understanding describes the \ac{llm}'s ability to understand the question}\\
+    Assessing whether the response accurately interprets and fully addresses the specific constraints and intention of the input question.
+    The reasoning capabilities of \ac{llm}s have again significantly improved since \citet{Paul_Keller} evaluation.
+    It is to be expected that the \ac{llm} used will demonstrate correspondingly excellent qualities and results with regard to this metric.
+    \citet{Paul_Keller} also measured the \textit{Questions understanding} metric in the evaluation process by manually reviewing.
+    Due to the immense time consumption of this approach, as well as available \ac{lm} capabilities, the assessment will be established using the \enquote{LLM-as-a-judge} feature.\\
+    %\item \textit{Context Relevance (for RAG):}\\
+    %Evaluation of whether the retrieved snippets were relevant to the query.
+    % maybe other relevant DeepEval metrics : Bias, Toxicity, Summarisation quality maybe later
+        %
+These metrics provide scalable insights into specific quality dimensions.
+Individual \textit{Python} scripts will complement \textit{DeepEval} to calculate the overall \textit{Macro-F1 score} based on the assessed correctness classifications.
+This ensures direct comparability with the primary metric used by \citet{Paul_Keller}.
+Both \textit{DeepEval} and custom metric calculations and evaluations will be integrated into the containerised backend service for predominantly automated execution.
+    
+\subsection{Manual/Expert Evaluation Protocol}\label{subsec:manual_eval_approach}
+    Manual assessment by experts remains crucial for a nuanced evaluation, following \citet{Paul_Keller}'s study.
+    While criteria, such as \enquote{Explainability}, \enquote{Question Understanding}, and \enquote{Robustness} are assessed in an automated process, the assessment of the subanswers as \textit{corrext} or \textit{incorrect}, which forms the basis for the \textit{correctness} metric, is carried out manually by a human expert.
+    In order to make a clear statement about the correctness of an answer, all of the respective  subanswers must be evaluated as absolute correct.
+    Therefore, the evaluation results of these subanswers returned by a \ac{lm} assessment may not be considered reliable without doubt, as even idealised prompting can not rule out the possibility that the respective judging \ac{lm} is hallucinating or omitting facts.
+    Since the assessment of \textit{correctness} does not allow for any tolerance of possible errors, it must be carried out by a human expert .
+    %
+\subsection{Comparison Framework}\label{subsec:comparison_approach}
+    The results will be systematically compared: 
+    \begin{itemize}
+        \item \ac{rag} vs. \ac{lcw} for each \ac{api} accessed \ac{llm}
+        \item Performance across the selected \ac{llm}s
+        \item Comparison against the benchmark results provided by \citet{Paul_Keller} (which included \textit{GPT-4} performance)
+    \end{itemize}
+        The analysis will focus on individual results with consideration of trade-offs between methods, models, \ac{api} costs and performance.
+
+% Section 4.7 
+\section{Reproducibility and Code Repository}\label{sec:reproducibility_approach}
+
+In order to ensure that the investigated models and methods are verifiable and the evaluation process is reusable, all code, input and output files, as well as the prepared knowledge base from \citet{bb2} will be available in a public GitHub repository under an open licence.
+The application will then be executable on a local machine using Docker.
+%
+Containerisation via \textit{Docker} (\cref{subsec:docker}) guarantees the reproducibility of the evaluation orchestration and local \ac{rag} retrieval components.
+In this repository and the \textit{Docker}-integrated application, students and practitioners can examine and review the detailed evaluation with the metrics used to draw conclusions about a possible further application based on the information obtained.
+Reproducibility of the \ac{llm} generation step itself depends on the stability, versioning, and continued availability of the external \ac{api} and models accessed through the aggregator \textit{OpenRouter} and their orchestration using \textit{LangChain}.
+

@@ -1,0 +1,63 @@
+%*****************************************
+\chapter{Discussion}\label{ch:discussion}
+%*****************************************
+\section{Potential Improvements for the RAG Pipeline}
+
+Future work may investigate the optimisation of the \ac{rag} pipeline.
+The implementation within this thesis was designed to be functional and effective for the primary goal of a comparative evaluation, rather than being exhaustively fine-tuned for peak performance. 
+Consequently, several parameters, such as \enquote{top\_k} and \enquote{Chunk\_size}, were set to sensible, commonly used values without empirical \textit{A/B testing}.
+Systematically and detailed testing of the configuration settings could significantly enhance the pipeline's efficiency and the quality of its output.
+%
+\subsection{Chunk Size}
+Possible improvements start with the configuration of the embedding.
+The size of the chunks should be adapted to the source.
+An in-depth analysis of the complexity and style of the literature could help to define the ideal chunk size and the appropriate overlap.
+Detailed literature with a high number of concrete, clearly formulated facts, data and knowledge per sentence may allow for a smaller chunk size and lower overlap.
+On the other hand, a text with extensive wording and paraphrasing of complex content requires larger chunks and overlap in order not to lose the context.
+%
+\subsection{Top-K}
+Further optimisation of \ac{rag} can be achieved by adjusting the parameter \enquote{top-k}, the number of document snippets retrieved during the retrieval process.
+The choice of \textit{k} is a critical consideration.
+Retrieving a larger number of extracts from the database may seem advantageous, as they provide more context to the \ac{llm}.
+However, this also increases the likelihood that irrelevant or redundant information (\enquote{noise}) will be processed.
+This \enquote{noise} can dilute the relevant context, possibly causing relevant details to be lost from focus and leading to a deterioration in the \textit{precision} and conciseness of the answer ultimately generated.
+Experimental studies would vary the parameter value while analysing the quality of the generated output by the respective \ac{llm}.
+Identifying the highest possible quality of output likely correlates with the inclusion of a \textit{k} and a \textit{threshold}.
+%
+\subsection{Cost}
+Furthermore, practical considerations of cost and latency are directly tied to the number and size of the retrieved snippets. 
+A larger \textit{k} value results in a longer prompt being sent to the generative model, which in turn leads to higher \ac{api} costs and increased response times.
+For the target group of students and practitioners operating under resource constraints, these factors are of significant importance.
+
+Future research should therefore aim to identify the optimal balance.
+Industry practice often suggests that a top-k value between $5$ and $10$ snippets provides a good compromise for many applications. A higher value ($10\geq$ should probably only be considered when it is known that the required information is highly distributed throughout the knowledge base.
+The selected \ac{llm} should also have robust capabilities in dealing with very long and complex contexts, which can now be nearly regarded as a given standard due to rapid advances in technology and skills.
+
+
+To move beyond heuristics, a systematic investigation is recommended. This could involve conducting a series of A/B tests or a grid search, varying both the chunk size and the top-k value, and measuring the impact on the evaluation metrics, particularly the Macro-F1 score and the automated DeepEval scores for faithfulness and relevance. Such an empirical approach would determine the ideal configuration for this specific knowledge base and question set, providing a valuable blueprint for developing a highly optimised, rather than merely functional, QA system.
+
+
+----
+possibities to discuss:
+
+additional ranking,deduplication, semantic expansion, post‑hoc re-ranking. --> future improvements
+
+- Score ordering manipulations (e.g., rescoring, blending multiple queries).
+- MMR 
+- Vector quantisation / HNSW parameter tuning (M, $ef_construct, ef_search$).
+- Sparse/dense hybrid (e.g., BM25 + vector fusion).
+- Multi-vector / multimodal fields.
+- Sharding or payload indexing optimisation (e.g., indexing frequently filtered - payload fields).
+- Reranking with a cross-encoder after initial recall.
+Time decay / recency weighting.
+- Semantic attribute weighting (e.g., boosting certain metadata categories).
+- Query expansion 
+- Using Qdrant's native gRPC for lower latency (LangChain uses HTTP client).
+
+
+
+
+
+
+
+
