@@ -1,0 +1,1413 @@
+[
+  {
+    "id": "q0001",
+    "llm": "GPT_4_1_Mini",
+    "method": "lcw",
+    "type": "single",
+    "error_status": "no_errors",
+    "answered": 2,
+    "points": 0,
+    "total_answers": 3,
+    "num_answers": 1,
+    "last_evaluated": "30-15-09-09-2025",
+    "evaluation_status": "success",
+    "details": {
+      "retrieval": [],
+      "sub_answers": {
+        "gold": [
+          "Developing a strategic information management plan is called strategic planning"
+        ],
+        "generated": [
+          "Developing a strategic information management plan is an activity of strategic planning within the strategic management scope of managing information systems.",
+          "Developing a strategic information management plan involves translating the vision, mission, and strategic goals of the health care facility into a specific plan.",
+          "The specific plan guides the long-term development and evolution of the information system."
+        ]
+      }
+    },
+    "true_answer": "Developing a strategic information management plan: strategic planning",
+    "generated": "Developing a strategic information management plan is an activity of **strategic planning** within the **strategic management** scope of managing information systems. It involves translating the vision, mission, and strategic goals of the health care facility into a specific plan that guides the long-term development and evolution of the information system.",
+    "transformed": "How would you describe the scope and tasks of the following activities of managing information systems: Developing a strategic information management plan",
+    "question": "In Sect. 4.2, we introduced a three-dimensional classification of activities of management of information systems. How would you describe the scope and tasks of the following activities of managing information systems? - Developing a strategic information management plan (e.g., this is related to strategic planning),"
+  },
+  {
+    "id": "q0002",
+    "llm": "GPT_4_1_Mini",
+    "method": "lcw",
+    "type": "single",
+    "error_status": "no_errors",
+    "answered": 2,
+    "points": 0,
+    "total_answers": 2,
+    "num_answers": 1,
+    "last_evaluated": "50-13-17-09-2025",
+    "evaluation_status": "success",
+    "details": {
+      "retrieval": [],
+      "sub_answers": {
+        "gold": [
+          "Initiating projects from the strategic project portfolio involves strategic directing"
+        ],
+        "generated": [
+          "Initiating projects from the strategic project portfolio is a task of strategic directing within strategic management of information systems.",
+          "Initiating projects from the strategic project portfolio is discussed in Section 4.3.3."
+        ]
+      }
+    },
+    "true_answer": "Initiating projects from the strategic project portfolio: strategic directing",
+    "generated": "Initiating projects from the strategic project portfolio is a task of strategic directing within strategic management of information systems (Sect. 4.3.3).",
+    "transformed": "How would you describe the scope and tasks of the following activities of managing information systems: Initiating projects from the strategic project portfolio",
+    "question": "- Initiating projects from the strategic project portfolio,"
+  },
+  {
+    "id": "q0003",
+    "llm": "GPT_4_1_Mini",
+    "method": "lcw",
+    "type": "single",
+    "error_status": "no_errors",
+    "answered": 2,
+    "points": 0,
+    "total_answers": 2,
+    "num_answers": 1,
+    "last_evaluated": "58-20-12-09-2025",
+    "evaluation_status": "success",
+    "details": {
+      "retrieval": [],
+      "sub_answers": {
+        "gold": [
+          "Collecting and analyzing data from user surveys on their general health information system's satisfaction is strategic monitoring"
+        ],
+        "generated": [
+          "The activity 'Collection and analysis of data from user surveys on their general satisfaction with the health information system' corresponds to strategic monitoring of information systems.",
+          "Strategic monitoring of information systems is discussed in Section 4.2."
+        ]
+      }
+    },
+    "true_answer": "Collecting and analyzing data from user surveys on their general health information system's satisfaction: strategic monitoring",
+    "generated": "The activity \"Collection and analysis of data from user surveys on their general satisfaction with the health information system\" corresponds to **strategic monitoring** of information systems (Sect. 4.2).",
+    "transformed": "How would you describe the scope and tasks of the following activities of managing information systems: Collection and analysis of data from user surveys on their general satisfaction with the health information system",
+    "question": "- Collection and analysis of data from user surveys on their general satisfaction with the health information system,"
+  },
+  {
+    "id": "q0004",
+    "llm": "GPT_4_1_Mini",
+    "method": "lcw",
+    "type": "single",
+    "error_status": "no_errors",
+    "answered": 2,
+    "points": 0,
+    "total_answers": 8,
+    "num_answers": 1,
+    "last_evaluated": "25-18-15-09-2025",
+    "evaluation_status": "success",
+    "details": {
+      "retrieval": [],
+      "sub_answers": {
+        "gold": [
+          "Planning a project to select and introduce a new CPOE system is an example of tactical planning"
+        ],
+        "generated": [
+          "Planning a project to select and introduce a new CPOE system is an activity of tactical planning within the management of information systems.",
+          "Planning a project to select and introduce a new CPOE system involves creating a detailed project plan.",
+          "The detailed project plan defines the project’s scope.",
+          "The detailed project plan defines the project’s motivation.",
+          "The detailed project plan defines the project’s goals.",
+          "The detailed project plan defines the project’s tasks.",
+          "The detailed project plan defines the project’s activities.",
+          "The detailed project plan defines the required resources to successfully select and implement the CPOE system."
+        ]
+      }
+    },
+    "true_answer": "Planning a project to select and introduce a new CPOE system: tactical planning",
+    "generated": "Planning a project to select and introduce a new CPOE system is an activity of **tactical planning** within the management of information systems. It involves creating a detailed project plan that defines the project’s scope, motivation, goals, tasks, activities, and required resources to successfully select and implement the CPOE system (see Sect. 4.4).",
+    "transformed": "How would you describe the scope and tasks of the following activities of managing information systems: Planning a project to select and introduce a new CPOE system",
+    "question": "- Planning a project to select and introduce a new CPOE system,"
+  },
+  {
+    "id": "q0006",
+    "llm": "GPT_4_1_Mini",
+    "method": "lcw",
+    "type": "single",
+    "error_status": "no_errors",
+    "answered": 2,
+    "points": 0,
+    "total_answers": 11,
+    "num_answers": 1,
+    "last_evaluated": "09-19-16-09-2025",
+    "evaluation_status": "success",
+    "details": {
+      "retrieval": [],
+      "sub_answers": {
+        "gold": [
+          "Assessment of user satisfaction with a new intensive care system called tactical monitoring"
+        ],
+        "generated": [
+          "The activity \"Assessment of user satisfaction with a new intensive care system\" corresponds to tactical monitoring within the management of information systems.",
+          "Tactical monitoring involves collecting and analyzing feedback from users regarding their satisfaction with the new system.",
+          "Users providing feedback include intensive care unit staff.",
+          "The feedback concerns the system's usability.",
+          "The feedback concerns the system's support.",
+          "The feedback concerns the impact of the system on users' work.",
+          "Tactical monitoring helps identify issues with the system.",
+          "Tactical monitoring helps identify areas for improvement in the system.",
+          "Tactical monitoring informs decisions about further development of the system.",
+          "Tactical monitoring informs decisions about training related to the system.",
+          "Tactical monitoring informs decisions about adjustments to the system."
+        ]
+      }
+    },
+    "source": "Book",
+    "true_answer": "Assessment of user satisfaction with a new intensive care system: tactical monitoring",
+    "generated": "The activity \"Assessment of user satisfaction with a new intensive care system\" corresponds to **tactical monitoring** within the management of information systems.\n\nThis involves collecting and analyzing feedback from users (e.g., intensive care unit staff) regarding their satisfaction with the new system, its usability, support, and impact on their work. Such monitoring helps identify issues, areas for improvement, and informs decisions about further development, training, or adjustments to the system.",
+    "transformed": "How would you describe the scope and tasks of the following activities of managing information systems: Assessment of user satisfaction with a new intensive care system",
+    "question": "- Assessment of user satisfaction with a new intensive care system,"
+  },
+  {
+    "id": "q0007",
+    "llm": "GPT_4_1_Mini",
+    "method": "lcw",
+    "type": "single",
+    "error_status": "no_errors",
+    "answered": 2,
+    "points": 0,
+    "total_answers": 13,
+    "num_answers": 1,
+    "last_evaluated": "57-08-17-09-2025",
+    "evaluation_status": "success",
+    "details": {
+      "retrieval": [],
+      "sub_answers": {
+        "gold": [
+          "Planning of a user service desk for a group of clinical application components involves operational planning"
+        ],
+        "generated": [
+          "Planning of a user service desk for a group of clinical application components is an operational planning activity within the management of information systems.",
+          "Planning a user service desk involves organizing the necessary resources, procedures, and structures to ensure effective support for users of clinical application components.",
+          "Clinical application components include MDMS, RIS, LIS, and CPOE.",
+          "Planning a user service desk includes defining support levels such as first-level and second-level support.",
+          "Planning a user service desk includes defining staffing requirements.",
+          "Planning a user service desk includes defining availability times.",
+          "Planning a user service desk includes defining responsibilities.",
+          "Planning a user service desk includes defining communication channels such as hotline and ticketing system.",
+          "Planning a user service desk ensures smooth operation and timely resolution of user issues.",
+          "Smooth operation and timely resolution of user issues are crucial for maintaining the usability and reliability of clinical application systems.",
+          "The scope of this planning activity is operational management of information systems.",
+          "The task involved is planning.",
+          "The object of the planning is the user service desk (support organization) for clinical application components."
+        ]
+      }
+    },
+    "source": "Book",
+    "true_answer": "Planning of a user service desk for a group of clinical application components: operational planning",
+    "generated": "Planning of a user service desk for a group of clinical application components is an **operational planning** activity within the management of information systems.\n\nThis involves organizing the necessary resources, procedures, and structures to ensure that users of clinical application components (such as MDMS, RIS, LIS, CPOE) receive effective support. It includes defining support levels (e.g., first-level, second-level support), staffing, availability times, responsibilities, and communication channels (e.g., hotline, ticketing system).\n\nSuch planning ensures smooth operation and timely resolution of user issues, which is crucial for maintaining the usability and reliability of clinical application systems.\n\n**In summary:**\n\n- **Scope:** Operational management of information systems  \n- **Task:** Planning  \n- **Object:** User service desk (support organization) for clinical application components",
+    "transformed": "How would you describe the scope and tasks of the following activities of managing information systems: Planning of a user service desk for a group of clinical application components",
+    "question": "- Planning of a user service desk for a group of clinical application components,"
+  },
+  {
+    "id": "q0008",
+    "llm": "GPT_4_1_Mini",
+    "method": "lcw",
+    "type": "single",
+    "error_status": "no_errors",
+    "answered": 2,
+    "points": 0,
+    "total_answers": 21,
+    "num_answers": 1,
+    "last_evaluated": "58-08-17-09-2025",
+    "evaluation_status": "success",
+    "details": {
+      "retrieval": [],
+      "sub_answers": {
+        "gold": [
+          "Operation of a service desk for a group of clinical application components involves operational directing"
+        ],
+        "generated": [
+          "The operation of a service desk for a group of clinical application components is an activity of operational management of information systems.",
+          "Providing first-level support to users of clinical application components involves receiving incident reports or user questions.",
+          "Clinical application components include MDMS, CPOE, RIS, and PACS.",
+          "Performing initial troubleshooting and problem resolution is part of the service desk task.",
+          "Issues that cannot be resolved at the first level are escalated to higher-level support.",
+          "Managing user accounts, access rights, and permissions related to clinical application components is a service desk task.",
+          "Offering user assistance, guidance, and training related to clinical application components is part of the service desk operation.",
+          "Monitoring the overall service quality and availability of clinical application components from the users’ perspective is a service desk activity.",
+          "Documenting incidents and their resolution is part of the service desk responsibilities.",
+          "Maintaining communication with users to ensure satisfactory service is a service desk task.",
+          "Coordinating with second-level support teams and vendors for complex issues is part of the service desk operation.",
+          "Second-level support teams include specialized IT staff.",
+          "Operating a service desk ensures smooth and reliable operation of clinical application components in the health care facility.",
+          "Operating a service desk contributes to maintaining high-quality IT services.",
+          "Operating a service desk is part of operational management of information systems and IT service management (ITSM).",
+          "In the classification matrix of information management activities, operating a service desk corresponds to the scope of operational management of information systems.",
+          "In the classification matrix, operating a service desk corresponds to the task of directing, which involves day-to-day execution and management of IT services.",
+          "In the classification matrix, the object of operating a service desk is application components, specifically clinical application components.",
+          "Operating a service desk is essential for supporting users of clinical application components.",
+          "Operating a service desk is essential for promptly addressing users' IT problems.",
+          "Operating a service desk is essential for ensuring continuous availability and usability of clinical application systems."
+        ]
+      }
+    },
+    "source": "Book",
+    "true_answer": "Operation of a service desk for a group of clinical application components: operational directing",
+    "generated": "The operation of a service desk for a group of clinical application components is an activity of **operational management of information systems**.\n\nSpecifically, this task involves:\n\n- Providing first-level support to users of clinical application components (e.g., MDMS, CPOE, RIS, PACS) by receiving incident reports or user questions.\n- Performing initial troubleshooting and problem resolution or escalating issues to higher-level support if needed.\n- Managing user accounts, access rights, and permissions related to the clinical application components.\n- Offering user assistance, guidance, and training related to these applications.\n- Monitoring the overall service quality and availability of the clinical application components from the users’ perspective.\n- Documenting incidents, their resolution, and maintaining communication with users to ensure satisfactory service.\n- Coordinating with second-level support teams (e.g., specialized IT staff) and vendors for complex issues.\n\nThis activity is part of ensuring smooth and reliable operation of clinical application components in the health care facility and contributes to maintaining high-quality IT services as described in Sect. 4.5 on operational management of information systems and IT service management (ITSM).\n\nIn the classification matrix of information management activities (Sect. 4.2), it corresponds to:\n\n- Scope: Operational management of information systems\n- Task: Directing (day-to-day execution and management of IT services)\n- Object: Application components (clinical application components in this case)\n\nThus, operating a service desk is essential for supporting the users, promptly addressing their IT problems, and ensuring continuous availability and usability of clinical application systems.",
+    "transformed": "How would you describe the scope and tasks of the following activities of managing information systems: Operation of a service desk for a group of clinical application components",
+    "question": "- Operation of a service desk for a group of clinical application components,"
+  },
+  {
+    "id": "q0009",
+    "llm": "GPT_4_1_Mini",
+    "method": "lcw",
+    "type": "single",
+    "error_status": "no_errors",
+    "answered": 2,
+    "points": 0,
+    "total_answers": 17,
+    "num_answers": 1,
+    "last_evaluated": "58-08-17-09-2025",
+    "evaluation_status": "success",
+    "details": {
+      "retrieval": [],
+      "sub_answers": {
+        "gold": [
+          "Daily monitoring of network availability and network failures is a form of operational monitoring"
+        ],
+        "generated": [
+          "The activity \"Daily monitoring of network availability and network failures\" belongs to operational monitoring within the operational management of information systems.",
+          "The scope of the activity is operational management of information systems.",
+          "The task involved in the activity is monitoring.",
+          "Operational management is responsible for ensuring the smooth operation of all components of the information system.",
+          "Operational management includes responsibility for physical data processing systems.",
+          "Operational management includes responsibility for communication networks.",
+          "Daily monitoring of network availability and network failures is a continuous activity.",
+          "Daily monitoring checks the proper working of the network infrastructure.",
+          "Daily monitoring checks the effectiveness of the network infrastructure.",
+          "The network infrastructure is critical for physical interoperability of the health information system.",
+          "The network infrastructure is critical for integration of the health information system.",
+          "This monitoring helps to detect disruptions early.",
+          "This monitoring supports prompt incident handling.",
+          "This monitoring minimizes downtime.",
+          "Minimizing downtime helps maintain the availability of health information systems.",
+          "Minimizing downtime helps maintain the reliability of health information systems.",
+          "This classification aligns with the example answer provided in Exercise 4.9.1 of the book."
+        ]
+      }
+    },
+    "source": "Book",
+    "true_answer": "Daily monitoring of network availability and network failures: operational monitoring",
+    "generated": "The activity \"Daily monitoring of network availability and network failures\" belongs to **operational monitoring** within the **operational management of information systems**.\n\n**Scope and tasks:**\n\n- **Scope:** Operational management of information systems  \n- **Task:** Monitoring\n\n**Explanation:**\n\nOperational management is responsible for ensuring the smooth operation of all components of the information system, including the physical data processing systems and communication networks. Daily monitoring of network availability and network failures is a continuous activity that checks the proper working and effectiveness of the network infrastructure, which is critical for physical interoperability and integration of the health information system.\n\nThis monitoring helps to detect disruptions early, supports prompt incident handling, and minimizes downtime, thus maintaining the availability and reliability of health information systems.\n\nThis classification aligns with the example answer provided in Exercise 4.9.1 of the book.",
+    "transformed": "How would you describe the scope and tasks of the following activities of managing information systems: Daily monitoring of network availability and network failures",
+    "question": "- Daily monitoring of network availability and network failures."
+  },
+  {
+    "id": "q0010",
+    "llm": "GPT_4_1_Mini",
+    "method": "lcw",
+    "type": "single",
+    "error_status": "no_errors",
+    "answered": 2,
+    "points": 0,
+    "total_answers": 12,
+    "num_answers": 1,
+    "last_evaluated": "58-08-17-09-2025",
+    "evaluation_status": "success",
+    "details": {
+      "retrieval": [],
+      "sub_answers": {
+        "gold": [
+          "A Hospital Information system is the socio-technical subsystem of hospitals that comprises all data, information, and knowledge processing as well as the associated human or technical actors in their respective data, information, and knowledge processing roles."
+        ],
+        "generated": [
+          "Ein Krankenhausinformationssystem (KIS) ist das sozio-technische Teilsystem eines Krankenhauses.",
+          "Das Krankenhausinformationssystem umfasst sämtliche Daten-, Informations- und Wissensverarbeitungsprozesse im Krankenhaus.",
+          "Das Krankenhausinformationssystem umfasst die damit verbundenen menschlichen Akteure in deren jeweiligen Rollen der Daten-, Informations- und Wissensverarbeitung.",
+          "Das Krankenhausinformationssystem umfasst die damit verbundenen technischen Akteure in deren jeweiligen Rollen der Daten-, Informations- und Wissensverarbeitung.",
+          "Ein Krankenhausinformationssystem ist das gesamte Informationssystem, das in einem Krankenhaus existiert.",
+          "Ein Krankenhausinformationssystem umfasst alle computerbasierten Komponenten, die zur Verwaltung, Dokumentation, Koordination und Unterstützung der klinischen, administrativen und organisatorischen Abläufe im Krankenhaus beitragen.",
+          "Ein Krankenhausinformationssystem umfasst alle nicht-computerbasierten Komponenten, die zur Verwaltung, Dokumentation, Koordination und Unterstützung der klinischen, administrativen und organisatorischen Abläufe im Krankenhaus beitragen.",
+          "Ein Krankenhausinformationssystem umfasst alle Prozesse, die zur Verwaltung, Dokumentation, Koordination und Unterstützung der klinischen, administrativen und organisatorischen Abläufe im Krankenhaus beitragen.",
+          "Ein Krankenhausinformationssystem umfasst alle Personen, die zur Verwaltung, Dokumentation, Koordination und Unterstützung der klinischen, administrativen und organisatorischen Abläufe im Krankenhaus beitragen.",
+          "Die Definition des Krankenhausinformationssystems basiert auf dem allgemeinen Begriff des Health Information Systems (HIS).",
+          "Die Definition des Krankenhausinformationssystems ist speziell auf das Krankenhaus als Gesundheitseinrichtung angewandt.",
+          "Die Quelle der Definition ist Kapitel 6.2.1 und 2.6 aus dem Buch „Health Information Systems – Technological and Management Perspectives“, 3. Auflage 2023."
+        ]
+      }
+    },
+    "source": "IS_2022_07_18",
+    "true_answer": "A Hospital Information system is the socio-technical subsystem of for hospitals. It comprimises all data, information, and knowledge processing as well as the associated human or technical actors in their respective data, information, and knowledge processing roles.",
+    "generated": "Ein **Krankenhausinformationssystem (KIS)** ist das **sozio-technische Teilsystem eines Krankenhauses**, das sämtliche Daten-, Informations- und Wissensverarbeitungsprozesse sowie die damit verbundenen menschlichen und technischen Akteure in deren jeweiligen Rollen der Daten-, Informations- und Wissensverarbeitung umfasst.\n\nMit anderen Worten: Ein Krankenhausinformationssystem ist das gesamte Informationssystem, das in einem Krankenhaus existiert und alle computerbasierten und nicht-computerbasierten Komponenten, Prozesse und Personen umfasst, die zur Verwaltung, Dokumentation, Koordination und Unterstützung der klinischen, administrativen und organisatorischen Abläufe im Krankenhaus beitragen.\n\nDiese Definition basiert auf dem allgemeinen Begriff des Health Information Systems (HIS) und ist speziell auf das Krankenhaus als Gesundheitseinrichtung angewandt.\n\n**Quelle:** Kapitel 6.2.1 und 2.6 aus dem Buch „Health Information Systems – Technological and Management Perspectives“, 3. Auflage 2023.",
+    "transformed": "Define the term \"hospital information system\".",
+    "question": "Definieren Sie den Begriff \"Krankenhausinformationssystem\"."
+  },
+  {
+    "id": "q0011",
+    "llm": "GPT_4_1_Mini",
+    "method": "lcw",
+    "type": "single",
+    "error_status": "no_errors",
+    "answered": 2,
+    "points": 0,
+    "total_answers": 24,
+    "num_answers": 1,
+    "last_evaluated": "58-08-17-09-2025",
+    "evaluation_status": "success",
+    "details": {
+      "retrieval": [],
+      "sub_answers": {
+        "gold": [
+          "Via the CPOE System within a hospital or externally via their own pharmacists' information system."
+        ],
+        "generated": [
+          "Apotheker:innen erhalten Zugriff auf verordnete eRezepte in der Regel über eine sichere, standardisierte elektronische Infrastruktur.",
+          "Die elektronische Infrastruktur ist Teil des Gesundheitssystems oder der Telematikinfrastruktur.",
+          "Das eRezept wird vom behandelnden Arzt elektronisch erstellt.",
+          "Das eRezept wird vom behandelnden Arzt digital signiert.",
+          "Das eRezept wird in einer zentralen oder regionalen eRezept-Plattform gespeichert.",
+          "Die eRezept-Plattform ist häufig eingebettet in die Telematikinfrastruktur.",
+          "Die eRezept-Infrastruktur gewährleistet Datenschutz, Datensicherheit und Zugriffsberechtigung.",
+          "Apotheker:innen authentifizieren sich mit ihrer elektronischen Heilberufsausweis-Karte (eHBA) am System.",
+          "Die eHBA stellt sicher, dass nur berechtigte Personen Zugriff auf die Patientendaten und die eRezepte erhalten.",
+          "Apotheker:innen können die ihnen zugewiesenen eRezepte über eine Apotheken-Software abrufen.",
+          "Apotheker:innen können die ihnen zugewiesenen eRezepte über eine Apotheken-App mit Anbindung an die eRezept-Plattform abrufen.",
+          "Beim Abruf wird geprüft, ob das Rezept gültig ist.",
+          "Beim Abruf wird geprüft, ob die Apotheke berechtigt ist, das Rezept einzulösen.",
+          "Nach Abruf kann das Rezept digital eingelöst werden.",
+          "Nach Abruf kann die Abgabe der Arzneimittel dokumentiert werden.",
+          "Die Daten der Arzneimittelabgabe werden entsprechend der gesetzlichen Vorgaben gespeichert.",
+          "Die gespeicherten Daten dienen zum Beispiel für Abrechnungszwecke mit der Krankenkasse.",
+          "Der Zugriff auf eRezepte erfolgt unter Beachtung der Datenschutzregelungen, insbesondere der DSGVO und nationaler Gesetze.",
+          "Nur berechtigte Personen können auf die eRezepte zugreifen.",
+          "Der Zugriff auf eRezepte erfolgt nur für den Zweck der Arzneimittelabgabe.",
+          "Apotheker:innen erhalten Zugriff auf verordnete eRezepte durch eine sichere Authentifizierung, zum Beispiel mit eHBA.",
+          "Apotheker:innen erhalten Zugriff auf verordnete eRezepte über eine Apotheken-Software, die an die eRezept-Plattform bzw. die Telematikinfrastruktur angeschlossen ist.",
+          "Die eRezepte werden elektronisch bereitgestellt, sodass die Apotheke diese abrufen, prüfen und bearbeiten kann.",
+          "Standards und Sicherheitsvorgaben sind entscheidend für Datenschutz und Integrität der Daten."
+        ]
+      }
+    },
+    "source": "IS_2022_07_18",
+    "true_answer": "Via the CPOE System within a hospital. Extern via their own pharmacists information system.",
+    "generated": "Apotheker:innen erhalten Zugriff auf verordnete eRezepte in der Regel über eine sichere, standardisierte elektronische Infrastruktur, die Teil des Gesundheitssystems oder der Telematikinfrastruktur ist. Wesentliche Aspekte und Abläufe sind dabei:\n\n1. **eRezept-Plattform bzw. Telematikinfrastruktur**  \n   Das eRezept wird vom behandelnden Arzt elektronisch erstellt und digital signiert und anschließend in einer zentralen oder regionalen eRezept-Plattform (häufig eingebettet in die Telematikinfrastruktur) gespeichert. Diese Infrastruktur gewährleistet Datenschutz, Datensicherheit und Zugriffsberechtigung.\n\n2. **Authentifizierung der Apotheker:innen**  \n   Apotheker:innen authentifizieren sich mit ihrer elektronischen Heilberufsausweis-Karte (eHBA) am System. Die eHBA stellt sicher, dass nur berechtigte Personen Zugriff auf die Patientendaten und die eRezepte erhalten.\n\n3. **Abruf des eRezepts**  \n   Über eine entsprechende Apotheken-Software oder eine Apotheken-App mit Anbindung an die eRezept-Plattform können Apotheker:innen die ihnen zugewiesenen eRezepte abrufen. Dabei wird geprüft, ob das Rezept gültig ist und ob die Apotheke berechtigt ist, dieses Rezept einzulösen.\n\n4. **Einlösen und Dokumentation**  \n   Nach Abruf kann das Rezept digital eingelöst und die Abgabe der Arzneimittel dokumentiert werden. Die Daten werden entsprechend der gesetzlichen Vorgaben gespeichert, zum Beispiel für Abrechnungszwecke mit der Krankenkasse.\n\n5. **Sicherheits- und Datenschutzvorgaben**  \n   Der Zugriff erfolgt unter Beachtung der Datenschutzregelungen, insbesondere der DSGVO und nationaler Gesetze, sodass nur berechtigte Personen und nur für den Zweck der Arzneimittelabgabe auf die eRezepte zugreifen können.\n\n**Zusammenfassung:**  \nApotheker:innen erhalten Zugriff auf verordnete eRezepte durch eine sichere Authentifizierung (z.B. mit eHBA) und über eine Apotheken-Software, die an die eRezept-Plattform bzw. die Telematikinfrastruktur angeschlossen ist. Dort werden die eRezepte elektronisch bereitgestellt, sodass die Apotheke diese abrufen, prüfen und bearbeiten kann. Dabei sind Standards und Sicherheitsvorgaben entscheidend für Datenschutz und Integrität der Daten.",
+    "transformed": "How do pharmacists get access to e-prescriptions?",
+    "question": "Wie erhalten Apotheker:innen Zugriff auf verordnete eRezepte?"
+  },
+  {
+    "id": "q0012",
+    "llm": "GPT_4_1_Mini",
+    "method": "lcw",
+    "type": "single",
+    "error_status": "no_errors",
+    "answered": 2,
+    "points": 0,
+    "total_answers": 18,
+    "num_answers": 1,
+    "last_evaluated": "59-08-17-09-2025",
+    "evaluation_status": "success",
+    "details": {
+      "retrieval": [],
+      "sub_answers": {
+        "gold": [
+          "A transinstitutional health information system is the socio-technical subsystem which comprises all data, information, and knowledge processing as well as the associated human or technical actors in their respective data, information, and knowledge processing roles."
+        ],
+        "generated": [
+          "Ein transinstitutionelles Gesundheitsinformationssystem (tHIS) ist ein Informationssystem.",
+          "Ein transinstitutionelles Gesundheitsinformationssystem fungiert als sozio-technisches Subsystem eines Gesundheitsversorgungsnetzwerks.",
+          "Ein Gesundheitsversorgungsnetzwerk ist ein spezielles Setting.",
+          "Ein Setting ist ein Ort, sozialer Kontext oder eine Einrichtung, in der Menschen aktiv ihre Umwelt nutzen und gestalten, um Probleme zu schaffen oder zu lösen.",
+          "Im Gesundheitskontext umfasst das Setting alle Orte und Organisationen, in denen gesundheitsbezogene Tätigkeiten stattfinden.",
+          "Ein Gesundheitsversorgungsnetzwerk als Setting umfasst verschiedene miteinander vernetzte Einrichtungen und Akteure.",
+          "Zu den Einrichtungen und Akteuren eines Gesundheitsversorgungsnetzwerks gehören Krankenhäuser, Arztpraxen, Rehabilitationszentren, Pflegeheime, ambulante Pflegedienste sowie Patienten in ihren privaten Lebensumfeldern.",
+          "Das transinstitutionelle Gesundheitsinformationssystem ist das gesamte sozio-technische Subsystem, das alle Daten-, Informations- und Wissensverarbeitungsprozesse innerhalb des Gesundheitsversorgungsnetzwerks umfasst.",
+          "Das transinstitutionelle Gesundheitsinformationssystem umfasst die damit verbundenen menschlichen und technischen Akteure in ihren jeweiligen Rollen innerhalb des Gesundheitsversorgungsnetzwerks.",
+          "Das transinstitutionelle Gesundheitsinformationssystem ermöglicht die organisationsübergreifende Verarbeitung von Gesundheitsdaten.",
+          "Das transinstitutionelle Gesundheitsinformationssystem ermöglicht die organisationsübergreifende Speicherung von Gesundheitsdaten.",
+          "Das transinstitutionelle Gesundheitsinformationssystem ermöglicht den organisationsübergreifenden Austausch von Gesundheitsdaten.",
+          "Das Ziel des transinstitutionellen Gesundheitsinformationssystems ist es, eine ganzheitliche, patientenorientierte Versorgung über die Grenzen einzelner Einrichtungen hinweg sicherzustellen.",
+          "Ein transinstitutionelles Gesundheitsinformationssystem ist das sozio-technische Subsystem eines gesundheitlichen Settings in Form eines Versorgungsnetzwerks.",
+          "Ein transinstitutionelles Gesundheitsinformationssystem umfasst alle daten-, informations- und wissensverarbeitenden Prozesse sowie die beteiligten Personen und technischen Systeme in ihren Rollen.",
+          "Ein transinstitutionelles Gesundheitsinformationssystem unterstützt organisationsübergreifend eine integrierte Gesundheitsversorgung.",
+          "Die Definition des transinstitutionellen Gesundheitsinformationssystems basiert auf der Ausführung in Kapitel 2 (Sekt. 2.6) des Buches „Health Information Systems - Technological and Management Perspectives“.",
+          "Der Begriff transinstitutionelles Gesundheitsinformationssystem ist im Kontext von Settings und Netzwerken klar verankert."
+        ]
+      }
+    },
+    "source": "IS_2022_09_27",
+    "true_answer": "A transinstitutional health information system is the socio-technical subsystem which comprises all data, information, and knowledge processing as well as the associated human or technical actors in their respective data, information, and knowledge processing roles. It cdescribes the information system of a health care network, in which multiple Settings are present. Each setting is a context this information system is used in, for example in the stationary or ambulant care, but also rehabilitation or care of the elder.",
+    "generated": "Ein **transinstitutionelles Gesundheitsinformationssystem (tHIS)** ist ein Informationssystem, das als sozio-technisches Subsystem eines **Gesundheitsversorgungsnetzwerks** – also eines speziellen **Settings** – fungiert.\n\nDabei versteht man unter einem **Setting** einen Ort, sozialen Kontext oder eine Einrichtung, in der Menschen aktiv ihre Umwelt nutzen und gestalten, um Probleme zu schaffen oder zu lösen. Im Gesundheitskontext umfasst das Setting also alle Orte und Organisationen, in denen gesundheitsbezogene Tätigkeiten stattfinden.\n\nEin Gesundheitsversorgungsnetzwerk als Setting umfasst verschiedene miteinander vernetzte Einrichtungen und Akteure, zum Beispiel Krankenhäuser, Arztpraxen, Rehabilitationszentren, Pflegeheime, ambulante Pflegedienste sowie Patienten in ihren privaten Lebensumfeldern.\n\nDas transinstitutionelle Gesundheitsinformationssystem ist somit das gesamte sozio-technische Subsystem, das alle Daten-, Informations- und Wissensverarbeitungsprozesse sowie die damit verbundenen menschlichen und technischen Akteure in ihren jeweiligen Rollen innerhalb dieses Gesundheitsversorgungsnetzwerks umfasst.\n\nEs ermöglicht die organisationsübergreifende Verarbeitung, Speicherung und den Austausch von Gesundheitsdaten, um eine ganzheitliche, patientenorientierte Versorgung über die Grenzen einzelner Einrichtungen hinweg sicherzustellen.\n\n**Kurzfassung der Definition:**\n\n> Ein **transinstitutionelles Gesundheitsinformationssystem** ist das sozio-technische Subsystem eines gesundheitlichen Settings in Form eines Versorgungsnetzwerks, das alle daten-, informations- und wissensverarbeitenden Prozesse sowie die beteiligten Personen und technischen Systeme in ihren Rollen umfasst und organisationsübergreifend eine integrierte Gesundheitsversorgung unterstützt.\n\nDiese Definition basiert auf der Ausführung in Kapitel 2 (Sekt. 2.6) des Buches „Health Information Systems - Technological and Management Perspectives“, in dem der Begriff im Kontext von Settings und Netzwerken klar verankert ist.",
+    "transformed": "Define the term \"trans-institutional health information system\". Use the term \"setting\" for this purpose.",
+    "question": "Definieren Sie den Begriff \"transinstitutionelles Gesundheitsinformationssystem\". Verwenden Sie dabei den Begriff des \"Settings\"."
+  },
+  {
+    "id": "q0013",
+    "llm": "GPT_4_1_Mini",
+    "method": "lcw",
+    "type": "single",
+    "error_status": "no_errors",
+    "answered": 2,
+    "points": 0,
+    "total_answers": 17,
+    "num_answers": 1,
+    "last_evaluated": "59-08-17-09-2025",
+    "evaluation_status": "success",
+    "details": {
+      "retrieval": [],
+      "sub_answers": {
+        "gold": [
+          "tHIS stands for transinstitutional health information system, an information system of a health care network which consists of multiple health care settings (contexts) and comprises all data, information, and knowledge processing as well as the associated human or technical actors in their respective data, information, and knowledge processing roles."
+        ],
+        "generated": [
+          "A transinstitutional health information system (tHIS) is the socio-technical information system of a health care network that spans across multiple health care facilities and settings.",
+          "A tHIS comprises all data, information, and knowledge processing as well as the associated human and technical actors in their respective data, information, and knowledge processing roles across institutional boundaries.",
+          "A tHIS supports the exchange and integration of health data and documents across different health care institutions such as hospitals, medical offices, rehabilitation centers, nursing homes, ambulatory nursing organizations, and personal environments like patients’ homes.",
+          "A tHIS enables comprehensive, patient-centered care by providing access to a patient’s health information regardless of where the care was provided.",
+          "A tHIS typically includes components such as transinstitutional electronic health records (EHRs).",
+          "A tHIS typically includes master patient indexes (MPI) for unique patient identification across institutions.",
+          "A tHIS typically includes communication servers or integration platforms to enable interoperability.",
+          "A tHIS typically adheres to interoperability standards such as HL7 FHIR and IHE XDS.",
+          "A tHIS supports various types of integration including data, semantic, process, user interface, and context integration to ensure smooth information flow and coordinated care across institutional boundaries.",
+          "From the technological perspective, a tHIS is composed of the institutional information systems interoperating via standardized interfaces and communication infrastructure.",
+          "From the management perspective, a tHIS is governed and managed by governmental bodies or authorities responsible for overseeing health care in a region or country.",
+          "The governance and management of a tHIS pay attention to legal, organizational, and technical aspects.",
+          "A tHIS is an overarching health information system that links and integrates the information systems of multiple health care institutions.",
+          "A tHIS supports seamless sharing and use of health data for patient care, administration, management, and research across institutional and regional boundaries.",
+          "The information system of a health care network can be called a transinstitutional health information system (tHIS).",
+          "The network of health care in a state or region consists of multiple institutions, and the information system of such a health care network is a tHIS.",
+          "Sect. 3.11.3 (CityCare Example) and Sect. 6.11 (German Medical Informatics Initiative) provide practical illustrations of tHIS architectures and functions."
+        ]
+      }
+    },
+    "source": "IS_2022_09_27",
+    "true_answer": "tHIS stands for transinstitutional health information system, an information system of a health care network which consists of multiple health care settings (contexts). It comprises all data, information, and knowledge processing as well as the associated human or technical actors in their respective data, information, and knowledge processing roles.",
+    "generated": "A **transinstitutional health information system (tHIS)** is the socio-technical information system of a **health care network** that spans across multiple health care facilities and settings. It comprises all data, information, and knowledge processing as well as the associated human and technical actors in their respective data, information, and knowledge processing roles across institutional boundaries.\n\n**Key points about tHIS:**\n\n- It supports the exchange and integration of health data and documents across different health care institutions such as hospitals, medical offices, rehabilitation centers, nursing homes, ambulatory nursing organizations, and even personal environments (e.g., patients’ homes).\n\n- The tHIS enables comprehensive, patient-centered care by providing access to a patient’s health information regardless of where the care was provided.\n\n- It typically includes components such as transinstitutional electronic health records (EHRs), master patient indexes (MPI) for unique patient identification across institutions, communication servers or integration platforms to enable interoperability, and adherence to interoperability standards (e.g., HL7 FHIR, IHE XDS).\n\n- The tHIS supports various types of integration (data, semantic, process, user interface, and context integration) to ensure smooth information flow and coordinated care across institutional boundaries.\n\n- From the technological perspective, a tHIS is composed of the institutional information systems interoperating via standardized interfaces and communication infrastructure.\n\n- From the management perspective, it is governed and managed by governmental bodies or authorities responsible for overseeing health care in a region or country, with attention to legal, organizational, and technical aspects.\n\n**In summary:**  \nA **tHIS** is an overarching health information system that links and integrates the information systems of multiple health care institutions to support seamless sharing and use of health data for patient care, administration, management, and research across institutional and regional boundaries.\n\n---\n\n**Reference from the provided context:**  \n- Sect. 2.6:  \n  “The information system of a health care network can be called a transinstitutional health information system (tHIS).”  \n- Sect. 6.9:  \n  “The network of health care in a state or region consists... The information system of a health care network is a tHIS.”  \n- Sect. 3.11.3 (CityCare Example) and Sect. 6.11 (German Medical Informatics Initiative) provide practical illustrations of tHIS architectures and functions.",
+    "transformed": "Define the term \"tHIS\".",
+    "question": "tHIS?"
+  },
+  {
+    "id": "q0014",
+    "llm": "GPT_4_1_Mini",
+    "method": "lcw",
+    "type": "single",
+    "error_status": "no_errors",
+    "answered": 2,
+    "points": 0,
+    "total_answers": 29,
+    "num_answers": 1,
+    "last_evaluated": "59-08-17-09-2025",
+    "evaluation_status": "success",
+    "details": {
+      "retrieval": [],
+      "sub_answers": {
+        "gold": [
+          "A doctor's letter is a transfer document for communication between doctors that provides a summary overview of the patient's status at discharge, a review of the course of the disease, the therapy initiated, an interpretation of the events related to the course of the disease in the specific case, information on the classification of the disease according to ICD, OPS, ICF and possibly also DRG, and recommendations for continuing therapy."
+        ],
+        "generated": [
+          "Ein Arztbrief ist ein medizinisches Dokument.",
+          "Der Arztbrief fasst die wesentlichen Informationen über die Diagnosen eines Patienten zusammen.",
+          "Der Arztbrief fasst die durchgeführten Untersuchungen eines Patienten zusammen.",
+          "Der Arztbrief fasst die Behandlungen eines Patienten zusammen.",
+          "Der Arztbrief fasst die Empfehlungen eines Patienten zusammen.",
+          "Der Arztbrief wird in der Regel von einem Arzt verfasst.",
+          "Der Arztbrief dient der Kommunikation zwischen verschiedenen Gesundheitsdienstleistern.",
+          "Der Arztbrief wird zum Beispiel bei der Überweisung eines Patienten vom Krankenhaus an den niedergelassenen Arzt verwendet.",
+          "Der Arztbrief wird zum Beispiel bei der Überweisung eines Patienten von einem Facharzt an einen anderen verwendet.",
+          "Im Kontext des Buches „Health Information Systems – Technological and Management Perspectives“ ist der Arztbrief Teil der medizinischen Dokumentation.",
+          "Der Arztbrief wird häufig im Rahmen der Funktion medizinischer Entlassung und medizinische Entlassungsbriefschreibung erstellt.",
+          "Der Arztbrief enthält die relevanten Diagnosen eines Patienten.",
+          "Der Arztbrief enthält die wichtigen Befunde eines Patienten.",
+          "Der Arztbrief enthält die therapeutischen Maßnahmen eines Patienten.",
+          "Der Arztbrief enthält den aktuellen Gesundheitszustand des Patienten.",
+          "Der Arztbrief enthält Empfehlungen für die weitere Behandlung.",
+          "Der Arztbrief kann als klinisches Dokument im elektronischen Patientendokument (EPR) archiviert werden.",
+          "Der Arztbrief kann über entsprechende Informationssysteme (z. B. MDMS, EHRS) ausgetauscht werden.",
+          "Der Arztbrief ist eine zusammenfassende schriftliche Mitteilung eines Arztes über den Verlauf der Behandlung eines Patienten.",
+          "Der Arztbrief ist eine zusammenfassende schriftliche Mitteilung eines Arztes über die Ergebnisse der Behandlung eines Patienten.",
+          "Der Arztbrief unterstützt die Kontinuität der Versorgung.",
+          "Der Arztbrief stellt anderen Ärzten und Gesundheitseinrichtungen die notwendigen Informationen zur Verfügung.",
+          "Der Arztbrief ist Teil der klinischen Dokumentation.",
+          "Der Arztbrief kann elektronisch vorliegen.",
+          "Der Arztbrief kann papierbasiert vorliegen.",
+          "Ein Arztbrief fasst den Behandlungsverlauf eines Patienten zusammen.",
+          "Ein Arztbrief fasst Diagnosen eines Patienten zusammen.",
+          "Ein Arztbrief fasst Empfehlungen eines Patienten zusammen.",
+          "Ein Arztbrief dient zur Kommunikation zwischen Ärzten und Gesundheitseinrichtungen."
+        ]
+      }
+    },
+    "source": "IS_2022_09_27",
+    "true_answer": "A doctor's letter is a transfer document for communication between doctors. It is a form of information for the referring doctor, who has arranged for a referral to a hospital or other medical treatment in the outpatient sector or for the further treating doctor who takes over the further treatment. The doctor's letter provides a summary overview of the patient's status at dicharge, a review of the course of the disease, the thearpy initiated, an interpretation of the events related to the course of the disease in the specific case, information on the classification of the diease according to ICD, OPS, ICF and possibly also DRG and recommendations for continuing therapy.",
+    "generated": "Ein **Arztbrief** ist ein medizinisches Dokument, das die wesentlichen Informationen über die Diagnosen, durchgeführte Untersuchungen, Behandlungen und Empfehlungen eines Patienten zusammenfasst. Er wird in der Regel von einem Arzt verfasst und dient der Kommunikation zwischen verschiedenen Gesundheitsdienstleistern, zum Beispiel bei der Überweisung eines Patienten vom Krankenhaus an den niedergelassenen Arzt oder von einem Facharzt an einen anderen.\n\nIm Kontext des Buches „Health Information Systems – Technological and Management Perspectives“ ist der Arztbrief Teil der **medizinischen Dokumentation** und wird häufig im Rahmen der Funktion **medizinischer Entlassung und medizinische Entlassungsbriefschreibung** erstellt (siehe Abschnitt 3.3.2.1 Patiententlassung und Überweisung). Der Arztbrief enthält die relevanten Diagnosen, wichtigen Befunde, therapeutischen Maßnahmen, den aktuellen Gesundheitszustand des Patienten sowie Empfehlungen für die weitere Behandlung. Er kann auch als klinisches Dokument im elektronischen Patientendokument (EPR) archiviert und über entsprechende Informationssysteme (z. B. MDMS, EHRS) ausgetauscht werden.\n\nKurz gesagt:\n\n- Der Arztbrief ist eine **zusammenfassende schriftliche Mitteilung** eines Arztes über den Verlauf und die Ergebnisse der Behandlung eines Patienten.\n- Er unterstützt die **Kontinuität der Versorgung**, indem er anderen Ärzten und Gesundheitseinrichtungen die notwendigen Informationen zur Verfügung stellt.\n- Er ist Teil der **klinischen Dokumentation** und kann elektronisch oder papierbasiert vorliegen.\n\n**Zusammenfassung:**  \nEin Arztbrief ist ein medizinisches Dokument, das den Behandlungsverlauf, Diagnosen und Empfehlungen eines Patienten zusammenfasst und zur Kommunikation zwischen Ärzten und Gesundheitseinrichtungen dient.",
+    "transformed": "What is a doctor's letter?",
+    "question": "Was ist ein Arztbrief?"
+  },
+  {
+    "id": "q0015",
+    "llm": "GPT_4_1_Mini",
+    "method": "lcw",
+    "type": "single",
+    "error_status": "no_errors",
+    "answered": 2,
+    "points": 0,
+    "total_answers": 24,
+    "num_answers": 1,
+    "last_evaluated": "59-08-17-09-2025",
+    "evaluation_status": "success",
+    "details": {
+      "retrieval": [],
+      "sub_answers": {
+        "gold": [
+          "openEHR is an open standard specification in health informatics that describes the management and storage, retrieval and exchange of health data in electronic health records (EHRs)."
+        ],
+        "generated": [
+          "openEHR ist ein offener Standard, der sich auf die standardisierte Darstellung klinischer Informationen in elektronischen Gesundheitsakten (EHRs) konzentriert.",
+          "openEHR wird von der openEHR Foundation seit den frühen 2000er Jahren gepflegt.",
+          "openEHR unterstützt sowohl die semantische als auch die syntaktische Interoperabilität von Gesundheitsdaten.",
+          "openEHR verwendet eine zweischichtige Modellierung, die strikt zwischen klinischem Inhalt und technischen Details trennt.",
+          "Die erste Schicht von openEHR ist das Referenzmodell, das die grundlegenden Bausteine und deren Implementierung beschreibt.",
+          "Das Referenzmodell umfasst Datentypen, Datenstrukturen und grundlegende EHR-Komponenten.",
+          "Die zweite Schicht von openEHR besteht aus Archetypen, die detaillierte, wiederverwendbare klinische Konzepte definieren.",
+          "Archetypen dienen als Bausteine für komplexe klinische Informationen.",
+          "Beispiele für klinische Konzepte, die durch Archetypen definiert werden, sind Blutdruck und Größe.",
+          "Archetypen werden formal mit der Archetype Definition Language (ADL) beschrieben.",
+          "Archetypen sind als semantische Bausteine universell einsetzbar.",
+          "Archetypen können ohne Modifikation in verschiedenen Kontexten genutzt werden.",
+          "Für konkrete Anwendungsfälle werden Archetypen zu Templates kombiniert.",
+          "Templates werden beispielsweise für Operationsberichte, Evaluationen oder Formular-Dokumente verwendet.",
+          "Einzelne Datenpunkte in Archetypen können an standardisierte Terminologien wie LOINC oder SNOMED CT gebunden werden.",
+          "Die Bindung an standardisierte Terminologien unterstützt die semantische Interoperabilität.",
+          "openEHR verfügt über die Archetype Query Language (AQL), eine Abfragesprache.",
+          "AQL greift auf klinische Konzepte zu und nicht auf die zugrunde liegende technische Datenstruktur.",
+          "AQL ist ähnlich wie SQL, aber domänenspezifisch.",
+          "openEHR stellt offene RESTful APIs zur Verfügung.",
+          "Die offenen APIs von openEHR können von Entwicklern genutzt werden, um interoperable Anwendungen zu erstellen.",
+          "Das Ziel von openEHR ist der Aufbau eines vollständigen, herstellerunabhängigen, lebenslangen elektronischen Gesundheitsdatensatzes.",
+          "Der elektronische Gesundheitsdatensatz von openEHR kann über Einrichtungen hinweg genutzt werden.",
+          "openEHR ist ein umfassendes, offenes Framework und Standard für die strukturierte und semantisch eindeutige Speicherung, Verwaltung und den Austausch klinischer Gesundheitsdaten in elektronischen Patientenakten."
+        ]
+      }
+    },
+    "source": "IS_2022_09_27",
+    "true_answer": "openEHR is an open standard specification in health informatics that describes the management and storage, retrieval and exchange of health data in electronic health records (EHRs). In openHER, all health data for a person is stored in a \"one lifetime\", vendor-independent, person-centred EHR. It is completely model-driven, and separates domain semantics out from software, into models created by domain professionals.",
+    "generated": "openEHR ist ein offener Standard, der sich auf die standardisierte Darstellung klinischer Informationen in elektronischen Gesundheitsakten (EHRs) konzentriert. Er wird von der openEHR Foundation seit den frühen 2000er Jahren gepflegt und unterstützt sowohl die semantische als auch die syntaktische Interoperabilität von Gesundheitsdaten.\n\nKernpunkte zu openEHR:\n\n- **Zweischichtige Modellierung:** openEHR trennt strikt zwischen klinischem Inhalt und technischen Details.  \n  - Die erste Schicht ist das **Referenzmodell**, das die grundlegenden Bausteine und deren Implementierung beschreibt (z. B. Datentypen, Datenstrukturen, grundlegende EHR-Komponenten).  \n  - Die zweite Schicht besteht aus **Archetypen**, die detaillierte, wiederverwendbare klinische Konzepte (z. B. Blutdruck, Größe) definieren und als Bausteine für komplexe klinische Informationen dienen.\n\n- **Archetyp-Definition:** Mit der Archetype Definition Language (ADL) werden Archetypen formal beschrieben. Diese sind als semantische Bausteine universell einsetzbar und können ohne Modifikation in verschiedenen Kontexten genutzt werden.\n\n- **Templates:** Für konkrete Anwendungsfälle werden Archetypen zu Templates kombiniert, z. B. für Operationsberichte, Evaluationen oder Formular-Dokumente.\n\n- **Terminologieanbindung:** Einzelne Datenpunkte in Archetypen können an standardisierte Terminologien wie LOINC oder SNOMED CT gebunden werden, was die semantische Interoperabilität unterstützt.\n\n- **Archetype Query Language (AQL):** Eine Abfragesprache, die auf klinische Konzepte und nicht auf die zugrunde liegende technische Datenstruktur zugreift, ähnlich SQL, aber domänenspezifisch.\n\n- **Offene APIs:** openEHR stellt offene RESTful APIs zur Verfügung, die von Entwicklern genutzt werden können, um interoperable Anwendungen zu erstellen.\n\n- **Ziel:** Aufbau eines vollständigen, herstellerunabhängigen, lebenslangen elektronischen Gesundheitsdatensatzes, der über Einrichtungen hinweg genutzt werden kann.\n\nZusammenfassend ist openEHR ein umfassendes, offenes Framework und Standard für die strukturierte und semantisch eindeutige Speicherung, Verwaltung und den Austausch klinischer Gesundheitsdaten in elektronischen Patientenakten.",
+    "transformed": "What is openEHR?",
+    "question": "Was ist openEHR"
+  },
+  {
+    "id": "q0016",
+    "llm": "GPT_4_1_Mini",
+    "method": "lcw",
+    "type": "single",
+    "error_status": "no_errors",
+    "answered": 2,
+    "points": 0,
+    "total_answers": 12,
+    "num_answers": 1,
+    "last_evaluated": "00-09-17-09-2025",
+    "evaluation_status": "success",
+    "details": {
+      "retrieval": [],
+      "sub_answers": {
+        "gold": [
+          "An archetype is a formal specification of a clinical concept that can be used to create interoperable and reusable electronic health records."
+        ],
+        "generated": [
+          "Ein Archetype ist ein grundlegender Baustein zur standardisierten Darstellung klinischer Konzepte in elektronischen Gesundheitsakten (EHR).",
+          "Ein Archetype repräsentiert ein bestimmtes, klinisches Konzept (z. B. Blutdruckmessung, Laborbefund, Medikamentenverordnung) auf eine detaillierte und wiederverwendbare Weise.",
+          "Archetypes werden im Rahmen des openEHR-Standards verwendet.",
+          "Archetypes definieren die Struktur, zulässigen Werte und semantischen Bedeutungen von klinischen Daten.",
+          "Archetypes ermöglichen eine einheitliche und interoperable Dokumentation klinischer Daten.",
+          "Archetypes sind wiederverwendbare, semantische Bausteine für die Modellierung klinischer Informationen.",
+          "Archetypes trennen die klinischen Inhalte von technischen Details (Zwei-Ebenen-Modell).",
+          "Archetypes ermöglichen die Erstellung von Templates, die für konkrete Anwendungsfälle (z. B. Entlassungsbericht, Blutdruckprotokoll) zusammengesetzt werden.",
+          "Archetypes können einzelne Datenpunkte oder komplexe klinische Sachverhalte beschreiben.",
+          "Archetypes unterstützen die semantische Interoperabilität, indem sie klinische Konzepte standardisiert und eindeutig definieren.",
+          "Archetypes sind standardisierte, detaillierte, wiederverwendbare Modelle klinischer Konzepte.",
+          "Archetypes werden in openEHR verwendet, um klinische Informationen in elektronischen Gesundheitsakten strukturiert, eindeutig und semantisch interoperabel abzubilden."
+        ]
+      }
+    },
+    "source": "IS_2022_09_27",
+    "true_answer": "An archetype is a formal specification of a clinical concept that can be used to create interoperable and resuable electronic health records. Archetypoes are designed to be independent of any specific EHR system and are intended to be used as building blocks for EHRs.",
+    "generated": "Ein **Archetype** ist ein grundlegender Baustein zur standardisierten Darstellung klinischer Konzepte in elektronischen Gesundheitsakten (EHR). Er repräsentiert ein bestimmtes, klinisches Konzept (z. B. Blutdruckmessung, Laborbefund, Medikamentenverordnung) auf eine detaillierte und wiederverwendbare Weise.\n\nArchetypes werden im Rahmen des **openEHR-Standards** verwendet (siehe Abschnitt 3.7.2.8 im Kontext der Interoperabilität). Sie definieren die Struktur, zulässigen Werte und semantischen Bedeutungen von klinischen Daten, um eine einheitliche und interoperable Dokumentation zu ermöglichen.\n\nWichtigste Eigenschaften von Archetypes sind:\n\n- Sie sind wiederverwendbare, semantische Bausteine für die Modellierung klinischer Informationen.\n- Sie trennen die klinischen Inhalte von technischen Details (Zwei-Ebenen-Modell).\n- Sie ermöglichen die Erstellung von Templates, die für konkrete Anwendungsfälle (z. B. Entlassungsbericht, Blutdruckprotokoll) zusammengesetzt werden.\n- Sie können einzelne Datenpunkte oder komplexe klinische Sachverhalte beschreiben.\n- Sie unterstützen die semantische Interoperabilität, indem sie klinische Konzepte standardisiert und eindeutig definieren.\n\nZusammengefasst:\n\n> **Archetype** sind standardisierte, detaillierte, wiederverwendbare Modelle klinischer Konzepte, die in openEHR verwendet werden, um klinische Informationen in elektronischen Gesundheitsakten strukturiert, eindeutig und semantisch interoperabel abzubilden.",
+    "transformed": "What is an archetype in the context of health information systems?",
+    "question": "Was ist ein Archetype?"
+  },
+  {
+    "id": "q0017",
+    "llm": "GPT_4_1_Mini",
+    "method": "lcw",
+    "type": "single",
+    "error_status": "no_errors",
+    "answered": 2,
+    "points": 0,
+    "total_answers": 14,
+    "num_answers": 1,
+    "last_evaluated": "00-09-17-09-2025",
+    "evaluation_status": "success",
+    "details": {
+      "retrieval": [],
+      "sub_answers": {
+        "gold": [
+          "openEHR is an open standard specification in health informatics that describes the management and storage, retrieval and exchange of health data in electronic health records."
+        ],
+        "generated": [
+          "openEHR ist ein offener Standard.",
+          "openEHR ist eine offene Standard-Spezifikation.",
+          "openEHR konzentriert sich auf die standardisierte und semantisch klare Repräsentation klinischer Informationen in elektronischen Gesundheitsakten (EHR).",
+          "Der openEHR-Standard unterstützt syntaktische Interoperabilität.",
+          "Der openEHR-Standard unterstützt semantische Interoperabilität.",
+          "openEHR verwendet eine zweischichtige Modellierung.",
+          "Die Referenzmodell-Schicht definiert die grundlegenden Datenstrukturen und Datentypen.",
+          "Die Archetypen-Schicht beschreibt klinische Konzepte als wiederverwendbare Bausteine (Archetypen).",
+          "openEHR stellt eine Archetype Definition Language (ADL) bereit.",
+          "openEHR stellt eine Archetype Query Language (AQL) bereit.",
+          "openEHR bietet offene APIs, um den Zugriff auf die Daten zu standardisieren.",
+          "Die Spezifikation wird von der openEHR Foundation gepflegt.",
+          "openEHR ist seit den frühen 2000er Jahren in Entwicklung.",
+          "openEHR kann als ein international anerkannter Standard für die semantisch klare Modellierung und den Austausch von Gesundheitsdaten angesehen werden."
+        ]
+      }
+    },
+    "source": "IS_2022_09_27",
+    "true_answer": "Yes, openEHR is an open standard specification in health informatics that describes the management and storage, retrieval and exchange of health data in electronic health records.",
+    "generated": "Ja, openEHR ist ein offener Standard. \n\nGenauer gesagt handelt es sich bei openEHR um eine offene Standard-Spezifikation, die sich auf die standardisierte und semantisch klare Repräsentation klinischer Informationen in elektronischen Gesundheitsakten (EHR) konzentriert. \n\nDer openEHR-Standard unterstützt sowohl syntaktische als auch semantische Interoperabilität, indem er eine zweischichtige Modellierung verwendet: \n\n- Eine Referenzmodell-Schicht, die die grundlegenden Datenstrukturen und Datentypen definiert, und  \n- eine Archetypen-Schicht, die klinische Konzepte als wiederverwendbare Bausteine (Archetypen) beschreibt.\n\nopenEHR stellt zudem eine Archetype Definition Language (ADL) sowie eine Archetype Query Language (AQL) bereit und bietet offene APIs, um den Zugriff auf die Daten zu standardisieren.\n\nDie Spezifikation wird von der openEHR Foundation gepflegt und ist seit den frühen 2000er Jahren in Entwicklung.\n\nDaher kann openEHR als ein international anerkannter Standard für die semantisch klare Modellierung und den Austausch von Gesundheitsdaten angesehen werden.",
+    "transformed": "Is openEHR a standard?",
+    "question": "Ist openEHR ein Standard?"
+  },
+  {
+    "id": "q0018",
+    "llm": "GPT_4_1_Mini",
+    "method": "lcw",
+    "type": "single",
+    "error_status": "no_errors",
+    "answered": 2,
+    "points": 0,
+    "total_answers": 18,
+    "num_answers": 1,
+    "last_evaluated": "00-09-17-09-2025",
+    "evaluation_status": "success",
+    "details": {
+      "retrieval": [],
+      "sub_answers": {
+        "gold": [
+          "Yes"
+        ],
+        "generated": [
+          "Mit Hilfe von openEHR ist es grundsätzlich möglich, eine (DB¹, ACⁿ, Vⁿ)-Architektur zu realisieren.",
+          "openEHR definiert ein offenes, standardisiertes Referenzmodell für die klinischen Daten.",
+          "openEHR unterstützt die Speicherung aller Patienteninformationen in einer konsistenten, zentralen Datenbank.",
+          "Verschiedene Anwendungssysteme (ACⁿ) können über offene, standardisierte Schnittstellen auf dieselbe zentrale Datenbank zugreifen.",
+          "Diese Architektur entspricht dem DB¹-Architekturstil, also einer Architektur mit genau einer zentralen Datenbank.",
+          "Obwohl die Daten zentral gespeichert sind, können unterschiedliche Anwendungen von verschiedenen Herstellern (Vⁿ) implementiert und betrieben werden.",
+          "Jede Anwendung unterstützt spezielle Funktionen (z. B. MDMS, RIS, CPOE, Telemonitoring etc.).",
+          "Die Anwendungen greifen über offene APIs (z. B. RESTful APIs, die openEHR bereitstellt) auf die gemeinsame Datenbasis zu.",
+          "Somit entsteht eine modulare Architektur mit mehreren Anwendungssystemen (ACⁿ).",
+          "openEHR verwendet offene Standards und Schnittstellen, wodurch Anwendungen verschiedener Anbieter (Vⁿ) integriert werden können.",
+          "Die Interoperabilität auf semantischer und syntaktischer Ebene wird durch das archetyp-basierte Modell von openEHR unterstützt.",
+          "Heterogene Systeme können konsistent mit der gemeinsamen Datenbasis arbeiten, ohne dass die Daten redundant und inkonsistent gehalten werden müssen.",
+          "openEHR ermöglicht eine zentralisierte Datenhaltung (DB¹) mit einer modularen Anwendungslandschaft (ACⁿ), die von unterschiedlichen Softwareanbietern (Vⁿ) stammen kann.",
+          "Eine (DB¹, ACⁿ, Vⁿ)-Architektur ist realisierbar, bei der alle Anwendungssysteme auf die gleiche zentrale, semantisch standardisierte Datenbasis zugreifen.",
+          "Diese Architektur führt zu Vorteilen bei der Datenintegration.",
+          "Diese Architektur führt zu Vorteilen bei der Datenkonsistenz.",
+          "Diese Architektur führt zu Vorteilen bei der semantischen Interoperabilität.",
+          "Die Flexibilität wird durch modulare, heterogene Anwendungen erhalten."
+        ]
+      }
+    },
+    "source": "IS_2022_09_27",
+    "true_answer": "Yes",
+    "generated": "Ja, mit Hilfe von **openEHR** ist es grundsätzlich möglich, eine **(DB¹, ACⁿ, Vⁿ)-Architektur** zu realisieren.\n\n### Begründung:\n\n- **DB¹ (zentrale Datenbank):**  \n  openEHR definiert ein offenes, standardisiertes Referenzmodell für die klinischen Daten und unterstützt die Speicherung aller Patienteninformationen in einer konsistenten, zentralen Datenbank. Das bedeutet, dass verschiedene Anwendungssysteme (ACⁿ) über offene, standardisierte Schnittstellen auf dieselbe zentrale Datenbank zugreifen können. Dies entspricht dem DB¹-Architekturstil, also einer Architektur mit genau einer zentralen Datenbank.\n\n- **ACⁿ (modulare Anwendungssysteme):**  \n  Obwohl die Daten zentral gespeichert sind, können unterschiedliche Anwendungen von verschiedenen Herstellern (Vⁿ) implementiert und betrieben werden. Jede Anwendung unterstützt spezielle Funktionen (z. B. MDMS, RIS, CPOE, Telemonitoring etc.) und greift über offene APIs (z. B. RESTful APIs, die openEHR bereitstellt) auf die gemeinsame Datenbasis zu. Somit entsteht eine modulare Architektur mit mehreren Anwendungssystemen (ACⁿ).\n\n- **Vⁿ (heterogene Anbieter):**  \n  Weil openEHR offene Standards und Schnittstellen verwendet, können Anwendungen verschiedener Anbieter (Vⁿ) integriert werden. Die Interoperabilität auf semantischer und syntaktischer Ebene wird durch das archetyp-basierte Modell von openEHR unterstützt, wodurch heterogene Systeme konsistent mit der gemeinsamen Datenbasis arbeiten können, ohne dass die Daten redundant und inkonsistent gehalten werden müssen.\n\n### Zusammenfassung:\n\n- **openEHR** ermöglicht eine **zentralisierte Datenhaltung** (DB¹) mit einer **modularen Anwendungslandschaft** (ACⁿ), die von **unterschiedlichen Softwareanbietern** (Vⁿ) stammen kann.  \n- Das bedeutet, dass eine (DB¹, ACⁿ, Vⁿ)-Architektur realisierbar ist, bei der alle Anwendungssysteme auf die gleiche zentrale, semantisch standardisierte Datenbasis zugreifen.  \n- Dies führt zu Vorteilen bei der **Datenintegration**, **Datenkonsistenz**, und **semantischen Interoperabilität**, während gleichzeitig die Flexibilität durch modulare, heterogene Anwendungen erhalten bleibt.\n\n---\n\n### Hinweis:  \nDie praktische Umsetzung erfordert natürlich:\n\n- Eine entsprechende technische",
+    "transformed": "Could one realise a DB^1, AC^n, V^n architecture with the help of openEHR?",
+    "question": "Könnte man mit Hilfe von openEHR eine (DB1, ACn, Vn)-Architektur realisieren?"
+  },
+  {
+    "id": "q0019",
+    "llm": "GPT_4_1_Mini",
+    "method": "lcw",
+    "type": "single",
+    "error_status": "no_errors",
+    "answered": 2,
+    "points": 0,
+    "total_answers": 4,
+    "num_answers": 1,
+    "last_evaluated": "00-09-17-09-2025",
+    "evaluation_status": "success",
+    "details": {
+      "retrieval": [],
+      "sub_answers": {
+        "gold": [
+          "A model is a representation of a system or process that is used to help understand and predict the behavior of the system or process."
+        ],
+        "generated": [
+          "Ein Modell ist eine Beschreibung dessen, was der Modellierende für relevant an einem System hält.",
+          "Modelle sind vereinfachte Darstellungen oder Ausschnitte der Realität.",
+          "Modelle werden angepasst, um bestimmte Fragestellungen zu beantworten oder Aufgaben zu lösen.",
+          "Ein Modell ist dann „gut“, wenn es geeignet ist, die jeweiligen Fragen zu beantworten oder Aufgaben zu erfüllen."
+        ]
+      }
+    },
+    "source": "IS_2022_09_27",
+    "true_answer": "A model is a representation of a system or process that is used to help understand and predict the behavor of the system or process. Health information systems models can be used to help design and evaluate health information systems. They can also beused to help identify areas for improvement in health information systems.",
+    "generated": "Ein Modell ist eine Beschreibung dessen, was der Modellierende für relevant an einem System hält. Modelle sind vereinfachte Darstellungen oder Ausschnitte der Realität, die angepasst werden, um bestimmte Fragestellungen zu beantworten oder Aufgaben zu lösen. Ein Modell ist dann „gut“, wenn es geeignet ist, die jeweiligen Fragen zu beantworten oder Aufgaben zu erfüllen. (Siehe Abschnitt 2.13)",
+    "transformed": "What is a model in the context of health information systems?",
+    "question": "Was ist ein Modell?"
+  },
+  {
+    "id": "q0020",
+    "llm": "GPT_4_1_Mini",
+    "method": "lcw",
+    "type": "single",
+    "error_status": "no_errors",
+    "answered": 2,
+    "points": 0,
+    "total_answers": 16,
+    "num_answers": 1,
+    "last_evaluated": "00-09-17-09-2025",
+    "evaluation_status": "success",
+    "details": {
+      "retrieval": [],
+      "sub_answers": {
+        "gold": [
+          "The Architecture of Integrated Information Systems is a framework for describing business processes."
+        ],
+        "generated": [
+          "ARIS steht für Architecture of Integrated Information Systems.",
+          "ARIS ist ein Modellierungs- und Methodenframework.",
+          "ARIS wird insbesondere im Bereich der Geschäftsprozessmodellierung eingesetzt.",
+          "ARIS bietet Konzepte und Werkzeuge, um Geschäftsprozesse systematisch zu beschreiben, zu analysieren und zu gestalten.",
+          "ARIS bietet Konzepte und Werkzeuge, um Organisationsstrukturen systematisch zu beschreiben, zu analysieren und zu gestalten.",
+          "ARIS bietet Konzepte und Werkzeuge, um Daten systematisch zu beschreiben, zu analysieren und zu gestalten.",
+          "ARIS bietet Konzepte und Werkzeuge, um Anwendungen systematisch zu beschreiben, zu analysieren und zu gestalten.",
+          "Im Kontext von Health Information Systems wird ARIS als eines der möglichen Organisations- und Geschäftsprozessmetamodelle erwähnt.",
+          "ARIS kann zur Modellierung von Informationssystemen genutzt werden.",
+          "ARIS hilft, die Abläufe (Business Processes) in Gesundheitseinrichtungen zu visualisieren.",
+          "ARIS hilft, die Abläufe (Business Processes) in Gesundheitseinrichtungen zu optimieren.",
+          "ARIS ist ein Rahmenwerk zur Modellierung und Analyse integrierter Informationssysteme.",
+          "ARIS ist insbesondere für Geschäftsprozesse geeignet.",
+          "ARIS kann im Gesundheitswesen für die systematische Beschreibung von Abläufen eingesetzt werden.",
+          "ARIS kann im Gesundheitswesen für die systematische Gestaltung von Abläufen eingesetzt werden.",
+          "ARIS kann im Gesundheitswesen für die systematische Gestaltung von Informationsflüssen eingesetzt werden."
+        ]
+      }
+    },
+    "source": "IS_2022_09_27",
+    "true_answer": "The Architecture of Integrated Information Systems is a framework for describing business processes. It provides modeling methods and meta-structures that are comprised in information models.",
+    "generated": "ARIS steht für **Architecture of Integrated Information Systems**. Es handelt sich dabei um ein **Modellierungs- und Methodenframework**, das insbesondere im Bereich der Geschäftsprozessmodellierung eingesetzt wird. ARIS bietet Konzepte und Werkzeuge, um Geschäftsprozesse, Organisationsstrukturen, Daten und Anwendungen systematisch zu beschreiben, zu analysieren und zu gestalten.\n\nIm Kontext von Health Information Systems wird ARIS als einer der möglichen **Organisations- und Geschäftsprozessmetamodelle** erwähnt (siehe Kapitel 2.13), die zur Modellierung von Informationssystemen genutzt werden können. Dabei hilft ARIS, die Abläufe (Business Processes) in Gesundheitseinrichtungen zu visualisieren und zu optimieren.\n\nZusammenfassend:  \n**ARIS ist ein Rahmenwerk zur Modellierung und Analyse integrierter Informationssysteme, insbesondere für Geschäftsprozesse, das auch im Gesundheitswesen für die systematische Beschreibung und Gestaltung von Abläufen und Informationsflüssen eingesetzt werden kann.**",
+    "transformed": "What is ARIS?",
+    "question": "Was ist ARIS?"
+  },
+  {
+    "id": "q0021",
+    "llm": "GPT_4_1_Mini",
+    "method": "lcw",
+    "type": "single",
+    "error_status": "no_errors",
+    "answered": 2,
+    "points": 0,
+    "total_answers": 15,
+    "num_answers": 1,
+    "last_evaluated": "01-09-17-09-2025",
+    "evaluation_status": "success",
+    "details": {
+      "retrieval": [],
+      "sub_answers": {
+        "gold": [
+          "A Business Process Model such as BPMN is used to represent business processes."
+        ],
+        "generated": [
+          "Dynamische Aspekte von Informationssystemen (IS) können modelliert werden, indem man sich auf Geschäftsprozesse und Abläufe konzentriert, die beschreiben, wie Funktionen und Aktivitäten im zeitlichen und logischen Ablauf ausgeführt werden.",
+          "Geschäftsprozesse beschreiben die Abfolge von Aktivitäten mit den Bedingungen, unter denen diese ausgeführt werden.",
+          "Ein Geschäftsprozess hat einen definierten Anfang und ein definiertes Ende.",
+          "Funktionen beschreiben, was getan wird (statisch, ohne zeitliche Reihenfolge).",
+          "Geschäftsprozesse beschreiben, wie etwas getan wird (dynamisch, mit zeitlichem Ablauf).",
+          "Beispiele für Geschäftsprozesse sind Patientenaufnahme, Pflegeplanung und Erstellung eines Entlassungsbriefs.",
+          "Aktivitäten sind konkrete Ausführungen (Instanzen) von Funktionen.",
+          "Aktivitäten haben einen Anfang und ein Ende und sind somit dynamisch.",
+          "Ein Beispiel für eine Aktivität ist: Der Arzt nimmt Herrn Russo auf, welche eine Aktivität der Funktion Patientenaufnahme ist.",
+          "Modellierungssprachen und -notationen für dynamische Aspekte sind UML-Aktivitätsdiagramme, Ereignisgesteuerte Prozessketten (EPC), BPMN (Business Process Modeling and Notation) und Petri-Netze.",
+          "Diese Modelle helfen, den zeitlichen Ablauf, Entscheidungspunkte, Parallelitäten und Abhängigkeiten zwischen Aktivitäten im Informationssystem abzubilden.",
+          "Dynamische Aspekte von Informationssystemen werden modelliert durch die Beschreibung von Geschäftsprozessen und Aktivitäten, die die zeitliche und logische Reihenfolge der Informationsverarbeitung abbilden.",
+          "Spezielle Prozessmodellierungstechniken wie BPMN, EPC oder UML-Aktivitätsdiagramme werden eingesetzt, um Abläufe, Zustände und Interaktionen im Informationssystem darzustellen.",
+          "Im 3LGM²-Metamodell sind Funktionen Teil des statischen Domain-Layers.",
+          "Die dynamischen Abläufe der Funktionen werden durch Geschäftsprozessmodelle beschrieben."
+        ]
+      }
+    },
+    "source": "IS_2022_09_27",
+    "true_answer": "With a Business Process Model such as BPMN",
+    "generated": "Dynamische Aspekte von Informationssystemen (IS) können modelliert werden, indem man sich auf **Geschäftsprozesse** und **Abläufe** konzentriert, die beschreiben, **wie** Funktionen und Aktivitäten im zeitlichen und logischen Ablauf ausgeführt werden.\n\nIm Kontext des Buches „Health Information Systems - Technological and Management Perspectives“ wird dazu insbesondere Folgendes hervorgehoben:\n\n- **Geschäftsprozesse (Business Processes)**:  \n  - Sie beschreiben die Abfolge von Aktivitäten mit den Bedingungen, unter denen diese ausgeführt werden.  \n  - Ein Geschäftsprozess hat einen definierten Anfang und ein definiertes Ende.  \n  - Während Funktionen beschreiben, **was** getan wird (statisch, ohne zeitliche Reihenfolge), beschreiben Geschäftsprozesse, **wie** etwas getan wird (dynamisch, mit zeitlichem Ablauf).  \n  - Beispiele: Patientenaufnahme, Pflegeplanung, Erstellung eines Entlassungsbriefs.\n\n- **Aktivitäten (Activities)**:  \n  - Aktivitäten sind konkrete Ausführungen (Instanzen) von Funktionen.  \n  - Sie haben einen Anfang und ein Ende und sind somit dynamisch.  \n  - Zum Beispiel: „Der Arzt nimmt Herrn Russo auf“ ist eine Aktivität der Funktion „Patientenaufnahme“.\n\n- **Modellierungssprachen und -notationen für dynamische Aspekte**:  \n  - UML-Aktivitätsdiagramme  \n  - Ereignisgesteuerte Prozessketten (EPC)  \n  - BPMN (Business Process Modeling and Notation)  \n  - Petri-Netze  \n\nDiese Modelle helfen, den zeitlichen Ablauf, Entscheidungspunkte, Parallelitäten und Abhängigkeiten zwischen Aktivitäten im Informationssystem abzubilden.\n\n**Zusammenfassung:**  \nDynamische Aspekte von Informationssystemen werden modelliert durch die Beschreibung von **Geschäftsprozessen** und **Aktivitäten**, die die zeitliche und logische Reihenfolge der Informationsverarbeitung abbilden. Dabei werden spezielle Prozessmodellierungstechniken wie BPMN, EPC oder UML-Aktivitätsdiagramme eingesetzt, um Abläufe, Zustände und Interaktionen im IS darzustellen.  \n\nIm 3LGM²-Metamodell (Kapitel 2.14) sind Funktionen Teil des statischen Domain-Layers, während die dynamischen Abläufe der Funktionen durch Geschäftsprozessmodelle beschrieben werden.",
+    "transformed": "How can dynamic aspects of Information Systems be modelled?",
+    "question": "Wie kann man dynamische Aspekte von IS modellieren?"
+  },
+  {
+    "id": "q0022",
+    "llm": "GPT_4_1_Mini",
+    "method": "lcw",
+    "type": "single",
+    "error_status": "no_errors",
+    "answered": 2,
+    "points": 0,
+    "total_answers": 24,
+    "num_answers": 1,
+    "last_evaluated": "01-09-17-09-2025",
+    "evaluation_status": "success",
+    "details": {
+      "retrieval": [],
+      "sub_answers": {
+        "gold": [
+          "IHE stands for Integrating the Healthcare Enterprise and is an initiative by healthcare professionals and industry to improve the way computer systems in healthcare share information by promoting the coordinated use of established standards such as DICOM and HL7 to address specific clinical needs in support of optimal patient care."
+        ],
+        "generated": [
+          "IHE steht für Integrating the Health care Enterprise.",
+          "IHE ist eine Initiative, die 1998 von medizinischen Fachgesellschaften gemeinsam mit der Gesundheits-IT-Industrie gegründet wurde.",
+          "Das Ziel von IHE ist es, die Integration von Anwendungssystemen im Gesundheitswesen zu verbessern.",
+          "Das Ziel von IHE ist es, die Interoperabilität zwischen verschiedenen Softwaresystemen sicherzustellen.",
+          "IHE analysiert typische Arbeitsprozesse im Gesundheitswesen.",
+          "IHE identifiziert die an den Arbeitsprozessen beteiligten Anwendungssysteme.",
+          "IHE identifiziert die Informationen, die zwischen den Anwendungssystemen ausgetauscht werden müssen, um diagnostische und therapeutische Abläufe bestmöglich zu unterstützen.",
+          "IHE definiert sogenannte Integrationsprofile.",
+          "Integrationsprofile beschreiben, welche Anwendungssysteme beteiligt sind.",
+          "Integrationsprofile beschreiben, welche Nachrichten und Dokumente ausgetauscht werden.",
+          "Integrationsprofile beschreiben, welche bestehenden Standards (z. B. HL7 V2, DICOM, HL7 FHIR, CDA) zu verwenden sind.",
+          "Integrationsprofile beschreiben, wie diese Standards eingeschränkt oder konkret angewendet werden müssen, um eine möglichst reibungslose Zusammenarbeit („Plug-and-Play-Interoperabilität“) zu ermöglichen.",
+          "IHE unterstützt vor allem die prozessbezogene Interoperabilität.",
+          "IHE trägt dazu bei, dass heterogene Systeme verschiedener Hersteller in komplexen klinischen Arbeitsabläufen zusammenarbeiten können.",
+          "IHE bietet Testsoftware an.",
+          "IHE organisiert sogenannte Connectathons.",
+          "Bei Connectathons können Hersteller ihre Produkte testen, um die Konformität mit IHE-Profilen und die Interoperabilität zu überprüfen.",
+          "IHE ist selbst keine formale Norm im Sinne von offiziellen Standards.",
+          "IHE hat durch seine breite Akzeptanz und Verbreitung eine quasi-normative Rolle im Gesundheits-IT-Bereich eingenommen.",
+          "IHE ist eine Initiative für bessere Integration und Interoperabilität von Gesundheits-IT-Systemen.",
+          "IHE definiert Integrationsprofile, die den Einsatz von bestehenden Standards in klinischen Prozessen regeln.",
+          "IHE unterstützt die Umsetzung von prozessbezogener Interoperabilität.",
+          "IHE bietet Testverfahren und Zertifizierungen (Connectathons) für Hersteller.",
+          "IHE fördert den Austausch von Gesundheitsinformationen über System- und Herstellergrenzen hinweg."
+        ]
+      }
+    },
+    "source": "IS_2022_09_27",
+    "true_answer": "IHE stands for Integrating the Healthcare Enterprise. It is an initiative by healthcare professionals and industry to improve the way computer systems in healthcare share information. IHE promotes the coordinated use of established standards such as DICOM and HL7 to address specific clinical needs in support of optimal patient care",
+    "generated": "IHE steht für **Integrating the Health care Enterprise**.\n\nEs handelt sich dabei um eine Initiative, die 1998 von medizinischen Fachgesellschaften gemeinsam mit der Gesundheits-IT-Industrie gegründet wurde. Das Ziel von IHE ist es, die **Integration von Anwendungssystemen im Gesundheitswesen zu verbessern** und die **Interoperabilität** zwischen verschiedenen Softwaresystemen sicherzustellen.\n\nKonkret analysiert IHE typische Arbeitsprozesse im Gesundheitswesen und identifiziert die daran beteiligten Anwendungssysteme sowie die Informationen, die zwischen diesen Systemen ausgetauscht werden müssen, um diagnostische und therapeutische Abläufe bestmöglich zu unterstützen.\n\nHierzu definiert IHE sogenannte **Integrationsprofile**, die beschreiben,\n\n- welche Anwendungssysteme beteiligt sind,\n- welche Nachrichten und Dokumente ausgetauscht werden,\n- welche bestehenden Standards (z. B. HL7 V2, DICOM, HL7 FHIR, CDA) zu verwenden sind und\n- wie diese Standards eingeschränkt oder konkret angewendet werden müssen, um eine möglichst reibungslose Zusammenarbeit („Plug-and-Play-Interoperabilität“) zu ermöglichen.\n\nIHE unterstützt somit vor allem die **prozessbezogene Interoperabilität** und trägt dazu bei, dass heterogene Systeme verschiedener Hersteller in komplexen klinischen Arbeitsabläufen zusammenarbeiten können.\n\nDarüber hinaus bietet IHE Testsoftware und organisiert sogenannte **Connectathons**, bei denen Hersteller ihre Produkte testen können, um die Konformität mit IHE-Profilen und die Interoperabilität zu überprüfen.\n\nObwohl IHE selbst keine formalen Normen im Sinne von offiziellen Standards ist, hat es durch seine breite Akzeptanz und Verbreitung eine quasi-normative Rolle im Gesundheits-IT-Bereich eingenommen.\n\nZusammenfassung:\n\n- IHE ist eine Initiative für bessere **Integration und Interoperabilität** von Gesundheits-IT-Systemen.\n- Definiert **Integrationsprofile**, die den Einsatz von bestehenden Standards in klinischen Prozessen regeln.\n- Unterstützt die Umsetzung von **prozessbezogener Interoperabilität**.\n- Bietet Testverfahren und Zertifizierungen (Connectathons) für Hersteller.\n- Fördert den Austausch von Gesundheitsinformationen über System- und Herstellergrenzen hinweg.\n\n**Quelle:** Kapitel 3.7.2.5 aus „Health Information Systems – Technological and Management Perspectives“, 3. Auflage, 2023.",
+    "transformed": "What is IHE?",
+    "question": "Was ist IHE?"
+  },
+  {
+    "id": "q0023",
+    "llm": "GPT_4_1_Mini",
+    "method": "lcw",
+    "type": "single",
+    "error_status": "no_errors",
+    "answered": 2,
+    "points": 0,
+    "total_answers": 28,
+    "num_answers": 1,
+    "last_evaluated": "01-09-17-09-2025",
+    "evaluation_status": "success",
+    "details": {
+      "retrieval": [],
+      "sub_answers": {
+        "gold": [
+          "A communication server in the context of health information systems is a server that enables communication between different systems."
+        ],
+        "generated": [
+          "Ein Kommunikationsserver ist eine spezielle Art von Anwendungssystem.",
+          "Ein Kommunikationsserver wird in Gesundheitsinformationssystemen eingesetzt.",
+          "Ein Kommunikationsserver steuert die Kommunikation zwischen verschiedenen Anwendungssystemen.",
+          "Ein Kommunikationsserver erleichtert die Kommunikation zwischen verschiedenen Anwendungssystemen.",
+          "Ein Kommunikationsserver empfängt Nachrichten asynchron von einem sendenden Anwendungssystem.",
+          "Ein Kommunikationsserver puffert (speichert zwischen) empfangene Nachrichten.",
+          "Ein Kommunikationsserver versendet Nachrichten an das empfangende Anwendungssystem, sobald dieses bereit ist.",
+          "Ein Kommunikationsserver kann eine empfangene Nachricht an mehrere Empfänger gleichzeitig verteilen (Multicasting).",
+          "Ein Kommunikationsserver kann Nachrichten transformieren, wenn sendende und empfangende Systeme unterschiedliche Nachrichtenformate oder Standards verwenden.",
+          "Ein Kommunikationsserver überwacht den Nachrichtenaustausch.",
+          "Ein Kommunikationsserver verwaltet die Warteschlangen der Nachrichten.",
+          "Ein Kommunikationsserver stellt sicher, dass Nachrichten nicht verloren gehen, auch wenn ein Empfänger vorübergehend nicht erreichbar ist.",
+          "Ein Kommunikationsserver unterstützt die Datenintegration durch zentrale Verwaltung der Nachrichten.",
+          "Ein Kommunikationsserver sorgt dafür, dass Daten, die in einem System erzeugt wurden, konsistent und zeitnah an andere Systeme verteilt werden.",
+          "Ein Kommunikationsserver reduziert die Komplexität der Vernetzung zwischen Anwendungssystemen.",
+          "Ein Kommunikationsserver übernimmt die zentrale Rolle der Vermittlung zwischen Anwendungssystemen.",
+          "Ein Kommunikationsserver ersetzt viele Direktverbindungen („Spaghetti-Architektur“) durch eine zentrale Vermittlung („Stern-Architektur“).",
+          "Die zentrale Vermittlung durch den Kommunikationsserver erleichtert die Integration der Systeme.",
+          "Die zentrale Vermittlung durch den Kommunikationsserver verbessert die Skalierbarkeit der Vernetzung.",
+          "Ein Kommunikationsserver ist ein zentrales Vermittlungssystem.",
+          "Ein Kommunikationsserver tauscht Nachrichten zwischen verschiedenen Anwendungssystemen eines Gesundheitsinformationssystems zuverlässig aus.",
+          "Ein Kommunikationsserver tauscht Nachrichten zwischen verschiedenen Anwendungssystemen eines Gesundheitsinformationssystems effizient aus.",
+          "Ein Kommunikationsserver tauscht Nachrichten zwischen verschiedenen Anwendungssystemen eines Gesundheitsinformationssystems standardkonform aus.",
+          "Ein Kommunikationsserver puffert Nachrichten.",
+          "Ein Kommunikationsserver verteilt Nachrichten.",
+          "Ein Kommunikationsserver transformiert Nachrichten gegebenenfalls.",
+          "Ein Kommunikationsserver trägt zur Datenintegration bei.",
+          "Ein Kommunikationsserver trägt zur Systeminteroperabilität bei."
+        ]
+      }
+    },
+    "source": "IS_2022_09_27",
+    "true_answer": "A communication server in the context of health information systems is a server that enables communication between different systems. It is responsible for routing messages between different applications and systems. It can also be used to manage the flow of data between different systems.",
+    "generated": "Ein **Kommunikationsserver** ist eine spezielle Art von Anwendungssystem, das in Gesundheitsinformationssystemen eingesetzt wird, um die Kommunikation zwischen verschiedenen Anwendungssystemen zu steuern und zu erleichtern.\n\n**Aufgaben eines Kommunikationsservers:**\n\n- **Asynchrones Empfangen, Puffern und Versenden von Nachrichten:** Er nimmt Nachrichten von einem sendenden Anwendungssystem entgegen, speichert sie zwischen (Pufferung) und leitet sie an das empfangende Anwendungssystem weiter, sobald dieses bereit ist.\n  \n- **Nachrichtenverteilung (Multicasting):** Er kann eine empfangene Nachricht an mehrere Empfänger gleichzeitig verteilen, wenn mehrere Systeme dieselben Informationen benötigen.\n  \n- **Nachrichten-Transformation:** Falls die sendenden und empfangenden Systeme unterschiedliche Nachrichtenformate oder Standards verwenden, kann der Kommunikationsserver Nachrichten umwandeln, um die Kompatibilität zu gewährleisten.\n  \n- **Verkehrsüberwachung und Fehlerbehandlung:** Er überwacht den Nachrichtenaustausch, verwaltet die Warteschlangen der Nachrichten und stellt sicher, dass Nachrichten nicht verloren gehen, auch wenn ein Empfänger vorübergehend nicht erreichbar ist.\n  \n- **Unterstützung der Datenintegration:** Durch die zentrale Verwaltung der Nachrichten sorgt der Kommunikationsserver dafür, dass Daten, die in einem System erzeugt wurden (z. B. Patientendaten), konsistent und zeitnah an andere Systeme verteilt werden.\n  \n- **Reduzierung der Komplexität der Vernetzung:** Statt viele Direktverbindungen („Spaghetti-Architektur“) zwischen den einzelnen Anwendungssystemen zu verwalten, übernimmt der Kommunikationsserver die zentrale Rolle der Vermittlung („Stern-Architektur“), was die Integration erleichtert und die Skalierbarkeit verbessert.\n\n**Zusammenfassung:**  \nEin Kommunikationsserver ist ein zentrales Vermittlungssystem, das Nachrichten zwischen verschiedenen Anwendungssystemen eines Gesundheitsinformationssystems zuverlässig, effizient und standardkonform austauscht, dabei Nachrichten puffert, verteilt und gegebenenfalls transformiert und so zur Datenintegration und Systeminteroperabilität beiträgt.",
+    "transformed": "What does a communication server do  in the context of health information systems?",
+    "question": "Was tut ein Kommunikationsserver?"
+  },
+  {
+    "id": "q0024",
+    "llm": "GPT_4_1_Mini",
+    "method": "lcw",
+    "type": "single",
+    "error_status": "no_errors",
+    "answered": 2,
+    "points": 0,
+    "total_answers": 15,
+    "num_answers": 1,
+    "last_evaluated": "01-09-17-09-2025",
+    "evaluation_status": "success",
+    "details": {
+      "retrieval": [],
+      "sub_answers": {
+        "gold": [
+          "Remote Function Calls (RFC) is a communications interface based on CPI-C, but with more functions and easier for application programmers to use."
+        ],
+        "generated": [
+          "Remote Function Calls (RFC) werden eingesetzt, um Funktionen oder Prozeduren, die auf einem entfernten Rechner (Server) ausgeführt werden, von einem lokalen System aus aufzurufen.",
+          "Remote Function Calls sind eine Technologie zur verteilten Verarbeitung.",
+          "Remote Function Calls ermöglichen, dass ein Programm auf einem Rechner eine Funktion auf einem anderen Rechner ausführt, als wäre sie lokal verfügbar.",
+          "Im Kontext von Health Information Systems und der Informatik dienen Remote Function Calls dazu, verteilte Systeme zu realisieren.",
+          "Durch Remote Function Calls können Funktionen über verschiedene Systeme hinweg genutzt werden.",
+          "Die Nutzung von Funktionen über verschiedene Systeme erhöht Modularität und Skalierbarkeit.",
+          "Remote Function Calls dienen der Integration heterogener Systeme.",
+          "Anwendungen in unterschiedlichen Einrichtungen oder Systemen können durch Remote Function Calls miteinander kommunizieren und Dienste austauschen.",
+          "Remote Function Calls abstrahieren die Komplexität der entfernten Ausführung.",
+          "Der Aufrufer muss sich bei Remote Function Calls nicht um die Details der entfernten Ausführung kümmern.",
+          "Der Aufrufer kann Funktionen bei Remote Function Calls so nutzen, als wären sie lokal.",
+          "Remote Function Calls ermöglichen eine effiziente Zusammenarbeit von Komponenten.",
+          "In komplexen Health Information Systems, die aus vielen Anwendungssystemen bestehen, ermöglicht RFC eine enge Verzahnung und Zusammenarbeit auch bei verteilten Architekturen.",
+          "Remote Function Calls werden eingesetzt, um Funktionen auf entfernten Systemen aufzurufen.",
+          "Remote Function Calls ermöglichen die verteilte Verarbeitung und Integration von Komponenten in Gesundheitsinformationssystemen."
+        ]
+      }
+    },
+    "source": "IS_2022_09_27",
+    "true_answer": "Remote Function Calls (RFC) is a communications interface based on CPI-C, but with more functions and easier for application programmers to use. It is the call or remote execution of a Remote Function Module in an external system. In the SAP system, these functions are provided by the RFC interface system. The RFC interface system enables function calls between two SAP systems",
+    "generated": "Remote Function Calls (RFC) werden eingesetzt, um Funktionen oder Prozeduren, die auf einem entfernten Rechner (Server) ausgeführt werden, von einem lokalen System aus aufzurufen. Dabei handelt es sich um eine Technologie zur verteilten Verarbeitung, die es ermöglicht, dass ein Programm auf einem Rechner eine Funktion auf einem anderen Rechner ausführt, als wäre sie lokal verfügbar.\n\nIm Kontext von Health Information Systems und der Informatik allgemein dienen Remote Function Calls dazu:\n\n- **Verteilte Systeme zu realisieren:** Funktionen können über verschiedene Systeme hinweg genutzt werden, was Modularität und Skalierbarkeit erhöht.\n- **Integration heterogener Systeme:** Anwendungen in unterschiedlichen Einrichtungen oder Systemen können miteinander kommunizieren und Dienste austauschen.\n- **Abstraktion der Komplexität:** Der Aufrufer muss sich nicht um die Details der entfernten Ausführung kümmern, sondern kann Funktionen so nutzen, als wären sie lokal.\n- **Effiziente Zusammenarbeit von Komponenten:** Besonders in komplexen Health Information Systems, die aus vielen Anwendungssystemen bestehen, ermöglicht RFC eine enge Verzahnung und Zusammenarbeit auch bei verteilten Architekturen.\n\nZusammenfassend: Remote Function Calls werden eingesetzt, um Funktionen auf entfernten Systemen aufzurufen und so die verteilte Verarbeitung und Integration von Komponenten in Gesundheitsinformationssystemen zu ermöglichen.",
+    "transformed": "What are Remote Function Calls used for?",
+    "question": "Wozu setzt man Remote Function Calls ein?"
+  },
+  {
+    "id": "q0025",
+    "llm": "GPT_4_1_Mini",
+    "method": "lcw",
+    "type": "single",
+    "error_status": "no_errors",
+    "answered": 2,
+    "points": 0,
+    "total_answers": 17,
+    "num_answers": 1,
+    "last_evaluated": "02-09-17-09-2025",
+    "evaluation_status": "success",
+    "details": {
+      "retrieval": [],
+      "sub_answers": {
+        "gold": [
+          "The Laboratory Information System got its information from a communication server."
+        ],
+        "generated": [
+          "Ein Labormitarbeiter, der eine Fallnummer (CIN – Case Identification Number) in der Hand hält, benötigt zur Zuordnung des Geburtsdatums und des Geschlechts eines Patienten Zugriff auf die entsprechenden Patientendaten.",
+          "Die Fallnummer (CIN) identifiziert den spezifischen Behandlungsfall eines Patienten.",
+          "Die Patientennummer (PIN) ist die eindeutige Identifikationsnummer des Patienten selbst.",
+          "Im Labor wird üblicherweise ein Laborinformationssystem (LIS) verwendet.",
+          "Das LIS ist über Schnittstellen mit dem Patientadministrationssystem (PAS) des Krankenhauses verbunden.",
+          "Das Patientadministrationssystem (PAS) verwaltet die Stammdaten des Patienten, einschließlich Geburtsdatum und Geschlecht.",
+          "Die Übermittlung der Patientendaten zwischen PAS und LIS erfolgt standardisiert, zum Beispiel über HL7-Nachrichten.",
+          "HL7-Nachrichten, wie ADT-Meldungen, ermöglichen die Zuordnung von Fallnummer zu Patientendaten.",
+          "Die Fallnummer wird als Schlüssel genutzt, um die zugehörigen Stammdaten abzurufen.",
+          "Der Labormitarbeiter gibt die Fallnummer in das LIS ein oder scannt sie ein.",
+          "Das LIS fragt über die Schnittstelle beim Patientadministrationssystem oder einem Master Patient Index (MPI) die Stammdaten ab.",
+          "Das System liefert das Geburtsdatum, Geschlecht und weitere relevante Daten zum Patienten zurück.",
+          "Die Informationen werden im LIS angezeigt oder automatisch mit dem Laborbefund verknüpft.",
+          "Durch Datenintegration und Datenkonsistenz, zum Beispiel via Kommunikationsserver und eindeutige Identifikatoren, ist sichergestellt, dass die Daten korrekt und aktuell sind.",
+          "Das LIS speichert in der Regel eine Kopie der benötigten Stammdaten.",
+          "Die im LIS gespeicherten Stammdaten werden regelmäßig mit dem Patientadministrationssystem synchronisiert.",
+          "Der Labormitarbeiter nutzt die Fallnummer, um im Laborinformationssystem eine Abfrage zu starten, die über interoperable Schnittstellen erfolgt."
+        ]
+      }
+    },
+    "source": "IS_2022_09_27",
+    "true_answer": "In the Laboratory Information System, which got its information from a communication server.",
+    "generated": "Ein Labormitarbeiter, der eine Fallnummer (CIN – Case Identification Number) in der Hand hält, benötigt zur Zuordnung des Geburtsdatums und des Geschlechts eines Patienten Zugriff auf die entsprechenden Patientendaten.\n\nNach den im Buch dargestellten Konzepten und Abläufen erfolgt dies in der Regel folgendermaßen:\n\n1. **Fallnummer und Patientennummer (CIN und PIN):**  \n   - Die Fallnummer (CIN) identifiziert den spezifischen Behandlungsfall eines Patienten.  \n   - Die Patientennummer (PIN) ist die eindeutige Identifikationsnummer des Patienten selbst.\n\n2. **Zugriff auf Patientendaten über Anwendungssysteme:**  \n   - Im Labor wird üblicherweise ein Laborinformationssystem (LIS) verwendet.  \n   - Das LIS ist über Schnittstellen mit dem Patientadministrationssystem (PAS) des Krankenhauses verbunden, das die Stammdaten des Patienten (inkl. Geburtsdatum und Geschlecht) verwaltet.\n\n3. **Kommunikation über Standards:**  \n   - Die Übermittlung der Patientendaten zwischen PAS und LIS erfolgt standardisiert, z. B. über HL7-Nachrichten (z. B. ADT-Meldungen), die die Zuordnung von Fallnummer zu Patientendaten ermöglichen.  \n   - Dabei wird die Fallnummer als Schlüssel genutzt, um die zugehörigen Stammdaten abzurufen.\n\n4. **Prozess:**  \n   - Der Labormitarbeiter gibt die Fallnummer in das LIS ein oder scannt sie ein.  \n   - Das LIS fragt über die Schnittstelle beim Patientadministrationssystem oder einem MPI (Master Patient Index) die Stammdaten ab.  \n   - Das System liefert zurück das Geburtsdatum, Geschlecht und weitere relevante Daten zum Patienten.  \n   - Diese Informationen werden im LIS angezeigt oder automatisch mit dem Laborbefund verknüpft.\n\n5. **Integration und Datenkonsistenz:**  \n   - Durch Datenintegration und -konsistenz (z. B. via Kommunikationserver und eindeutige Identifikatoren) ist sichergestellt, dass die Daten korrekt und aktuell sind.  \n   - Das LIS speichert in der Regel eine Kopie der benötigten Stammdaten, die regelmäßig mit dem PAS synchronisiert werden.\n\n**Kurzfassung:**  \nDer Labormitarbeiter nutzt die Fallnummer, um im Laborinformationssystem eine Abfrage zu starten, die über interoperable Schnittstellen (z. B. HL7",
+    "transformed": "How does a lab worker with a case number in hand find a patient's date of birth and gender?",
+    "question": "Wie findet ein Labormitarbeiter mit einer Fallnummer in der Hand Geburtsdatum und Geschlecht eines Patienten?"
+  },
+  {
+    "id": "q0026",
+    "llm": "GPT_4_1_Mini",
+    "method": "lcw",
+    "type": "single",
+    "error_status": "no_errors",
+    "answered": 2,
+    "points": 0,
+    "total_answers": 20,
+    "num_answers": 1,
+    "last_evaluated": "02-09-17-09-2025",
+    "evaluation_status": "success",
+    "details": {
+      "retrieval": [],
+      "sub_answers": {
+        "gold": [
+          "The taxonomy for HIS is a classification system that is used to categorize different types of HIS based on their functionality and purpose."
+        ],
+        "generated": [
+          "Die Taxonomie für Krankenhausinformationssysteme (KIS) beschreibt verschiedene Dimensionen oder Kategorien, mit denen man die Architektur und den Aufbau von KIS charakterisieren, vergleichen und bewerten kann.",
+          "Die Taxonomie ist insbesondere für die logische Werkzeugschicht (Logical Tool Layer) eines KIS relevant.",
+          "Die logische Werkzeugschicht eines KIS betrifft die Zusammensetzung und Integration der eingesetzten Anwendungssysteme.",
+          "Die Taxonomie umfasst im Wesentlichen vier Dimensionen, die jeweils unterschiedliche Ausprägungen annehmen können.",
+          "Die erste Dimension ist die Anzahl der Datenbanken: Zentrale (DB¹) vs. verteilte Datenbanken (DBⁿ).",
+          "Die DB¹-Architektur (Zentrale Architektur) speichert alle patientenbezogenen Daten in genau einer einzigen zentralen Datenbank, auf die alle Anwendungssysteme zugreifen.",
+          "Voraussetzung für die DB¹-Architektur ist, dass alle Anwendungen idealerweise vom gleichen Hersteller stammen oder speziell für diese Architektur entwickelt sind.",
+          "Alternativ zur gleichen Herstellerherkunft müssen offene Schnittstellen (APIs) existieren, die den Zugriff auf die zentrale Datenbank erlauben.",
+          "Der Vorteil der DB¹-Architektur ist eine einfachere Datenintegration und bessere Datenkonsistenz.",
+          "Die DBⁿ-Architektur (Verteilte Architektur) besitzt mehrere Anwendungssysteme mit eigenen Datenbanken, die redundante Daten speichern.",
+          "Die Herausforderung bei der DBⁿ-Architektur ist die Sicherstellung der Konsistenz redundanter Daten (Datenintegrität) durch Synchronisation und Datenabgleich.",
+          "Die DBⁿ-Architektur ist typisch für heterogene KIS mit Software verschiedener Hersteller.",
+          "Eine gemischte DB¹/DBⁿ-Architektur ist in der Praxis meist anzutreffen.",
+          "Selbst zentrale Systeme ergänzen häufig weitere Systeme mit eigenen Datenbanken.",
+          "Die zweite Dimension ist die Anzahl der Anwendungssysteme: Monolithisch (AC¹) vs. Modular (ACⁿ).",
+          "Die AC¹-Architektur (Monolithisch) besteht aus einem einzigen Anwendungssystem, das den Großteil der Funktionen des KIS unterstützt.",
+          "Der Vorteil der AC¹-Architektur ist eine einfachere Verwaltung und ein geringerer Integrationsaufwand.",
+          "Die ACⁿ-Architektur (Modular) besteht aus mehreren spezialisierten Anwendungssystemen, die unterschiedliche Funktionen unterstützen, z.B. PACS, LIS, MDMS, RIS.",
+          "Der Vorteil der ACⁿ-Architektur ist eine bessere Anpassung an spezifische Anforderungen und ein leichterer Austausch einzelner Komponenten.",
+          "Der Nachteil der ACⁿ-Architektur ist ein höherer Integrationsaufwand."
+        ]
+      }
+    },
+    "source": "IS_2022_09_27",
+    "true_answer": "The taxonomy for HIS is a classification system that is used to categorize different types of HIS based on their functionality and purpose. The taxonomy can be used to help healthcare organizations select the right HIS for their needs. There are several different taxonomies for HIS, but they generally include categories such as clinical information systems, administrative information systems, and decision support systems",
+    "generated": "Die **Taxonomie für Krankenhausinformationssysteme (KIS)** beschreibt verschiedene Dimensionen oder Kategorien, mit denen man die Architektur und den Aufbau von KIS charakterisieren, vergleichen und bewerten kann. Diese Taxonomie ist insbesondere für die **logische Werkzeugschicht (Logical Tool Layer)** eines KIS relevant, also für die Zusammensetzung und Integration der eingesetzten Anwendungssysteme.\n\nDie Taxonomie umfasst im Wesentlichen folgende vier Dimensionen, die jeweils unterschiedliche Ausprägungen annehmen können:\n\n---\n\n### 1. Anzahl der Datenbanken: **Zentrale (DB¹) vs. verteilte Datenbanken (DBⁿ)**\n\n- **DB¹-Architektur (Zentrale Architektur):**  \n  Alle patientenbezogenen Daten werden in genau einer einzigen zentralen Datenbank gespeichert, auf die alle Anwendungssysteme zugreifen.  \n  Voraussetzungen:  \n  - Alle Anwendungen stammen idealerweise vom gleichen Hersteller oder sind speziell für diese Architektur entwickelt.  \n  - Oder es existieren offene Schnittstellen (APIs), die den Zugriff auf die zentrale Datenbank erlauben.  \n  Vorteil: Einfachere Datenintegration und bessere Datenkonsistenz.  \n- **DBⁿ-Architektur (Verteilte Architektur):**  \n  Mehrere Anwendungssysteme besitzen eigene Datenbanken und speichern redundante Daten.  \n  Herausforderung: Sicherstellung der Konsistenz redundanter Daten (Datenintegrität) durch Synchronisation und Datenabgleich.  \n  Typisch für heterogene KIS mit Software verschiedener Hersteller.\n\n- **Gemischte DB¹/DBⁿ-Architektur:**  \n  In der Praxis meist anzutreffen, da selbst zentrale Systeme häufig weitere Systeme mit eigenen Datenbanken ergänzen.\n\n---\n\n### 2. Anzahl der Anwendungssysteme: **Monolithisch (AC¹) vs. Modular (ACⁿ)**\n\n- **AC¹-Architektur (Monolithisch):**  \n  Ein einziges Anwendungssystem unterstützt den Großteil der Funktionen des KIS.  \n  Vorteil: Einfachere Verwaltung, geringerer Integrationsaufwand.  \n- **ACⁿ-Architektur (Modular):**  \n  Mehrere spezialisierte Anwendungssysteme unterstützen unterschiedliche Funktionen (z.B. PACS, LIS, MDMS, RIS).  \n  Vorteil: Bessere Anpassung an spezifische Anforderungen, leichterer Austausch einzelner Komponenten.  \n  Nachteil: Höherer Integrationsaufwand.\n\n---\n\n### 3. Anzahl der Anwendungsoftwareprodukte und Anbieter: **Hom",
+    "transformed": "Explain the taxonomy for hospital information systems!",
+    "question": "Erläutern Sie die Taxonomy für Krankenhausinformationssysteme!"
+  },
+  {
+    "id": "q0027",
+    "llm": "GPT_4_1_Mini",
+    "method": "lcw",
+    "type": "single",
+    "error_status": "no_errors",
+    "answered": 2,
+    "points": 0,
+    "total_answers": 20,
+    "num_answers": 1,
+    "last_evaluated": "02-09-17-09-2025",
+    "evaluation_status": "success",
+    "details": {
+      "retrieval": [],
+      "sub_answers": {
+        "gold": [
+          "Best of Breed Architecture allows choosing the best products and being independent from vendors."
+        ],
+        "generated": [
+          "Die Architektur (AC^n, V^n) steht für ein Informationssystem mit mehreren Anwendungskomponenten (AC^n = modular).",
+          "Die Architektur (AC^n, V^n) steht für ein Informationssystem mit mehreren verschiedenen Softwareprodukten von unterschiedlichen Herstellern (V^n = heterogen).",
+          "Gesundheitseinrichtungen wie Krankenhäuser, Pflegeheime oder ambulante Praxen haben sehr vielfältige und spezialisierte Aufgaben.",
+          "Zu den Aufgaben in Gesundheitseinrichtungen gehören z. B. Patientenverwaltung, medizinische Dokumentation, OP-Management, Labor, Radiologie und Pflege.",
+          "Es gibt kaum eine einzelne Anwendung, die alle diese Funktionen umfassend und optimal abdeckt.",
+          "Deshalb kommen in Gesundheitseinrichtungen mehrere spezialisierte Anwendungssysteme zum Einsatz.",
+          "Viele Softwareanbieter konzentrieren sich auf bestimmte Fachgebiete oder Funktionsbereiche.",
+          "Beispiele für spezialisierte Softwareanbieter sind RIS für Radiologie und LIS für Labor.",
+          "Krankenhäuser und andere Einrichtungen wählen für die jeweiligen Fachbereiche oft die besten oder am weitesten verbreiteten Lösungen von verschiedenen Herstellern aus („Best-of-Breed“).",
+          "Informationssysteme in Gesundheitseinrichtungen wachsen häufig organisch über Jahre oder Jahrzehnte.",
+          "Neue Systeme werden in Gesundheitseinrichtungen hinzugefügt, alte Systeme bleiben teilweise erhalten.",
+          "Dadurch entsteht eine heterogene Systemlandschaft mit verschiedenen Softwareprodukten unterschiedlicher Hersteller.",
+          "Krankenhäuser und Einrichtungen haben oft wenig Einfluss darauf, dass ein einziger Hersteller alle benötigten Funktionen mit einem einzigen Produkt liefern kann.",
+          "Es ist wirtschaftlich oft sinnvoller, spezialisierte Systeme einzusetzen, die in ihrem Bereich führend sind.",
+          "Verschiedene Nutzergruppen wie Ärzte, Pflege und Verwaltung haben unterschiedliche Anforderungen an die Systeme.",
+          "Verschiedene Nutzergruppen bevorzugen teilweise unterschiedliche Lösungen.",
+          "Die unterschiedlichen Anforderungen und Präferenzen der Nutzergruppen fördern die Nutzung verschiedener Softwareprodukte.",
+          "Monolithische Systeme (AC^1, V^1) sind aus Sicht der Homogenität vorteilhaft.",
+          "Monolithische Systeme sind in der Praxis aufgrund der Komplexität, Flexibilität und Anpassbarkeit selten vollständig realisierbar oder praktikabel.",
+          "Die Kombination aus vielfältigen Anforderungen, Spezialisierung der Anbieter, historischer Entwicklung, Nutzerpräferenzen und technischen Grenzen führt zu (AC^n, V^n)-Architekturen."
+        ]
+      }
+    },
+    "source": "IS_2022_09_27",
+    "true_answer": "This allows Best of Breed Architecture choosing the best products and being independent from vendors.",
+    "generated": "Die Architektur (AC^n, V^n) steht für ein Informationssystem mit mehreren Anwendungskomponenten (AC^n = modular) und mehreren verschiedenen Softwareprodukten von unterschiedlichen Herstellern (V^n = heterogen).\n\n**Warum haben wir meist (AC^n, V^n)-Architekturen?**\n\n1. **Vielfalt der Anforderungen und Funktionen in Gesundheitseinrichtungen**  \nGesundheitseinrichtungen wie Krankenhäuser, Pflegeheime oder ambulante Praxen haben sehr vielfältige und spezialisierte Aufgaben (z. B. Patientenverwaltung, med. Dokumentation, OP-Management, Labor, Radiologie, Pflege). Es gibt kaum eine einzelne Anwendung, die alle diese Funktionen umfassend und optimal abdeckt. Deshalb kommen mehrere spezialisierte Anwendungssysteme zum Einsatz.\n\n2. **Spezialisierung der Softwareanbieter**  \nViele Anbieter konzentrieren sich auf bestimmte Fachgebiete oder Funktionsbereiche (z. B. RIS für Radiologie, LIS für Labor). Krankenhäuser und andere Einrichtungen wählen daher für die jeweiligen Fachbereiche oft die „besten“ oder am weitesten verbreiteten Lösungen von verschiedenen Herstellern aus („Best-of-Breed“).\n\n3. **Historische Entwicklungen und Evolution der Systeme**  \nInformationssysteme in Gesundheitseinrichtungen wachsen häufig organisch über Jahre oder Jahrzehnte. Neue Systeme werden hinzugenommen, alte bleiben teilweise erhalten. Dadurch entsteht eine heterogene Systemlandschaft mit verschiedenen Softwareprodukten unterschiedlicher Hersteller.\n\n4. **Marktverfügbarkeit und Investitionsentscheidungen**  \nKrankenhäuser und Einrichtungen haben oft wenig Einfluss darauf, dass ein einziger Hersteller alle benötigten Funktionen mit einem einzigen Produkt liefern kann. Zudem ist es wirtschaftlich oft sinnvoller, spezialisierte Systeme einzusetzen, die in ihrem Bereich führend sind.\n\n5. **Spezielle Anforderungen der Nutzergruppen**  \nVerschiedene Nutzergruppen (Ärzte, Pflege, Verwaltung) haben unterschiedliche Anforderungen an die Systeme und bevorzugen teilweise unterschiedliche Lösungen. Dies fördert die Nutzung verschiedener Softwareprodukte.\n\n6. **Technische und organisatorische Grenzen einer monolithischen Lösung**  \nMonolithische Systeme (AC^1, V^1) sind zwar aus Sicht der Homogenität vorteilhaft, aber in der Praxis aufgrund der Komplexität, Flexibilität und Anpassbarkeit selten vollständig realisierbar oder praktikabel.\n\n**Zusammenfassung:**  \nDie Kombination aus vielfältigen Anforderungen, Spezialisierung der Anbieter, historischer Entwicklung, Nutzerpräferenzen und technischen Grenzen",
+    "transformed": "Why do we mostly have (AC^n, V^n)?",
+    "question": "Wieso haben wir meist (ACn, Vn)?"
+  },
+  {
+    "id": "q0028",
+    "llm": "GPT_4_1_Mini",
+    "method": "lcw",
+    "type": "single",
+    "error_status": "no_errors",
+    "answered": 2,
+    "points": 0,
+    "total_answers": 17,
+    "num_answers": 1,
+    "last_evaluated": "02-09-17-09-2025",
+    "evaluation_status": "success",
+    "details": {
+      "retrieval": [],
+      "sub_answers": {
+        "gold": [
+          "One of this: - caching and local storage - Offline Mode - Background Syncing and Queuing"
+        ],
+        "generated": [
+          "Bei fehlender Vollausleuchtung und insbesondere bei Funklöchern hinter Metallwagen (z. B. in Krankenhäusern oder anderen komplexen Gebäudestrukturen) sind mehrere technische und organisatorische Maßnahmen erforderlich, um zu verhindern, dass mobile Anwendungen laufend abstürzen.",
+          "Diese Maßnahmen basieren auf den Prinzipien der Robustheit, Zwischenspeicherung und intelligenter Netzwerksteuerung.",
+          "Diese Prinzipien werden auch in modernen Gesundheitsinformationssystemen angewendet.",
+          "Mobile Anwendungen sollten so gestaltet sein, dass sie wichtige Daten lokal zwischenspeichern (Caching).",
+          "Durch lokale Zwischenspeicherung können Anwender auch bei temporärem Funkloch weiterarbeiten, ohne dass die App abstürzt.",
+          "Sobald die Verbindung wieder verfügbar ist, werden die zwischengespeicherten Daten synchronisiert.",
+          "Die lokale Zwischenspeicherung reduziert Abhängigkeiten von ständiger Netzverbindung.",
+          "Die lokale Zwischenspeicherung verbessert Stabilität und Benutzererlebnis.",
+          "Applikationen müssen Fehlersituationen wie Verbindungsverlust und Zeitüberschreitungen abfangen und kontrolliert handhaben.",
+          "Anstatt abzustürzen, sollten Applikationen den Nutzer informieren, Hintergrundprozesse pausieren und Wiederholungsversuche durchführen.",
+          "Dieses Vorgehen entspricht dem Prinzip von „Transactional Integrity“ und „Graceful Degradation“.",
+          "Das Prinzip von „Transactional Integrity“ und „Graceful Degradation“ ist in der IT-Qualität beschrieben.",
+          "Der Einsatz von Access Points mit guter Abdeckung und Redundanz ist speziell in Bereichen mit Metallstrukturen wichtig.",
+          "Mesh-WLAN-Systeme ermöglichen eine dynamische und selbstorganisierende Netzwerkabdeckung.",
+          "Access Points sollten strategisch platziert werden, um Funklöcher zu minimieren.",
+          "Frequenzbänder mit besserer Durchdringung, z. B. 2,4 GHz statt nur 5 GHz, sollten genutzt werden.",
+          "Mobile Geräte und WLAN-Systeme sollten schnelles und nahtloses Handover unterstützen, um Verbindungsabbrüche beim Wechsel zwischen Access Points zu vermeiden."
+        ]
+      }
+    },
+    "source": "IS_2022_09_27",
+    "true_answer": "One of this:\n- caching and local storage\n- Offline Mode\n- Background Syncing and Queuing",
+    "generated": "Um bei fehlender Vollausleuchtung und insbesondere bei Funklöchern hinter Metallwagen (z. B. in Krankenhäusern oder anderen komplexen Gebäudestrukturen) zu verhindern, dass mobile Anwendungen laufend abstürzen, sind mehrere technische und organisatorische Maßnahmen erforderlich. Diese basieren auf den Prinzipien der Robustheit, Zwischenspeicherung und intelligenter Netzwerksteuerung, wie sie auch in modernen Gesundheitsinformationssystemen (gemäß den im Kontext beschriebenen Kapiteln, z. B. 3.10 zur physischen Integration und 3.9 zu Integrationstechnologien) angewendet werden:\n\n1. **Lokale Zwischenspeicherung (Caching) und Offline-Fähigkeit der Apps:**\n   - Mobile Anwendungen sollten so gestaltet sein, dass sie wichtige Daten lokal zwischenspeichern (Caching).\n   - Dadurch können Anwender auch bei temporärem Funkloch weiterarbeiten, ohne dass die App abstürzt.\n   - Sobald die Verbindung wieder verfügbar ist, werden die zwischengespeicherten Daten synchronisiert.\n   - Diese Vorgehensweise reduziert Abhängigkeiten von ständiger Netzverbindung und verbessert Stabilität und Benutzererlebnis.\n\n2. **Robustes Fehler- und Ausfallmanagement in der Software:**\n   - Die Applikationen müssen Fehlersituationen (Verbindungsverlust, Zeitüberschreitungen) abfangen und kontrolliert handhaben.\n   - Anstatt abzustürzen, sollten sie den Nutzer informieren, Hintergrundprozesse pausieren und Wiederholungsversuche durchführen.\n   - Dies entspricht dem Prinzip von „Transactional Integrity“ und „Graceful Degradation“, wie in der IT-Qualität beschrieben (Kapitel 5).\n\n3. **Optimierung der WLAN-Infrastruktur:**\n   - Einsatz von Access Points mit guter Abdeckung und Redundanz, speziell in Bereichen mit Metallstrukturen.\n   - Verwendung von Mesh-WLAN-Systemen, die eine dynamische und selbstorganisierende Netzwerkabdeckung ermöglichen.\n   - Strategische Platzierung von Access Points, um Funklöcher zu minimieren.\n   - Nutzung von Frequenzbändern mit besserer Durchdringung (z. B. 2,4 GHz statt nur 5 GHz).\n\n4. **Handover- und Roaming-Mechanismen:**\n   - Mobile Geräte und WLAN-Systeme sollten schnelles und nahtloses Handover unterstützen, um Verbindungsabbrüche beim Wechsel zwischen Access Points zu vermeiden.\n   - Moderne",
+    "transformed": "Even in the absence of full coverage, how can you deal with the ubiquitous radio holes behind metal trolleys in such a way that mobile applications don't crash all the time?",
+    "question": "Wie kann man auch bei fehlender Vollausleuchtung mit den allgegenwärtigen Funklöchern hinter metallwagen so umgehen, dass Mobile Anwendungen nicht laufend abstürzen?"
+  },
+  {
+    "id": "q0029",
+    "llm": "GPT_4_1_Mini",
+    "method": "lcw",
+    "type": "single",
+    "error_status": "no_errors",
+    "answered": 2,
+    "points": 0,
+    "total_answers": 20,
+    "num_answers": 1,
+    "last_evaluated": "03-09-17-09-2025",
+    "evaluation_status": "success",
+    "details": {
+      "retrieval": [],
+      "sub_answers": {
+        "gold": [
+          "Write once read many (WORM) data includes Optical Discs, Tape Drives, Solid State Drives, or Memory cards"
+        ],
+        "generated": [
+          "Speichermedien, die eine Unveränderbarkeit der Daten gewährleisten, sind solche, die Daten dauerhaft, unveränderlich und manipulationssicher speichern können.",
+          "Im Kontext von Gesundheitsinformationssystemen und Langzeitarchivierung kommen insbesondere bestimmte Speichertechnologien und -formate in Frage.",
+          "Optische Medien (z. B. CD-ROM, DVD, Blu-ray) sind in der Regel schreibgeschützt, sobald sie final beschrieben wurden.",
+          "Optische Medien erlauben keine nachträgliche Änderung der gespeicherten Inhalte.",
+          "Optische Medien gewährleisten eine hohe Unveränderbarkeit.",
+          "Magnetbänder werden häufig für die Langzeitarchivierung genutzt.",
+          "Magnetbänder erlauben eine sequentielle Speicherung.",
+          "Magnetbänder sind grundsätzlich beschreibbar.",
+          "Magnetbänder werden für Archivzwecke häufig als \"write-once, read-many\" (WORM)-Medien verwendet, um Manipulation auszuschließen.",
+          "Schreibgeschützte Speicher (Write Once Read Many - WORM) sind spezielle Speichertechnologien, die nur einmal beschrieben werden können und danach keine Änderungen mehr zulassen.",
+          "WORM-Technologie wird oft bei optischen Medien oder speziellen Festplatten eingesetzt.",
+          "Digitale Signaturen und Hashverfahren dienen dazu, die Integrität von Daten zu gewährleisten und jede nachträgliche Veränderung erkennbar zu machen.",
+          "Digitale Signaturen und Hashverfahren sind keine Speichermedien an sich.",
+          "Für die Langzeitarchivierung müssen Verfügbarkeit, Integrität und Unveränderbarkeit der Daten sichergestellt werden.",
+          "Für die Langzeitarchivierung werden nachhaltige, standardisierte Speicherformate (z. B. PDF/A, TIFF) eingesetzt.",
+          "Für die Langzeitarchivierung werden Speichermedien eingesetzt, die dauerhaft lesbar und unveränderlich sind.",
+          "Optische Medien (CD-ROM, DVD, etc.) gewährleisten, dass Daten unveränderbar archiviert werden können.",
+          "Magnetbänder (z. B. als WORM-Medien) gewährleisten, dass Daten unveränderbar archiviert werden können.",
+          "WORM-Speichertechnologien allgemein gewährleisten, dass Daten unveränderbar archiviert werden können.",
+          "Langzeitarchivierungsformate in Kombination mit solchen Medien (z. B. PDF/A) gewährleisten, dass Daten unveränderbar archiviert werden können."
+        ]
+      }
+    },
+    "source": "IS_2022_09_27",
+    "true_answer": "Write once read many (WORM) data such as Optical Discs, Tape Drives, Solid State Drives or Memory cards",
+    "generated": "Speichermedien, die eine Unveränderbarkeit der Daten gewährleisten, sind solche, die Daten **dauerhaft, unveränderlich und manipulationssicher** speichern können. Im Kontext von Gesundheitsinformationssystemen und Langzeitarchivierung, wie im Buch beschrieben (Kapitel 3.4.12 zu Dokumentenarchivierungssystemen und Langzeitarchivierung), kommen insbesondere folgende Speichertechnologien und -formate in Frage:\n\n- **Optische Medien** (z. B. CD-ROM, DVD, Blu-ray): Diese sind in der Regel schreibgeschützt, sobald sie final beschrieben wurden, und erlauben keine nachträgliche Änderung der gespeicherten Inhalte. Daher gewährleisten sie eine hohe Unveränderbarkeit.\n\n- **Magnetbänder**: Werden häufig für die Langzeitarchivierung genutzt und erlauben eine sequentielle Speicherung. Magnetbänder sind zwar grundsätzlich beschreibbar, werden für Archivzwecke aber häufig als „write-once, read-many“ (WORM)-Medien verwendet, um Manipulation auszuschließen.\n\n- **Schreibgeschützte Speicher (Write Once Read Many - WORM)**: Spezielle Speichertechnologien, die nur einmal beschrieben werden können und danach keine Änderungen mehr zulassen. Diese Technologie wird oft bei optischen Medien oder speziellen Festplatten eingesetzt.\n\n- **Digitale Signaturen und Hashverfahren** (in Kombination mit Speichermedien): Zwar sind dies keine Speichermedien an sich, aber sie dienen dazu, die Integrität von Daten zu gewährleisten und jede nachträgliche Veränderung erkennbar zu machen.\n\nIm Buch wird betont, dass für die Langzeitarchivierung (z.B. gemäß dem Open Archival Information System (OAIS) Modell) die Verfügbarkeit, Integrität und Unveränderbarkeit der Daten sichergestellt werden müssen. Dazu werden nachhaltige, standardisierte Speicherformate (z. B. PDF/A, TIFF) und Speichermedien eingesetzt, die dauerhaft lesbar und unveränderlich sind.\n\n**Zusammenfassung:**\n\n- **Optische Medien (CD-ROM, DVD, etc.)**  \n- **Magnetbänder (z. B. als WORM-Medien)**  \n- **WORM-Speichertechnologien allgemein**  \n- **Langzeitarchivierungsformate in Kombination mit solchen Medien (z. B. PDF/A)**\n\nDiese Speichermedien gewährleisten, dass Daten unveränderbar archiviert werden können",
+    "transformed": "Which storage media guarantee that the data cannot be changed?",
+    "question": "Welche Speichermedien gewährleisten eine Unveränderbarkeit der Daten?"
+  },
+  {
+    "id": "q0030",
+    "llm": "GPT_4_1_Mini",
+    "method": "lcw",
+    "type": "single",
+    "error_status": "no_errors",
+    "answered": 2,
+    "points": 0,
+    "total_answers": 9,
+    "num_answers": 1,
+    "last_evaluated": "03-09-17-09-2025",
+    "evaluation_status": "success",
+    "details": {
+      "retrieval": [],
+      "sub_answers": {
+        "gold": [
+          "A data processing task"
+        ],
+        "generated": [
+          "Im Kontext des Buches „Health Information Systems - Technological and Management Perspectives“ wird „Dokumentation“ nicht als eigenständige datenverarbeitende Funktion (Enterprise Function) betrachtet.",
+          "Jede datenverarbeitende Funktion, die Daten auf einem Entity-Typ (z. B. Patientendaten, Befunde) aktualisiert, beinhaltet automatisch auch eine Dokumentationsaufgabe.",
+          "Dokumentation ist integraler Bestandteil aller Funktionen, die Daten erzeugen oder verändern.",
+          "„Dokumentation“ wird als inhärenter Teil von Funktionen angesehen, die Daten aktualisieren, und nicht als eigenständige Enterprise Function.",
+          "Im 3LGM²-Metamodell wird Dokumentation nicht separat modelliert, sondern ist in den Funktionen enthalten, die Entity-Typen aktualisieren.",
+          "Es kann aus Gründen der Lesbarkeit sinnvoll sein, in Funktionsnamen das Wort „Dokumentation“ zu verwenden, um die Rolle der Dokumentation hervorzuheben.",
+          "„Dokumentation“ ist keine eigenständige datenverarbeitende Enterprise Function, sondern integraler Bestandteil der Funktionen, die Daten auf Entity-Typen aktualisieren.",
+          "Jede Funktion, die Daten aktualisiert, dokumentiert diese Daten automatisch.",
+          "Dokumentation wird als ein Prozess betrachtet, der in allen datenverarbeitenden Funktionen enthalten ist, nicht als separate Funktion."
+        ]
+      }
+    },
+    "source": "IS_2022_09_27",
+    "true_answer": "A data processing task",
+    "generated": "Im Kontext des Buches **„Health Information Systems - Technological and Management Perspectives“** (Kapitel 3.3.2.5 und 2.8 sowie 2.14.1) wird „Dokumentation“ **nicht als eigenständige datenverarbeitende Funktion (Enterprise Function)** betrachtet.\n\n**Begründung:**\n\n- Jede datenverarbeitende Funktion, die Daten auf einem Entity-Typ (z. B. Patientendaten, Befunde) aktualisiert, beinhaltet automatisch auch eine Dokumentationsaufgabe.\n- Dokumentation ist somit integraler Bestandteil **aller Funktionen**, die Daten erzeugen oder verändern.\n- „Dokumentation“ wird als inhärenter Teil von Funktionen angesehen, die Daten aktualisieren, und nicht als eigenständige Enterprise Function.\n- Im 3LGM²-Metamodell wird Dokumentation nicht separat modelliert, sondern ist in den Funktionen enthalten, die Entity-Typen aktualisieren.\n- Dennoch kann es aus Gründen der Lesbarkeit sinnvoll sein, in Funktionsnamen das Wort „Dokumentation“ zu verwenden (z. B. „nursing documentation“), um die Rolle der Dokumentation hervorzuheben.\n\n**Fazit:**\n\n„Dokumentation“ ist keine eigenständige datenverarbeitende Enterprise Function, sondern integraler Bestandteil der Funktionen, die Daten auf Entity-Typen aktualisieren. Jede Funktion, die Daten aktualisiert, dokumentiert diese Daten automatisch. Daher wird Dokumentation als ein Prozess betrachtet, der in allen datenverarbeitenden Funktionen enthalten ist, nicht als separate Funktion.",
+    "transformed": "Is \"documentation\" a data processing task or an enterprise function?",
+    "question": "Ist \"Dokumentation\" eine datenverarbeitende Aufgabe bzw. eine enterprise function?"
+  },
+  {
+    "id": "q0031",
+    "llm": "GPT_4_1_Mini",
+    "method": "lcw",
+    "type": "single",
+    "error_status": "no_errors",
+    "answered": 2,
+    "points": 0,
+    "total_answers": 12,
+    "num_answers": 1,
+    "last_evaluated": "03-09-17-09-2025",
+    "evaluation_status": "success",
+    "details": {
+      "retrieval": [],
+      "sub_answers": {
+        "gold": [
+          "Laboratory Information System"
+        ],
+        "generated": [
+          "Im Universitätsklinikum Leipzig (UKL) wird die Anforderung von Laborleistungen (Order Entry) typischerweise durch ein Computerized Provider Order Entry System (CPOE) unterstützt.",
+          "CPOE-Systeme sind Anwendungssysteme, die insbesondere die Funktion Order Entry unterstützen.",
+          "CPOE-Systeme ermöglichen die Erstellung, Verwaltung und Übermittlung von Aufträgen für diagnostische und therapeutische Leistungen, einschließlich Laboruntersuchungen.",
+          "Das CPOE-System am UKL wird genutzt, um Laborleistungen anzufordern.",
+          "Das CPOE-System am UKL stellt Funktionen bereit wie die Eingabe von Laboraufträgen.",
+          "Das CPOE-System am UKL stellt Funktionen bereit wie die Bereitstellung von Labor- und Medikamentenkatalogen.",
+          "Das CPOE-System am UKL stellt Funktionen bereit wie die Unterstützung bei der Terminplanung (Appointment Scheduling).",
+          "Das CPOE-System am UKL stellt Funktionen bereit wie die Kommunikation der Aufträge an das Labor.",
+          "Falls das UKL ein Radiology Information System (RIS) und ein Laboratory Information System (LIS) besitzt, kommuniziert das CPOE-System mit dem LIS über standardisierte Schnittstellen (z. B. HL7).",
+          "Das CPOE-System übermittelt Laboraufträge an das LIS.",
+          "Das CPOE-System empfängt Befunde vom LIS.",
+          "Die Anforderung von Laborleistungen (Order Entry) am UKL wird durch ein CPOE-System unterstützt."
+        ]
+      }
+    },
+    "source": "IS_2022_09_27",
+    "true_answer": "Laboratory Information System",
+    "generated": "Im Universitätsklinikum Leipzig (UKL) wird die Anforderung von Laborleistungen (Order Entry) typischerweise durch ein **Computerized Provider Order Entry System (CPOE)** unterstützt.\n\nGemäß den allgemeinen Ausführungen im Buch „Health Information Systems - Technological and Management Perspectives“ sind CPOE-Systeme die Anwendungssysteme, die insbesondere die Funktion **Order Entry** unterstützen. Diese Systeme ermöglichen die Erstellung, Verwaltung und Übermittlung von Aufträgen für diagnostische und therapeutische Leistungen, einschließlich Laboruntersuchungen.\n\nDas CPOE-System am UKL wird somit genutzt, um Laborleistungen anzufordern, indem es Funktionen bereitstellt wie:\n\n- Eingabe von Laboraufträgen,\n- Bereitstellung von Labor- und Medikamentenkatalogen,\n- Unterstützung bei der Terminplanung (Appointment Scheduling),\n- Kommunikation der Aufträge an das Labor.\n\nFalls das UKL ein RIS (Radiology Information System) und ein LIS (Laboratory Information System) besitzt, so kommuniziert das CPOE-System mit dem LIS über standardisierte Schnittstellen (z. B. HL7), um die Laboraufträge zu übermitteln und die Befunde zu empfangen.\n\n**Zusammenfassung:**  \nDie Anforderung von Laborleistungen (Order Entry) am UKL wird durch ein **CPOE-System** unterstützt.",
+    "transformed": "Which application system is used in the University Hospital to support the request for laboratory services (order entry)?",
+    "question": "Mit welchem Anwendungssystem wird im UKL die Anforderung von Laborleistungen  (order entry) unterstützt?"
+  },
+  {
+    "id": "q0032",
+    "llm": "GPT_4_1_Mini",
+    "method": "lcw",
+    "type": "single",
+    "error_status": "no_errors",
+    "answered": 2,
+    "points": 0,
+    "total_answers": 19,
+    "num_answers": 1,
+    "last_evaluated": "03-09-17-09-2025",
+    "evaluation_status": "success",
+    "details": {
+      "retrieval": [],
+      "sub_answers": {
+        "gold": [
+          "The call is made from the work place during the context integration of patient identifying data to the LIS."
+        ],
+        "generated": [
+          "Die Kommunikation der Anforderung (Order) an das Laborinformationssystem (LIS) erfolgt in der Regel über ein interoperables Nachrichtenaustauschverfahren, das auf etablierten Standards basiert.",
+          "Die Anforderung wird als Nachricht (Message) kodiert und vom anfordernden System an das LIS gesendet.",
+          "Das anfordernde System kann ein Computerized Provider Order Entry System (CPOE) oder ein medizinisches Dokumentations- und Managementsystem (MDMS) sein.",
+          "Häufig wird der Standard HL7 Version 2 (HL7 V2) eingesetzt.",
+          "Insbesondere werden Nachrichtentypen wie ORM (Order Message) für die Übermittlung von Aufträgen an das LIS verwendet.",
+          "Die Order-Nachricht enthält alle relevanten Daten, einschließlich Patientendaten, die durch eine eindeutige Patient Identification Number (PIN) identifiziert werden.",
+          "Die Order-Nachricht enthält Auftragsdetails, welche Laboruntersuchungen durchgeführt werden sollen.",
+          "Die Order-Nachricht enthält Probeninformationen, zum Beispiel Blutproben.",
+          "Die Order-Nachricht enthält weitere kontextuelle Informationen.",
+          "Die Nachricht wird über eine Kommunikationsschnittstelle (Communication Interface) an einen Kommunikationsserver (Communication Server) gesendet, falls ein solcher eingesetzt wird.",
+          "Der Kommunikationsserver nimmt die Nachricht entgegen, puffert sie und verteilt sie an das LIS.",
+          "Das LIS empfängt die Nachricht über seine Schnittstelle.",
+          "Das LIS interpretiert die Order.",
+          "Das LIS ordnet die Order den entsprechenden Proben zu.",
+          "Das LIS steuert die Laborprozesse.",
+          "Der Empfang der Order wird vom LIS oft durch eine Empfangsbestätigung (ACK – Acknowledgement) zurückgemeldet.",
+          "Die Kommunikation der Order an das LIS erfolgt meist asynchron über standardisierte HL7 V2-Nachrichten, zum Beispiel ORM.",
+          "Die Nachrichten werden über Kommunikationsschnittstellen und gegebenenfalls einen Kommunikationsserver übertragen.",
+          "Durch diese Vorgehensweise wird eine interoperable, sichere und nachvollziehbare Übermittlung der Laboranforderung gewährleistet."
+        ]
+      }
+    },
+    "source": "IS_2022_09_27",
+    "true_answer": "It isn't. The call is made from the work place during the context integration of patient identifying data to the LIS.",
+    "generated": "Die Kommunikation der Anforderung (Order) an das Laborinformationssystem (LIS) erfolgt in der Regel über ein interoperables Nachrichtenaustauschverfahren, das auf etablierten Standards basiert. Konkret geschieht dies meist folgendermaßen:\n\n- **Message-orientierte Kommunikation:** Die Anforderung wird als Nachricht (Message) kodiert und vom anfordernden System (z. B. Computerized Provider Order Entry System – CPOE oder medizinisches Dokumentations- und Managementsystem – MDMS) an das LIS gesendet.\n\n- **Verwendung von Standards:** Häufig wird dabei der Standard **HL7 Version 2 (HL7 V2)** eingesetzt, insbesondere die Nachrichtentypen wie ORM (Order Message) für die Übermittlung von Aufträgen an das LIS.\n\n- **Inhalt der Nachricht:** Die Order-Nachricht enthält alle relevanten Daten, z. B. Patientendaten (identifiziert durch eindeutige Patient Identification Number – PIN), Auftragsdetails (welche Laboruntersuchungen sollen durchgeführt werden), Probeninformationen (z. B. Blutprobe), sowie weitere kontextuelle Informationen.\n\n- **Kommunikationswege:** Die Nachricht wird über eine Kommunikationsschnittstelle (Communication Interface) an einen Kommunikationsserver (Communication Server) gesendet, falls ein solcher eingesetzt wird – dieser nimmt die Nachricht entgegen, puffert sie und verteilt sie an das LIS.\n\n- **Verarbeitung im LIS:** Das LIS empfängt die Nachricht über seine Schnittstelle, interpretiert die Order, ordnet sie den entsprechenden Proben zu und steuert die Laborprozesse.\n\n- **Bestätigung:** Der Empfang der Order wird vom LIS oft durch eine Empfangsbestätigung (ACK – Acknowledgement) zurückgemeldet.\n\nZusammenfassend: Die Kommunikation der Order an das LIS erfolgt meist asynchron über standardisierte HL7 V2-Nachrichten (z. B. ORM), die über Kommunikationsschnittstellen und gegebenenfalls einen Kommunikationsserver übertragen werden. Dadurch wird eine interoperable, sichere und nachvollziehbare Übermittlung der Laboranforderung gewährleistet.\n\n---\n\n**Bezug aus dem Buch:**  \n- Abschnitt 3.4.7 „Laboratory Information Systems (LIS)“ beschreibt, dass das LIS Aufträge (Orders) empfängt und verarbeitet.  \n- Abschnitt 3.7.2.1 erläutert HL7 V2 als etablierten Standard für die elektronische Kommunikation von Nachrichten wie Orders.  \n- Abschnitt 3.9.2 beschreibt die Rolle von Kommunikationsservern als Middleware für das",
+    "transformed": "How is the request (order) communicated to the LIS?",
+    "question": "Wie erfolgt die Kommunikation der Anforderung (order) an das LIS?"
+  },
+  {
+    "id": "q0033",
+    "llm": "GPT_4_1_Mini",
+    "method": "lcw",
+    "type": "single",
+    "error_status": "no_errors",
+    "answered": 2,
+    "points": 0,
+    "total_answers": 11,
+    "num_answers": 1,
+    "last_evaluated": "03-09-17-09-2025",
+    "evaluation_status": "success",
+    "details": {
+      "retrieval": [],
+      "sub_answers": {
+        "gold": [
+          "(COPRA, LIS direkt!)"
+        ],
+        "generated": [
+          "Im Universitätsklinikum Leipzig (UKL) wird ein Laborbefund („finding“) typischerweise mit einem Medical Documentation and Management System (MDMS) angezeigt.",
+          "Das MDMS unterstützt Funktionen wie die Dokumentation medizinischer Befunde.",
+          "Das MDMS stellt Formulare für klinische Daten bereit, die frei oder strukturiert sein können.",
+          "Das MDMS ermöglicht die Darstellung von Befunden.",
+          "Laborbefunde gehören zu den „findings“, die im MDMS verarbeitet und dargestellt werden können.",
+          "Laborbefunde können alternativ auch im Laborinformationssystem (LIS) erfasst und verwaltet werden.",
+          "Für die Anzeige und Nutzung im klinischen Alltag ist das MDMS zuständig.",
+          "Das MDMS fungiert als zentrales klinisches Dokumentations- und Managementsystem.",
+          "Das MDMS macht die Befunde für Ärzte und Pflegepersonal zugänglich.",
+          "Das LIS erzeugt und verwaltet die Befunde.",
+          "Das MDMS stellt die Befunde dem medizinischen Personal dar."
+        ]
+      }
+    },
+    "source": "IS_2022_09_27",
+    "true_answer": "(COPRA, LIS direkt!)",
+    "generated": "Im Universitätsklinikum Leipzig (UKL) wird ein Laborbefund („finding“) typischerweise mit einem **Medical Documentation and Management System (MDMS)** angezeigt.\n\nBegründung:  \nGemäß den Ausführungen im Buch „Health Information Systems - Technological and Management Perspectives“ unterstützt das MDMS Funktionen wie die Dokumentation medizinischer Befunde, die Bereitstellung von Formularen für klinische Daten (frei oder strukturiert) sowie die Darstellung von Befunden. Laborbefunde gehören zu den „findings“, die im MDMS verarbeitet und dargestellt werden können (siehe Abschnitt 3.4.2).\n\nAlternativ können Laborbefunde auch im **Laborinformationssystem (LIS)** erfasst und verwaltet werden. Für die Anzeige und Nutzung im klinischen Alltag ist jedoch das MDMS zuständig, da es als zentrales klinisches Dokumentations- und Managementsystem fungiert und die Befunde für Ärzte und Pflegepersonal zugänglich macht.\n\nKurzfassung:  \n- Laborbefund (finding) wird im UKL über das **Medical Documentation and Management System (MDMS)** angezeigt.  \n- Das LIS erzeugt und verwaltet die Befunde, das MDMS stellt sie dem medizinischen Personal dar.",
+    "transformed": "Which application system is usually used to display a laboratory finding in the University Hospital?",
+    "question": "Mit welchem Anwendungssystem wird im UKL ein Laborbefund (finding) angezeigt?"
+  },
+  {
+    "id": "q0034",
+    "llm": "GPT_4_1_Mini",
+    "method": "lcw",
+    "type": "single",
+    "error_status": "no_errors",
+    "answered": 0,
+    "points": 0,
+    "total_answers": 0,
+    "num_answers": 1,
+    "last_evaluated": "04-09-17-09-2025",
+    "evaluation_status": "success",
+    "details": {
+      "retrieval": [],
+      "sub_answers": {
+        "gold": [
+          "Redundancy by mirror servers"
+        ],
+        "generated": []
+      }
+    },
+    "source": "A_2021",
+    "true_answer": "Redundancy by mirror servers",
+    "generated": "Die **Pflegewissenschaftliche Evaluation (PWE)** eines Klinischen Informationssystems (KIS) sollte systematisch, umfassend und praxisnah gestaltet werden, um die Qualität, den Nutzen und die Auswirkungen des KIS auf pflegerische Prozesse, die Dokumentationsqualität und die Pflegepraxis zu bewerten. Dabei orientiert sich die Gestaltung der PWE an bewährten Methoden der Evaluation von Gesundheits- und Informationssystemen, wie sie im Buch *Health Information Systems - Technological and Management Perspectives* beschrieben sind.\n\n### Gestaltung der PWE eines KIS – zentrale Aspekte\n\n1. **Zielsetzung und Fragestellung definieren**  \n   - Klare Formulierung der Evaluationsziele, z. B.:  \n     - Verbesserung der Pflegeprozessunterstützung durch das KIS  \n     - Erhöhung der Dokumentationsqualität und -vollständigkeit  \n     - Auswirkungen auf Arbeitsabläufe und Arbeitsbelastung der Pflegekräfte  \n     - Akzeptanz und Zufriedenheit der Pflegekräfte mit dem KIS  \n     - Auswirkungen auf Patientensicherheit und Pflegequalität  \n   - Abgrenzung, ob formative Evaluation (zur Verbesserung während der Einführung) oder summative Evaluation (Abschlussevaluation) durchgeführt wird.\n\n2. **Auswahl geeigneter Methoden**  \n   - Kombination aus **quantitativen und qualitativen Methoden** (Mixed-Methods), um ein umfassendes Bild zu erhalten:  \n     - **Quantitativ:** Erhebung von KPIs (z. B. Dokumentationszeiten, Anzahl der Fehler in Pflegedokumentationen, Vollständigkeit der Dokumentation) durch Zeitmessungen, Datenauswertungen im KIS, standardisierte Befragungen (Likert-Skalen) zur Nutzerzufriedenheit.  \n     - **Qualitativ:** Interviews, Fokusgruppen oder offene Befragungen mit Pflegepersonal zur Erfassung von Erfahrungen, Herausforderungen, Akzeptanz, Verbesserungsvorschlägen.\n\n3. **Berücksichtigung des Pflegeprozesses und der Funktionen des KIS**  \n   - Evaluationsfokus auf die Unterstützung pflegespezifischer Funktionen, z. B.:  \n     - Pflegeanamnese und -assessment  \n     - Pflegeplanung und -dokumentation  \n     - Pflegeinterventionen und Maßnahmen  \n     - Kommunikation und Informationsaustausch im Pflegeteam  \n   - Analyse, ob und wie das KIS diese Funktionen unterstützt, welche Funktionen fehlen oder verbessert werden können.\n\n4. **Integration in den Arbeitsalltag**  \n   -",
+    "transformed": "How would they design the physical tool layer of a HIS?",
+    "question": "Wie würden sie die PWE eines KIS gestalten?"
+  }
+]
