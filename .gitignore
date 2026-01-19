@@ -18,6 +18,7 @@
 *.blx
 *.thesis-blx.bib
 *.run.xml
+*-blx.bib
 
 # LaTeX intermediate and backup files
 *.backup
@@ -59,7 +60,7 @@ MANIFEST
 pip-log.txt
 pip-delete-this-directory.txt
 
-# Unit test / coverage reports
+# Unit test
 htmlcov/
 .tox/
 .nox/
@@ -108,7 +109,7 @@ ipython_config.py
 
 .pdm.toml
 
-# PEP 582; used by e.g. github.com/David-OConnor/pyflow and github.com/pdm-project/pdm
+# PEP 582
 __pypackages__/
 
 # Celery stuff

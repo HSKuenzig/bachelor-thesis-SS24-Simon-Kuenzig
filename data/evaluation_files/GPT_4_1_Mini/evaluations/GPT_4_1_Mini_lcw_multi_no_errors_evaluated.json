@@ -9,7 +9,7 @@
     "points": 0,
     "total_answers": 2,
     "num_answers": 2,
-    "last_evaluated": "51-10-21-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -40,7 +40,7 @@
     "points": 0,
     "total_answers": 2,
     "num_answers": 2,
-    "last_evaluated": "51-10-21-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -71,13 +71,13 @@
     "points": 0,
     "total_answers": 5,
     "num_answers": 6,
-    "last_evaluated": "52-10-21-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
       "sub_answers": {
         "gold": [
-          "Administrative admission is an enterprise function",
+          "Administrative admission is an enterprise function ",
           "that is supported by the patient administration system.\n",
           "One entity type that is used and updated by this function is \"patient.\"",
           "The paper-based patient data privacy form system is an example of a non-computer-based application component.\n",
@@ -109,7 +109,7 @@
     "points": 0,
     "total_answers": 5,
     "num_answers": 5,
-    "last_evaluated": "52-10-21-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -146,7 +146,7 @@
     "points": 0,
     "total_answers": 5,
     "num_answers": 3,
-    "last_evaluated": "52-10-21-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -181,7 +181,7 @@
     "points": 0,
     "total_answers": 5,
     "num_answers": 6,
-    "last_evaluated": "53-10-21-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -219,7 +219,7 @@
     "points": 0,
     "total_answers": 5,
     "num_answers": 5,
-    "last_evaluated": "53-10-21-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -256,7 +256,7 @@
     "points": 0,
     "total_answers": 11,
     "num_answers": 10,
-    "last_evaluated": "53-10-21-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -304,7 +304,7 @@
     "points": 0,
     "total_answers": 2,
     "num_answers": 2,
-    "last_evaluated": "53-10-21-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -335,7 +335,7 @@
     "points": 0,
     "total_answers": 6,
     "num_answers": 6,
-    "last_evaluated": "54-10-21-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -374,7 +374,7 @@
     "points": 0,
     "total_answers": 6,
     "num_answers": 11,
-    "last_evaluated": "54-10-21-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -418,15 +418,15 @@
     "points": 0,
     "total_answers": 3,
     "num_answers": 3,
-    "last_evaluated": "54-10-21-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
       "sub_answers": {
         "gold": [
-          "- electronic health professional card / institution card\n",
-          "- Access to telematric infrastructure (such as PC)\n",
-          "- Insured Person's permission to acces their data"
+          "- electronic health professional card / institution card",
+          "\n- Access to telematric infrastructure (such as PC)",
+          "\n- Insured Person's permission to acces their data"
         ],
         "generated": [
           "To access the data of the patient Mr. Schulz stored in the telematics infrastructure, the GP Ms. Meier needs at least the following three things:\n\n1. **A secure and interoperable application system in her practice**  \n   This could be a clinical information system (CIS) or electronic health record system (EHRS) that supports standardized communication protocols and interoperability standards (e.g., HL7 FHIR, IHE profiles) to connect to the telematics infrastructure and retrieve patient data.\n\n",
@@ -451,7 +451,7 @@
     "points": 0,
     "total_answers": 6,
     "num_answers": 6,
-    "last_evaluated": "54-10-21-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -461,7 +461,8 @@
           "Interoperability: 1. ability of an application system (AWS) to exchange and use information with other AWSs\n",
           "Syntactic Interoperability: 4. ability of an application system to exchange messages with a defined structure\n",
           "Referential Integrity: 6. correct and unambiguous assignment of an object to other objects\n",
-          "Semantic Integration: 3. state of an information system in which interoperable application systems use the same conceptual system\nData Integration: 2. state of an information system in which data, once captured, is available wherever it is needed"
+          "Semantic Integration: 3. state of an information system in which interoperable application systems use the same conceptual system\n",
+          "Data Integration: 2. state of an information system in which data, once captured, is available wherever it is needed"
         ],
         "generated": [
           "Here is the matching of the terms with their definitions:\n\n- data integrity — 5. correctness of data\n",
@@ -489,7 +490,7 @@
     "points": 0,
     "total_answers": 4,
     "num_answers": 4,
-    "last_evaluated": "54-10-21-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -525,7 +526,7 @@
     "points": 0,
     "total_answers": 3,
     "num_answers": 3,
-    "last_evaluated": "55-10-21-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -558,7 +559,7 @@
     "points": 0,
     "total_answers": 11,
     "num_answers": 11,
-    "last_evaluated": "55-10-21-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -607,7 +608,7 @@
     "points": 0,
     "total_answers": 2,
     "num_answers": 2,
-    "last_evaluated": "55-10-21-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -638,7 +639,7 @@
     "points": 0,
     "total_answers": 2,
     "num_answers": 2,
-    "last_evaluated": "55-10-21-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -669,7 +670,7 @@
     "points": 0,
     "total_answers": 9,
     "num_answers": 11,
-    "last_evaluated": "56-10-21-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -716,7 +717,7 @@
     "points": 0,
     "total_answers": 3,
     "num_answers": 3,
-    "last_evaluated": "56-10-21-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -749,7 +750,7 @@
     "points": 0,
     "total_answers": 2,
     "num_answers": 2,
-    "last_evaluated": "56-10-21-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -780,7 +781,7 @@
     "points": 0,
     "total_answers": 4,
     "num_answers": 3,
-    "last_evaluated": "56-10-21-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -814,7 +815,7 @@
     "points": 0,
     "total_answers": 2,
     "num_answers": 2,
-    "last_evaluated": "56-10-21-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -845,7 +846,7 @@
     "points": 0,
     "total_answers": 8,
     "num_answers": 2,
-    "last_evaluated": "57-10-21-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -882,7 +883,7 @@
     "points": 0,
     "total_answers": 15,
     "num_answers": 4,
-    "last_evaluated": "57-10-21-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -928,7 +929,7 @@
     "points": 0,
     "total_answers": 7,
     "num_answers": 4,
-    "last_evaluated": "57-10-21-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -966,7 +967,7 @@
     "points": 0,
     "total_answers": 3,
     "num_answers": 3,
-    "last_evaluated": "58-10-21-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -999,14 +1000,14 @@
     "points": 0,
     "total_answers": 3,
     "num_answers": 3,
-    "last_evaluated": "58-10-21-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
       "sub_answers": {
         "gold": [
           "Object Identity,",
-          "Referential Integrity,",
+          "Referential Integrity",
           "Consistency"
         ],
         "generated": [
@@ -1032,7 +1033,7 @@
     "points": 0,
     "total_answers": 7,
     "num_answers": 6,
-    "last_evaluated": "58-10-21-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -1072,13 +1073,13 @@
     "points": 0,
     "total_answers": 2,
     "num_answers": 2,
-    "last_evaluated": "58-10-21-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
       "sub_answers": {
         "gold": [
-          "HL7,",
+          "HL7",
           "DICOM"
         ],
         "generated": [
@@ -1103,7 +1104,7 @@
     "points": 0,
     "total_answers": 3,
     "num_answers": 2,
-    "last_evaluated": "58-10-21-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -1135,7 +1136,7 @@
     "points": 0,
     "total_answers": 4,
     "num_answers": 2,
-    "last_evaluated": "59-10-21-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -1168,7 +1169,7 @@
     "points": 0,
     "total_answers": 2,
     "num_answers": 2,
-    "last_evaluated": "59-10-21-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -1199,7 +1200,7 @@
     "points": 0,
     "total_answers": 1,
     "num_answers": 2,
-    "last_evaluated": "59-10-21-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -1229,7 +1230,7 @@
     "points": 0,
     "total_answers": 2,
     "num_answers": 2,
-    "last_evaluated": "00-11-21-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -1260,7 +1261,7 @@
     "points": 0,
     "total_answers": 3,
     "num_answers": 4,
-    "last_evaluated": "00-11-21-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -1294,7 +1295,7 @@
     "points": 0,
     "total_answers": 3,
     "num_answers": 3,
-    "last_evaluated": "00-11-21-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],

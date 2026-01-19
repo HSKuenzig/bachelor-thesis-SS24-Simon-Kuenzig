@@ -9,7 +9,7 @@
     "points": 0,
     "total_answers": 2,
     "num_answers": 2,
-    "last_evaluated": "13-20-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -40,7 +40,7 @@
     "points": 0,
     "total_answers": 2,
     "num_answers": 2,
-    "last_evaluated": "13-20-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -71,13 +71,13 @@
     "points": 0,
     "total_answers": 6,
     "num_answers": 6,
-    "last_evaluated": "14-20-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
       "sub_answers": {
         "gold": [
-          "Administrative admission is an enterprise function",
+          "Administrative admission is an enterprise function ",
           "that is supported by the patient administration system.\n",
           "One entity type that is used and updated by this function is \"patient.\"",
           "The paper-based patient data privacy form system is an example of a non-computer-based application component.\n",
@@ -110,7 +110,7 @@
     "points": 0,
     "total_answers": 7,
     "num_answers": 5,
-    "last_evaluated": "14-20-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -149,7 +149,7 @@
     "points": 0,
     "total_answers": 6,
     "num_answers": 3,
-    "last_evaluated": "15-20-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -185,7 +185,7 @@
     "points": 0,
     "total_answers": 6,
     "num_answers": 6,
-    "last_evaluated": "15-20-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -224,7 +224,7 @@
     "points": 0,
     "total_answers": 5,
     "num_answers": 5,
-    "last_evaluated": "15-20-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -261,7 +261,7 @@
     "points": 0,
     "total_answers": 11,
     "num_answers": 10,
-    "last_evaluated": "16-20-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -309,7 +309,7 @@
     "points": 0,
     "total_answers": 2,
     "num_answers": 2,
-    "last_evaluated": "16-20-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -340,7 +340,7 @@
     "points": 0,
     "total_answers": 6,
     "num_answers": 6,
-    "last_evaluated": "16-20-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -379,7 +379,7 @@
     "points": 0,
     "total_answers": 11,
     "num_answers": 11,
-    "last_evaluated": "16-20-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -428,15 +428,15 @@
     "points": 0,
     "total_answers": 3,
     "num_answers": 3,
-    "last_evaluated": "17-20-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
       "sub_answers": {
         "gold": [
-          "- electronic health professional card / institution card\n",
-          "- Access to telematric infrastructure (such as PC)\n",
-          "- Insured Person's permission to acces their data"
+          "- electronic health professional card / institution card",
+          "\n- Access to telematric infrastructure (such as PC)",
+          "\n- Insured Person's permission to acces their data"
         ],
         "generated": [
           "To access the data of the patient Mr Schulz stored in the telematics infrastructure, the GP Ms Meier needs **Authorization**: Ms Meier needs to be authorized to access the patient's data, which typically involves having the necessary permissions and following data protection regulations.",
@@ -461,7 +461,7 @@
     "points": 0,
     "total_answers": 6,
     "num_answers": 6,
-    "last_evaluated": "17-20-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -471,7 +471,8 @@
           "Interoperability: 1. ability of an application system (AWS) to exchange and use information with other AWSs\n",
           "Syntactic Interoperability: 4. ability of an application system to exchange messages with a defined structure\n",
           "Referential Integrity: 6. correct and unambiguous assignment of an object to other objects\n",
-          "Semantic Integration: 3. state of an information system in which interoperable application systems use the same conceptual system\nData Integration: 2. state of an information system in which data, once captured, is available wherever it is needed"
+          "Semantic Integration: 3. state of an information system in which interoperable application systems use the same conceptual system\n",
+          "Data Integration: 2. state of an information system in which data, once captured, is available wherever it is needed"
         ],
         "generated": [
           "Interoperability: This term refers to the ability of different systems to work together, exchanging and using information. So, it matches with definition 1: ability of an application system (AWS) to exchange and use information with other AWSs.",
@@ -499,7 +500,7 @@
     "points": 0,
     "total_answers": 4,
     "num_answers": 4,
-    "last_evaluated": "17-20-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -534,7 +535,7 @@
     "points": 0,
     "total_answers": 3,
     "num_answers": 3,
-    "last_evaluated": "17-20-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -567,7 +568,7 @@
     "points": 0,
     "total_answers": 9,
     "num_answers": 11,
-    "last_evaluated": "17-20-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -614,7 +615,7 @@
     "points": 0,
     "total_answers": 2,
     "num_answers": 2,
-    "last_evaluated": "18-20-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -645,7 +646,7 @@
     "points": 0,
     "total_answers": 2,
     "num_answers": 2,
-    "last_evaluated": "18-20-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -676,7 +677,7 @@
     "points": 0,
     "total_answers": 6,
     "num_answers": 11,
-    "last_evaluated": "18-20-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -720,7 +721,7 @@
     "points": 0,
     "total_answers": 3,
     "num_answers": 3,
-    "last_evaluated": "18-20-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -753,7 +754,7 @@
     "points": 0,
     "total_answers": 2,
     "num_answers": 2,
-    "last_evaluated": "18-20-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -784,7 +785,7 @@
     "points": 0,
     "total_answers": 3,
     "num_answers": 3,
-    "last_evaluated": "18-20-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -817,7 +818,7 @@
     "points": 0,
     "total_answers": 2,
     "num_answers": 2,
-    "last_evaluated": "19-20-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -848,7 +849,7 @@
     "points": 0,
     "total_answers": 3,
     "num_answers": 2,
-    "last_evaluated": "19-20-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -880,7 +881,7 @@
     "points": 0,
     "total_answers": 10,
     "num_answers": 4,
-    "last_evaluated": "19-20-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -922,7 +923,7 @@
     "points": 0,
     "total_answers": 4,
     "num_answers": 4,
-    "last_evaluated": "19-20-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -957,7 +958,7 @@
     "points": 0,
     "total_answers": 3,
     "num_answers": 3,
-    "last_evaluated": "19-20-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -990,14 +991,14 @@
     "points": 0,
     "total_answers": 4,
     "num_answers": 3,
-    "last_evaluated": "20-20-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
       "sub_answers": {
         "gold": [
           "Object Identity,",
-          "Referential Integrity,",
+          "Referential Integrity",
           "Consistency"
         ],
         "generated": [
@@ -1024,18 +1025,18 @@
     "points": 0,
     "total_answers": 7,
     "num_answers": 6,
-    "last_evaluated": "20-20-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
       "sub_answers": {
         "gold": [
           "Data-Integration,",
-          " Semantic Integration,",
-          " User-Interface Integration,",
-          " Context Integration,",
-          " Functional Integration,",
-          " Process Integration"
+          "Semantic Integration,",
+          "User-Interface Integration,",
+          "Context Integration,",
+          "Functional Integration,",
+          "Process Integration"
         ],
         "generated": [
           "In the context of health information systems, there are several types of integration, including data integration, semantic integration, user interface integration, context integration, feature integration, and process integration.",
@@ -1064,13 +1065,13 @@
     "points": 0,
     "total_answers": 2,
     "num_answers": 2,
-    "last_evaluated": "20-20-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
       "sub_answers": {
         "gold": [
-          "HL7,",
+          "HL7",
           "DICOM"
         ],
         "generated": [
@@ -1095,7 +1096,7 @@
     "points": 0,
     "total_answers": 2,
     "num_answers": 2,
-    "last_evaluated": "20-20-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -1126,7 +1127,7 @@
     "points": 0,
     "total_answers": 2,
     "num_answers": 2,
-    "last_evaluated": "20-20-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -1157,7 +1158,7 @@
     "points": 0,
     "total_answers": 2,
     "num_answers": 2,
-    "last_evaluated": "20-20-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -1189,13 +1190,13 @@
     "points": 0,
     "total_answers": 1,
     "num_answers": 2,
-    "last_evaluated": "21-20-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
       "sub_answers": {
         "gold": [
-          "While software development of fully integrated applicationcomponents are prohibited by law due to missing certificates,",
+          "While software development of fully integrated application components are prohibited by law due to missing certificates,",
           "adjusting software to the Needs of each Hospital results in better communication, usage and therefore results during operation."
         ],
         "generated": [
@@ -1219,7 +1220,7 @@
     "points": 0,
     "total_answers": 2,
     "num_answers": 2,
-    "last_evaluated": "21-20-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -1250,16 +1251,16 @@
     "points": 0,
     "total_answers": 3,
     "num_answers": 4,
-    "last_evaluated": "21-20-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
       "sub_answers": {
         "gold": [
           "Patient Administration System,",
-          " Patient Data Management System,",
-          " Laboratory Information System,",
-          " Radiology Information System, etc."
+          "Patient Data Management System,",
+          "Laboratory Information System,",
+          "Radiology Information System, etc."
         ],
         "generated": [
           "Here are three application systems and the tasks each supports:\n\n1. **Patient Administration System (PAS)**: \n   - Supports tasks related to patient administration, such as appointment scheduling, administrative admission, patient identification, and administrative discharge and billing.\n\n",
@@ -1284,15 +1285,15 @@
     "points": 0,
     "total_answers": 10,
     "num_answers": 3,
-    "last_evaluated": "21-20-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
       "sub_answers": {
         "gold": [
           "Redundancy across.",
-          " Multiple Hardware Components that mirror each other.",
-          " Separated Infrastructure for energy."
+          "Multiple Hardware Components that mirror each other.",
+          "Separated Infrastructure for energy."
         ],
         "generated": [
           "To ensure fail-safety in a Health Information System (HIS), several measures can be taken:\n\n1. **Redundancy**: Implementing redundant systems, such as duplicate servers, storage devices, and network components, can help ensure that if one component fails, the other can take over its functions.\n\n",

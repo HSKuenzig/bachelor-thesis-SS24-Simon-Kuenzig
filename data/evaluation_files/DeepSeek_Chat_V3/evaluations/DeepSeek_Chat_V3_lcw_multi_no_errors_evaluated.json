@@ -541,7 +541,9 @@
       "retrieval": [],
       "sub_answers": {
         "gold": [
-          "- electronic health professional card / institution card\n- Access to telematric infrastructure (such as PC)\n- Insured Person's permission to acces their data"
+          "- electronic health professional card / institution card",
+          "\n- Access to telematric infrastructure (such as PC)",
+          "\n- Insured Person's permission to acces their data"
         ],
         "generated": [
           "To access the data of patient Mr. Schulz stored in the telematics infrastructure, GP Ms. Meier would need the following three things in her practice:\n\n1. **A Conformant Practice Management System (PMS)**: The PMS must be certified and connected to the telematics infrastructure (TI) to ensure interoperability and secure access to patient data.  \n\n",

@@ -9,7 +9,7 @@
     "points": 0,
     "total_answers": 2,
     "num_answers": 2,
-    "last_evaluated": "18-10-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -40,7 +40,7 @@
     "points": 0,
     "total_answers": 2,
     "num_answers": 2,
-    "last_evaluated": "18-10-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -71,7 +71,7 @@
     "points": 0,
     "total_answers": 2,
     "num_answers": 6,
-    "last_evaluated": "18-10-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -106,7 +106,7 @@
     "points": 0,
     "total_answers": 5,
     "num_answers": 5,
-    "last_evaluated": "18-10-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -143,7 +143,7 @@
     "points": 0,
     "total_answers": 3,
     "num_answers": 3,
-    "last_evaluated": "19-10-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -176,7 +176,7 @@
     "points": 0,
     "total_answers": 4,
     "num_answers": 6,
-    "last_evaluated": "19-10-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -213,7 +213,7 @@
     "points": 0,
     "total_answers": 4,
     "num_answers": 5,
-    "last_evaluated": "19-10-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -249,7 +249,7 @@
     "points": 0,
     "total_answers": 25,
     "num_answers": 10,
-    "last_evaluated": "19-10-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -311,7 +311,7 @@
     "points": 0,
     "total_answers": 2,
     "num_answers": 2,
-    "last_evaluated": "19-10-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -342,7 +342,7 @@
     "points": 0,
     "total_answers": 3,
     "num_answers": 6,
-    "last_evaluated": "19-10-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -378,13 +378,23 @@
     "points": 0,
     "total_answers": 19,
     "num_answers": 11,
-    "last_evaluated": "19-10-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
       "sub_answers": {
         "gold": [
-          "Domain Layer:\n- Patient Admission\n\nLogical Tool Layer:\n- Patient Management System\n- Communication Server\n- CPOE System\n- Medical Documentation System\n- Laboratory Information System\n\n\nCPOE System:\n- Task: Creation/Administration of Medication plans\n\nMedical Documentation System:\n- Task: Administration/Storage of Patientanamnesis\n\nLaboratory Information System:\n- Task: Storage/Processing of Laboratory Requests\n\nObject Type:\n- Patient\n  - Uses: Administration/Storage of Patientanamnesis, Creation/Administration of Medication plans\n  - Processed: Patient Admission"
+          "Domain Layer:\n- Patient Admission\n\n",
+          "Logical Tool Layer:\n- Patient Management System\n",
+          "- Communication Server\n",
+          "- CPOE System\n",
+          "- Medical Documentation System\n",
+          "- Laboratory Information System\n\n\n",
+          "CPOE System:\n- Task: Creation/Administration of Medication plans\n\n",
+          "Medical Documentation System:\n- Task: Administration/Storage of Patientanamnesis\n\n",
+          "Laboratory Information System:\n- Task: Storage/Processing of Laboratory Requests\n\n",
+          "Object Type:\n- Patient\n  - Uses: Administration/Storage of Patientanamnesis, Creation/Administration of Medication plans\n",
+          "  - Processed: Patient Admission"
         ],
         "generated": [
           "\n**Domain Layer (Functions and Entity Types)**\n\n*   **Functions (Tasks):**\n    *   Patient Admission (Decomposed into sub-functions)\n        *   Appointment Scheduling\n        *   Patient Identification\n        *   Administrative Admission\n        *   Medical Admission\n        *   Nursing Admission\n        *   Visitor and Information Services\n    *   Decision-Making and Patient Information\n    *   Medical and Nursing Care Planning\n    ",
@@ -425,15 +435,15 @@
     "points": 0,
     "total_answers": 3,
     "num_answers": 3,
-    "last_evaluated": "19-10-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
       "sub_answers": {
         "gold": [
-          "- electronic health professional card / institution card\n",
-          "- Access to telematric infrastructure (such as PC)\n",
-          "- Insured Person's permission to acces their data"
+          "- electronic health professional card / institution card",
+          "\n- Access to telematric infrastructure (such as PC)",
+          "\n- Insured Person's permission to acces their data"
         ],
         "generated": [
           "1.  **Interoperable Application Systems:** Ms. Meier's practice needs application systems that are capable of communicating with the telematics infrastructure. The text mentions that in Germany, the telematics infrastructure is responsible for enabling communication between institutional information systems. This implies that Ms. Meier's practice would need an application system (likely a patient administration system and/or MDMS, as discussed in Section 3.4.1 and 3.4.2 for medical offices) that is designed to interface with this national infrastructure.\n\n",
@@ -458,7 +468,7 @@
     "points": 0,
     "total_answers": 6,
     "num_answers": 6,
-    "last_evaluated": "19-10-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -468,7 +478,8 @@
           "Interoperability: 1. ability of an application system (AWS) to exchange and use information with other AWSs\n",
           "Syntactic Interoperability: 4. ability of an application system to exchange messages with a defined structure\n",
           "Referential Integrity: 6. correct and unambiguous assignment of an object to other objects\n",
-          "Semantic Integration: 3. state of an information system in which interoperable application systems use the same conceptual system\nData Integration: 2. state of an information system in which data, once captured, is available wherever it is needed"
+          "Semantic Integration: 3. state of an information system in which interoperable application systems use the same conceptual system\n",
+          "Data Integration: 2. state of an information system in which data, once captured, is available wherever it is needed"
         ],
         "generated": [
           "**data integrity:** 5. correctness of data",
@@ -496,13 +507,13 @@
     "points": 0,
     "total_answers": 4,
     "num_answers": 4,
-    "last_evaluated": "19-10-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
       "sub_answers": {
         "gold": [
-          "Health Level 7 Version 2:",
+          "Health Level 7 Version 2:\n",
           "Area of Use:\n- Communication between Application Systems\n\n",
           "operating principle:\n- Message based\n- Event driven\n\n",
           "Types of Interoperability:\n- Syntactic Interoperability\n- Semantic Interoperability"
@@ -531,7 +542,7 @@
     "points": 0,
     "total_answers": 3,
     "num_answers": 3,
-    "last_evaluated": "19-10-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -564,7 +575,7 @@
     "points": 0,
     "total_answers": 4,
     "num_answers": 11,
-    "last_evaluated": "19-10-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -606,13 +617,14 @@
     "points": 0,
     "total_answers": 0,
     "num_answers": 2,
-    "last_evaluated": "19-10-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
       "sub_answers": {
         "gold": [
-          "- provided and managed by the health insurance companies\n- Technical and organizational measures to ensure only authorized access\n- Access rights, role-based access control, documentation of access"
+          "- provided and managed by the health insurance companies",
+          "\n- Technical and organizational measures to ensure only authorized access\n- Access rights, role-based access control, documentation of access"
         ],
         "generated": [
           "The provided text does not contain information about the \"electronic patient file (ePA)\" according to § 341 SGB V or its access regulations. Therefore, I cannot answer your question based on the given context."
@@ -635,13 +647,14 @@
     "points": 0,
     "total_answers": 2,
     "num_answers": 2,
-    "last_evaluated": "19-10-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
       "sub_answers": {
         "gold": [
-          "IHE stands for Integrating the Healthcare Enterprise. It is an initiative by healthcare professionals and industry to improve the way computer systems in healthcare share information. IHE promotes the coordinated use of established standards such as DICOM and HL7 to address specific clinical needs in support of optimal patient care"
+          "IHE stands for Integrating the Healthcare Enterprise. It is an initiative by healthcare professionals and industry to improve the way computer systems in healthcare share information.",
+          "IHE promotes the coordinated use of established standards such as DICOM and HL7 to address specific clinical needs in support of optimal patient care"
         ],
         "generated": [
           "IHE (Integrating the Healthcare Enterprise) is an organization founded in 1998 by medical professional societies and the healthcare IT industry. Its primary aim is to improve the integration of application systems in healthcare and to verify and certify that application software products possess the necessary process interoperability for this integration. The benefits of IHE include:\n1.  **Improved Integration of Application Systems:** IHE addresses the challenge of disparate healthcare IT systems by providing a framework for them to work together seamlessly.\n2.  **Enhanced Process Interoperability:** By analyzing typical healthcare workflows and defining \"integration profiles,\" IHE ensures that different application systems can cooperate effectively within specific organizational contexts.\n3.  **Reduced Indeterminacy in Communication:** IHE selects existing standards (like HL7 V2 and DICOM) and restricts their options for specific transactions, thereby making \"plug and play\" interoperability more achievable. This reduces ambiguity in how systems interact.\n4.  **Facilitates Workflow Efficiency:** By streamlining the exchange of information between systems, IHE profiles contribute to more efficient diagnostic and therapeutic processes.\n5.  **Quality Assurance and Certification:** IHE offers comprehensive test software and organizes \"Connectathons\" where vendors can test and certify their products for IHE-conformant process interoperability. This provides a level of assurance regarding a product's ability to integrate.\n6.  **Normative Character:** Although not a standards body itself, IHE's integration profiles have gained a normative character due to their widespread adoption and practical relevance, especially in commercial tenders for software.\n7.  **Supports Data Sharing:** Initiatives like IHE XDS (Cross-Enterprise Document Sharing) enable the sharing of clinical documents within and across different healthcare organizations, which is crucial for continuity of care.",
@@ -665,7 +678,7 @@
     "points": 0,
     "total_answers": 13,
     "num_answers": 11,
-    "last_evaluated": "20-10-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -716,13 +729,15 @@
     "points": 0,
     "total_answers": 3,
     "num_answers": 3,
-    "last_evaluated": "20-10-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
       "sub_answers": {
         "gold": [
-          "Data are characters, discrete numbers, or continuous signals to be processed in information systems.\nInformation is a context-specific fact about entities such as events, things, persons, processes, ideas, or concepts. Information is represented by data.\nKnowledge is general information about concepts in a certain (scientific or professional) domain (e.g., knowledge about diseases or therapeutic methods) at a certain time."
+          "Data are characters, discrete numbers, or continuous signals to be processed in information systems.\n",
+          "Information is a context-specific fact about entities such as events, things, persons, processes, ideas, or concepts. Information is represented by data.\n",
+          "Knowledge is general information about concepts in a certain (scientific or professional) domain (e.g., knowledge about diseases or therapeutic methods) at a certain time."
         ],
         "generated": [
           "Data refers to characters, discrete numbers, or continuous signals to be processed in information systems.",
@@ -747,13 +762,14 @@
     "points": 0,
     "total_answers": 2,
     "num_answers": 2,
-    "last_evaluated": "20-10-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
       "sub_answers": {
         "gold": [
-          "A system is a set of persons, things, events, and their relationships forming an integrated whole.\nIf a (human-made) system consists of both human and technical components, it can be called a socio-technical system."
+          "A system is a set of persons, things, events, and their relationships forming an integrated whole.\n",
+          "If a (human-made) system consists of both human and technical components, it can be called a socio-technical system."
         ],
         "generated": [
           "A **system** is defined as a set of persons, things, events, and their relationships forming an integrated whole. Systems can be natural (like the nervous system) or artificial (human-made, like a hospital).",
@@ -777,13 +793,15 @@
     "points": 0,
     "total_answers": 3,
     "num_answers": 3,
-    "last_evaluated": "20-10-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
       "sub_answers": {
         "gold": [
-          "3LGM^2 is a three-layer graph-based metamodel for modeling (health) information systems.\nIt combinsed function, techincal and organisational aspects with certain aspects of data dn process metamodels.\nIt distinguishes between the following layers:\n- Domain Layer (activities in a health care setting)\n- Logical Tool Layer (application components)\n- Physical Tool Layer (Physical data processing systems and their data transmission links)"
+          "3LGM^2 is a three-layer graph-based metamodel for modeling (health) information systems.\n",
+          "It combinsed function, techincal and organisational aspects with certain aspects of data dn process metamodels.\n",
+          "It distinguishes between the following layers:\n- Domain Layer (activities in a health care setting)\n- Logical Tool Layer (application components)\n- Physical Tool Layer (Physical data processing systems and their data transmission links)"
         ],
         "generated": [
           "The 3LGM^2 (Three-Layer Graph-Based Metamodel) is a metamodel used for modeling (health) information systems. It works by structuring the information system into three distinct layers, each focusing on different aspects, and defining relationships between these layers. This approach helps in systematically managing and assessing the structural quality of information processing within healthcare settings.",
@@ -808,13 +826,14 @@
     "points": 0,
     "total_answers": 2,
     "num_answers": 2,
-    "last_evaluated": "20-10-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
       "sub_answers": {
         "gold": [
-          "Enterprise functions mainly emphasize the contribution of activities to business goals.\nExamples are Administrative Admission or Patient Care."
+          "Enterprise functions mainly emphasize the contribution of activities to business goals.\n",
+          "Examples are Administrative Admission or Patient Care."
         ],
         "generated": [
           "Based on the provided text, a data processing task is referred to as an **information-processing function** (or simply **function**). An information-processing function is a directive in a healthcare setting on how to use data on entity types and how to update data on entity types. Functions are ongoing and continuous; they describe *what* is to be done, not *how* it is done. They specify which data on entity types are used to perform the function and which data on entity types are updated by the function. Functions are performed by human or technical actors. Key Characteristics include: **Directive:** It's a set of instructions or rules. **Uses and Updates Entity Types:** It takes existing data (on specific entity types) as input and modifies or creates new data (on the same or other entity types) as output. **Ongoing and Continuous:** Unlike an \"activity\" which has a definite start and end, a function is a general class of similar activities. **Describes \"What\":** It focuses on the purpose or outcome, not the step-by-step execution. **Performed by Actors:** Can be carried out by humans or technical systems.",
@@ -838,13 +857,14 @@
     "points": 0,
     "total_answers": 7,
     "num_answers": 2,
-    "last_evaluated": "20-10-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
       "sub_answers": {
         "gold": [
-          "Patient admission updates and uses the entity type patient\nConsists of refined subfunctions such as Nursing Admission.\nExample Activity of Patient Admission is \"Physician admits Patient"
+          "Patient admission updates and uses the entity type patient\nConsists of refined subfunctions such as Nursing Admission.\n",
+          "Example Activity of Patient Admission is \"Physician admits Patient"
         ],
         "generated": [
           "Based on the provided text, \"patient admission\" is a crucial **information-processing function** within a healthcare facility. It marks the beginning of a patient's journey within that facility and involves several sub-functions aimed at recording and distributing essential patient data. The primary goal of patient admission is to **record and distribute the patient's demographic and insurance data, as well as data on their medical and nursing history.** It also ensures that each patient is correctly identified and assigned unique identification numbers.",
@@ -873,13 +893,16 @@
     "points": 0,
     "total_answers": 18,
     "num_answers": 3,
-    "last_evaluated": "20-10-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
       "sub_answers": {
         "gold": [
-          "Patient\nDoctor\nMedicine Plan\nMedical Record"
+          "Patient\n",
+          "Doctor\n",
+          "Medicine Plan\n",
+          "Medical Record"
         ],
         "generated": [
           "Based on the provided text, here are examples of object types (referred to as \"entity types\" in the text) in a hospital information system, categorized as they are in the book:\n\n**1. Entity Types About Individuals:**\n*",
@@ -923,13 +946,16 @@
     "points": 0,
     "total_answers": 5,
     "num_answers": 4,
-    "last_evaluated": "20-10-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
       "sub_answers": {
         "gold": [
-          "Consists of Application Systems, or in broader sense, application component as the center of interest.\nRepresent certain application software products on a certain computer system.\n\nConnected via Message Oriented Communicaton using commmunication interfaces.\nOr Service-Oriented Communication by providing features to other application systems."
+          "Consists of Application Systems, or in broader sense, application component as the center of interest.\n",
+          "Represent certain application software products on a certain computer system.\n\n",
+          "Connected via Message Oriented Communicaton using commmunication interfaces.\n",
+          "Or Service-Oriented Communication by providing features to other application systems."
         ],
         "generated": [
           "The logical tool layer, as defined within the Three-Layer Graph-Based Metamodel (3LGM^2), focuses on the application components that support the functions and process the data described in the domain layer. These components are considered \"logical\" because, while they are recognized and used by staff, they are not tangible in the same way as physical hardware.",
@@ -956,13 +982,15 @@
     "points": 0,
     "total_answers": 2,
     "num_answers": 3,
-    "last_evaluated": "20-10-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
       "sub_answers": {
         "gold": [
-          "Integration means that the application systems are put together in such a way that the resulting information system - as opposed to its parts - displays a new quality.\nInteroperability in general is the ability of two application systems to exchange information with each other and to use the information that has been exchanged.\nData integrity means that data are consistent, that object identity is maintained, and that relationships between entities are correct (referential integrity)"
+          "Integration means that the application systems are put together in such a way that the resulting information system - as opposed to its parts - displays a new quality.\n",
+          "Interoperability in general is the ability of two application systems to exchange information with each other and to use the information that has been exchanged.\n",
+          "Data integrity means that data are consistent, that object identity is maintained, and that relationships between entities are correct (referential integrity)"
         ],
         "generated": [
           "**1. Integration**\n\n*   **Definition:** Integration is the union of parts making a whole, which—as opposed to its parts—displays a new quality. In the context of health information systems, it refers to the process of joining together interoperable application systems in such a way that their combination has new properties that the individual application systems did not have on their own.\n*   **Purpose:** Integrated health information systems typically offer better support for functions and business processes than non-integrated systems consisting of isolated application systems. It aims to overcome issues like manual data transfer between systems and inconsistencies in data representation.\n*   **Types of Integration (Logical Tool Layer):**\n    *   **Data Integration:** Data recorded once in one application component is made available coherently and uniformly wherever needed in other components, without re-entry.\n    *   **Semantic Integration:** Semantically interoperable application systems actually use the same system of concepts, interpreting data in the same way (e.g., agreeing on common terminologies and information models).\n    *   **User Interface Integration:** Different application systems represent data and organize their user interfaces in a unified way (e.g., consistent display of patient names, use of icons, alert layouts).\n    *   **Context Integration:** The context (e.g., user identification, patient selection) is preserved when the user switches between different application systems.\n    *   **Feature Integration:** Features needed in multiple application systems are implemented only once (e.g., as services) and can be invoked by other application systems.\n    *   **Process Integration:** Business processes are effectively supported by a set of cooperating application systems showing process interoperability. This is the overarching vision, building on other integration types.\n*   **Physical Integration (Physical Tool Layer):** Refers to the necessary physical communication between a set of physical data processing systems for each required data exchange.",
@@ -986,13 +1014,15 @@
     "points": 0,
     "total_answers": 3,
     "num_answers": 3,
-    "last_evaluated": "20-10-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
       "sub_answers": {
         "gold": [
-          "Object Identity, Referential Integrity, Consistency"
+          "Object Identity,",
+          "Referential Integrity",
+          "Consistency"
         ],
         "generated": [
           "Data Integrity is a broad concept ensuring that data stored in the system is correct. It encompasses three main aspects: Object Identity, which ensures that every entity (like a patient or a case) can be uniquely and correctly identified (e.g., each patient should have a unique Patient Identification Number (PIN) that is consistently used across all application components);",
@@ -1017,13 +1047,18 @@
     "points": 0,
     "total_answers": 7,
     "num_answers": 6,
-    "last_evaluated": "20-10-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
       "sub_answers": {
         "gold": [
-          "Data-Integration, Semantic Integration, User-Interface Integration, Context Integration, Functional Integration, Process Integration"
+          "Data-Integration,",
+          "Semantic Integration,",
+          "User-Interface Integration,",
+          "Context Integration,",
+          "Functional Integration,",
+          "Process Integration"
         ],
         "generated": [
           "Data Integration is achieved when data recorded once in one application component is made available coherently and uniformly wherever needed in other application components, without re-entry. This helps increase data consistency and reduces redundant data entry.",
@@ -1052,13 +1087,14 @@
     "points": 0,
     "total_answers": 2,
     "num_answers": 2,
-    "last_evaluated": "20-10-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
       "sub_answers": {
         "gold": [
-          "HL7, DICOM"
+          "HL7",
+          "DICOM"
         ],
         "generated": [
           "Health Level 7 Version 2 (HL7 V2)",
@@ -1082,7 +1118,7 @@
     "points": 0,
     "total_answers": 2,
     "num_answers": 2,
-    "last_evaluated": "21-10-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -1113,7 +1149,7 @@
     "points": 0,
     "total_answers": 2,
     "num_answers": 2,
-    "last_evaluated": "21-10-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -1144,7 +1180,7 @@
     "points": 0,
     "total_answers": 2,
     "num_answers": 2,
-    "last_evaluated": "21-10-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -1175,7 +1211,7 @@
     "points": 0,
     "total_answers": 6,
     "num_answers": 2,
-    "last_evaluated": "21-10-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -1210,7 +1246,7 @@
     "points": 0,
     "total_answers": 2,
     "num_answers": 2,
-    "last_evaluated": "21-10-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -1241,7 +1277,7 @@
     "points": 0,
     "total_answers": 3,
     "num_answers": 4,
-    "last_evaluated": "21-10-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
@@ -1275,7 +1311,7 @@
     "points": 0,
     "total_answers": 3,
     "num_answers": 3,
-    "last_evaluated": "21-10-22-10-2025",
+    "last_evaluated": "06-21-18-01-2026",
     "evaluation_status": "success",
     "details": {
       "retrieval": [],
