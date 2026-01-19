@@ -153,7 +153,7 @@ The respective \acp{lm} would have to be able to handle the full context of \cit
 Such models would not run within hardware constraints (~24GB VRAM).
 By leveraging \acp{api}, advanced \acp{lm} with large context window sizes can be used and evaluated in both methods.
 %
-\subsection{Retrieval-Augmented Generation (RAG) Pipeline}\label{subsec:rag_pipeline}
+\subsection{Retrieval-Augmented Generation}\label{subsec:rag_pipeline}
     The \ac{rag} pipeline will retrieve text snippets from the \textit{Qdrant} database that are relevant to the user prompt.
     The received text snippets will then be combined with the initial prompt and parsed to a selected \ac{api} model for the generation step.
     Furthermore, individual customised, as well as \textit{LangChain} components will facilitate the orchestration of the local knowledge retrieval and remote generation workflow.
@@ -233,7 +233,7 @@ By leveraging \acp{api}, advanced \acp{lm} with large context window sizes can b
     The metadata allows to identify the retrieved chunks, its content, the source and the achieved \enquote{score}.
     This data can then be used to analyse the quality and quantity of knowledge input for the generation process. 
 %
-\subsection{Large Context Window Pipeline}\label{subsec:large_context_api_pipeline}
+\subsection{Large Context Window}\label{subsec:large_context_api_pipeline}
     This method will make use of the large context windows of the selected \acp{lm}.
     As described in \cref{sec:large-context} the \ac{lm} directly process the entire text of the knowledge base.
     This text will be combined with the user query and potentially additional context.

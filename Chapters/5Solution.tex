@@ -399,7 +399,7 @@ The respective value was collected and inserted into the previous data scheme of
 
 
 %%%%
-\section{Implementation of the QA Method Pipelines} 
+\section{Implementation of QA Methods} 
 %(Task A2.1)
 
 This section details the technical implementation of the two distinct \ac{qa}-methods (\cref{sec:method_implementation}.
@@ -519,7 +519,7 @@ After \textit{tokenisation} the \textit{splitter} creates chunks with \texttt{ch
 These chunks were tagged with multiple meta data entries relevant to subsequant evaluation (see \cref{lst:output_file_structure_answered_rag_para})
 This setting was selected to ensure that the semantic context was preserved across chunk boundaries without creating excessive redundancy.
 %
-\subsection{Embedding and Vector Storage - FastEmbed}\label{subsubsec:embedding_workflow}
+\subsection{Embedding and Vector Storage}\label{subsubsec:embedding_workflow}
 
 The management of \ac{db} vectors within the \ac{rag} pipeline is implemented by a centralised \textit{FastEmbed} workflow.
 
