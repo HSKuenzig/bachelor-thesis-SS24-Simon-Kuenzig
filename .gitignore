@@ -151,3 +151,10 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
+
+
+#Ignore vscode AI rules
+.github/instructions/codacy.instructions.md
+
+# macOS metadata
+.DS_Store
