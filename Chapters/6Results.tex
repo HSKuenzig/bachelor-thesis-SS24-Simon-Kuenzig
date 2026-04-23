@@ -1,5 +1,614 @@
 %*****************************************
 \chapter{Results}\label{ch:results}
 %*****************************************
+This work describes the design and implementation of a reproducible, low-cost \ac{qa} system using two different methods for knowledge processing and answer generation - \textbf{Retrieval Augmented Generation} and \textbf{Large Context Windows}.
 
-%Finally, the quantitative and qualitative results of the evaluation processes are presented, which were compared and analysed in a direct comparison of \ac{rag} and \textit{Large Context Window} methods with each other and with the benchmark provided by \citet{Paul_Keller}.
+Different \acp{lm} providing large context capabilities were selected and subsequently used within both \ac{qa} pipelines.
+These models are compared with each other according to their results produced by both method pipelines.
+
+The comparison criteria are \textit{Correctness}, \textit{Explainability}, \textit{Question Understanding} and \textit{Robustness} as specified in \cref{sec:evaluation_methodology_approach}.
+This chapter presents and analysis the generated results.
+The presentation of the results focusses on the individual metrics and method pipelines as a basis for the comparison.
+%
+\section{Correctness analysis}\label{sec:correctness_results}
+
+All models were presented with the same question sets and the same context.
+The parsed context is a combination of the predefined context from the question sets and the respective context determined by the method.
+The evaluation process was performed entirely using the \textit{llm-as-a-judge} feature, with \textit{Gemini 2.5. Flash} as the judge.
+All generated answers were processed under the same conditions.
+The various question types are listed in \cref{tab:eval_question_types}.
+
+\begin{table}
+    \centering
+    \begin{tabular}{lcl}
+        \toprule
+        \textbf{Question Type} & \textbf{Question Count} & \textbf{Description} \\
+        \midrule
+        Singular Fact     & 34                         & \enquote{single}     \\
+        Multi Fact      & 38                         & \enquote{multi}      \\
+        Transfer          & 23                         & \enquote{transfer}   \\
+        \bottomrule
+    \end{tabular}
+    \caption[Question types of the evaluation dataset]{Question types contained in the evaluation dataset.}\label{tab:eval_question_types}
+\end{table}
+
+The following corresponding designations are used to label the axes of respective graphs.
+
+\begin{table}
+    \centering
+    \begin{tabularx}{\textwidth}{p{4.5cm}cl}
+        \toprule
+        \textbf{Question source} & \textbf{Number of questions} & \textbf{Designation} \\
+        \midrule
+        
+\citetitle{bb2} by \citet{bb2} & 33 & \enquote{book} \\
+        \midrule
+        Oral examination questions from the module \enquote{Architecture of Information Systems in Healthcare} from 2021 & 22 & \enquote{A\_2021} \\
+        
+\midrule
+        Written exam questions from the module \enquote{Information Systems in Healthcare and Research} from 2022 & 9 & \enquote{IS\_2022\_07\_18} \\
+        
+\midrule
+        Written exam questions from the resit exam for the module \enquote{Information Systems in Healthcare and Research} from 2022 & 31 & \enquote{IS\_2022\_09\_27} \\
+        \bottomrule
+    \end{tabularx}
+    
+\caption[Question sources of the evaluation dataset]{Question sources contained in the evaluation dataset.}\label{tab:eval_question_sources}
+\end{table}
+%
+
+\subsection{Total numbers}
+The correctness evaluation process produces various results.
+These results assess the quality of output of the \acp{lm} used in the two methods - \ac{rag} and \ac{lcw}.
+The generated answers were categorised as:\\
+\textit{Correct}, \textit{Partially Correct}, \textit{Incorrect} and \textit{Not answered}.\\
+There are two evaluation modes: 
+\textit{Strict} Mode and \textit{Exam} Mode.
+
+%
+\begin{table}[htbp]
+    \centering
+    \caption[\textit{Correctness} - \text{Answered} Total numbers - \textit{Strict} Mode]{Total aggregated evaluation scores grouped by model and method - Mode \textit{Strict}.}
+    \label{tab:total_strict_scores_answered}
+    
+    % OpenRouter Models
+    \begin{threeparttable}
+        \small 
+        \begin{tabular}{llccccc}
+            \toprule
+            \textbf{Model} & \textbf{Method} & \textbf{Total} & \textbf{(0)} & \textbf{(1)} & \textbf{(2)} & \textbf{(3)} \\
+            \midrule
+            DeepSeek-V3 & LCW & 189 & 10 & 48 & 44 & 87 \\
+            \rowcolor{gray!10} DeepSeek-V3 & RAG & 189 & 10 & 56 & 40 & 83 \\
+            \addlinespace
+            GPT-4.1-Mini & LCW & 189 & 8 & 47 & 49 & 85 \\
+            \rowcolor{gray!10} GPT-4.1-Mini & RAG & 189 & 7 & 58 & 23 & 101 \\
+            \addlinespace
+            Gemini-2.5-Flash & LCW & 189 & 8 & 37 & 45 & 99 \\
+            \rowcolor{gray!10} Gemini-2.5-Flash & RAG & 189 & 17 & 51 & 37 & 84 \\
+            \addlinespace
+            Llama-4-Scout & LCW & 189 & 8 & 43 & 53 & 85 \\
+            \rowcolor{gray!10} Llama-4-Scout & RAG & 189 & 21 & 45 & 43 & 80 \\
+            \bottomrule
+        \end{tabular}
+    \end{threeparttable}
+    
+    \vspace{1.5em}
+    
+    %Qwen Model
+    \begin{threeparttable}
+        \small
+        \begin{tabular}{lllccccc}
+            \toprule
+            \textbf{Model} & \textbf{Method} & \textbf{Limit} & \textbf{Total} & \textbf{(0)} & \textbf{(1)} & \textbf{(2)} & \textbf{(3)} \\
+            \midrule
+            Qwen3-VL-32B & LCW & yes & 189 & 0 & 45 & 52 & 92 \\
+            Qwen3-VL-32B & LCW & no & 189 & 9 & 50 & 48 & 82 \\
+            \rowcolor{gray!10} Qwen3-VL-32B & RAG & yes & 189 & 11 & 36 & 53 & 89 \\
+            \rowcolor{gray!10} Qwen3-VL-32B & RAG & no & 189 & 8 & 59 & 61 & 61 \\
+            \bottomrule
+        \end{tabular}
+        
+        \begin{tablenotes}\footnotesize
+            \item \textbf{Scores:} \textbf{(0)} Not Answered, \textbf{(1)} Correct, \textbf{(2)} Incorrect, \textbf{(3)} Partially Correct.
+            \item \textit{Upper table:} Models accessed via OpenRouter (Standard token limit $512$ on server side).
+            \item \textit{Lower table:} Results of the Qwen3-VL-32B model, contrasting prompt limits.
+            \item \textbf{Limit}: Token limit defined explicitly within prompt.\\ \textbf{No Limit}: No token limit set.
+        \end{tablenotes}
+    \end{threeparttable}
+\end{table}
+
+\vspace{1cm}
+
+The \cref{tab:total_strict_scores_answered} provides an overview of the aggregated evaluation scores of all generated answers regarding the evaluation in \textit{Strict} Mode.
+This evaluation mode is less tolerant to indirect content and fact based subanswer matches.
+%
+\newpage
+The following table shows the numbers of the same classes assessed in \textit{Exam} mode.
+
+% Table 2: EXAM MODE
+\begin{table}[htbp]
+    \centering
+    \caption[\textit{Correctness} - \text{Answered} Total Numbers - \textit{Exam} Mode]{Total aggregated evaluation scores grouped by model and method - Mode \textit{Exam}}
+    \label{tab:total_exam_scores_answered}
+    
+    %OpenRouter Models
+    \begin{threeparttable}
+        \small
+        \begin{tabular}{llccccc}
+            \toprule
+            \textbf{Model} & \textbf{Method} & \textbf{Total} & \textbf{(0)} & \textbf{(1)} & \textbf{(2)} & \textbf{(3)} \\
+            \midrule
+            DeepSeek-V3 & LCW & 189 & 10 & 53 & 25 & 101 \\
+            \rowcolor{gray!10} DeepSeek-V3 & RAG & 189 & 10 & 63 & 20 & 96 \\
+            \addlinespace
+            GPT-4.1-Mini & LCW & 189 & 8 & 51 & 34 & 96 \\
+            \rowcolor{gray!10} GPT-4.1-Mini & RAG & 189 & 7 & 61 & 13 & 108 \\
+            \addlinespace
+            Gemini-2.5-Flash & LCW & 189 & 8 & 43 & 31 & 107 \\
+            \rowcolor{gray!10} Gemini-2.5-Flash & RAG & 189 & 17 & 56 & 30 & 86 \\
+            \addlinespace
+            Llama-4-Scout & LCW & 189 & 8 & 50 & 37 & 94 \\
+            \rowcolor{gray!10} Llama-4-Scout & RAG & 189 & 21 & 49 & 29 & 90 \\
+            \bottomrule
+        \end{tabular}
+    \end{threeparttable}
+
+    \vspace{1.5em}
+    
+    % Qwen Model
+    \begin{threeparttable}
+        \small
+        \begin{tabular}{lllccccc}
+            \toprule
+            \textbf{Model} & \textbf{Method} & \textbf{Limit} & \textbf{Total} & \textbf{(0)} & \textbf{(1)} & \textbf{(2)} & \textbf{(3)} \\
+            \midrule
+            Qwen3-VL-32B & LCW & yes & 189 & 0 & 57 & 24 & 108 \\
+            Qwen3-VL-32B & LCW & no & 189 & 9 & 69 & 18 & 93 \\
+            \rowcolor{gray!10} Qwen3-VL-32B & RAG & yes & 189 & 11 & 45 & 31 & 102 \\
+            \rowcolor{gray!10} Qwen3-VL-32B & RAG & no & 189 & 8 & 68 & 27 & 86 \\
+            \bottomrule
+        \end{tabular}
+        
+        \begin{tablenotes}\footnotesize
+            \item \textbf{Scores}: \textbf{(0)} Not Answered, \textbf{(1)} Correct, \textbf{(2)} Incorrect, \textbf{(3)} Partially Correct.
+            \item \textit{Upper table:} Models accessed via OpenRouter (Standard token limit $512$ on server side).
+            \item \textit{Lower table:} Results of the Qwen3-VL-32B model, contrasting prompt limits.
+            \item \textbf{Limit - yes}: Token limit defined explicitly within prompt. \textbf{Limit - no}: No token limit set.
+        \end{tablenotes}
+    \end{threeparttable}
+\end{table}
+
+The generated answers in \cref{tab:total_exam_scores_answered} show slightly higher success rates than those previously assessed in \textit{Strict} mode.
+The \textit{Exam} mode reassess subanswers that were previously classified as \textit{helpful} into the \textit{correct} class.
+Thereby, increasing the overall points and subsequently the count of correctly answered questions.
+
+Similarly to \cref{tab:total_strict_scores_answered}, the \textit{DeepSeek V3} (58) and \textit{GPT 4.1 Mini} (56) models perform better then \textit{Llama 4 Scout} (49) and \textit{Gemini 2.5 Flash} models.
+
+The \textit{Qwen3-VL-32B} model also generated more correctly answered questions without a set token limit than with a limit.
+
+
+The total numbers indicate a generally poor performance of the models and methods.
+
+The results should be interpreted as a representation of the methodological framework and not of the models and methods in general.
+Furthermore, this initial impression is revised considering the \textit{partially correct} answers, as outlined in \cref{subsub:correct_partially_combined}.
+
+Despite the overall low success rates, certain differences and trends can be observed.
+%
+\subsubsection{Correct}
+A comparison of the values in \cref{tab:total_strict_scores_answered} shows slightly higher values in the \textit{correct} class for the \ac{rag} method.
+
+The difference between the methods ranges from $2$ to $14$ correctly answered questions, and thus between $2$ and $7$.
+
+Overall, the models show similar results with \textit{DeepSeek V3} and \textit{GPT 4.1 Mini} slightly outperforming \textit{Gemini-2.5 Flash} ($44$), the \textit{Llama-4 Scout} ($44$) and \textit{Qwen3-VL-32B} [limit] ($40$) with an average score of $52$. 
+The \textit{Qwen3-VL-32B} [no-limit] demonstrates the best performance in terms of correct answers, with an average of $55$ (29\%).
+%
+\newpage
+%
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.95\textwidth, height=0.5\textheight, keepaspectratio]{figures/results/answered_1_3_totals_lcw_openrouter_models.png}
+    \caption[\textit{Correctness}\textit{Answered} Scores - OpenRouter Models - Question Type - LCW]{Total aggregated evaluation scores grouped by OpenRouter model and question type - Method: LCW.}
+    \label{fig:answered_bar_lcw_or}
+\end{figure}
+%
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.95\textwidth, height=0.5\textheight, keepaspectratio]{figures/results/answered_1_3_totals_lcw_qwen_variants.png}
+    \caption[\textit{Correctness} - \textit{Answered} Scores - Qwen3-VL-32B Variants - Question Type - LCW]{Total aggregated evaluation scores grouped by Qwen3-VL-32B variant and question type - Method: LCW.}
+    \label{fig:answered_bar_lcw_bla}
+\end{figure}
+
+The bar charts \cref{fig:answered_bar_lcw_or} and \cref{fig:answered_bar_lcw_bla} show a comparison of the \textit{answered} scores for the \ac{lcw} Method - Grouped by question type.
+%
+\paragraph{LCW by Question Type}
+In \cref{fig:answered_bar_lcw_or} and \cref{fig:answered_bar_lcw_bla} it becomes obvious that all models struggled to answer the question of type \textit{transfer}.
+These types of questions are the most complex  and comprehensive, frequently including additional context with examples or a scenario setting. 
+The \textit{OpenRouter} models answered only \numrange{4}{8}$\%$ of the \textit{transfer} questions correctly within the \ac{lcw} pipeline.
+The \textit{Qwen3-VL-32B} model in both limit variants answered $23\%$ of the \textit{transfer} questions correctly.
+When both \textit{correct} and \textit{partially correct} values are summarised, the percentage increases to \numrange{54}{65} for the \textit{OpenRouter} models and $85\%$ for the \textit{Qwen3-VL-32B} model. 
+
+All \textit{OpenRouter} models show equally low performances when presented with questions of type \textit{multi} with an average of $13.5\%$ correctly answered questions.
+The \textit{Qwen3-VL-32B} model [limit] with $32\%$ and The \textit{Qwen3-VL-32B} model [no\_limit] with $36\%$ outperform the \textit{OpenRouter} models.
+
+
+All models performed best when presented with questions of type \textit{single}.
+The \textit{DeepSeek V3} and \textit{GPT 4.1 Mini} model ($48\%$) outperform the \textit{Gemini-2.5 Flash} and \textit{Llama-4 Scout} ($39\%$).
+When both \textit{correct} and \textit{partially correct} values are summarised, the percentage increases to \numrange{77}{86}.
+
+The clear demonstrated weakness in answering questions of type \textit{transfer} is presumably due to the architecture of the \ac{lcw} method pipeline.
+
+Within the parsed prompt, the question-specific context is inserted directly before the book content.
+The complexity of these questions and the presumed blurring of the contexts lead to the performance shown.
+%
+\newpage
+\paragraph{RAG by Question Type}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.95\textwidth, height=0.5\textheight, keepaspectratio]{figures/results/answered_1_3_totals_rag_openrouter_models.png}
+    \caption[\textit{Answered} Scores - OpenRouter Models - Question Type - RAG]{Total aggregated evaluation scores grouped by OpenRouter model and question type - Method: RAG.}
+    \label{fig:answered_bar_rag_or}
+\end{figure}
+%
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.95\textwidth, height=0.5\textheight, keepaspectratio]{figures/results/answered_1_3_totals_rag_qwen_variants.png}
+    \caption[\textit{Answered} Scores - Qwen3-VL-32B Variants - Question Type - RAG]{Total aggregated evaluation scores grouped by Qwen3-VL-32B variant and question type - Method: RAG.}
+    \label{fig:answered_bar_rag_bla}
+\end{figure}
+
+The charts \cref{fig:answered_bar_rag_or} and \cref{fig:answered_bar_rag_bla} show a comparison of the \textit{answered} scores of the \ac{rag} pipeline filtered by question type.
+
+The success rates shown in \cref{fig:answered_bar_rag_or} and \cref{fig:answered_bar_rag_bla} are similarly low for questions of type \textit{transfer} for all \textit{OpenRouter} models.
+The \textit{Llama-4 Scout} model shows the lowest count of \num{6} ($13\%$).
+The \textit{GPT 4.1 Mini} and \textit{Gemini-2.5 Flash} models show the highest count with $11$ ($23\%$) respectively.
+
+The average \textit{correct} count for question type \textit{multi} is 12 ($18\%$).
+
+The  \textit{Qwen3-VL-32B} [no\_limit] model also performed better for questions of type \textit{transfer} within the \ac{rag} pipeline - $17$ (40\%) compared to $11$ (23\%) within the \ac{lcw} pipeline.
+%
+\subsubsection{Not answered}
+
+Only a small number of questions were evaluated as \textit{unanswered} (\textit{answered} score $=$ \num{0}).
+Whereas, the \ac{rag} method resulted in more \textit{unanswered} questions.
+
+Particularly for the \textit{Gemini-2.5 Flash} and \textit{Llama-4 Scout} models, the \ac{rag} method shows \numrange{2}{3} times more unanswered questions.
+The ability to answer questions within the \ac{rag} method is significantly influenced by the quantity and quality of the retrieved and parsed chunks.
+
+If no chunks are provided to the model as context, the models frequently indicated insufficient context and did not answer the respective questions.
+
+This behaviour is preferred.
+It avoids obtaining fictional answers or those that are not based exclusively on the knowledge base.
+A model would otherwise rely on pre-trained knowledge, which most likely deviates from the book used as the knowledge base.
+%
+\subsubsection{Partially Correct}
+Significantly high figures are shown in the \textit{Partially Correct} class.
+
+The significance of these figures are explained in more detail in \cref{subsub:correct_partially_combined}.
+
+
+\subsubsection{Correct + Partially Correct}\label{subsub:correct_partially_combined}
+
+The results of questions directly and unequivocally classified as \textit{correct} suggest, in themselves, that the models and methods performed poorly.
+
+However, if the \textit{partially correct} values are included in the overall assessment, this impression changes.
+Unequivocally \textit{correct} refers to answers that match the golden true answers exactly.
+That means that all sub-answers of the golden true answer have at least one direct match with a generated sub-answer.
+Furthermore, no generated subanswer of the complete answer contains information that is contradicted or incorrect. 
+
+\textit{Partially correct} answers have almost the same properties.
+However, a direct match could not be found for every golden true subanswer.
+This therefore constitutes an \textit{underfit}.
+Nevertheless, all generated subanswers contain valuable and well-founded knowledge in relation to the question and the knowledge base.
+
+In view of this, combining the \textit{correct} and \textit{partially correct} answers provides a more comprehensive insight into performance.
+
+\begin{table}[htbp]
+    \centering
+    \caption[\textit{Answered} scores - \textit{Correct} $+$ \textit{Partially Correct}]{Sum of aggregated \textit{Correct} and \textit{Partially Correct} scores and their percentage of the total number of questions - Mode \textit{Strict}.}
+    \label{tab:total_strict_combined_scores_answered}
+    
+    % OpenRouter Models
+    \begin{threeparttable}
+        \small 
+        \begin{tabular}{llccccc}
+            \toprule
+            \textbf{Model} & \textbf{Method} & \textbf{Total} & \textbf{(1)} $+$ \textbf{(3)} & \textbf{\%} \\
+            \midrule
+            DeepSeek-V3 & LCW & 189 & 135 & \textbf{71} \\
+            \rowcolor{gray!10} DeepSeek-V3 & RAG & 189 & 139 & \textbf{73} \\
+            \addlinespace
+            GPT-4.1-Mini & LCW & 189 & 132 & \textbf{69} \\
+            \rowcolor{gray!10} GPT-4.1-Mini & RAG & 189 & 159 & \textbf{84} \\
+            \addlinespace
+            Gemini-2.5-Flash & LCW & 189 & 136 & \textbf{71} \\
+            \rowcolor{gray!10} Gemini-2.5-Flash & RAG & 189 & 135 & \textbf{71} \\
+            \addlinespace
+            Llama-4-Scout & LCW & 189 & 128 & \textbf{67} \\
+            \rowcolor{gray!10} Llama-4-Scout & RAG & 189 & 125 & \textbf{66} \\
+            \bottomrule
+        \end{tabular}
+    \end{threeparttable}
+    
+    \vspace{1.5em}
+    
+    %Qwen Model
+    \begin{threeparttable}
+        \small
+        \begin{tabular}{lllccccc}
+            \toprule
+            \textbf{Model} & \textbf{Method} & \textbf{Limit} & \textbf{Total} & \textbf{(1)} $+$ \textbf{(3)} & \textbf{\%} \\
+            \midrule
+            Qwen3-VL-32B & LCW & yes & 189 & 137 & \textbf{72} \\
+            Qwen3-VL-32B & LCW & no & 189 & 132 & \textbf{69} \\
+            \rowcolor{gray!10} Qwen3-VL-32B & RAG & yes & 189 & 125 & \textbf{66} \\
+            \rowcolor{gray!10} Qwen3-VL-32B & RAG & no & 189 & 120 & \textbf{63} \\
+            \bottomrule
+        \end{tabular}
+        
+        \begin{tablenotes}\footnotesize
+            \item \textbf{Scores:} \textbf{(0)} Not Answered, \textbf{(1)} Correct, \textbf{(2)} Incorrect, \textbf{(3)} Partially Correct.
+            \item \textit{Upper table:} Models accessed via OpenRouter (Standard token limit $512$ on server side).
+            \item \textit{Lower table:} Results of the Qwen3-VL-32B model, contrasting prompt limits.
+            \item \textbf{Limit}: Token limit defined explicitly within prompt. \textbf{No Limit}: No token limit set.
+        \end{tablenotes}
+    \end{threeparttable}
+\end{table}
+
+%%%
+%
+%
+%
+%
+%
+%
+%%%
+%
+%
+\begin{table}[htbp]
+    \centering
+    \caption[\textit{Answered} Scores - \textit{Correct} $+$ \textit{Partially Correct}]{Sum of aggregated \textit{Correct} and \textit{Partially Correct} scores and their percentage of the total number of questions - Mode \textit{Exam}.}
+    \label{tab:total_combined_exam_scores_answered}
+    
+    %OpenRouter Models
+    \begin{threeparttable}
+        \small
+        \begin{tabular}{llccccc}
+            \toprule
+            \textbf{Model} & \textbf{Method} & \textbf{Total} & \textbf{(1)} $+$ \textbf{(3)} & \textbf{\%} \\
+            \midrule
+            DeepSeek-V3 & LCW & 189 & 154 & 81 \\
+            \rowcolor{gray!10} DeepSeek-V3 & RAG & 189 & 159 & 84 \\
+            \addlinespace
+            GPT-4.1-Mini & LCW & 189 & 147 & 77 \\
+            \rowcolor{gray!10} GPT-4.1-Mini & RAG & 189 & 169 & 89 \\
+            \addlinespace
+            Gemini-2.5-Flash & LCW & 189 & 150 & 79 \\
+            \rowcolor{gray!10} Gemini-2.5-Flash & RAG & 189 & 142 & 75 \\
+            \addlinespace
+            Llama-4-Scout & LCW & 189 & 134 & 71 \\
+            \rowcolor{gray!10} Llama-4-Scout & RAG & 189 & 139 & 74 \\
+            \bottomrule
+        \end{tabular}
+    \end{threeparttable}
+
+    \vspace{1.5em}
+    
+    % Qwen Model
+    \begin{threeparttable}
+        \small
+        \begin{tabular}{lllccccc}
+            \toprule
+            \textbf{Model} & \textbf{Method} & \textbf{Limit} & \textbf{Total} & \textbf{(1) + (3)} & \textbf{\%} \\
+            \midrule
+            Qwen3-VL-32B & LCW & yes & 189 & 165 & 87\\
+            Qwen3-VL-32B & LCW & no & 189 & 159 & 84 \\
+            \rowcolor{gray!10} Qwen3-VL-32B & RAG & yes & 189 & 147 & 77 \\
+            \rowcolor{gray!10} Qwen3-VL-32B & RAG & no & 189 & 154 & 81 \\
+            \bottomrule
+        \end{tabular}
+        
+        \begin{tablenotes}\footnotesize
+            \item \textbf{Scores:} \textbf{(0)} Not Answered, \textbf{(1)} Correct, \textbf{(2)} Incorrect, \textbf{(3)} Partially Correct.
+            \item \textit{Upper table:} Models accessed via OpenRouter (Standard token limit $512$ on server side).
+            \item \textit{Lower table:} Results of the Qwen3-VL-32B model, contrasting prompt limits.
+            \item \textbf{Limit}: Token limit defined explicitly within prompt. \textbf{No Limit}: No token limit set.
+        \end{tablenotes}
+    \end{threeparttable}
+\end{table}
+%
+
+The combined results in \cref{tab:total_combined_exam_scores_answered} and \cref{tab:total_strict_combined_scores_answered} show a significant improvement in performance.
+
+Overall, neither of the two methods demonstrates consistently superior performance.
+
+\textit{Partially correct} answers are also knowledge-enriching and valuable to the defined target group in terms of reliably answering the question.
+%
+Taking these answers into account is therefore important for evaluating the methodology.
+%
+\subsection{Macro F1}
+
+The total numbers shown in \cref{tab:total_exam_scores_answered} and \cref{tab:total_strict_scores_answered} are reflected accordingly in the \textit{F1} values.
+
+
+The Macro \textit{F1} score ranges from \numrange{0}{1} and provides a comprehensive representation of the actual performance of the respective model.
+
+Models that have answered questions correctly but have also provided incorrect or incomplete answers receive a lower \textit{F1} score.
+A model with a Macro \textit{F1} score of \num{0} answers no questions correctly, whilst a model with a score of \num{1} answers all questions correctly and completely.\\
+%
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=1\textwidth, height=0.6\textheight, keepaspectratio]{figures/results/macro_f1_bar_chart_lcw_strict.png}
+    \caption[\textit{Correctness} - Macro F1 scores - LCW]{Comparison of \textit{Macro F1} scores for all models- Method: LCW - Mode: Strict}
+    \label{fig:macro_f1_bar_lcw_strict}
+\end{figure}
+%
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.95\textwidth, height=0.5\textheight, keepaspectratio]{figures/results/macro_f1_bar_chart_rag_strict.png}
+    \caption[\textit{Correctness} - Macro F1 scores - RAG]{Comparison of \textit{Macro F1} scores for all models- Method: RAG - Mode: Strict}
+    \label{fig:macro_f1_bar_rag_strict}
+\end{figure}
+%
+
+The charts \cref{fig:macro_f1_bar_lcw_strict} and \cref{fig:macro_f1_bar_rag_strict} show a comparison of the Macro \textit{F1} scores between the methods with the underlying point scores assessed in \textit{Exam} mode.
+The \textit{F1} scores of the \textit{OpenRouter} models display very similar results, with slightly superior performance in the \textit{DeepSeek V3} model.
+%
+Overall, the \textit{Qwen3-VL-32B} model outperforms the \textit{OpenRouter} models with an average \textit{F1} score of $0.5$.
+Specifically, this means that on average the model generates correct subanswers \SI{50}{\%} of the time to when answering a question within the \ac{lcw} pipeline.. 
+At the same time, this means that on average if the model was able to provide all required correct subanswers, it then also provided the same amount of incorrect or irrelevant subanswers.
+It is an indicator of knowledge gaps, hallucination and deviation from the parsed knowledge base.
+%
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth, height=0.5\textheight, keepaspectratio]{figures/results/macro_f1_heatmap_lcw_source_strict.png}
+    \caption[\textit{Correctness} - Macro F1 scores - LCW - Grouped by Source]{Heatmap of Macro F1 scores - Method: LCW - Mode: Strict - Filtered by Source}\label{fig:macro_f1_lcw_rag_heat_strict_source}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth, height=0.5\textheight, keepaspectratio]{figures/results/macro_f1_heatmap_rag_source_strict.png}
+    \caption{Heatmap of Macro F1 scores - Method: RAG - Mode: Strict - Filtered by Source.}
+    \label{fig:macro_f1_rag_strict_heat_exam_source}
+\end{figure}
+
+The graphics at \cref{fig:macro_f1_lcw_rag_heat_strict_source} and  \cref{fig:macro_f1_rag_strict_heat_exam_source} show the Macro \textit{F1} scores compared by the source of questions.
+There is a clear difference in scores for questions from the book.
+In particular, for these question the \ac{rag} pipeline achieves clearly better results than the \ac{lcw} pipeline.
+for Overall, the \textit{Qwen3-VL-32B}impression of a better performance of the \ac{rag} method
+%A more detailed analysis can be found on 
+\section{Explainability Analysis}\label{sec:explainability_results}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth, height=0.5\textheight, keepaspectratio]{figures/results/explain_bar_counts_all_models_method.png}
+    \caption{Bar chart of Explainability scores for all models combined - Grouped by Method}
+    \label{fig:explain_bart_chart_all_models_metho}
+\end{figure}
+
+The chart \cref{fig:explain_bart_chart_all_models_metho} shows the total number of questions that were correctly answered, while also containing an explanation, compared by methods. 
+
+The models evaluated within the method pipelines demonstrate a high ability to provide explanations within the generated answer.
+This result is particularly notable, as the prompt used does not explicitly require the model to provide an explanation.
+
+Only questions that were previously evaluated as correctly answered were taken into account.
+The significant percentage of correctly answered questions without an explicit explanation is most likely due to the character of the question.
+
+For example, if the question asks for a comparison of two hospital information systems in tabular form, the respective \ac{lm} adheres to the requested format, which subsequently leaves little room for an explanation.
+%
+\section{Question Understanding Analysis}\label{sec:question_understanding}
+The number of answers generated and evaluated as \enquote{understood} is not equivalent to the number of answers evaluated by the \textit{Correctness} metric.
+A question is not automatically considered as \enquote{understood} if it has been answered.
+Certain questions may have been answered, but at the same time, the answers contain incorrect facts or information unrelated to the initial question.
+These answers are counted as \enquote{not understood}.
+At the same time, an answer evaluated as \enquote{not answered} in relation to the question can be counted as \enquote{understood}.
+In some cases, an \ac{lm} generated an answer that explains why the model could not answer the question.
+The resulting answer does not provide useful information or knowledge, but clearly shows an understanding of the question.
+%
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth, height=0.4\textheight, keepaspectratio]{figures/results/understandability_total_per_type.png}
+    \caption{Understandability - Total - Grouped by Type.}
+    \label{fig:understandability_total_type}
+\end{figure}
+%
+
+\cref{fig:understandability_total_type} shows the total number of questions \enquote{understood} by the models evaluated in relation to those \enquote{not understood}.
+%
+In contrast to the \textit{Explainability} criterion, all existing questions were assessed for \textit{Question Understanding}.
+All models show high success rates within both methods.
+However, a few more question of type \textit{transfer} were not understood.
+Similarly to the previous metrics, the questions assessed as \textit{not understood} are not a representation of the performance of the \ac{lm} or method.
+
+Within the pipelines, a misunderstanding is mainly caused by a prior \ac{api} error or a non-sense output that was repeatedly reproduced.
+Such cases should therefore not be included in the overall assessment and would result in an even better score for all models.
+%
+\section{Robustness Analysis}
+
+In order to assess the \textit{Robustness} of the models and methods, all question sets were duplicated and inserted with spelling errors.
+The subsequently generated answers were also evaluated using the \textit{F1} metric. 
+
+The introduction of spelling errors could result in different chunks being retrieved from  the \ac{db}.
+For the \ac{rag} method, it is essentially a test of the robustness of the similarity search.
+How flexible is the retrieval system?
+
+For the \ac{lcw} method, it is the problem of the needle in the haystack.
+At this point, this raises the particular question:\\
+Is the required \enquote{reproduction} of knowledge during inference and generation robust when the inputs are ambiguous or inconsistent?
+
+\acp{lm} are trained on \enquote{natural language}, which therefore regularly contains spelling errors.
+It is therefore to be expected that the quality of output remains rather stable.
+
+%
+%LCW-Robustness
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.95\textwidth, height=0.5\textheight, keepaspectratio]{figures/results/macro_f1_robustness_bar_chart_strict_lcw.png}
+    \caption{Robustness - Comparison of Macro F1 scores by question error/spelling status - Method: LCW}
+    \label{fig:robustness_f1_lcw}
+\end{figure}
+%
+
+The chart \cref{fig:robustness_f1_lcw} shows a comparison of the Macro \textit{F1} scores by the error status of the input question during inference within the \ac{lcw} method.
+
+%RAG - Robustness
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.95\textwidth, height=0.5\textheight, keepaspectratio]{figures/results/macro_f1_robustness_bar_chart_strict_rag.png}
+    \caption{Robustness - Comparison of Macro F1 scores by question error/spelling status - Method: RAG}
+    \label{fig:robustness_f1_rag}
+\end{figure}
+%
+
+The chart \cref{fig:robustness_f1_rag} shows a comparison of the Macro \textit{F1} scores by the error status of the input question during inference within the \ac{rag} method.
+
+The results presented in \cref{fig:robustness_f1_lcw} and \cref{fig:robustness_f1_rag} partially confirm the assumption made earlier.
+
+For the \ac{lcw} method (\cref{fig:robustness_f1_lcw}), the results clearly demonstrate that the inserted spelling errors lead to a decrease in output quality.
+It is noteworthy, however, that this decline is only evident in the \textit{OpenRouter} models.
+For the \textit{Llama} model, the values differ by $21\%$, which makes the model almost unusable in a real-world application within the application setup used in this work.
+It should be noted, that the values must always be considered within the context of the methodological framework presented.
+
+The \textit{Qwen} unintuitevely shows a small increase in the respective scores.
+
+For the \ac{rag} method (\cref{fig:robustness_f1_rag}), the results suggest that inserted spelling errors have a negative impact on the retrieval process.
+The Macro \textit{F1} are consistently lower for the processed question.
+The most significant difference is present for the \textit{Qwen3-VL-32B} [limit] results, where the score drops by $15\%$ percent.  
+For the other models, the score decreases between \numrange{2}{7}$\%$.
+Among other things, this result shows that the application requires pre-processing in a real-world scenario.
+
+The probability that users will formulate every query without errors is very low and clearly leads to a loss of quality.
+Pre-processing would need to correct such factors.
+
+\section{Summary}
+
+In general, it is not possible to make a definitive statement about which method is superior.
+The respective values vary between the models, showing no consistent pattern.
+
+For the \textit{OpenRouter} models, the \ac{rag} method demonstrates superior performance based on the \textit{F1} scores.
+
+For the \textit{Qwen} model, the performance is the opposite of that seen in the \textit{OpenRouter} models. 
+Here, the \ac{lcw} method produces better and more robust results.
+
+The \ac{rag} method demonstrates consistent superiority across models only for questions taken from the book.
+This is most likely due to the nature of the questions therein, but would require further investigation to determine the clear reason.
+
+All models show a high to perfect level of \textit{Understandibility} and \textit{Explainability}.
+The coresponding scores are not surprising, but rahter reflect the current state of development of \acp{llm}.
+
+The assessment of \textit{Correctness} yields sobering results, but, as already mentioned, must be viewed within the context of the methodological framework.
+
+The nuances involved in evaluating answers in a domain based on hard, unambigious facts cannot or hardly be fully defined in a prompt.
+The \textit{Exam} mode and the combination of correct and partially correct answers attempted to approach the evaluation process with a broader perspective.
+The resulting assessment might be valuable to the user group and future work.
+
+The evaluation process can be extended and refined.
+More nuances can be formulated and defined within the prompts in order to avoid any imprecise evaluation.
+The subanswer evaluation could be further separated into smaller substeps.
+In this way, each generated subanswer could be assessed for \textit{Correctness} using a single golden true subanswer at a time.
+Ultimately, a human expert would be the ideal solution, but this is often not feasible due to the immense amount of work involved.

@@ -516,5 +516,19 @@
     "method": "lcw",
     "answer_timestamp": "08-19-01-10-2025",
     "source": "A_2021"
+  },
+  {
+    "id": "qM0038",
+    "question": "Wie kann man Krankenhausinformationssysteme vergleichen?",
+    "transformed": "How can hospital information systems be compared?",
+    "generated": "Hospital information systems can be compared based on several aspects. \n\n1. **Architecture**: This refers to the fundamental organization of the system, represented by its components, their relationships, and the principles guiding its design and evolution. \n\n2. **Integration**: This involves the ability of different application systems to work together seamlessly. There are several types of integration, including data integration, semantic integration, user interface integration, context integration, feature integration, and process integration.\n\n3. **Interoperability**: This is the ability of two application systems to exchange information with each other and to use the information that has been exchanged. Aspects of interoperability include technical interoperability, syntactic interoperability, semantic interoperability, and process interoperability.\n\n4. **Standards**: The use of standards for interoperability can significantly reduce the costs of implementation and maintenance of interfaces within heterogeneous health information systems. Standards exist for syntactic interoperability (communication standards), semantic interoperability (common information models, terminology standards), and process interoperability.\n\n5. **Quality characteristics**: These include the quality of management of information systems, the quality of architectures and infrastructures, and the quality of integration. \n\n6. **Evaluation**: This involves measuring or exploring components of a health information system to provide information to support decisions concerning the health information systems.\n\nSome of the key standards for interoperability include:\n\n- **Health Level 7 Version 2 (HL7 V2)**: A communication standard for the transfer of messages with data on patients and cases.\n- **Digital Imaging and Communications in Medicine (DICOM)**: A standard for the integration requirements of the medical imaging sector.\n- **Integrating the Health care Enterprise (IHE)**: An organization that improves the integration of application systems in health care and checks and certifies if application software products have the process interoperability needed for this integration.\n\nThe 3LGM^2 model is a metamodel for modeling health information systems on three layers: domain layer, logical tool layer, and physical tool layer.\n\nReference models provide model patterns supporting the construction of models of a certain class of systems and help deal with certain classes of questions or tasks concerning these systems.\n\nThe structure of a strategic information management plan typically includes:\n- Intention of the plan\n- Hospital mission statement\n- Strategic hospital goals\n- Environment analysis\n- Organizational structure\n- Hospital indicators\n- Hospital layout\n- Current state of the information system\n- Assessment of the current state of the information system\n- Future state of the information system\n- Planned activities until a certain year\n\nThe quality of health information systems can be assessed using quality characteristics such",
+    "true_answer": "(Referenzmodelle, Taxonomy)",
+    "num_answers": 2,
+    "type": "multi",
+    "error_status": "no_errors",
+    "llm": "Llama_4_Scout",
+    "method": "lcw",
+    "answer_timestamp": "00-22-16-02-2026",
+    "source": "A_2021"
   }
 ]

@@ -21,6 +21,7 @@
 
 \PassOptionsToPackage{T1}{fontenc} % T2A for cyrillics
   \usepackage{fontenc}
+\KOMAoptions{parskip=half}
 
 
 % ****************************************************************************************************
@@ -43,16 +44,16 @@
 % ****************************************************************************************************
 % 2. Personal data and user ad-hoc commands (insert your own data here)
 % ****************************************************************************************************
-\newcommand{\myTitle}{Evaluating Language Models for Knowledge Retrieval from the Textbook "Health Information System": A Reproducible Benchmarking Approach in a Resource-constrained Environment\xspace}
+\newcommand{\myTitle}{Question Answering on the textbook "Health Information Systems" using Large Language Models\xspace}
 \newcommand{\mySubtitle}{\xspace}
 \newcommand{\myDegree}{\xspace}
 \newcommand{\myName}{Simon Künzig\xspace}
 \newcommand{\mybirthday}{18.12.1993}
 \newcommand{\mybirthtown}{Hannover}
 \newcommand{\mybirthcountry}{Germany}
-\newcommand{\myProf}{Prof. Dr. Alfred Winter\xspace}
+\newcommand{\myProf}{Dr. Konrad Höffner\xspace}
 \newcommand{\myOtherProf}{Prof. Name2\xspace}
-\newcommand{\mySupervisor}{Dr. Konrad Höffner\xspace}
+%\newcommand{\mySupervisor}{\xspace}
 
 %\newcommand{\myFaculty}{Institut für Mathematik und Informatik\xspace}
 %\newcommand{\mySubject}{Informatik}
@@ -162,31 +163,28 @@
 % 5. Setup code listings
 % ****************************************************************************************************
 \usepackage{listings}
+% Legacy listings setup kept only as reference; active setup is in the custom block below.
 %\lstset{emph={trueIndex,root},emphstyle=\color{BlueViolet}}%\underbar} % for special keywords
-\lstset{language=[LaTeX]Tex,%C++,
-  morekeywords={PassOptionsToPackage,selectlanguage},
-  keywordstyle=\color{RoyalBlue},%\bfseries,
-  basicstyle=\small\ttfamily,
-  %identifierstyle=\color{NavyBlue},
-  commentstyle=\color{Green}\ttfamily,
-  stringstyle=\rmfamily,
-  numbers=none,%left,%
-  numberstyle=\scriptsize,%\tiny
-  stepnumber=5,
-  numbersep=8pt,
-  showstringspaces=false,
-  breaklines=true,
-  %frameround=ftff,
-  %frame=single,
-  belowcaptionskip=.75\baselineskip
-  %frame=L
-}
-% ****************************************************************************************************
-
-
-
-
-% ****************************************************************************************************
+%\lstset{language=[LaTeX]Tex,%C++,
+%    keywordstyle=\color{RoyalBlue},%\bfseries, screen version
+%    %keywordstyle=\color{gray}, % print version
+%    basicstyle=\small\ttfamily,
+%    %identifierstyle=\color{NavyBlue},
+%    commentstyle=\color{Green}\ttfamily,
+%    stringstyle=\rmfamily,
+%    numbers=none,%left,%
+%    numberstyle=\scriptsize,%\tiny
+%    stepnumber=5,
+%    numbersep=8pt,
+%    showstringspaces=false,
+%    prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\rhookswarrow}},
+%    breaklines=true,
+%    breakatwhitespace=true,
+%    %frameround=ftff,
+%    %frame=single,
+%    belowcaptionskip=.75\baselineskip
+%    %frame=L
+%****************************************************************************************************
 % 6. Last calls before the bar closes
 % ****************************************************************************************************
 % ********************************************************************
@@ -303,6 +301,30 @@
 \usepackage{csquotes}
 \usepackage{listings}
 \usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{threeparttable}
+\lstset{language=[LaTeX]Tex,%C++,
+  morekeywords={PassOptionsToPackage,selectlanguage},
+  keywordstyle=\color{RoyalBlue},%\bfseries,
+  basicstyle=\small\ttfamily,
+  %identifierstyle=\color{NavyBlue},
+  commentstyle=\color{Green}\ttfamily,
+  stringstyle=\rmfamily,
+  numbers=none,%left,%
+  numberstyle=\scriptsize,%\tiny
+  stepnumber=5,
+  numbersep=8pt,
+  showstringspaces=false,
+  prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\rhookswarrow}},
+  breaklines=true,
+  breakatwhitespace=true,
+  %frameround=ftff,
+  %frame=single,
+  belowcaptionskip=.75\baselineskip,
+  %frame=L
+  moredelim=**[is][\bfseries\color{RoyalBlue}]{!}{!}
+}
+% 
 
 % --- YAML definition for listings ---
 \definecolor{dkgreen}{rgb}{0,0.6,0}
@@ -331,8 +353,6 @@
   numberstyle=\tiny\color{gray},
   stepnumber=1,
   numbersep=5pt,
-  showstringspaces=false,
-  breaklines=true,
   frame=lines,
   backgroundcolor=\color{white},
   literate={"}{{\textcolor{black}{"}}}1
@@ -357,8 +377,6 @@
   numberstyle=\tiny\color{gray}, 
   stepnumber=1, 
   numbersep=5pt, 
-  showstringspaces=false, 
-  breaklines=true, 
   frame=lines, 
   backgroundcolor=\color{white}, 
   %
@@ -381,14 +399,14 @@
     {]}{{\textcolor{lightorange}{]}}}1 
     {(}{{\textcolor{lightorange}{(}}}1 
     {)}{{\textcolor{lightorange}{)}}}1 
-    {`}{{\textcolor{lavender}{`}}}1, 
+    {`}{{\textcolor{lavender}{`}}}1 
     {/}{{\textcolor{lightgray}{/}}}1, 
   % 3. Comments and Strings
   morecomment=[l]{!}, 
   commentstyle=\color{lightgray}\ttfamily, 
   % 4. Keywords
   keywords={true, false, null}, 
-  keywordstyle=\color{lavender}, % Removed \bfseries for slight highlighting
+  keywordstyle=\color{lavender}, % Removed \bfseries
 }[keywords, comments, strings]
 \usepackage{cleveref}
 \usepackage{cuted}

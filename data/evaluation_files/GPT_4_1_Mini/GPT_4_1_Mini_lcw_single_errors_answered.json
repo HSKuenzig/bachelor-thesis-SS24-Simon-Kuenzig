@@ -432,5 +432,47 @@
     "method": "lcw",
     "answer_timestamp": "56-14-11-01-2026",
     "source": "A_2021"
+  },
+  {
+    "id": "qSs032",
+    "question": "Was ist ARIS?",
+    "transformed": "Whad is ARIS (Arcitecture of Integreted Enformation Systems)?",
+    "generated": "ARIS (Architecture of Integrated Information Systems) ist ein methodischer Ansatz zur Modellierung, Analyse und Gestaltung von Geschäftsprozessen und Informationssystemen. Entwickelt wurde ARIS von August-Wilhelm Scheer in den 1990er Jahren. Ziel von ARIS ist es, die verschiedenen Aspekte eines Unternehmens – wie Organisation, Daten, Funktionen und Prozesse – systematisch zu erfassen und zu verknüpfen, um eine ganzheitliche Sicht auf die Geschäftsprozesse zu ermöglichen.\n\nARIS basiert auf einem mehrschichtigen Modell, das typischerweise folgende Sichten umfasst:\n\n1. Organisationssicht: Darstellung der Aufbauorganisation, z.B. Abteilungen, Rollen und Verantwortlichkeiten.\n2. Datensicht: Beschreibung der relevanten Daten und Informationsobjekte.\n3. Funktionssicht: Abbildung der Funktionen und Tätigkeiten im Unternehmen.\n4. Steuerungssicht (Prozesssicht): Modellierung der Abläufe und Prozessketten.\n5. Leistungssicht: Darstellung der Ergebnisse und Leistungen der Prozesse.\n\nDurch die Integration dieser Sichten unterstützt ARIS Unternehmen dabei, ihre Geschäftsprozesse zu optimieren, IT-Systeme besser auszurichten und die Kommunikation zwischen Fachabteilungen und IT zu verbessern.\n\nZusammengefasst ist ARIS also ein umfassendes Framework zur ganzheitlichen Analyse und Gestaltung von Geschäftsprozessen und Informationssystemen.",
+    "true_answer": "The Architecture of Integrated Information Systems is a framework for describing business processes. It provides modeling methods and meta-structures that are comprised in information models.",
+    "num_answers": 1,
+    "type": "single",
+    "error_status": "errors",
+    "llm": "GPT_4_1_Mini",
+    "method": "lcw",
+    "answer_timestamp": "12-20-01-02-2026",
+    "source": "IS_2022_09_27"
+  },
+  {
+    "id": "qSs033",
+    "question": "Was ist IHE?",
+    "transformed": "Whad is IHE (Integratin the Helthcare Enterpraise)?",
+    "generated": "IHE (Integrating the Healthcare Enterprise) ist eine Initiative, die darauf abzielt, die Interoperabilität im Gesundheitswesen zu verbessern. Dabei handelt es sich um eine Zusammenarbeit von Fachleuten aus dem Gesundheitswesen und der Informationstechnologie, die Standards und Profile entwickelt, um den Austausch und die gemeinsame Nutzung von medizinischen Daten zwischen verschiedenen IT-Systemen und Geräten zu erleichtern.\n\nZiel von IHE ist es, die Kommunikation und Integration zwischen unterschiedlichen Systemen wie Krankenhausinformationssystemen, Radiologiesystemen, Laborinformationssystemen und anderen medizinischen Anwendungen zu verbessern, um so die Effizienz, Qualität und Sicherheit der Patientenversorgung zu erhöhen.\n\nZusammengefasst:  \nIHE definiert standardisierte Vorgehensweisen und Profile, die sicherstellen, dass verschiedene Gesundheits-IT-Systeme nahtlos zusammenarbeiten können.",
+    "true_answer": "IHE stands for Integrating the Healthcare Enterprise. It is an initiative by healthcare professionals and industry to improve the way computer systems in healthcare share information. IHE promotes the coordinated use of established standards such as DICOM and HL7 to address specific clinical needs in support of optimal patient care",
+    "num_answers": 1,
+    "type": "single",
+    "error_status": "errors",
+    "llm": "GPT_4_1_Mini",
+    "method": "lcw",
+    "answer_timestamp": "12-20-01-02-2026",
+    "source": "IS_2022_09_27"
+  },
+  {
+    "id": "qSs034",
+    "question": "Was ist openEHR",
+    "transformed": "Whad is openEHR?",
+    "generated": "openEHR ist ein offener Standard und eine Plattform für die elektronische Gesundheitsakte (EHR – Electronic Health Record). Ziel von openEHR ist es, eine interoperable, flexible und langfristig nutzbare digitale Gesundheitsakte zu schaffen, die verschiedene Systeme und Anwendungen im Gesundheitswesen miteinander verbindet.\n\nKernpunkte von openEHR sind:\n\n- **Archetypen-basierter Ansatz:** openEHR verwendet sogenannte Archetypen, das sind standardisierte, wiederverwendbare Modelle für klinische Konzepte (z.B. Blutdruckmessung, Laborwerte). Diese Archetypen ermöglichen eine klare Trennung zwischen der klinischen Semantik und der technischen Implementierung.\n- **Interoperabilität:** Durch die Nutzung offener Standards und Modelle fördert openEHR den Datenaustausch zwischen unterschiedlichen Systemen und Organisationen.\n- **Langfristige Datenhaltung:** openEHR ist darauf ausgelegt, Gesundheitsdaten über lange Zeiträume sicher und verständlich zu speichern, unabhängig von technischen Veränderungen.\n- **Flexibilität:** Neue klinische Konzepte können durch die Erstellung neuer Archetypen ergänzt werden, ohne dass die zugrundeliegende Software geändert werden muss.\n\nZusammengefasst ist openEHR ein offener, standardisierter Rahmen für die strukturierte Erfassung, Speicherung und den Austausch von Gesundheitsdaten, der die Interoperabilität und Nachhaltigkeit im Gesundheitswesen unterstützt.",
+    "true_answer": "openEHR is an open standard specification in health informatics that describes the management and storage, retrieval and exchange of health data in electronic health records (EHRs). In openHER, all health data for a person is stored in a \"one lifetime\", vendor-independent, person-centred EHR. It is completely model-driven, and separates domain semantics out from software, into models created by domain professionals.",
+    "num_answers": 1,
+    "type": "single",
+    "error_status": "errors",
+    "llm": "GPT_4_1_Mini",
+    "method": "lcw",
+    "answer_timestamp": "12-20-01-02-2026",
+    "source": "IS_2022_09_27"
   }
 ]

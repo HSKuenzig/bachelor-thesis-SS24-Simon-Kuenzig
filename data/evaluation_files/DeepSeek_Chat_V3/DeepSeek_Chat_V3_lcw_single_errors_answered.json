@@ -432,5 +432,47 @@
     "method": "lcw",
     "answer_timestamp": "00-00-11-01-2026",
     "source": "A_2021"
+  },
+  {
+    "id": "qSs032",
+    "question": "Was ist ARIS?",
+    "transformed": "Whad is ARIS (Arcitecture of Integreted Enformation Systems)?",
+    "generated": "ARIS (Architecture of Integrated Information Systems) is a framework for enterprise modeling and business process management. It was developed by Professor August-Wilhelm Scheer in the early 1990s and is widely used for designing, analyzing, and optimizing business processes and IT systems.\n\n### Key Features of ARIS:\n1. **Holistic Approach**: ARIS provides a comprehensive view of an organization by integrating different perspectives, such as organizational structure, data, functions, processes, and outputs.\n2. **ARIS House**: The framework is often visualized as a \"house\" with four main views:\n   - **Data View**: Focuses on information and data structures.\n   - **Function View**: Represents business functions and activities.\n   - **Organization View**: Covers organizational units and roles.\n   - **Process View**: Describes the flow of processes and workflows.\n   - (A fifth view, the **Output View**, is sometimes included to represent deliverables or products.)\n3. **Modeling Tools**: ARIS includes standardized modeling notations (e.g., Event-Driven Process Chain (EPC) diagrams) to visualize processes.\n4. **Software Suite**: The ARIS platform offers tools for process design, simulation, analysis, and implementation, often used in conjunction with ERP systems like SAP.\n\n### Applications:\n- Business process reengineering (BPR).\n- IT and enterprise architecture planning.\n- Compliance and risk management.\n- Digital transformation initiatives.\n\nARIS helps organizations align their business strategies with IT systems, ensuring efficiency and clarity in complex processes.",
+    "true_answer": "The Architecture of Integrated Information Systems is a framework for describing business processes. It provides modeling methods and meta-structures that are comprised in information models.",
+    "num_answers": 1,
+    "type": "single",
+    "error_status": "errors",
+    "llm": "DeepSeek_Chat_V3",
+    "method": "lcw",
+    "answer_timestamp": "10-14-02-02-2026",
+    "source": "IS_2022_09_27"
+  },
+  {
+    "id": "qSs033",
+    "question": "Was ist IHE?",
+    "transformed": "Whad is IHE (Integratin the Helthcare Enterpraise)?",
+    "generated": "IHE (Integrating the Healthcare Enterprise) is a global initiative that aims to improve healthcare by promoting the seamless exchange of information among healthcare systems. It develops frameworks and standards to ensure interoperability between different IT systems, medical devices, and software applications in the healthcare sector.  \n\n### Key Aspects of IHE:  \n1. **Interoperability**: Ensures that healthcare systems can communicate and share data efficiently.  \n2. **Standards-Based**: Uses established standards like **HL7, DICOM, and FHIR** to facilitate integration.  \n3. **Profiles**: Defines specific implementation guidelines (IHE Profiles) for common healthcare workflows (e.g., radiology, cardiology, laboratory).  \n4. **Testing & Certification**: Provides testing events (Connectathons) to validate system compatibility.  \n5. **Global Collaboration**: Involves healthcare providers, vendors, and standards organizations worldwide.  \n\n### Example Use Cases:  \n- **Radiology**: Seamless sharing of medical images (e.g., X-rays, MRIs) across hospitals.  \n- **Cross-Enterprise Document Sharing (XDS)**: Secure exchange of patient records between institutions.  \n\nIHE helps reduce errors, improve efficiency, and enhance patient care by ensuring systems work together effectively.  \n\n*(Note: The original question had a typo—\"Whad\" instead of \"What\"—but the answer remains accurate.)*",
+    "true_answer": "IHE stands for Integrating the Healthcare Enterprise. It is an initiative by healthcare professionals and industry to improve the way computer systems in healthcare share information. IHE promotes the coordinated use of established standards such as DICOM and HL7 to address specific clinical needs in support of optimal patient care",
+    "num_answers": 1,
+    "type": "single",
+    "error_status": "errors",
+    "llm": "DeepSeek_Chat_V3",
+    "method": "lcw",
+    "answer_timestamp": "10-14-02-02-2026",
+    "source": "IS_2022_09_27"
+  },
+  {
+    "id": "qSs034",
+    "question": "Was ist openEHR",
+    "transformed": "Whad is openEHR?",
+    "generated": "**Answer:**  \nopenEHR is an open standard for storing and managing electronic health records (EHRs). It provides a flexible, vendor-neutral framework for structuring clinical data, enabling interoperability and long-term data usability across healthcare systems. Key features include:\n\n1. **Standardized Data Models**: Uses archetypes and templates to define clinical concepts consistently.  \n2. **Separation of Data and Workflow**: Keeps patient data independent of specific software applications.  \n3. **Interoperability**: Supports data exchange between different healthcare systems.  \n4. **Open Specification**: Freely available for implementation by developers and organizations.  \n\nDeveloped by the openEHR Foundation, it is widely used in global e-health projects to improve care coordination and data sharing.  \n\n*(Note: The original question had a typo—\"Whad\" instead of \"What.\" The context provided was in German, asking the same question.)*",
+    "true_answer": "openEHR is an open standard specification in health informatics that describes the management and storage, retrieval and exchange of health data in electronic health records (EHRs). In openHER, all health data for a person is stored in a \"one lifetime\", vendor-independent, person-centred EHR. It is completely model-driven, and separates domain semantics out from software, into models created by domain professionals.",
+    "num_answers": 1,
+    "type": "single",
+    "error_status": "errors",
+    "llm": "DeepSeek_Chat_V3",
+    "method": "lcw",
+    "answer_timestamp": "10-14-02-02-2026",
+    "source": "IS_2022_09_27"
   }
 ]

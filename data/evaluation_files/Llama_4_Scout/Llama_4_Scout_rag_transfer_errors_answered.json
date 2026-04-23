@@ -1822,283 +1822,109 @@
     }
   },
   {
-    "id": "qSs001",
-    "question": "In Sect. 4.2, we introduced a three-dimensional classification of activities of management of information systems. How would you describe the scope and tasks of the following activities of managing information systems? - Developing a strategic information management plan (e.g., this is related to strategic planning),",
-    "transformed": "How would you discribe the scope an tasks for the following activites of managing informations systems: Developping a strategic information managment plan?",
-    "generated": "The scope and tasks for \"Developing a strategic information management plan\" can be described as follows:\n\n**Scope:** Strategic planning\n\n**Tasks:**\n\n1. Strategic alignment of business goals and information management goals\n2. Development of a long-term strategic project portfolio as part of a strategic information management plan\n3. Creation of an annual project portfolio derived from the strategic project portfolio\n\n**Description:** Developing a strategic information management plan involves strategic planning, which is the first step of a systematic strategic information management process. The plan describes the business goals, information management goals, current state of the information system, future state of the information system, and the steps to transform the current into the planned information system. The plan is the basis for all tactical and operational information management activities and is a prerequisite for systematically directing and monitoring the information system of a health care facility.\n\nThe strategic information management plan should encompass:\n\n1. Business goals and information management goals\n2. Current state of the information system\n3. Assessment of the current state of the information system\n4. Future state of the information system\n5. Migration path from the current to the planned state (strategic project portfolio)\n\nThe plan is typically created by the Chief Information Officer (CIO), supported by the information management department, and approved by top management. The plan is used by various stakeholders, including information management departments, vendors, and funding institutions, and is regularly updated to reflect changes in requirements, resources, and technology.",
-    "true_answer": "Developing a strategic information management plan: strategic planning",
-    "num_answers": 1,
+    "id": "qt023",
+    "question": "Look up some information on the nervous system of the human body.\nThen try to identify subsystems of the nervous system.\nIn the same way, can you also describe subsystems of the system \"hospital\"?",
+    "transformed": "Whe comparing the nervos system of the humand body to the system \"hospital\" the following subsistems can be identified and described:\\n",
+    "generated": "The nervous system of the human body can be compared to a hospital system, with various subsystems that can be identified and described. \n\n## Subsystems of the Nervous System\n\nThe nervous system comprises two main categories of cells: neurons and glial cells. Neurons communicate with each other via synapses and form their own subsystem. Glial cells form another subsystem that provides support and nutrition to the neurons.\n\n## Subsystems of a Hospital\n\nThe hospital can be understood as a system comprising at least two subsystems: the subsystem where clinical care takes place and the subsystem where management takes place. The clinical subsystem can again be split into several subsystems, such as:\n\n* Inpatient area\n* Outpatient area\n* Specialized diagnostic or therapeutic areas\n\nThe inpatient area itself can be divided into various subsystems, each represented by one ward. The way subsystems of a hospital are defined depends on the questions or intentions.\n\n## Comparison of Subsystems\n\nBoth the nervous system and the hospital system have subsystems that work together to ensure the overall functioning of the system. In the nervous system, neurons and glial cells work together to support and communicate with each other. In a hospital, clinical care and management work together to provide patient care and manage the hospital.\n\n## Detailed Description of Subsystems\n\n### Nervous System Subsystems\n\n* **Neurons**: Neurons are specialized cells that communicate with each other through synapses. They are responsible for transmitting and processing information.\n* **Glial Cells**: Glial cells provide support and nutrition to neurons. They also play a role in maintaining the health of the nervous system.\n\n### Hospital Subsystems\n\n* **Clinical Care Subsystem**: This subsystem is responsible for providing medical care to patients. It includes inpatient and outpatient areas, as well as specialized diagnostic and therapeutic areas.\n* **Management Subsystem**: This subsystem is responsible for managing the hospital, including administration, finance, and human resources.\n* **Inpatient Area Subsystems**: These subsystems are responsible for providing care to patients who are admitted to the hospital. They include various wards, such as medical, surgical, and pediatric wards.\n* **Outpatient Area Subsystems**: These subsystems are responsible for providing care to patients who are not admitted to the hospital. They include clinics, emergency departments, and outpatient surgical centers.\n\n## Conclusion\n\nIn conclusion, both the nervous system and the hospital system have subsystems that work together to ensure the overall functioning of the system. Understanding these subsystems is essential for providing effective care and management. By comparing and contrasting these subsystems, we can gain",
+    "true_answer": "The nervous system comprises two main categories of cells: neurons and glial cells.\nNeurons communicate with each other via synapses and thus form their own subsystem.\nGlial cells form another subsystem that provides support and nutrition to the neurons.\n\nThe hospital can be understood as a system comprising at least two subsystems: the subsystem where clinical care takes place and the subsystem where management takes place.\nThe clinical subsystem can again be split into several subsystems, such as inpatient area, outpatient area, and specialized diagnostic or therapeutic areas.\nThe inpatient area itself can be divided into various subsystems, each represented by one ward.\nThe way I define the subsystems of a hospital depends on the questions or intentions I have.",
+    "num_answers": 2,
     "type": "transfer",
     "error_status": "errors",
     "llm": "Llama_4_Scout",
     "method": "rag",
-    "answer_timestamp": "31-02-10-01-2026",
+    "answer_timestamp": "57-00-03-02-2026",
     "source": "Book",
     "details": {
       "retrieval": [
         {
           "index": 0,
           "source": "book.md",
-          "score": 0.8898165,
-          "content": "The board supported Mrs. Garzia in aligning the strategic information management plan with the needs and requirements of the clinical departments. ## 4.9 Exercises\n\n### 4.9.1 Activities of Managing Information Systems\n\nIn Sect. 4.2, we introduced a three-dimensional classification of activities of management of information systems. How would you describe the scope and tasks of the following activities of managing information systems? - Developing a strategic information management plan (e.g., th..."
+          "score": 0.9007117,
+          "content": "Then try to identify subsystems of the nervous system. In the same way, can you also describe subsystems of the system “hospital”? Answer:\nThe nervous system comprises two main categories of cells: neurons and glial cells. Neurons communicate with each other via synapses and thus form their own subsystem. Glial cells form another subsystem that provides support and nutrition to the neurons. The hospital can be understood as a system comprising at least two subsystems: the subsystem where clinica..."
         },
         {
           "index": 1,
           "source": "book.md",
-          "score": 0.88753283,
-          "content": "Strategic management of information systems deals with the information system as a whole and establishes strategies and principles for the evolution of the information system.\nAn important result of strategic management activities is a strategic information management plan.\n\nTactical management of information systems deals with particular functions, application components, or physical data processing systems that are introduced, removed, or changed.\nUsually, these activities are done in the form..."
+          "score": 0.8844091,
+          "content": "## 2.16 Exercises\n\n### 2.16.1 Data, Information, and Knowledge\n\nImagine that a physician is given the following information about his patient, Mr. Russo: “Diagnosis: hypertension.\nLast blood pressure measurement: 160/100 mmHg.” Use this example to discuss the difference between “data,” “information,” and “knowledge”!\n\nAnswer:\n“160,” “100,” “hypertension,” and “blood pressure” represent data that cannot be interpreted without knowledge about the context.\nThe information is that Mr. Russo has been..."
         },
         {
           "index": 2,
           "source": "book.md",
-          "score": 0.88131714,
-          "content": "# 4. Management Perspective: Scopes and Tasks of Managing Health Information Systems\n\n## 4.1 Introduction\n\nIn Chap. 3, we discussed the technological perspective of health information systems.\nWe will now examine how health information systems have to be managed so they will fulfill the requirements of the stakeholders as presented in Sect. 1.​3.\n\nAs already introduced in Sect. 2.​12, management of information systems ensures systematic information processing that supports information and knowle..."
+          "score": 0.87385607,
+          "content": "`Knowledge is general information about concepts in a certain (scientific or professional) domain (e.g., knowledge about diseases or therapeutic methods) at a certain time.`\n\nKnowledge as general information contrasts with specific information about particular individuals of the domain (e.g., information about a patient). This means that, due to the physician’s general knowledge about diabetes symptoms, she can conclude that Jakub Russo suffers from diabetes, which, in turn, is information about..."
         },
         {
           "index": 3,
           "source": "book.md",
-          "score": 0.87913465,
-          "content": "- IT strategy: See --> strategic information management plan (Sect."
+          "score": 0.86701095,
+          "content": "These more generic chapters will be rounded out by Chap. 6 on specific health information systems for certain life situations and health care settings such as, for example, hospital information systems and information systems in personal environments. After reading this chapter, you should be able to\n\n- recognize the relevance of health information systems,\n- understand the motivation and objectives of why this book was written,\n- view life situations in the context of health, health care, and h..."
         },
         {
           "index": 4,
           "source": "book.md",
-          "score": 0.87566173,
-          "content": "Usually, the CIO, supported by the information management department, creates and maintains a proposal for the strategic information management plan.\nThe CIO is interested in having clearly defined requirements for management of information systems.\nTop management is interested in the seamless and cost-effective operation of the health care facility.\nTop management approves the plans (probably together with the funding institutions). Employee representatives should be involved in eliciting the r..."
+          "score": 0.8648022,
+          "content": "The physician can interpret this data because she has knowledge about blood sugar levels. She knows that fasting blood sugar levels below 5.5 mmol/L are normal, from 5.6 to 6.9 mmol/L are an indicator for prediabetes, and above 7.0 are an indicator of diabetes. `Knowledge is general information about concepts in a certain (scientific or professional) domain (e.g., knowledge about diseases or therapeutic methods) at a certain time.`\n\nKnowledge as general information contrasts with specific inform..."
         },
         {
           "index": 5,
           "source": "book.md",
-          "score": 0.8747127,
-          "content": "As already introduced in Sect. 2.​12, management of information systems ensures systematic information processing that supports information and knowledge logistics and therefore contributes to the health care setting’s goals. High-quality health information systems and their components can only by achieved if the health information systems are systematically planned, monitored, and directed. Management of information systems can be differentiated into strategic, tactical, and operational managem..."
+          "score": 0.8592899,
+          "content": "To support the learning of the terminology provided in this textbook, some of the authors have developed an ontology called SNIK (semantic network of information management in hospitals) that contains the most important concepts and terms of this book together with their relations to each other.1 In addition, the ontology links our terminology to other terminologies from business informatics and management of information systems.\nThis gives the reader a holistic view of the management of informa..."
         },
         {
           "index": 6,
           "source": "book.md",
-          "score": 0.8724086,
-          "content": "Mrs. Garzia directly reports to Mrs. Johns, the CEO of Ploetzberg Hospital.\nRecently, both discussed the strategic information management plan that is just being updated.\nThe discussions focused on the question whether the strategic information management plan is fully aligned with the general business goals of Ploetzberg Hospital.\nAs CEO, Mrs. Johns will present and approve the strategic information management plan in the next meeting of the top management.\n\nThe draft of the strategic informati..."
+          "score": 0.8561207,
+          "content": "One morning, Mr. Russo wakes up early in the morning from severe shortness of breath.\nAlthough he has experienced this symptom before in a milder form, he immediately senses that something is wrong and calls his GP.\nDr. Andersson comes for a home visit and finds him in bed with low blood pressure, elevated heart rate, and pulmonary edema.\nShe diagnoses him with an exacerbation of heart failure, strongly advises him to be admitted to Ploetzberg Hospital university medical center, and subsequently..."
         },
         {
           "index": 7,
           "source": "book.md",
-          "score": 0.8709486,
-          "content": "# 4. Management Perspective: Scopes and Tasks of Managing Health Information Systems\n\n## 4.1 Introduction\n\nIn Chap. 3, we discussed the technological perspective of health information systems. We will now examine how health information systems have to be managed so they will fulfill the requirements of the stakeholders as presented in Sect. 1.​3."
+          "score": 0.8556893,
+          "content": "Persons suffering from acute diseases also step out of their normal daily lives, at least to some extent.\nWith respect to these diseases, these persons have become patients.\nDepending on the kind and severity of such an acute disease, patients may, among other things, be treated as outpatients in medical offices or as inpatients in hospitals.\nFor outpatients, diagnosis and therapy may take place within these offices or at the locations where the patients live.\nIf diagnosis and therapy are perfor..."
         },
         {
           "index": 8,
           "source": "book.md",
-          "score": 0.86979556,
-          "content": "- Planning: Task of --> strategic information management that comprises --> strategic alignment of business goals and strategic information management goals, and the development of both a long-term --> strategic project portfolio and --> annual project portfolios (Sect. 4.​3.​1)."
+          "score": 0.85549796,
+          "content": "Ammenwerth E, Haux R, Knaup-Gregori P, Winter A. IT-Projektmanagement im Gesundheitswesen. 2nd ed. Stuttgart: Schattauer-Verlag; 2014. 5."
         },
         {
           "index": 9,
           "source": "book.md",
-          "score": 0.86751765,
-          "content": "Other solutions may be valid, too. In case the different application systems are meant to come from different vendors, an integration technology such as a communication server needs to be implemented. ### 4.9.3 Structure of a Strategic Information Management Plan\n\nIn Sect. 4.8.1, we presented the structure of the strategic information management plan of Ploetzberg Hospital. Compare its structure to the general structure presented in Sect. 4.3.1.2, consisting of strategic goals, description of cu..."
+          "score": 0.8537352,
+          "content": "1.​3.​1 and 1.​3.​3, we had already noted what patients and informal caregivers are particularly concerned about in this context. In this section, we will now describe the information-processing tasks that patients and informal caregivers have to perform and what entity types are needed. Even though we introduced the term “function” in Sect. 2.​8 in the context of health care professionals, it is very well-suited to also describe the information-processing tasks of non-professionals. The corresp..."
         },
         {
           "index": 10,
           "source": "book.md",
-          "score": 0.864906,
-          "content": "3.​6.​2). - Monitoring: Task of --> strategic management of information systems that continuously audits quality and cost of the information system and assesses whether the strategic information management plan is implemented as intended (Sect. 4.​3.​2)."
+          "score": 0.8528597,
+          "content": "Table 3.16: Set of functions and related features typically to be supported by self-treatment systems\n\n- Function (from Sect. 3.3.1) | Typical features\n- Self-treatment | Therapy (instruction, evaluation, adaptation). Monitoring. Provision and evaluation of assessments/tests. Reporting. Information provision/provision of information. Reminder (e.g., for taking medication). Serious games\n\nInformation-only application systems represent the simplest form of self-treatment systems.\nThese simply cont..."
         },
         {
           "index": 11,
           "source": "book.md",
-          "score": 0.8643329,
-          "content": "- initiation of projects from the strategic project portfolio,\n- assignment of a project manager,\n- provision of the needed resources for the project.\n\n## 4.4 Tactical Management of Information Systems\n\nTactical management of information systems deals with specific components at the information system’s three layers.\nIt aims to introduce, remove, change, or maintain those components.\nActivities of tactical management of information systems are usually performed within projects.\nProjects are uniq..."
+          "score": 0.8527875,
+          "content": "## References\n\n1. European Parliament. General Data Protection Regulation (GDPR). 2016. https://​eur-lex.​europa.​eu/​legal-content/​EN/​TXT/​PDF/​?​uri=​CELEX:​32016R0679&​from=​EN. Accessed 15 Jan 2023.\n2. Roach KE, Budiman-Mak E, Songsiridej N, Lertratanakul Y. Development of a shoulder pain and disability index. Arthritis Care Res. 1991;4(4):143–9.CrossrefPubMed\n3. SNOMED International. CT Editorial Guide: Procedure. 2021. https://​confluence.​ihtsdotools.​org/​display/​DOCEG/​Procedure. Acc..."
         },
         {
           "index": 12,
           "source": "book.md",
-          "score": 0.8600497,
-          "content": "4.3.1.3) that is annually derived from the strategic project portfolio. It lists the projects to be executed in the next year. The strategic information management plan should be written by the persons responsible for strategic management of information systems (e.g., the chief information officer (CIO)) and approved by the top management. Without proper strategic planning, it would be a matter of chance if the information system of a health care facility fulfilled strategic information goals. B..."
+          "score": 0.85237324,
+          "content": "With regard to the functions and processes, there are considerable differences between information systems of different kinds of health care settings.\nFor example, there are very clear differences in functions and processes between hospitals on the one hand and patients’ home environments on the other.\nHowever, there are very great similarities at the domain layer of hospital information systems, as the hospitals’ goals and thus the hospitals’ functions are in general the same.\nAll functions pre..."
         },
         {
           "index": 13,
           "source": "book.md",
-          "score": 0.8599422,
-          "content": "- Strategic project portfolio: Describes --> projects or groups of projects and their priority, and a rough timeline for their initiation for the coming years. It is typically described in a --> strategic information management plan. Is the basis for the --> annual project portfolio (Sect. 4.​3.​1.​2).\n- Sub-information system: --> Subsystem of an --> information system (Sect. 2.​5).\n- Subsystem: Part of a --> system that comprises a subset of --> components and the relationships between them (S..."
-        },
-        {
-          "index": 14,
-          "source": "book.md",
-          "score": 0.8597856,
-          "content": "3.​6.​4). - Strategic alignment: The process that balances and harmonizes the --> business goals and the --> information management strategies to obtain the best result for the --> health care facility. Important task of --> strategic information management (Sect. 4.​3.​1.​1). - Strategic information management plan: Long-term planning of the --> information system of a --> health care facility. This plan describes the --> business goals, the --> information management goals, the current state o..."
-        }
-      ],
-      "retrieval_summary": {
-        "total": 15,
-        "by_source": {
-          "book.md": 15
-        },
-        "retrieval_strategy": "similarity"
-      },
-      "retrieval_filtering": {
-        "min_score": 0.85,
-        "total_candidates": 15,
-        "retained": 15,
-        "filtered_out": 0,
-        "filtered_out_by_source": {}
-      }
-    }
-  },
-  {
-    "id": "qSs002",
-    "question": "- Initiating projects from the strategic project portfolio,",
-    "transformed": "How would you discribe the scope an tasks of the following activites of manageing information system: from the startegic project portfollio Initiating project?",
-    "generated": "## Step 4.9.1 Activities of Managing Information Systems\n\nTo describe the scope and tasks of \"Initiating projects from the strategic project portfolio,\" we must understand the context within the management of information systems.\n\n### Initiating Projects from the Strategic Project Portfolio\n\n**Scope:** The scope of initiating projects from the strategic project portfolio involves translating strategic objectives into actionable projects. This process is part of strategic management, as it ensures that projects align with the overall strategic goals of the organization.\n\n**Tasks:** The tasks involved in initiating projects from the strategic project portfolio include:\n1. **Identification of Strategic Projects:** Reviewing the strategic project portfolio to identify projects that are aligned with the organization's strategic information management plan.\n2. **Project Definition:** Defining the project scope, objectives, and deliverables based on the strategic goals.\n3. **Assignment of Project Manager:** Appointing a project manager who will be responsible for overseeing the project from initiation to completion.\n4. **Provision of Resources:** Allocating or securing the necessary resources (financial, human, technological) required for the project.\n5. **Prioritization:** Prioritizing projects based on their strategic importance, urgency, and resource availability.\n6. **Stakeholder Communication:** Informing relevant stakeholders about the initiation of the project, its objectives, and its significance to the organization's strategic goals.\n\n**Management Level:** This activity falls under strategic management, as it directly relates to implementing the strategic information management plan through specific projects.\n\nBy initiating projects from the strategic project portfolio, organizations ensure that their strategic objectives are being pursued through concrete actions, thereby aligning their information systems capabilities with their overall goals.",
-    "true_answer": "Initiating projects from the strategic project portfolio: strategic directing",
-    "num_answers": 1,
-    "type": "transfer",
-    "error_status": "errors",
-    "llm": "Llama_4_Scout",
-    "method": "rag",
-    "answer_timestamp": "31-02-10-01-2026",
-    "source": "Book",
-    "details": {
-      "retrieval": [
-        {
-          "index": 0,
-          "source": "book.md",
-          "score": 0.8600476,
-          "content": "- initiation of projects from the strategic project portfolio,\n- assignment of a project manager,\n- provision of the needed resources for the project.\n\n## 4.4 Tactical Management of Information Systems\n\nTactical management of information systems deals with specific components at the information system’s three layers.\nIt aims to introduce, remove, change, or maintain those components.\nActivities of tactical management of information systems are usually performed within projects.\nProjects are uniq..."
-        },
-        {
-          "index": 1,
-          "source": "book.md",
-          "score": 0.8598165,
-          "content": "The board supported Mrs. Garzia in aligning the strategic information management plan with the needs and requirements of the clinical departments. ## 4.9 Exercises\n\n### 4.9.1 Activities of Managing Information Systems\n\nIn Sect. 4.2, we introduced a three-dimensional classification of activities of management of information systems. How would you describe the scope and tasks of the following activities of managing information systems? - Developing a strategic information management plan (e.g., th..."
-        },
-        {
-          "index": 2,
-          "source": "book.md",
-          "score": 0.8513165,
-          "content": "# 4. Management Perspective: Scopes and Tasks of Managing Health Information Systems\n\n## 4.1 Introduction\n\nIn Chap. 3, we discussed the technological perspective of health information systems. We will now examine how health information systems have to be managed so they will fulfill the requirements of the stakeholders as presented in Sect. 1.​3."
-        }
-      ],
-      "retrieval_summary": {
-        "total": 3,
-        "by_source": {
-          "book.md": 3
-        },
-        "retrieval_strategy": "similarity"
-      },
-      "retrieval_filtering": {
-        "min_score": 0.85,
-        "total_candidates": 15,
-        "retained": 3,
-        "filtered_out": 12,
-        "filtered_out_by_source": {
-          "book.md": 12
-        }
-      }
-    }
-  },
-  {
-    "id": "qSs003",
-    "question": "- Collection and analysis of data from user surveys on their general satisfaction with the health information system,",
-    "transformed": "How would you discribe the scope an tasks of the following activites of manageing information systems: Colletion and analyse of data from user surveies on there general satisfaction with the health information system?",
-    "generated": "The scope and tasks of collecting and analyzing data from user surveys on their general satisfaction with the health information system can be described as follows:\n\n**Scope:** Strategic monitoring\n\n**Tasks:**\n\n* Collecting data from user surveys to gauge their satisfaction with the health information system\n* Analyzing the collected data to identify areas of strength and weakness\n* Providing insights and recommendations to inform strategic decisions about the health information system\n* Monitoring and evaluating the effectiveness of the health information system in meeting user needs and expectations\n\nThis activity falls under the category of strategic monitoring, which involves collecting and analyzing data to assess the performance and effectiveness of the health information system. The goal of strategic monitoring is to identify areas for improvement and provide insights that can inform strategic decisions about the health information system.\n\nBy collecting and analyzing data from user surveys, the organization can gain a better understanding of user satisfaction with the health information system, identify areas for improvement, and make informed decisions about how to optimize the system to better meet user needs. This activity helps to ensure that the health information system is aligned with the organization's strategic goals and objectives, and that it is providing value to users.",
-    "true_answer": "Collecting and analyzing data from user surveys on their general health information system’s satisfaction: strategic monitoring",
-    "num_answers": 1,
-    "type": "transfer",
-    "error_status": "errors",
-    "llm": "Llama_4_Scout",
-    "method": "rag",
-    "answer_timestamp": "32-02-10-01-2026",
-    "source": "Book",
-    "details": {
-      "retrieval": [
-        {
-          "index": 0,
-          "source": "book.md",
-          "score": 0.8967277,
-          "content": "# 4. Management Perspective: Scopes and Tasks of Managing Health Information Systems\n\n## 4.1 Introduction\n\nIn Chap. 3, we discussed the technological perspective of health information systems.\nWe will now examine how health information systems have to be managed so they will fulfill the requirements of the stakeholders as presented in Sect. 1.​3.\n\nAs already introduced in Sect. 2.​12, management of information systems ensures systematic information processing that supports information and knowle..."
-        },
-        {
-          "index": 1,
-          "source": "book.md",
-          "score": 0.89576226,
-          "content": "The board supported Mrs. Garzia in aligning the strategic information management plan with the needs and requirements of the clinical departments. ## 4.9 Exercises\n\n### 4.9.1 Activities of Managing Information Systems\n\nIn Sect. 4.2, we introduced a three-dimensional classification of activities of management of information systems. How would you describe the scope and tasks of the following activities of managing information systems? - Developing a strategic information management plan (e.g., th..."
-        },
-        {
-          "index": 2,
-          "source": "book.md",
-          "score": 0.8891033,
-          "content": "# 4. Management Perspective: Scopes and Tasks of Managing Health Information Systems\n\n## 4.1 Introduction\n\nIn Chap. 3, we discussed the technological perspective of health information systems. We will now examine how health information systems have to be managed so they will fulfill the requirements of the stakeholders as presented in Sect. 1.​3."
-        },
-        {
-          "index": 3,
-          "source": "book.md",
-          "score": 0.88690186,
-          "content": "As already introduced in Sect. 2.​12, management of information systems ensures systematic information processing that supports information and knowledge logistics and therefore contributes to the health care setting’s goals. High-quality health information systems and their components can only by achieved if the health information systems are systematically planned, monitored, and directed. Management of information systems can be differentiated into strategic, tactical, and operational managem..."
-        },
-        {
-          "index": 4,
-          "source": "book.md",
-          "score": 0.87453496,
-          "content": "# 1. Introduction\n\n## 1.1 Motivation and Objective of the Book\n\nWhich technologies are appropriate for building health information systems? How can they be managed? How to assess their quality? The objective of this book is to provide answers to these questions.\n\nHealth is one of the key components of our lives.\nAnd good health care is an important prerequisite for good health.\nWell-built and well-managed health information systems constitute an essential part of providing good health care.\nHeal..."
-        },
-        {
-          "index": 5,
-          "source": "book.md",
-          "score": 0.8718842,
+          "score": 0.851981,
           "content": "How to assess their quality? The objective of this book is to provide answers to these questions. Health is one of the key components of our lives. And good health care is an important prerequisite for good health. Well-built and well-managed health information systems constitute an essential part of providing good health care. Health care is delivered for people by people. Health care starts when people are born (even earlier) and ends when people pass away. Sometimes, the relative share of hea..."
         },
         {
-          "index": 6,
-          "source": "book.md",
-          "score": 0.8692813,
-          "content": "Table 4.1: Dimensions to be considered for operational management of information systems of the computer-based part of an information system\n\n- Dimension | Facets\n- Components | Decentralized application systems (e.g., in departments). Central application systems (e.g., patient administration system). Workstations. Decentralized servers. Central servers. Networks. Backbone\n- Responsibility | Local (in departments). Central (in departments for information processing). Vendors.\n- Task | First-leve..."
-        },
-        {
-          "index": 7,
-          "source": "book.md",
-          "score": 0.86846185,
-          "content": "### 5.2.4 Quality of Operational Management of Information Systems\n\nOperational management of information systems is responsible for operating the components of the information system.\nIt ensures its smooth operation in accordance with the strategic information management plan of the health care facility.\n\nTo assess the quality of operational management of information systems, we can assess several aspects.\n\nFirst, we can assess whether the operation of the components of the information system (..."
-        },
-        {
-          "index": 8,
-          "source": "book.md",
-          "score": 0.8676478,
-          "content": "4.​4). All projects should be finalized within the planned time frame and within the planned budget. Changes in time frame and budget must be justified and approved by strategic management of information systems. Finally, and most importantly, projects should be successful, i.e., they should reach the intended project goals. As part of tactical management of information systems, certification may also play a role. Certification in general means confirming that an object or organization has certa..."
-        },
-        {
-          "index": 9,
-          "source": "book.md",
-          "score": 0.8674792,
-          "content": "- Evaluation: Act of measuring or exploring --> components of a --> health information system. The result of an evaluation should provide information to support decisions concerning the health information system, such as decisions regarding optimizing, replacing, or further deploying an --> application component (Sect. 5.​4). - Feature: Functionality offered by the --> application software product of an --> application system which directly contributes to the fulfillment of one or more --> funct..."
-        },
-        {
-          "index": 10,
-          "source": "book.md",
-          "score": 0.8660182,
-          "content": "This also means the IT project portfolio (Sect. 4.​3.​1) should be effectively managed in a way that maximizes the intended value to the health care facility and to the stakeholders. For example, projects that deliver the most business value (e.g., the introduction of a picture archiving and communication system (PACS) to support faster and better diagnosis and treatment) may be prioritized among other projects (e.g., a website for clinical staff informing on most recent business news) depending..."
-        },
-        {
-          "index": 11,
-          "source": "book.md",
-          "score": 0.8659201,
-          "content": "In addition, enough resources should be provided for IT staff, IT infrastructures, and application components so that the information system can best meet the business demands.\nFor example, the annual IT budget should be sufficiently high to hire qualified staff to manage the information system.\n\nFinally, the health information system should be operated in such a way that all information management laws of the specific country are fulfilled.\nDifferent laws must be fulfilled in every country, suc..."
-        },
-        {
-          "index": 12,
-          "source": "book.md",
-          "score": 0.8653151,
-          "content": "# 5. Quality of Health Information Systems\n\n## 5.1 Introduction\n\nThe International Organization for Standardization (ISO) defines quality in general as the ability to meet all the expectations of the purchaser of goods or services or, in other words, as the degree to which a set of inherent characteristics fulfills requirements, where “requirements” means needs or expectations.\nIn Sect. 1.​3, we already discussed the requirements of various stakeholder groups and their expectations on the inform..."
-        },
-        {
-          "index": 13,
-          "source": "book.md",
-          "score": 0.86369085,
-          "content": "Mrs. Garzia directly reports to Mrs. Johns, the CEO of Ploetzberg Hospital.\nRecently, both discussed the strategic information management plan that is just being updated.\nThe discussions focused on the question whether the strategic information management plan is fully aligned with the general business goals of Ploetzberg Hospital.\nAs CEO, Mrs. Johns will present and approve the strategic information management plan in the next meeting of the top management.\n\nThe draft of the strategic informati..."
-        },
-        {
           "index": 14,
           "source": "book.md",
-          "score": 0.86326647,
-          "content": "# 5. Quality of Health Information Systems\n\n## 5.1 Introduction\n\nThe International Organization for Standardization (ISO) defines quality in general as the ability to meet all the expectations of the purchaser of goods or services or, in other words, as the degree to which a set of inherent characteristics fulfills requirements, where “requirements” means needs or expectations. In Sect. 1.​3, we already discussed the requirements of various stakeholder groups and their expectations on the inform..."
+          "score": 0.8516351,
+          "content": "# 6. Information Systems for Specific Health Care and Research Settings\n\n## 6.1 Introduction\n\nIn Chaps. 3 and 4, we introduced health information systems and two perspectives when dealing with them: the technological perspective and the management perspective.\nUsing the technological perspective, we describe the architecture and integration of an information system.\nUsing the management perspective, we describe the strategic, tactical, and operational management of an information system.\nIn this..."
         }
       ],
       "retrieval_summary": {
@@ -2114,597 +1940,6 @@
         "retained": 15,
         "filtered_out": 0,
         "filtered_out_by_source": {}
-      }
-    }
-  },
-  {
-    "id": "qSs004",
-    "question": "- Planning a project to select and introduce a new CPOE system,",
-    "transformed": "How would you discribe the scope an tasks of the following activites of manageing information sytems: Planing a project to select and introduce a new CPOE (Computerized Provider Order Entry) system?",
-    "generated": "The question requires a detailed answer that involves explaining the scope and importance of managing information systems in healthcare. Managing information systems is crucial for the effective and efficient operation of healthcare organizations. It involves planning, implementing, and maintaining information systems that support the delivery of healthcare services.\n\nThe scope of managing information systems in healthcare includes several key areas. First, it involves the planning and implementation of information systems that support clinical and administrative functions. This includes the selection and implementation of hardware and software, as well as the development of policies and procedures for the use of these systems.\n\nSecond, managing information systems in healthcare involves ensuring that these systems are secure and compliant with relevant laws and regulations. This includes ensuring that patient data is protected and that the confidentiality, integrity, and availability of this data are maintained.\n\nThird, managing information systems in healthcare involves ensuring that these systems are integrated with other systems and applications. This includes ensuring that data can be shared and exchanged between different systems and that these systems can work together seamlessly.\n\nFinally, managing information systems in healthcare involves ongoing monitoring and evaluation of these systems. This includes identifying areas for improvement and implementing changes to optimize the use of these systems.\n\nIn terms of importance, managing information systems in healthcare is critical for several reasons. First, it can help to improve the quality of care by providing healthcare professionals with accurate and timely information. Second, it can help to reduce costs by streamlining administrative tasks and improving operational efficiency. Third, it can help to improve patient safety by reducing the risk of errors and adverse events.\n\nOverall, managing information systems in healthcare is a complex and ongoing process that requires careful planning, implementation, and ongoing evaluation. It is critical for healthcare organizations to prioritize the management of information systems in order to provide high-quality care and to operate efficiently.\n\nIn addition, managing information systems in healthcare requires a multidisciplinary approach that involves healthcare professionals, information technology professionals, and other stakeholders. It also requires a deep understanding of the healthcare industry and the specific challenges and opportunities that it presents.\n\nIn conclusion, managing information systems in healthcare is a critical function that requires careful planning, implementation, and ongoing evaluation. It is essential for healthcare organizations to prioritize the management of information systems in order to provide high-quality care and to operate efficiently.\n\nThe importance of managing information systems in healthcare cannot be overstated. It is a critical component of healthcare delivery, and it requires a comprehensive and integrated approach. Healthcare organizations must prioritize the management of information systems in order to provide high-quality care and to operate efficiently.\n\nManaging information systems in healthcare involves several key activities, including planning,",
-    "true_answer": "Planning a project to select and introduce a new CPOE system: tactical planning",
-    "num_answers": 1,
-    "type": "transfer",
-    "error_status": "errors",
-    "llm": "Llama_4_Scout",
-    "method": "rag",
-    "answer_timestamp": "32-02-10-01-2026",
-    "source": "Book",
-    "details": {
-      "retrieval": [
-        {
-          "index": 0,
-          "source": "book.md",
-          "score": 0.8914125,
-          "content": "The board supported Mrs. Garzia in aligning the strategic information management plan with the needs and requirements of the clinical departments. ## 4.9 Exercises\n\n### 4.9.1 Activities of Managing Information Systems\n\nIn Sect. 4.2, we introduced a three-dimensional classification of activities of management of information systems. How would you describe the scope and tasks of the following activities of managing information systems? - Developing a strategic information management plan (e.g., th..."
-        },
-        {
-          "index": 1,
-          "source": "book.md",
-          "score": 0.8818346,
-          "content": "Mrs. Garzia directly reports to Mrs. Johns, the CEO of Ploetzberg Hospital.\nRecently, both discussed the strategic information management plan that is just being updated.\nThe discussions focused on the question whether the strategic information management plan is fully aligned with the general business goals of Ploetzberg Hospital.\nAs CEO, Mrs. Johns will present and approve the strategic information management plan in the next meeting of the top management.\n\nThe draft of the strategic informati..."
-        },
-        {
-          "index": 2,
-          "source": "book.md",
-          "score": 0.87587005,
-          "content": "#### 4.3.2.3 Ad hoc Monitoring Activities by Evaluation Projects\n\nAd hoc monitoring activities may be initiated after larger changes of a component (e.g., introduction of a new application component) have been performed or when sudden larger problems have been observed.\nAd hoc activities help to analyze a certain situation in detail in order to better understand the reasons of an observed problem or the consequences of a larger change.\nThese ad hoc activities are conducted in the form of evaluat..."
-        },
-        {
-          "index": 3,
-          "source": "book.md",
-          "score": 0.8688561,
-          "content": "2.​9). - Computerized provider order entry system (CPOE):--> Application system supporting the --> functions related to order entry, such as formulation of an order, appointment scheduling, printing of labels, and the communication of the order to the service unit (Sect. 3.​4.​4)."
-        },
-        {
-          "index": 4,
-          "source": "book.md",
-          "score": 0.8624631,
-          "content": "Other solutions may be valid, too. In case the different application systems are meant to come from different vendors, an integration technology such as a communication server needs to be implemented. ### 4.9.3 Structure of a Strategic Information Management Plan\n\nIn Sect. 4.8.1, we presented the structure of the strategic information management plan of Ploetzberg Hospital. Compare its structure to the general structure presented in Sect. 4.3.1.2, consisting of strategic goals, description of cu..."
-        },
-        {
-          "index": 5,
-          "source": "book.md",
-          "score": 0.86208916,
-          "content": "Usually, the CIO, supported by the information management department, creates and maintains a proposal for the strategic information management plan.\nThe CIO is interested in having clearly defined requirements for management of information systems.\nTop management is interested in the seamless and cost-effective operation of the health care facility.\nTop management approves the plans (probably together with the funding institutions). Employee representatives should be involved in eliciting the r..."
-        },
-        {
-          "index": 6,
-          "source": "book.md",
-          "score": 0.85711807,
-          "content": "This also means the IT project portfolio (Sect. 4.​3.​1) should be effectively managed in a way that maximizes the intended value to the health care facility and to the stakeholders. For example, projects that deliver the most business value (e.g., the introduction of a picture archiving and communication system (PACS) to support faster and better diagnosis and treatment) may be prioritized among other projects (e.g., a website for clinical staff informing on most recent business news) depending..."
-        },
-        {
-          "index": 7,
-          "source": "book.md",
-          "score": 0.85559475,
-          "content": "- initiation of projects from the strategic project portfolio,\n- assignment of a project manager,\n- provision of the needed resources for the project.\n\n## 4.4 Tactical Management of Information Systems\n\nTactical management of information systems deals with specific components at the information system’s three layers.\nIt aims to introduce, remove, change, or maintain those components.\nActivities of tactical management of information systems are usually performed within projects.\nProjects are uniq..."
-        },
-        {
-          "index": 8,
-          "source": "book.md",
-          "score": 0.8541408,
-          "content": "4.3.1.3) that is annually derived from the strategic project portfolio. It lists the projects to be executed in the next year. The strategic information management plan should be written by the persons responsible for strategic management of information systems (e.g., the chief information officer (CIO)) and approved by the top management. Without proper strategic planning, it would be a matter of chance if the information system of a health care facility fulfilled strategic information goals. B..."
-        },
-        {
-          "index": 9,
-          "source": "book.md",
-          "score": 0.8535154,
-          "content": "# 4. Management Perspective: Scopes and Tasks of Managing Health Information Systems\n\n## 4.1 Introduction\n\nIn Chap. 3, we discussed the technological perspective of health information systems. We will now examine how health information systems have to be managed so they will fulfill the requirements of the stakeholders as presented in Sect. 1.​3."
-        },
-        {
-          "index": 10,
-          "source": "book.md",
-          "score": 0.8532245,
-          "content": "# 4. Management Perspective: Scopes and Tasks of Managing Health Information Systems\n\n## 4.1 Introduction\n\nIn Chap. 3, we discussed the technological perspective of health information systems.\nWe will now examine how health information systems have to be managed so they will fulfill the requirements of the stakeholders as presented in Sect. 1.​3.\n\nAs already introduced in Sect. 2.​12, management of information systems ensures systematic information processing that supports information and knowle..."
-        }
-      ],
-      "retrieval_summary": {
-        "total": 11,
-        "by_source": {
-          "book.md": 11
-        },
-        "retrieval_strategy": "similarity"
-      },
-      "retrieval_filtering": {
-        "min_score": 0.85,
-        "total_candidates": 15,
-        "retained": 11,
-        "filtered_out": 4,
-        "filtered_out_by_source": {
-          "book.md": 4
-        }
-      }
-    }
-  },
-  {
-    "id": "qSs005",
-    "question": "- Executing work packages within an evaluation project of a CPOE system,",
-    "transformed": "How would you discribe the scope an tasks of the following activites of manageing information sytems: Executing work packeges within an evaluation project of a CPOE (Computerized Provider Order Entry)system?",
-    "generated": "Executing work packages within an evaluation project of a CPOE (Computerized Provider Order Entry) system is a crucial activity in the management of information systems, specifically falling under tactical directing. Here's a detailed description of its scope and tasks:\n\n### Scope:\nThe scope of executing work packages within an evaluation project of a CPOE system involves the practical implementation and assessment of specific components or modules of the CPOE system. This is part of a larger project aimed at evaluating the system's effectiveness, efficiency, and usability within a healthcare setting. The focus is on tactical management, as it deals with the detailed planning and execution of specific tasks within the project.\n\n### Tasks:\n1. **Project Planning**: Before execution begins, it's essential to have a clear plan outlining which work packages need to be executed, timelines, resources required, and expected outcomes. This plan is usually part of the larger evaluation project plan.\n\n2. **Resource Allocation**: Ensuring that the right personnel and technical resources are available to execute the work packages. This includes project team members, IT support, and any necessary equipment or software.\n\n3. **Execution of Work Packages**: This involves the actual implementation of the planned tasks, which could include configuring the system, testing its functionalities, collecting data on its performance, and conducting user acceptance testing.\n\n4. **Data Collection and Analysis**: As part of executing work packages, it's crucial to collect data on the system's performance, user interaction, and any challenges faced. This data needs to be analyzed to understand the system's strengths and weaknesses.\n\n5. **Reporting and Documentation**: Keeping track of progress, documenting any issues or deviations from the plan, and reporting to stakeholders are essential tasks. This ensures transparency and allows for timely intervention if needed.\n\n6. **Quality Assurance**: Ensuring that the execution of work packages meets the required standards and that the data collected is of high quality.\n\n7. **Stakeholder Communication**: Keeping stakeholders informed about the project's progress, findings, and any changes to the scope or timeline.\n\n8. **Risk Management**: Identifying potential risks during the execution of work packages and developing mitigation strategies.\n\n### Tactical Directing:\nExecuting work packages within an evaluation project of a CPOE system is an example of tactical directing because it involves the practical implementation of specific tasks within a project. Tactical management is about making the strategic plan actionable, and in this case, it means taking the strategic goal of evaluating a CPOE system's effectiveness and breaking it down into manageable tasks that can be executed and monitored.\n\n### Conclusion:\nIn summary, executing work packages",
-    "true_answer": "Executing work packages within an evaluation project of a CPOE system: tactical directing",
-    "num_answers": 1,
-    "type": "transfer",
-    "error_status": "errors",
-    "llm": "Llama_4_Scout",
-    "method": "rag",
-    "answer_timestamp": "32-02-10-01-2026",
-    "source": "Book",
-    "details": {
-      "retrieval": [
-        {
-          "index": 0,
-          "source": "book.md",
-          "score": 0.8900083,
-          "content": "The board supported Mrs. Garzia in aligning the strategic information management plan with the needs and requirements of the clinical departments. ## 4.9 Exercises\n\n### 4.9.1 Activities of Managing Information Systems\n\nIn Sect. 4.2, we introduced a three-dimensional classification of activities of management of information systems. How would you describe the scope and tasks of the following activities of managing information systems? - Developing a strategic information management plan (e.g., th..."
-        },
-        {
-          "index": 1,
-          "source": "book.md",
-          "score": 0.883576,
-          "content": "#### 4.3.2.3 Ad hoc Monitoring Activities by Evaluation Projects\n\nAd hoc monitoring activities may be initiated after larger changes of a component (e.g., introduction of a new application component) have been performed or when sudden larger problems have been observed.\nAd hoc activities help to analyze a certain situation in detail in order to better understand the reasons of an observed problem or the consequences of a larger change.\nThese ad hoc activities are conducted in the form of evaluat..."
-        },
-        {
-          "index": 2,
-          "source": "book.md",
-          "score": 0.86988884,
-          "content": "Mrs. Garzia directly reports to Mrs. Johns, the CEO of Ploetzberg Hospital.\nRecently, both discussed the strategic information management plan that is just being updated.\nThe discussions focused on the question whether the strategic information management plan is fully aligned with the general business goals of Ploetzberg Hospital.\nAs CEO, Mrs. Johns will present and approve the strategic information management plan in the next meeting of the top management.\n\nThe draft of the strategic informati..."
-        },
-        {
-          "index": 3,
-          "source": "book.md",
-          "score": 0.86580575,
-          "content": "This also means the IT project portfolio (Sect. 4.​3.​1) should be effectively managed in a way that maximizes the intended value to the health care facility and to the stakeholders. For example, projects that deliver the most business value (e.g., the introduction of a picture archiving and communication system (PACS) to support faster and better diagnosis and treatment) may be prioritized among other projects (e.g., a website for clinical staff informing on most recent business news) depending..."
-        },
-        {
-          "index": 4,
-          "source": "book.md",
-          "score": 0.85721374,
-          "content": "# 4. Management Perspective: Scopes and Tasks of Managing Health Information Systems\n\n## 4.1 Introduction\n\nIn Chap. 3, we discussed the technological perspective of health information systems.\nWe will now examine how health information systems have to be managed so they will fulfill the requirements of the stakeholders as presented in Sect. 1.​3.\n\nAs already introduced in Sect. 2.​12, management of information systems ensures systematic information processing that supports information and knowle..."
-        },
-        {
-          "index": 5,
-          "source": "book.md",
-          "score": 0.8567306,
-          "content": "2.​9). - Computerized provider order entry system (CPOE):--> Application system supporting the --> functions related to order entry, such as formulation of an order, appointment scheduling, printing of labels, and the communication of the order to the service unit (Sect. 3.​4.​4)."
-        },
-        {
-          "index": 6,
-          "source": "book.md",
-          "score": 0.85233295,
-          "content": "As already introduced in Sect. 2.​12, management of information systems ensures systematic information processing that supports information and knowledge logistics and therefore contributes to the health care setting’s goals. High-quality health information systems and their components can only by achieved if the health information systems are systematically planned, monitored, and directed. Management of information systems can be differentiated into strategic, tactical, and operational managem..."
-        },
-        {
-          "index": 7,
-          "source": "book.md",
-          "score": 0.8518557,
-          "content": "Other solutions may be valid, too. In case the different application systems are meant to come from different vendors, an integration technology such as a communication server needs to be implemented. ### 4.9.3 Structure of a Strategic Information Management Plan\n\nIn Sect. 4.8.1, we presented the structure of the strategic information management plan of Ploetzberg Hospital. Compare its structure to the general structure presented in Sect. 4.3.1.2, consisting of strategic goals, description of cu..."
-        }
-      ],
-      "retrieval_summary": {
-        "total": 8,
-        "by_source": {
-          "book.md": 8
-        },
-        "retrieval_strategy": "similarity"
-      },
-      "retrieval_filtering": {
-        "min_score": 0.85,
-        "total_candidates": 15,
-        "retained": 8,
-        "filtered_out": 7,
-        "filtered_out_by_source": {
-          "book.md": 7
-        }
-      }
-    }
-  },
-  {
-    "id": "qSs006",
-    "question": "- Assessment of user satisfaction with a new intensive care system,",
-    "transformed": "How would you discribe the scope an tasks of the following activites of manageing information sytems: Assesment of user satisfaction with a new intensive care system?",
-    "generated": "## 1.1 Introduction\n\nThe healthcare sector is one of the most important and complex sectors in modern economies. It encompasses a wide range of services, including preventive, diagnostic, therapeutic, and rehabilitative services. The healthcare sector is characterized by a high degree of complexity, as it involves the interaction of many different stakeholders, including patients, healthcare providers, payers, and policymakers.\n\n## 1.2 The Importance of Healthcare\n\nHealthcare is essential for maintaining and improving the health and well-being of individuals and populations. It plays a critical role in preventing and treating diseases, promoting healthy lifestyles, and improving quality of life. Healthcare services are also a significant contributor to the economy, as they provide employment opportunities and stimulate economic growth.\n\n## 1.3 The Complexity of Healthcare\n\nThe healthcare sector is complex due to the many different stakeholders involved, the variety of services provided, and the need for coordination and integration of care. Healthcare services are delivered in a variety of settings, including hospitals, clinics, physician offices, and home care. The sector is also characterized by a high degree of uncertainty, as patients' needs and preferences can vary greatly.\n\n## 1.4 The Role of Information Technology\n\nInformation technology (IT) plays a critical role in modern healthcare. IT systems are used to support the delivery of healthcare services, including electronic health records, telemedicine, and clinical decision support systems. IT also enables the collection and analysis of healthcare data, which can inform decision-making and improve the quality of care.\n\n## 1.5 The Importance of Quality\n\nQuality is a critical aspect of healthcare, as it directly affects patient outcomes and safety. Quality healthcare is characterized by the delivery of effective, efficient, and patient-centered care. It requires a focus on patient needs and preferences, as well as a commitment to continuous improvement.\n\n## 1.6 The Role of Management\n\nManagement plays a critical role in healthcare, as it involves planning, organizing, and controlling resources to achieve organizational goals. Healthcare managers must be able to navigate complex regulatory environments, manage financial resources, and lead teams of healthcare professionals.\n\n## 1.7 The Importance of Leadership\n\nLeadership is essential in healthcare, as it provides direction and guidance to healthcare organizations. Leaders must be able to inspire and motivate others, make strategic decisions, and drive change.\n\n## 1.8 The Role of Technology\n\nTechnology plays a critical role in modern healthcare, as it enables the delivery of high-quality care and improves patient outcomes. Healthcare technology includes electronic health records, telemedicine, and clinical decision support",
-    "true_answer": "Assessment of user satisfaction with a new intensive care system: tactical monitoring",
-    "num_answers": 1,
-    "type": "transfer",
-    "error_status": "errors",
-    "llm": "Llama_4_Scout",
-    "method": "rag",
-    "answer_timestamp": "33-02-10-01-2026",
-    "source": "Book",
-    "details": {
-      "retrieval": [
-        {
-          "index": 0,
-          "source": "book.md",
-          "score": 0.8924921,
-          "content": "The board supported Mrs. Garzia in aligning the strategic information management plan with the needs and requirements of the clinical departments. ## 4.9 Exercises\n\n### 4.9.1 Activities of Managing Information Systems\n\nIn Sect. 4.2, we introduced a three-dimensional classification of activities of management of information systems. How would you describe the scope and tasks of the following activities of managing information systems? - Developing a strategic information management plan (e.g., th..."
-        },
-        {
-          "index": 1,
-          "source": "book.md",
-          "score": 0.876082,
-          "content": "# 4. Management Perspective: Scopes and Tasks of Managing Health Information Systems\n\n## 4.1 Introduction\n\nIn Chap. 3, we discussed the technological perspective of health information systems.\nWe will now examine how health information systems have to be managed so they will fulfill the requirements of the stakeholders as presented in Sect. 1.​3.\n\nAs already introduced in Sect. 2.​12, management of information systems ensures systematic information processing that supports information and knowle..."
-        },
-        {
-          "index": 2,
-          "source": "book.md",
-          "score": 0.8676498,
-          "content": "As already introduced in Sect. 2.​12, management of information systems ensures systematic information processing that supports information and knowledge logistics and therefore contributes to the health care setting’s goals. High-quality health information systems and their components can only by achieved if the health information systems are systematically planned, monitored, and directed. Management of information systems can be differentiated into strategic, tactical, and operational managem..."
-        },
-        {
-          "index": 3,
-          "source": "book.md",
-          "score": 0.8637115,
-          "content": "Mrs. Garzia directly reports to Mrs. Johns, the CEO of Ploetzberg Hospital.\nRecently, both discussed the strategic information management plan that is just being updated.\nThe discussions focused on the question whether the strategic information management plan is fully aligned with the general business goals of Ploetzberg Hospital.\nAs CEO, Mrs. Johns will present and approve the strategic information management plan in the next meeting of the top management.\n\nThe draft of the strategic informati..."
-        },
-        {
-          "index": 4,
-          "source": "book.md",
-          "score": 0.86337376,
-          "content": "4.​7.​5 Balance of Documentation Quality and Documentation Efforts\n4.​8 Examples\n4.​8.​1 Strategic Information Management Plan of Ploetzberg Hospital\n4.​8.​2 Health Information System Key Performance Indicators (KPIs) of Ploetzberg Hospital\n4.​8.​3 Organization of the Management of the Ploetzberg Hospital Information System\n4.​9 Exercises\n4.​9.​1 Activities of Managing Information Systems\n4.​9.​2 Strategic Alignment of Hospital Goals and Information Management Goals\n4.​9.​3 Structure of a Strate..."
-        },
-        {
-          "index": 5,
-          "source": "book.md",
-          "score": 0.8622975,
-          "content": "Answer:\n\n- KPI | Ploetzberg Hospital | My hospital\n- Number of HIS staff | 46 | 89\n- Number of HIS users | 4800 | 9000\n- Number of workstations | 1350 | 6200\n- Number of mobile IT tools | 2500 | 2000\n- HIS user per mobile IT tool | 1.9 | 4.5\n- Number of IT problem tickets | 15,500 | 36,250\n- Percentage of solved IT problem tickets | 96% | 92%\n- Availability of the overall HIS systems | 98.5% | 96%\n- Number of finalized strategic IT projects | 13 | 10\n- Percentage of successful IT projects | 76% ..."
-        },
-        {
-          "index": 6,
-          "source": "book.md",
-          "score": 0.8613141,
-          "content": "# 1. Introduction\n\n## 1.1 Motivation and Objective of the Book\n\nWhich technologies are appropriate for building health information systems? How can they be managed? How to assess their quality? The objective of this book is to provide answers to these questions.\n\nHealth is one of the key components of our lives.\nAnd good health care is an important prerequisite for good health.\nWell-built and well-managed health information systems constitute an essential part of providing good health care.\nHeal..."
-        },
-        {
-          "index": 7,
-          "source": "book.md",
-          "score": 0.86029154,
-          "content": "# 4. Management Perspective: Scopes and Tasks of Managing Health Information Systems\n\n## 4.1 Introduction\n\nIn Chap. 3, we discussed the technological perspective of health information systems. We will now examine how health information systems have to be managed so they will fulfill the requirements of the stakeholders as presented in Sect. 1.​3."
-        },
-        {
-          "index": 8,
-          "source": "book.md",
-          "score": 0.85995054,
-          "content": "How to assess their quality? The objective of this book is to provide answers to these questions. Health is one of the key components of our lives. And good health care is an important prerequisite for good health. Well-built and well-managed health information systems constitute an essential part of providing good health care. Health care is delivered for people by people. Health care starts when people are born (even earlier) and ends when people pass away. Sometimes, the relative share of hea..."
-        },
-        {
-          "index": 9,
-          "source": "book.md",
-          "score": 0.8565652,
-          "content": "3.​8.​2 Semantic Integration\n3.​8.​3 User Interface Integration\n3.​8.​4 Context Integration\n3.​8.​5 Feature Integration\n3.​8.​6 Process Integration\n3.​9 Logical Tool Layer:​ Integration Technologies and Tools\n3.​9.​1 Transaction Management\n3.​9.​2 Communication Server\n3.​9.​3 Open Platforms and Vendor-Neutral Archives\n3.​9.​4 Service-Oriented Architectures\n3.​10 Physical Tool Layer\n3.​10.​1 Physical Data Processing Systems\n3.​10.​2 Physical Interoperability​ and Integration by Communication Netw..."
-        },
-        {
-          "index": 10,
-          "source": "book.md",
-          "score": 0.8560399,
-          "content": "- Asynchronous communication: Communication between --> application systems that is not simultaneous. Thus, the --> application system sending a --> message will continue its tasks without interruption even when awaiting a response --> message from the communication partner (Sect. 3.​9.​2).\n- Benchmarking: Method of strategic --> monitoring of --> information systems in which organizations evaluate various aspects of their performance and compare it to a given standard or to the best organizatio..."
-        },
-        {
-          "index": 11,
-          "source": "book.md",
-          "score": 0.8543571,
-          "content": "Organization of user feedback: (1) Health information system users are randomly invited to an automatic short and standardized survey that is displayed during CIS login.\n(2) Every half year, I would organize sounding boards (a structured approach to obtain active feedback from stakeholders) with key users and with representatives from the larger user groups to discuss recent challenges with the CIS and opportunities for improvements.\n\n### 4.9.7 Information Systems Managers as Architects\n\nInforma..."
-        },
-        {
-          "index": 12,
-          "source": "book.md",
-          "score": 0.853413,
-          "content": "Table 4.1: Dimensions to be considered for operational management of information systems of the computer-based part of an information system\n\n- Dimension | Facets\n- Components | Decentralized application systems (e.g., in departments). Central application systems (e.g., patient administration system). Workstations. Decentralized servers. Central servers. Networks. Backbone\n- Responsibility | Local (in departments). Central (in departments for information processing). Vendors.\n- Task | First-leve..."
-        },
-        {
-          "index": 13,
-          "source": "book.md",
-          "score": 0.85299957,
-          "content": "Number of application systems: I would strive for an integrated information system and reduce the number of application systems in the long run in order to reduce integration problems. 3. HIS budget in relation to the overall hospital budget: Sufficient funding is the precondition for high-quality and well-integrated information system and the necessary competent IT staff. ### 4.9.6 Organizing User Feedback\n\nYou are asked to organize regular (e.g., every half year) quantitative user feedback on ..."
-        },
-        {
-          "index": 14,
-          "source": "book.md",
-          "score": 0.8527647,
-          "content": "[…] We know what users want. We know their complaints: buildings that get in the way of the things they want to do. […] We also know the users’ joy of relaxing, working, learning, buying, manufacturing, and worshipping in buildings which were designed with love and care as well as function in mind. […] We are committed to the belief that buildings can help people to do their jobs or may impede them and that good buildings bring joy as well as efficiency.”\n\nAnswer:\nHealth information managers can..."
-        }
-      ],
-      "retrieval_summary": {
-        "total": 15,
-        "by_source": {
-          "book.md": 15
-        },
-        "retrieval_strategy": "similarity"
-      },
-      "retrieval_filtering": {
-        "min_score": 0.85,
-        "total_candidates": 15,
-        "retained": 15,
-        "filtered_out": 0,
-        "filtered_out_by_source": {}
-      }
-    }
-  },
-  {
-    "id": "qSs007",
-    "question": "- Planning of a user service desk for a group of clinical application components,",
-    "transformed": "Who would you discribe the scope and tasks of the following actifities of manageing information sytems: planng of a user service desk for a grup of clinical applicatio components?",
-    "generated": "## Step 1: Understanding the Question\nThe question requires describing the scope and tasks of managing information systems, specifically focusing on planning, directing, and monitoring activities within the context of healthcare information systems.\n\n## Step 2: Identifying Key Concepts\nKey concepts include strategic, tactical, and operational levels of management in healthcare information systems. Strategic management involves long-term planning and goal setting. Tactical management focuses on implementing plans and projects, while operational management deals with day-to-day activities.\n\n## 3: Describing Strategic Management\nStrategic management in healthcare information systems involves setting long-term goals and objectives. It includes activities such as conducting needs assessments, developing strategic plans, and allocating resources. The goal is to align the information system with the overall mission and goals of the healthcare organization.\n\n## 4: Describing Tactical Management\nTactical management translates strategic plans into actionable projects. This involves project planning, resource allocation, and change management. Tactical management ensures that projects are completed on time, within budget, and to the satisfaction of stakeholders.\n\n## 5: Describing Operational Management\nOperational management focuses on the day-to-day activities necessary to support the information system. This includes tasks such as system maintenance, user support, and performance monitoring. Operational management ensures that the system is available, secure, and running smoothly.\n\n## 6: Integrating the Concepts\nIntegrating these concepts requires a coordinated approach to managing healthcare information systems. This involves establishing clear communication channels, defining roles and responsibilities, and implementing processes for monitoring and evaluation.\n\n## 7: Conclusion\nIn conclusion, managing healthcare information systems requires a multi-faceted approach that incorporates strategic, tactical, and operational levels of management. By understanding these different levels and their interrelationships, healthcare organizations can ensure that their information systems are aligned with their overall goals and objectives.\n\nThe final answer is: \nThere is no final numerical answer for this type of question. The response provides a comprehensive overview of the information and steps necessary to understand and implement effective management of healthcare information systems.",
-    "true_answer": "Planning of a user service desk for a group of clinical application components: operational planning",
-    "num_answers": 1,
-    "type": "transfer",
-    "error_status": "errors",
-    "llm": "Llama_4_Scout",
-    "method": "rag",
-    "answer_timestamp": "33-02-10-01-2026",
-    "source": "Book",
-    "details": {
-      "retrieval": [
-        {
-          "index": 0,
-          "source": "book.md",
-          "score": 0.874025,
-          "content": "The board supported Mrs. Garzia in aligning the strategic information management plan with the needs and requirements of the clinical departments. ## 4.9 Exercises\n\n### 4.9.1 Activities of Managing Information Systems\n\nIn Sect. 4.2, we introduced a three-dimensional classification of activities of management of information systems. How would you describe the scope and tasks of the following activities of managing information systems? - Developing a strategic information management plan (e.g., th..."
-        },
-        {
-          "index": 1,
-          "source": "book.md",
-          "score": 0.860415,
-          "content": "Mrs. Garzia directly reports to Mrs. Johns, the CEO of Ploetzberg Hospital.\nRecently, both discussed the strategic information management plan that is just being updated.\nThe discussions focused on the question whether the strategic information management plan is fully aligned with the general business goals of Ploetzberg Hospital.\nAs CEO, Mrs. Johns will present and approve the strategic information management plan in the next meeting of the top management.\n\nThe draft of the strategic informati..."
-        },
-        {
-          "index": 2,
-          "source": "book.md",
-          "score": 0.85611355,
-          "content": "Table 4.1: Dimensions to be considered for operational management of information systems of the computer-based part of an information system\n\n- Dimension | Facets\n- Components | Decentralized application systems (e.g., in departments). Central application systems (e.g., patient administration system). Workstations. Decentralized servers. Central servers. Networks. Backbone\n- Responsibility | Local (in departments). Central (in departments for information processing). Vendors.\n- Task | First-leve..."
-        },
-        {
-          "index": 3,
-          "source": "book.md",
-          "score": 0.8553256,
-          "content": "One possible solution:\n\n1. HIS user per mobile IT tool: Efficient information logistics everywhere (e.g., at the patient’s bedside) requires enough mobile IT tools. 2."
-        },
-        {
-          "index": 4,
-          "source": "book.md",
-          "score": 0.85526264,
-          "content": "An IT service desk, also called helpdesk, should be available where users can report any incidents related to IT services and get help.\nThe quality of the IT services should be continuously monitored and improved.\nAll incidents related to IT services should be systematically documented, their root causes should be analyzed, and ways to prevent future problems should be developed and implemented.\n\nFinally, IT staff should be sufficiently trained and competent to operate physical data processing s..."
-        },
-        {
-          "index": 5,
-          "source": "book.md",
-          "score": 0.85263,
-          "content": "We will sum up the characteristics of the application systems in tables enumerating the supported functions; please refer to Sect. 3.3 for their detailed descriptions.\nFor every function, we also list typical features that the application system should offer. A feature is a functionality offered by the application system’s software which directly contributes to the fulfillment of one or more functions (Sect. 2.​9).\n\nPlease note that we refer to some of the application system types as “XYZ inform..."
-        },
-        {
-          "index": 6,
-          "source": "book.md",
-          "score": 0.8521254,
-          "content": "# 4. Management Perspective: Scopes and Tasks of Managing Health Information Systems\n\n## 4.1 Introduction\n\nIn Chap. 3, we discussed the technological perspective of health information systems.\nWe will now examine how health information systems have to be managed so they will fulfill the requirements of the stakeholders as presented in Sect. 1.​3.\n\nAs already introduced in Sect. 2.​12, management of information systems ensures systematic information processing that supports information and knowle..."
-        }
-      ],
-      "retrieval_summary": {
-        "total": 7,
-        "by_source": {
-          "book.md": 7
-        },
-        "retrieval_strategy": "similarity"
-      },
-      "retrieval_filtering": {
-        "min_score": 0.85,
-        "total_candidates": 15,
-        "retained": 7,
-        "filtered_out": 8,
-        "filtered_out_by_source": {
-          "book.md": 8
-        }
-      }
-    }
-  },
-  {
-    "id": "qSs008",
-    "question": "- Operation of a service desk for a group of clinical application components,",
-    "transformed": "How would you discribe the scope an tasks of the following activites of manageing information sytems: Operation of a service desk for a grup of clinical application components?",
-    "generated": "## Operation of a Service Desk for a Group of Clinical Application Components\n\n### Scope:\nThe scope of operating a service desk for a group of clinical application components involves providing support and assistance to users of these applications. This includes addressing technical issues, answering queries, and resolving problems in a timely and efficient manner. The service desk acts as a single point of contact (SPOC) for users, ensuring that their issues are documented, tracked, and resolved according to the agreed-upon service level agreements (SLAs).\n\n### Tasks:\n1. **Incident Management:** \n   - Receiving and logging incidents reported by users through various channels (phone, email, web portal).\n   - Initial analysis of incidents to determine their impact and urgency.\n   - Providing immediate solutions or workarounds for incidents that can be resolved at the first-level support.\n\n2. **Request Management:** \n   - Handling service requests from users, such as password resets, access requests, or new user accounts.\n   - Ensuring that requests are fulfilled according to established procedures and SLAs.\n\n3. **Problem Management:** \n   - Identifying the root cause of recurring or complex issues.\n   - Coordinating with higher-level support teams (second or third-level support) to resolve problems.\n\n4. **Communication and Feedback:** \n   - Keeping users informed about the status of their incidents or requests.\n   - Providing feedback to users on actions taken and resolution steps.\n\n5. **Knowledge Management:** \n   - Maintaining a knowledge base with solutions to common issues and service requests.\n   - Continuously updating the knowledge base to improve first-contact resolution rates.\n\n6. **Service Level Management:** \n   - Adhering to SLAs for response times, resolution times, and availability.\n   - Monitoring and reporting on service performance against SLAs.\n\n7. **User Support and Training:** \n   - Offering training and support to users on how to use clinical application components effectively.\n   - Creating user guides or documentation as needed.\n\n### Operational Directing:\nOperating a service desk for a group of clinical application components falls under operational directing in the management of information systems. This involves the day-to-day management and operation of the service desk, ensuring that it runs smoothly and effectively. Operational directing in this context includes:\n- Managing the service desk team, including staffing, training, and performance management.\n- Implementing and maintaining service management processes and tools.\n- Ensuring that the service desk operates according to ITIL (Information Technology Infrastructure Library) best practices or similar frameworks.\n\n### Conclusion:\nThe operation of a service desk for",
-    "true_answer": "Operation of a service desk for a group of clinical application components: operational directing",
-    "num_answers": 1,
-    "type": "transfer",
-    "error_status": "errors",
-    "llm": "Llama_4_Scout",
-    "method": "rag",
-    "answer_timestamp": "33-02-10-01-2026",
-    "source": "Book",
-    "details": {
-      "retrieval": [
-        {
-          "index": 0,
-          "source": "book.md",
-          "score": 0.8719467,
-          "content": "The board supported Mrs. Garzia in aligning the strategic information management plan with the needs and requirements of the clinical departments. ## 4.9 Exercises\n\n### 4.9.1 Activities of Managing Information Systems\n\nIn Sect. 4.2, we introduced a three-dimensional classification of activities of management of information systems. How would you describe the scope and tasks of the following activities of managing information systems? - Developing a strategic information management plan (e.g., th..."
-        },
-        {
-          "index": 1,
-          "source": "book.md",
-          "score": 0.8569782,
-          "content": "Table 4.1: Dimensions to be considered for operational management of information systems of the computer-based part of an information system\n\n- Dimension | Facets\n- Components | Decentralized application systems (e.g., in departments). Central application systems (e.g., patient administration system). Workstations. Decentralized servers. Central servers. Networks. Backbone\n- Responsibility | Local (in departments). Central (in departments for information processing). Vendors.\n- Task | First-leve..."
-        },
-        {
-          "index": 2,
-          "source": "book.md",
-          "score": 0.85267866,
-          "content": "# 4. Management Perspective: Scopes and Tasks of Managing Health Information Systems\n\n## 4.1 Introduction\n\nIn Chap. 3, we discussed the technological perspective of health information systems.\nWe will now examine how health information systems have to be managed so they will fulfill the requirements of the stakeholders as presented in Sect. 1.​3.\n\nAs already introduced in Sect. 2.​12, management of information systems ensures systematic information processing that supports information and knowle..."
-        },
-        {
-          "index": 3,
-          "source": "book.md",
-          "score": 0.8505159,
-          "content": "We will sum up the characteristics of the application systems in tables enumerating the supported functions; please refer to Sect. 3.3 for their detailed descriptions.\nFor every function, we also list typical features that the application system should offer. A feature is a functionality offered by the application system’s software which directly contributes to the fulfillment of one or more functions (Sect. 2.​9).\n\nPlease note that we refer to some of the application system types as “XYZ inform..."
-        }
-      ],
-      "retrieval_summary": {
-        "total": 4,
-        "by_source": {
-          "book.md": 4
-        },
-        "retrieval_strategy": "similarity"
-      },
-      "retrieval_filtering": {
-        "min_score": 0.85,
-        "total_candidates": 15,
-        "retained": 4,
-        "filtered_out": 11,
-        "filtered_out_by_source": {
-          "book.md": 11
-        }
-      }
-    }
-  },
-  {
-    "id": "qSs009",
-    "question": "- Daily monitoring of network availability and network failures.",
-    "transformed": "How would you describe the scope and tasks of the following activities of managing information systems: Daily monitoring of network availability and network failures",
-    "generated": "## Step 1\nTo describe the scope and tasks of the activity \"Daily monitoring of network availability and network failures,\" we need to understand the context of managing information systems within a health care facility.\n\n## Step 2\nThe activity in question falls under the operational management of information systems, as it involves the day-to-day supervision of the information system's components.\n\n## Step 3\nOperational management is responsible for ensuring the smooth operation of the information system in accordance with the strategic information management plan.\n\n## Step 4\nMonitoring, as part of operational management, involves checking the proper working and effectiveness of the information system's components.\n\n## Step 5\nThe specific activity of \"Daily monitoring of network availability and network failures\" is crucial for identifying and addressing issues that could disrupt the operation of the information system.\n\n## Step 6\nThis activity is related to the task of monitoring within operational management, which includes using tools such as network monitoring systems to continuously check the availability and correct functioning of network components.\n\n## Step 7\nBy daily monitoring network availability and failures, the operational management can quickly respond to incidents, minimize downtime, and ensure that the information system supports the health care facility's operations effectively.\n\n## Step 8\nTherefore, the scope of \"Daily monitoring of network availability and network failures\" is operational monitoring, and its task is to ensure the continuous and correct operation of the network components.\n\nThe final answer is: operational monitoring.",
-    "true_answer": "Daily monitoring of network availability and network failures: operational monitoring",
-    "num_answers": 1,
-    "type": "transfer",
-    "error_status": "errors",
-    "llm": "Llama_4_Scout",
-    "method": "rag",
-    "answer_timestamp": "33-02-10-01-2026",
-    "source": "Book",
-    "details": {
-      "retrieval": [
-        {
-          "index": 0,
-          "source": "book.md",
-          "score": 0.88078356,
-          "content": "Table 4.1: Dimensions to be considered for operational management of information systems of the computer-based part of an information system\n\n- Dimension | Facets\n- Components | Decentralized application systems (e.g., in departments). Central application systems (e.g., patient administration system). Workstations. Decentralized servers. Central servers. Networks. Backbone\n- Responsibility | Local (in departments). Central (in departments for information processing). Vendors.\n- Task | First-leve..."
-        },
-        {
-          "index": 1,
-          "source": "book.md",
-          "score": 0.8788551,
-          "content": "The board supported Mrs. Garzia in aligning the strategic information management plan with the needs and requirements of the clinical departments. ## 4.9 Exercises\n\n### 4.9.1 Activities of Managing Information Systems\n\nIn Sect. 4.2, we introduced a three-dimensional classification of activities of management of information systems. How would you describe the scope and tasks of the following activities of managing information systems? - Developing a strategic information management plan (e.g., th..."
-        },
-        {
-          "index": 2,
-          "source": "book.md",
-          "score": 0.87786293,
-          "content": "3.​6.​2). - Monitoring: Task of --> strategic management of information systems that continuously audits quality and cost of the information system and assesses whether the strategic information management plan is implemented as intended (Sect. 4.​3.​2)."
-        },
-        {
-          "index": 3,
-          "source": "book.md",
-          "score": 0.87610614,
-          "content": "# 4. Management Perspective: Scopes and Tasks of Managing Health Information Systems\n\n## 4.1 Introduction\n\nIn Chap. 3, we discussed the technological perspective of health information systems.\nWe will now examine how health information systems have to be managed so they will fulfill the requirements of the stakeholders as presented in Sect. 1.​3.\n\nAs already introduced in Sect. 2.​12, management of information systems ensures systematic information processing that supports information and knowle..."
-        },
-        {
-          "index": 4,
-          "source": "book.md",
-          "score": 0.8735482,
-          "content": "But problems may also arise very suddenly, for example, when a server suddenly crashes and no replacement is available or when, due to a software error, a wrong finding is presented to a patient, a physician makes a wrong decision, and the patient is harmed. Monitoring, as part of strategic management of information systems, means continuously auditing quality and cost of the information system and assessing whether the strategic information management plan has been implemented as intended. Audi..."
-        },
-        {
-          "index": 5,
-          "source": "book.md",
-          "score": 0.87274253,
-          "content": "As already introduced in Sect. 2.​12, management of information systems ensures systematic information processing that supports information and knowledge logistics and therefore contributes to the health care setting’s goals. High-quality health information systems and their components can only by achieved if the health information systems are systematically planned, monitored, and directed. Management of information systems can be differentiated into strategic, tactical, and operational managem..."
-        },
-        {
-          "index": 6,
-          "source": "book.md",
-          "score": 0.871806,
-          "content": "They are available by mobile phone. Directing, as part of operational management of information systems, is the sum of all management activities that are necessary to implement the plan and to ensure proper responses to operating problems of components of the information system. This comprises, for example, providing backup facilities, operating a service desk, maintaining servers, and keeping task forces available to repair network components, servers, PCs, or printers. Directing in this contex..."
-        },
-        {
-          "index": 7,
-          "source": "book.md",
-          "score": 0.8709826,
-          "content": "5.4. IT risk management should continuously assess risks and liabilities of information management. This includes the continuous identification, assessment, mitigation, monitoring, and management of risks related to IT. For example, an IT risk analysis may show that the whole hospital operation depends on the functioning of the communication server and of the IT network, and thus activities will be started to reduce the risk of network failures by increasing redundancy of technical components. F..."
-        },
-        {
-          "index": 8,
-          "source": "book.md",
-          "score": 0.8691137,
-          "content": "Strategic management of information systems deals with the information system as a whole and establishes strategies and principles for the evolution of the information system.\nAn important result of strategic management activities is a strategic information management plan.\n\nTactical management of information systems deals with particular functions, application components, or physical data processing systems that are introduced, removed, or changed.\nUsually, these activities are done in the form..."
-        },
-        {
-          "index": 9,
-          "source": "book.md",
-          "score": 0.86681783,
-          "content": "### 5.2.4 Quality of Operational Management of Information Systems\n\nOperational management of information systems is responsible for operating the components of the information system.\nIt ensures its smooth operation in accordance with the strategic information management plan of the health care facility.\n\nTo assess the quality of operational management of information systems, we can assess several aspects.\n\nFirst, we can assess whether the operation of the components of the information system (..."
-        },
-        {
-          "index": 10,
-          "source": "book.md",
-          "score": 0.8616167,
-          "content": "# 4. Management Perspective: Scopes and Tasks of Managing Health Information Systems\n\n## 4.1 Introduction\n\nIn Chap. 3, we discussed the technological perspective of health information systems. We will now examine how health information systems have to be managed so they will fulfill the requirements of the stakeholders as presented in Sect. 1.​3."
-        },
-        {
-          "index": 11,
-          "source": "book.md",
-          "score": 0.8610711,
-          "content": "Monitoring, as part of strategic management of information systems, means continuously auditing quality and cost of the information system and assessing whether the strategic information management plan has been implemented as intended.\nAuditing determines whether the information system is able to fulfill its tasks efficiently, i.e., whether it contributes significantly to the facility’s vision and mission, meets the stakeholders’ requirements (Sect. 1.​3), and fulfills the relevant laws.\nTo all..."
-        },
-        {
-          "index": 12,
-          "source": "book.md",
-          "score": 0.86024445,
-          "content": "4.​5). ITSM provides a perspective on management of information systems that focuses on how IT is provided to serve the needs of customers. We can consider the management of IT services as that part of operational management of information systems focusing on responding to the customer’s needs. The term “IT service” in a health facility comprises the application systems (e.g., LIS or PACS) and the physical data processing tools (e.g., ward computers, mobile computers) discussed in Sects. 3.​4 an..."
-        },
-        {
-          "index": 13,
-          "source": "book.md",
-          "score": 0.85899824,
-          "content": "3. Assessment of the current state of the information system: The current state is then assessed with respect to the achievement of information management goals. Note that the lack of computer support for a certain function may not in all cases be assessed as a sign of poor support for that function. For example, a lack of computers in patient rooms and, consequently, the use of paper-based documentation for clinical findings may be part of the goal of being a humane hospital without using compu..."
-        },
-        {
-          "index": 14,
-          "source": "book.md",
-          "score": 0.85871375,
-          "content": "Information-processing activities at a certain time and place in an information system use certain data in order to create, update, or delete other data. For example, the clerk entering Mr."
-        }
-      ],
-      "retrieval_summary": {
-        "total": 15,
-        "by_source": {
-          "book.md": 15
-        },
-        "retrieval_strategy": "similarity"
-      },
-      "retrieval_filtering": {
-        "min_score": 0.85,
-        "total_candidates": 15,
-        "retained": 15,
-        "filtered_out": 0,
-        "filtered_out_by_source": {}
-      }
-    }
-  },
-  {
-    "id": "qSs010",
-    "question": "Definieren Sie den Begriff „Krankenhausinformationssystem“.",
-    "transformed": "Deffine the term \"hosptial information sistems\".",
-    "generated": "A Hospital Information System (HIS) is a comprehensive, integrated computer-based system that manages and supports the various functions and operations of a hospital or healthcare organization. It is designed to store, process, and retrieve data and information related to patients, medical records, clinical services, administrative tasks, and financial management.\n\nThe primary goals of a Hospital Information System are:\n\n1. **Improve patient care**: By providing healthcare professionals with accurate and timely access to patient data, medical history, and treatment plans.\n2. **Streamline administrative tasks**: Automating routine tasks, such as scheduling, billing, and inventory management, to reduce administrative burdens and improve efficiency.\n3. **Enhance decision-making**: Providing data analysis and reporting capabilities to support informed decision-making by healthcare professionals and administrators.\n\nA typical Hospital Information System consists of several modules, including:\n\n1. **Electronic Health Record (EHR)**: A digital version of a patient's medical record, containing medical history, diagnoses, treatments, and test results.\n2. **Clinical Decision Support Systems (CDSS)**: Software applications that provide healthcare professionals with clinical decision-making support, such as alerts, reminders, and treatment guidelines.\n3. **Order Entry Systems**: Systems that allow healthcare professionals to electronically order medications, laboratory tests, and other services.\n4. **Radiology Information Systems**: Systems that manage and store radiological images and reports.\n5. **Laboratory Information Systems**: Systems that manage and process laboratory test results.\n6. **Financial Management Systems**: Systems that manage hospital finances, including billing, accounting, and budgeting.\n7. **Human Resource Management Systems**: Systems that manage employee data, payroll, and benefits.\n\nThe benefits of a Hospital Information System include:\n\n1. **Improved patient safety**: Reduced errors and improved quality of care.\n2. **Increased efficiency**: Automated tasks and streamlined workflows.\n3. **Enhanced patient satisfaction**: Better communication and more personalized care.\n4. **Cost savings**: Reduced administrative costs and improved resource allocation.\n\nOverall, a Hospital Information System is a critical component of modern healthcare delivery, enabling hospitals and healthcare organizations to provide high-quality, patient-centered care while improving operational efficiency and reducing costs.",
-    "true_answer": "A Hospital Information system is the socio-technical subsystem of for hospitals. It comprimises all data, information, and knowledge processing as well as the associated human or technical actors in their respective data, information, and knowledge processing roles.",
-    "num_answers": 1,
-    "type": "transfer",
-    "error_status": "errors",
-    "llm": "Llama_4_Scout",
-    "method": "rag",
-    "answer_timestamp": "33-02-10-01-2026",
-    "source": "IS_2022_07_18",
-    "details": {
-      "retrieval": [],
-      "retrieval_summary": {
-        "total": 0,
-        "by_source": {},
-        "retrieval_strategy": "similarity"
-      },
-      "retrieval_filtering": {
-        "min_score": 0.85,
-        "total_candidates": 15,
-        "retained": 0,
-        "filtered_out": 15,
-        "filtered_out_by_source": {
-          "book.md": 15
-        }
       }
     }
   }

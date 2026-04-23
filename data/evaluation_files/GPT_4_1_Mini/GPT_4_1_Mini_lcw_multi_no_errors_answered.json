@@ -516,5 +516,19 @@
     "method": "lcw",
     "answer_timestamp": "36-18-01-10-2025",
     "source": "A_2021"
+  },
+  {
+    "id": "qM0038",
+    "question": "Wie kann man Krankenhausinformationssysteme vergleichen?",
+    "transformed": "How can hospital information systems be compared?",
+    "generated": "Hospital information systems (HIS) can be compared by analyzing and modeling their architectures, functions, data, application components, integration, and management aspects using structured frameworks and criteria. The comprehensive approach includes the following key dimensions:\n\n1. **Domain Layer Comparison (Functions and Data):**  \n   - Identify and compare the **information-processing functions** supported by the HIS, such as patient admission, medical documentation, order entry, diagnostics, therapy, discharge, billing, and management functions.  \n   - Compare the **entity types** (data categories) processed, e.g., patient data, diagnoses, findings, orders, appointments, and administrative data.  \n   - Use reference models (e.g., the Reference Model for the Domain Layer of Hospital Information Systems) to assess completeness and coverage of functions and data.\n\n2. **Logical Tool Layer Comparison (Application Systems and Integration):**  \n   - Compare the **types and numbers of application systems** (e.g., patient administration systems, medical documentation and management systems, nursing management systems, CPOE, RIS, PACS, LIS, OMS, PDMS, ERPS, DWS, DAS).  \n   - Assess the **architectural styles**:  \n     - Number of databases: Centralized (DB¹) vs. distributed (DBⁿ) architectures.  \n     - Number of application systems: Monolithic (AC¹) vs. modular (ACⁿ).  \n     - Vendor homogeneity: All-in-one (V¹) vs. best-of-breed (Vⁿ).  \n     - Communication patterns: Star (CP¹) vs. spaghetti (CPⁿ).  \n   - Evaluate **data integrity** aspects: object identity (unique patient IDs), referential integrity, and data consistency across systems.  \n   - Assess **interoperability** levels: technical, syntactic, semantic, and process interoperability, including the use of standards such as HL7 V2/V3, CDA, FHIR, DICOM, IHE profiles, SNOMED CT, LOINC, and openEHR.  \n   - Examine **integration types**: data integration, semantic integration, user interface integration, context integration, feature integration, and process integration.\n\n3. **Physical Tool Layer Comparison (Hardware and Infrastructure):**  \n   - Compare the physical data processing systems (servers, clients, storage, networks) and their **physical interoperability** and integration.  \n   - Assess data center infrastructure, redundancy, availability, security measures, and energy efficiency.\n\n4. **Management Perspective",
+    "true_answer": "(Referenzmodelle, Taxonomy)",
+    "num_answers": 2,
+    "type": "multi",
+    "error_status": "no_errors",
+    "llm": "GPT_4_1_Mini",
+    "method": "lcw",
+    "answer_timestamp": "01-01-10-02-2026",
+    "source": "A_2021"
   }
 ]

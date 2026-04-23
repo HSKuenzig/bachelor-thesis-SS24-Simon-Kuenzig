@@ -2256,5 +2256,98 @@
         "filtered_out_by_source": {}
       }
     }
+  },
+  {
+    "id": "qSs032",
+    "question": "Was ist ARIS?",
+    "transformed": "Whad is ARIS (Arcitecture of Integreted Enformation Systems)?",
+    "generated": "ARIS stands for Architecture of Integrated Information Systems. It is a framework and methodology used for business process modeling, analysis, and design of information systems. Developed by Professor August-Wilhelm Scheer in the 1990s, ARIS provides a comprehensive approach to modeling, implementing, and optimizing business processes and information systems.\n\nThe ARIS framework consists of several layers and models, including:\n\n1. **Strategy Layer**: Defines the business strategy and goals.\n2. **Business Process Layer**: Models the business processes and activities.\n3. **Organizational Layer**: Represents the organizational structure and roles.\n4. **Data Layer**: Describes the data and information architecture.\n5. **Function Layer**: Defines the business functions and services.\n\nARIS uses various modeling techniques, such as:\n\n1. **Business Process Model and Notation (BPMN)**: For process modeling.\n2. **Entity-Relationship Diagrams (ERD)**: For data modeling.\n3. **Organizational diagrams**: For modeling organizational structures.\n\nThe main goals of ARIS are:\n\n1. **Improved business process efficiency**: By analyzing and optimizing business processes.\n2. **Better alignment of IT with business goals**: By integrating business and IT strategies.\n3. **Enhanced communication**: Among stakeholders, developers, and users.\n\nARIS is widely used in various industries, including finance, healthcare, and manufacturing, to support business process re-engineering, enterprise resource planning (ERP), and digital transformation initiatives.\n\nIs there anything specific you'd like to know about ARIS?",
+    "true_answer": "The Architecture of Integrated Information Systems is a framework for describing business processes. It provides modeling methods and meta-structures that are comprised in information models.",
+    "num_answers": 1,
+    "type": "single",
+    "error_status": "errors",
+    "llm": "Llama_4_Scout",
+    "method": "rag",
+    "answer_timestamp": "16-17-02-02-2026",
+    "source": "IS_2022_09_27",
+    "details": {
+      "retrieval": [],
+      "retrieval_summary": {
+        "total": 0,
+        "by_source": {},
+        "retrieval_strategy": "similarity"
+      },
+      "retrieval_filtering": {
+        "min_score": 0.85,
+        "total_candidates": 15,
+        "retained": 0,
+        "filtered_out": 15,
+        "filtered_out_by_source": {
+          "book.md": 15
+        }
+      }
+    }
+  },
+  {
+    "id": "qSs033",
+    "question": "Was ist IHE?",
+    "transformed": "Whad is IHE (Integratin the Helthcare Enterpraise)?",
+    "generated": "IHE (Integrating the Healthcare Enterprise) is a global initiative that aims to improve the exchange of healthcare information by promoting the use of standards and profiles to ensure interoperability between healthcare systems, devices, and applications.\n\nIHE was formed in 1998 by a group of healthcare professionals and technologists who recognized the need for better integration of healthcare information systems. The initiative is sponsored by the Health Level Seven International (HL7) organization and the Institute for Electrical and Electronics Engineers (IEEE).\n\nThe primary goal of IHE is to enable healthcare providers to share and exchange clinical information electronically, regardless of the vendor or platform. IHE achieves this by:\n\n1. Developing and promoting standards-based profiles for exchanging healthcare information.\n2. Encouraging the adoption of these profiles by healthcare vendors and providers.\n3. Providing testing and certification programs to ensure conformance to IHE profiles.\n\nSome of the key benefits of IHE include:\n\n* Improved interoperability between healthcare systems and devices\n* Enhanced patient care through better access to clinical information\n* Reduced costs associated with integrating and maintaining multiple systems\n* Increased efficiency and productivity in healthcare workflows\n\nIHE profiles are organized into several domains, including:\n\n1. Radiology (e.g., DICOM, HL7)\n2. Cardiology (e.g., ECG, imaging)\n3. Laboratory (e.g., laboratory results, orders)\n4. Pharmacy (e.g., medication management)\n5. Patient Care (e.g., patient demographics, care plans)\n\nSome of the most widely used IHE profiles include:\n\n1. XDS (Cross-Enterprise Document Sharing)\n2. XDM (Cross-Enterprise Document Media Interchange)\n3. MHD (Mobile Health Information)\n4. ATNA (Audit and Authentication)\n\nOverall, IHE plays a critical role in enabling the sharing of healthcare information across different systems, vendors, and platforms, which ultimately leads to better patient care and outcomes.",
+    "true_answer": "IHE stands for Integrating the Healthcare Enterprise. It is an initiative by healthcare professionals and industry to improve the way computer systems in healthcare share information. IHE promotes the coordinated use of established standards such as DICOM and HL7 to address specific clinical needs in support of optimal patient care",
+    "num_answers": 1,
+    "type": "single",
+    "error_status": "errors",
+    "llm": "Llama_4_Scout",
+    "method": "rag",
+    "answer_timestamp": "16-17-02-02-2026",
+    "source": "IS_2022_09_27",
+    "details": {
+      "retrieval": [],
+      "retrieval_summary": {
+        "total": 0,
+        "by_source": {},
+        "retrieval_strategy": "similarity"
+      },
+      "retrieval_filtering": {
+        "min_score": 0.85,
+        "total_candidates": 15,
+        "retained": 0,
+        "filtered_out": 15,
+        "filtered_out_by_source": {
+          "book.md": 15
+        }
+      }
+    }
+  },
+  {
+    "id": "qSs034",
+    "question": "Was ist openEHR",
+    "transformed": "Whad is openEHR?",
+    "generated": "openEHR (open Electronic Health Record) is an open-source, open standards-based approach to the creation of electronic health records (EHRs). It provides a framework for storing and managing health data in a structured and standardized way, allowing different healthcare providers and systems to share and exchange patient information.\n\nThe openEHR initiative aims to improve the quality, safety, and efficiency of healthcare by providing a common platform for storing and managing EHRs. It focuses on creating a longitudinal record of a patient's health information, which can be accessed and updated by authorized healthcare providers across different care settings.\n\nopenEHR is based on several key principles, including:\n\n1. **Patient-centered**: The patient is in control of their own health data.\n2. **Interoperability**: Health data can be shared and exchanged between different healthcare providers and systems.\n3. **Standardization**: Use of standardized data models and terminology.\n4. **Openness**: Open-source and open standards.\n\nThe openEHR approach has several benefits, including:\n\n1. **Improved data sharing**: Enables healthcare providers to access and share patient information across different care settings.\n2. **Better data quality**: Standardized data models and terminology help reduce errors and inconsistencies.\n3. **Increased patient engagement**: Patients can take a more active role in managing their own health information.\n\nopenEHR is used in various countries and has been recognized as a promising approach to achieving interoperable EHRs. However, its adoption and implementation can be complex and require significant investment in infrastructure, training, and change management.",
+    "true_answer": "openEHR is an open standard specification in health informatics that describes the management and storage, retrieval and exchange of health data in electronic health records (EHRs). In openHER, all health data for a person is stored in a \"one lifetime\", vendor-independent, person-centred EHR. It is completely model-driven, and separates domain semantics out from software, into models created by domain professionals.",
+    "num_answers": 1,
+    "type": "single",
+    "error_status": "errors",
+    "llm": "Llama_4_Scout",
+    "method": "rag",
+    "answer_timestamp": "16-17-02-02-2026",
+    "source": "IS_2022_09_27",
+    "details": {
+      "retrieval": [],
+      "retrieval_summary": {
+        "total": 0,
+        "by_source": {},
+        "retrieval_strategy": "similarity"
+      },
+      "retrieval_filtering": {
+        "min_score": 0.85,
+        "total_candidates": 15,
+        "retained": 0,
+        "filtered_out": 15,
+        "filtered_out_by_source": {
+          "book.md": 15
+        }
+      }
+    }
   }
 ]

@@ -1,134 +1,220 @@
-
-
-
-
 %*****************************************
 \chapter{Solution}\label{ch:solution}
 %*****************************************
-
 \section{Overview}
 This chapter presents the practical implementation and results of the methodology detailed in \cref{ch:approach}.
-It mostly follows the structure presented in \cref{ch:approach} and thus shows how each planned step was practically implemented and how the defined goals (\cref{sec:goals}) were systematically approached.
-The chapter begins with a detailed description of the final selection of \ac{llm}s and the configuration and implementation of the \ac{qa} method pipelines.
-The implementation of the required functions in the application is then described. 
-This includes the containerisation of the application and its integrated processes using \textit{Docker}, as well as the construction of a lightweight, repeatable evaluation process.
-
+It begins with a detailed description of the final selection of \acp{lm} and follows with the configuration and implementation of the \ac{qa} method pipelines.
 %
 \section{Knowledge Base and Model Selection}
 
-This section describes the components on which the generation of responses by the respective \ac{llm}s and their evaluation were built.
-The careful selection of these core elements was essential to ensure the validity and comparability of the results.
-
-\subsection{Knowledge Base}
-%(Mirrors "Approach" Section 4.2)
-
-As specified in the methodology and following the implementation established in \cite{Paul_Keller}, the only knowledge base for all relevant processes was the textbook \citetitle{bb2}.
-In order to ensure direct comparability with the benchmark study, the plain text version of the book prepared and used by \citet{Paul_Keller} was processed within the application. 
-This version, adjusted for non-textual elements such as images, tables and indices, forms the knowledge base for all subsequent \ac{qa} tasks. 
-The plain text document used corresponds to a total number of around $120000$  tokens (e.g, $117025$ for \textit{GPT-4} model \footnote{\raggedright{}\url{https://www.prompttokencounter.com/}, (accessed 10.06.25)}, $116375$ tokens for \textit{DeepSeek Chat V3}model \footnote{\raggedright{}\url{https://token-counter.app/deepseek/deepseek-v3}, (accessed 10.06.25)}, values for other models differ but are of similar dimensions). 
-This number of tokens was a critical factor in both the selection of suitable \ac{llm} and the configuration of the \ac{qa} pipelines.
-
+This section describes the components on which the generation of responses by the respective \acp{llm} and their evaluation are built.
+The careful selection of these core elements is essential to ensure the validity and comparability of the results.
 
 \subsection{Language Model Selection}
 %(Task A1.1, Section 4.3)
 
+The first Step towards implementation is the selection of the \acp{lm} that directly addresses Task A1.1 \cref{task:1_1_llm_comparison}.
+A final decision is made based on the criteria defined in \cref{subsec:model_criteria_api}.
+The majority of the selected models is accessed via the \textit{OpenRouter} \ac{api} aggregator
 
-The first step towards implementation was the selection of \ac{llm}s.
-Based on the criteria defined in \cref{subsec:model_criteria_api} a final set of models was selected.
-All selected models were accessed via the \textit{OpenRouter} \ac{api} aggregator, which provided a unified interface to access the selected models and also facilitated cost management. 
-The following models were used for the application based on their performance on official benchmarks and meeting the defined criteria:
+\textit{OpenRouter} provides a unifying interface for multiple \ac{api} provider.
+Communication with the selected models as well as cost management, is handled via unified platform.
+During \ac{api} request, the ideal \ac{api} provider is automatically selected via the website.
+This ensures that the models are constantly available.
+However, the parameters of the models vary.
+This means, for example, that the context window is not a fixed size but is instead adapted according to the input size.
+The respective costs also vary according to the provider.
 
-\todo{write paragraphs about chosen models}
+In addition to the \textit{OpenRouter} aggregator, the Helmholtz AI Research Platform offers highly capable open-source models for a secure and transparent use via \ac{api}.
+The \ac{lm} are available and free for use in an academic context.
+At the time of access (Q1 2026), \textit{Blablador} has two models made available that meet the criteria defined (\cref{subsec:model_criteria_api} - \textit{Qwen3-VL-32B-Instruct} and \textit{Ministral-8B-Instruct-2410}
 
+The following models were used for the application based on their performance on official benchmarks, meeting the defined criteria:
+%
+\subsubsection{Selected Model Benchmark Performance}\label{subsec:model_benchmarks_api} 
 
-This selection provides a group of high-performing models, enabling a meaningful comparison between different architectures and training approaches while adhering to the defined accessibility and large-context requirements.
-\subsubsection{Selected Model Benchmark Performance}\label{subsec:model_benchmarks_api} \todo{include Tab of comparing table} summarises representative scores for the selected \textit{api} models on common \ac{llm} evaluation benchmarks.
-These benchmarks indicate the \ac{lm}s core capabilities relevant to the \ac{qa} task.
-The displayed data reflect the performance of circa early 2025.
-
-
-\begin{table}[htbp]
-\centering
-\caption{Representative Benchmark Performance of Selected API LLMs (circa Q1 2025). Scores are indicative.}
-\label{tab:model_benchmarks_api_revised}
-\small
-\begin{tabular}{@{}lccc@{}}
-\toprule
-Model & Context (Max Advertised) & MMLU (5-shot) & GSM8K (pass@1) \\
-\midrule
-Llama 4 Scout & Up to 10M & \texttildelow{}85+ & \texttildelow{}90+ \\
-DeepSeek-V3 & 128k+ & \texttildelow{}80+ & \texttildelow{}85+ \\
-\bottomrule
-\end{tabular}
-\\ \vspace{0.5em}
-\footnotesize Note: MMLU = Massive Multitask Language Understanding (\%). GSM8K = Grade School Math 8K (\%). Scores approximate public data circa Q1 2025. Context window refers to maximum advertised capability; actual usable context and cost may vary by \ac{api} provider.
+\begin{table}[t!]
+    \centering
+    \begin{threeparttable}
+    \setlength{\tabcolsep}{5pt}
+    \resizebox{\textwidth}{!}{
+        \begin{tabular}{lrccccccccc}
+            \toprule
+                                &  Total Parameters    & Context Window   \\
+            \midrule
+            Llama-4-Scout       & $109B$ ($17B$ active)  & $10M$  \\
+            DeepSeek-V3-0324    & $685B$                 & $163,000$    \\
+            Qwen3-32B           & $32.8B$                & $131,072$    \\
+            Ministral-8B        & $8B$                   & $128,000$    \\
+            Gemini-2.5-Flash    & $400B$                 & $1M$   \\
+            GPT-4.1.Mini        & N/A                    & $1M$         \\
+            GPT-o1\tnote{1}     & N/A                    & $128,000$  \\
+            \bottomrule
+        \end{tabular}}
+    \caption[Total Parameters $-$ Context Window]{
+        Total Parameters and Context Windows of selected models.
+    }\label{tab:total_par_llm}
+        \begin{tablenotes}\footnotesize
+        \item[1] \ac{sota} model as reference.
+        The Model is not included in the method application.
+        \end{tablenotes}
+    \end{threeparttable}
 \end{table}
+%
+%
+%
+\begin{table}[t!]
+    \centering
+    \begin{threeparttable}
+    \setlength{\tabcolsep}{5pt}
+    \resizebox{\textwidth}{!}{
+        \begin{tabular}{lrccccccccc}
+            \toprule
+                                &  BoolQ            & PiQA          & HellaSwag         & SIQA           & WinoGrande   \\
+            \midrule
+            Llama-4-Scout       & 82.4     & 83.3 & 85.6     & 54.9 & 78.8  \\
+            DeepSeek-V3-0324         & 88.6       & 85.7   & 88.9       & 50.0    & 84.9    \\
+            Qwen3-VL-32B-Instruct           & 65.9       & 70.6   & 72.0       & 50.0 & 75.5  \\
+            Ministral-8B-Instruct-2410*           & 80.5       & 76.2   & 77.7       &  & 75.3  \\
+            Gemini-2.5-Flash    & 81.2       & 77.6    & 69.1         & 72.5   & 67.0  \\
+            GPT-4.1.Mini        & 88.7     & 88.7    & 87.1         & 82.9   & 76.9  \\
+            GPT-o1              & 91.3      & 90.1    & 95.0         & 81.7   & 86.7  \\
+            \bottomrule
+        \end{tabular}}
+    \caption[One-Shot Performance Comparison]{
+        One-Shot performance comparison of selected models. \textit{GPT-o1} as \ac{sota} reference}\label{tab:one_shot_llm}
+        \begin{tablenotes}\footnotesize
+            \item[*] Evaluated using 2-shot for BoolQ and 5-shot for all other benchmarks.
+            This deviates from the standard one-shot setup. (\citet{NVIDIA2026PhiMinistralModels}
+        \end{tablenotes}
+        \end{threeparttable}
+\end{table}
+%
+%
+%
+%
+\begin{table}[t!]
+    \centering
+    \begin{threeparttable}
+    \setlength{\tabcolsep}{5pt}
+    \resizebox{\textwidth}{!}{
+        \begin{tabular}{lcc}
+            \toprule
+                                &  GPQA-Diamond (Scientific Reasoning)    & MMLU (Language Understanding)   \\
+            \midrule
+            Llama-4-Scout       & 58.7                  & >74.3\tnote{1}    \\
+            DeepSeek-V3         & 68.4                  & >75.3\tnote{2}          \\
+            Qwen3-VL-32B-Instruct           & 67\tnote{3}                  & 86.4          \\
+            Ministral-8B-Instruct-2410        & 68.4                  & 65.0\tnote{4}          \\
+            Gemini-2.5-Flash\tnote{5}    & 82.8                  & 86.6 \\
+            GPT-4.1.Mini        & 65                    & 87.5          \\
+            GPT-o1              & 77.3                  & 90.8          \\
+            \bottomrule
+            \end{tabular}}
+%
+    \caption[QA and Long-Context Benchmark Performance Comparison]{
+        Further Benchmarks relevant to QA and Long-Context Performance. \textit{GPT-o1} as \ac{sota} reference}\label{tab:qa_lcw_1_llm}
+    \begin{tablenotes}\footnotesize
+            \item[1] MMLU Pro $74.3$ (which extends MMLU, higher MMLU score to be expected (\citet{Meta2024Llamafour}).
+            \item[2] MMLU Pro $75.3$ (which extends MMLU, higher MMLU score to be expected (\citet{DeepSeekAI2024DeepSeekV3TR}).
+            \item[3] Benchmark score not verified (\citet{Qwen2026benchmark}).
+            \item[4] Benchmark score for \textit{Ministral-8B-Base} (\citet{hugging2025minstralreport}).
+            \item[5] Benchmark results from (\citet{Google2025Gemini2_5}.
+        \end{tablenotes}
+    \end{threeparttable}
+\end{table}
+\begin{table}[t!]
+    \centering
+    \begin{threeparttable}
+    \setlength{\tabcolsep}{5pt}
+    \resizebox{\textwidth}{!}{
+        \begin{tabular}{lcc}
+            \toprule
+                                & AA-LCR (Long Context Reasoning)         & IFBench (Instruction Following)  \\
+            \midrule
+            Llama-4-Scout       & 26       & 40 \\
+            DeepSeek-V3-0324         & 41       & 41  \\
+            Qwen3-VL-32B-Instruct           & 31      & 36  \\
+            Ministral-8B-Instruct-2410           & N/A      & N/A  \\
+            Gemini-2.5-Flash    & 88.4 (\textit{Global})   & 50   \\
+            GPT-4.1.Mini        & 42       & 38  \\
+            GPT-o1              & 59       & 70 \\
+            \bottomrule
+        \end{tabular}}
+    \caption[QA and Long-Context Benchmark Performance Comparison]{
+        Further Benchmarks relevant to QA and Long-Context Performance}\label{tab:qa_lcw_2_llm}
+    \end{threeparttable}
+\end{table}
+%
+The displayed benchmark data reflects the performance of early-mid $2025$.
+The provided benchmark results indicate that the selected \acp{llm} have significant capabilities relevant to the \ac{qa} task.
 
-The benchmark scores confirm the advanced capabilities of the selected \ac{llm} in general reasoning and problem-solving tasks.
-This justifies their further evaluation for integration in both the \textit{\ac{rag}} and \textit{Large Context Window} methods.
 Performance in these general benchmarks is not a guarantee of performance in the specific \citet{bb2} \ac{qa} task evaluated in this work.
-In addition, the context windows of the respective \ac{lm} specified by the publishers often do not correspond to the size that can be used in real scenarios.
-The context sizes of \ac{lm}s used via \ac{api} vary considerably and decisively between providers.
-The actual parameters used in the performance of the specified benchmarks are also not transparent.
-Due to constant changes in the available models, with regard to access and retrieval of these models with respective parameters such as context size, a constantly ideal solution is hardly or not at all achievable.
+
+Due to constant changes in the available models, with regard to access and availability with respective parameters, such as context size, a constantly ideal solution is hardly or not at all achievable.
 The models were selected on the basis of the valuation metrics available at the time.
 Since the selection, new models with new capabilities and parameters have been published on an ongoing basis. 
-These models may be superior to the models selected but are deliberately ignored in the context of the objectives of this thesis.
-The choice of the aggregator \textit{OpenRouter} was made because of the practical, unifying interface for the selected available models and their available context window sizes.
+These models may be superior to the models selected but are deliberately excluded in the context of the objectives of this work.
 %
-Based on these criteria and models available early $2025$, the following set of \ac{api}-accessible \ac{llm}s is selected for evaluation in both the \ac{rag} and \textit{Large Context Window} methods:
-\begin{itemize}\label{subsec:selected_api_models}
-\item \textbf{Llama 4 Scout:} As a highly capable open-weight model it offers a potentially extreme context length and strong performance via low-cost \ac{api} aggregrator \textit{OpenRouter}.
-%
-\item \textbf{DeepSeek-V3:} Provides large context ($>128000$ token, sufficient for the approximately $120000 - 160000$ tokens of the pre-processed \citetitle{bb2} and a highly cost-effective \ac{api} option.
-\todo{add Gemini and GPT model}
-\end{itemize}
-%
-This selection provides a set of high-performance, large-context \ac{llm}s accessible via relatively low-cost \ac{api}s.
-All models will be used \enquote{out of the box} through their \ac{api} interface provided by \textit{OpenRouter}.\\
+
+All models will be used \enquote{out of the box} through their \ac{api} interface provided by \textit{OpenRouter} and \textit{Blablador}.
+The models \textit{Llama-4-Scout}, \textit{DeepSeek-V3}, \textit{Gemini-2.5-Flash} and \textit{GPT-4.1.Mini} are accessed via \textit{OpenRouter}.
+
+The models \textit{Qwen3-VL-32B-Instruct-FP8} and \textit{Ministral-8B-Instruct-2410} are accessed via \textit{Blablador}.
+
+This selection provides a group of high-performing \acp{llm}, that adhere to the defined accessibility and large-context requirements.
+Thus, \cref{task:1_1_llm_comparison} is completed.
 %
 \section{The Application Framework}
-The application is developed as a dedicated and customised research tool that meets the specific requirements of this study.
+In accordance with Goal $1$ (\cref{def:goal 1}) and Task A$1.2$ (\cref{task:1_2_reproducible}, the application is developed as a dedicated and customised research tool.
 Even if processes and design do not go beyond the requirements of a primary test and study application, functionality had to be prioritised.
-Since the concrete workflow within the application is just as relevant for understanding the methods used and analysed (Large Context Window and \ac{rag}), as well as their evaluation, certain processes implemented are described in more detail at the appropriate point.
+Since the concrete workflow within the application is just as relevant for understanding the methods used and analysed, certain processes implemented are described in more detail at the appropriate point.
 %
 \subsection{Data persistency}\label{par:data_persistency_docker}
 A key architectural feature of the application had to be robust data persistence. 
-Until the final version of the application is deployed, many development phases are run to test features and functions for flawless operation and to adapt them if necessary.
-This requires permanent error handling, which requires regular restarts of the application via Docker.
-The use of \textit{Docker} volume mounts ensures reproducibility, efficiency and data integrity during this versioning process.
-The directories on the host machine are linked to the directories in the running containers, ensuring that all critical data, from the source knowledge base to the generated vector embeds, remain upon container restarts and application updates.
-Within \texttt{docker-compose.yml}, a bind mount is configured to map the host's \texttt{./data} directory to the \texttt{/app/data} directory in the application \textit{Docker} container.
-
-\begin{lstlisting}[language=yaml, caption={Docker Compose configuration}, label={lst:app-data-mount}]
+Until the final version of the application is deployed, many development phases are run.
+This is necessary to test features and functions for error-free operation and to make adjustments if required.
+Versioning meant that the application had to be restarted regularly via Docker.
+Therefore, the directories on the host machine are linked to the directories in the running containers.
+In the foundational \texttt{docker-compose.yml}, a bind mount is configured to map the host's \texttt{./data} directory to the \texttt{/app/data} directory in the application \textit{Docker} container.
+%
+\begin{lstlisting}[language=yaml, caption={Docker Compose configuration}, label={lst:app_data_mount}]
 services:
 app:
 volumes:
 - ./data:/app/data
 \end{lstlisting}
-
-As a result, every file, such as the primary knowledge base \texttt{book.md} or the respective generated output files written to the \texttt{$/app/data$} directory within the container, are also stored on the host file system.
-All essential files are permanently stored within this persistent directory structure, guaranteeing to be immediately available at application startup and restart.\\
 %
-This approach has been persisted for the \textit{vector database} of the \ac{rag} pipeline, in order to avoid the computationally intensive process of \textit{re-embedding} and ingesting the knowledge base each time it is started. 
-The \textit{Qdrant container} is therefore configured with its own bind mount.
-
+As a result, every file written to the \texttt{$/app/data$} directory within the container is also stored on the host file system.
+The use of \textit{Docker} volume mounts ensures reproducibility, efficiency and data integrity during this versioning process.\\
+%
+This approach is retained for the \textit{vector database} of the \ac{rag} pipeline.
+The \textit{Qdrant container} is configured with its own bind mount.
+%
 \begin{lstlisting}[language=yaml, caption={Docker Compose configuration for Qdrant vector database persistence.}, label={lst:Qdrant-data-mount}]
 services:
 Qdrant:
 volumes:
 - ./data/Qdrant:/Qdrant/storage
 \end{lstlisting}
-
-This configuration avoids the need to process the knowledge base again and instead saves the generated vector embeddings permanently.
-This significantly speeds up application initialisation after the first run.
-
-\subsection{Input and Output Data Handling}\label{sub:data_in_out}
 %
-\subsubsection{Input - Evaluation Data Set}
- 
-With the aim of carrying out a structured evaluation of the generated answers as in \cite{Paul_Keller}, the same question sets have been processed with the \texttt{transformed} questions from the respective exams (see \cref{ch:approach}) in \textit{JSON} format.
-Here, each question has been assigned the following features.
+The computationally intensive process of re-embedding and re-ingesting the knowledge base at each start could thus be avoided.
+It also significantly speeds up application initialisation after the first run.
+%
+\subsection{Knowledge Base}\label{sec:knowledgeb_sol}
+
+As specified in the methodology, the knowledge base for all relevant processes is the textbook \citetitle{bb2}.
+The plain text version of the book prepared and used by \citet{Paul_Keller} was processed within the established pipelines. 
+This version, adjusted for non-textual elements such as images, tables and indices, forms the knowledge base for all subsequent \ac{qa} tasks. 
+The plain text document used corresponds to a total number of around $120000$  tokens (e.g, $117025$ for \textit{GPT-4} model \footnote{\raggedright{}\url{https://www.prompttokencounter.com/}, (accessed 10.06.25)}, $116375$ tokens for \textit{DeepSeek Chat V3}model \footnote{\raggedright{}\url{https://token-counter.app/deepseek/deepseek-v3}, (accessed 10.06.25)}.
+The respective values for other models differ but are of similar dimensions. 
+This number of tokens was a critical factor in both the selection of suitable \acp{llm} and the configuration of the \ac{qa} pipelines.
+%
+\subsection{Input Data}\label{sub:data_in}
+%
+The same question data set as in \cite{Paul_Keller} is processed in \textit{JSON} format.
+This serves as the basis for Task A$1.3$ (\cref{task:1_3_answer_generation_llm}) of Goal $1$ and \cref{task:3_1_exam} of Goal $3$.
+Here, each question is assigned the following features.
 \begin{itemize}
     \item \textbf{question}: The initial question from the respective source
     \item \textbf{transformed}: The reformulated and, if necessary, translated question
@@ -136,10 +222,10 @@ Here, each question has been assigned the following features.
     \item \textbf{num\_answers}: The number of subanswers within the expected answer
     \item \textbf{source}: Acronym for the source of the question
 \end{itemize}
-The respective files separating the generated questions according to their \texttt{type} (\texttt{single/ multi/transfer}) have been processed for answer generation and subsequent evaluation within this thesis.
-
-In addition, there is the second data set with a copy of all original questions, with minor grammatical and spelling errors added to the \enquote{transformed} questions.
-Furthermore, it was necessary to slightly modify all question sets by enriching the \texttt{transformed} questions containing acronyms, such as \enquote{tHIS}, with the explicit form:
+%
+The dataset includes a copy of all original questions, with minor grammatical and spelling errors added to the \enquote{transformed} questions.
+Data sets containing the minor grammatical and spelling errors are particularly processed to evaluate the criterion \textit{Robustness}(\cref{def:robustness_approach} as part of the evaluation metrics.
+Furthermore, it is necessary to slightly modify all question sets by enriching the \texttt{transformed} questions containing acronyms, such as \enquote{tHIS}, with the explicit form:
 \begin{lstlisting}[language=json, caption={Modified "transformed" Question}, label={lst:input_modification_rag}]
 {
 Modified "transformed" question example:
@@ -149,21 +235,428 @@ Modified "transformed" question example:
 (Modified) "transformed: "Define the term \"tHIS\" (transinstitutional health information system)"
 }
 \end{lstlisting}
-
-The respective files separating the generated questions according to their \texttt{type} (\texttt{single/ multi/transfer}) have been processed for answer generation and subsequent evaluation within this thesis.
-These modified question sets were used for the \ac{qa} pipeline with the \texttt{rag} method.
-Data sets containing the minor grammatical and spelling errors  were particularly processed
-to evaluate the criterion \enquote{robustness}(\cref{def:robustness_approach} as part of the in the evaluation metrics.
 %
-\subsubsection{Output - Generated Answer}\label{subsub:output_generated}
-
-Several output files were created to clearly structure the generated answers and prepare them for the evaluation steps.
-Each combination of the individual \ac{lm} with the respective question \texttt{type}, \texttt{method} and with or without the  grammar and spelling \texttt{errors} intentionally included resulted in a dedicated file.
-The meta data stored inside the files varied according to the method used.
-Canonical data entries are consistent within all files, as they were necessary for further evaluation processing: 
-
+The reason for this decision is described in more detailed in \cref{subsec:embed_problem}.
 %
-\begin{lstlisting}[language=json, caption={*\_answered.json File Structure, Method "lcw"}, label={lst:output_file_structure_answered_lcw}]
+\section{Implementation of the QA Method Pipelines} 
+%(Task A2.1)
+
+This section details the technical implementation of the two distinct \ac{qa}-methods (\cref{sec:method_implementation}.
+The technical realisation using the predefined question fulfils Task A$1.3$ \cref{task:1_3_answer_generation_llm}.
+At the same time, it enables the automatic answering process required for Goal 2 (\cref{def:goal 2}), particularly Task A$2.1$.
+It describes how each pipeline is constructed within the application to process user queries and \citet{bb2} as the knowledge base for automatic answer generation using the selected \acp{lm}.
+%
+\subsection{Context Preparation and Aggregation}\label{subsec:context_prep_common}
+
+Before any query can be processed, both methods require the collection and processing of the respective knowledge base.
+%
+This process is therefore created as an independent interface to be used by either method.
+%
+\subsubsection{Knowledge Base and Upload Ingestion}\label{subsec:knowledge_base_upload}
+
+The source text is loaded via \texttt{modules/book/content/book\_loader.py}.
+This loader dynamically dispatches to \textit{LangChain}'s \texttt{TextLoader}, \texttt{PyPDFLoader}, \texttt{Docx2txtLoader} based on the file extension and concatenates all page contents.
+The knowledge base can either be accessed via session state, therefore, being only available until the end of each session, or permanently stored within the respective directory on disk.
+For such files being provided at runtime, \texttt{backend/file\_processor.py} handles ingestion.
+It accepts an uploaded binary, streams it to a temporary file and uses the appropriate loader for further processing.
+%
+\subsubsection{Prompt Template}
+
+Two minor adaptations are introduced to the original prompt from \citet{Paul_Keller}.
+\textbf{First}, since all \ac{lm} used are pre-trained in answering questions, the additional placeholder \enquote{Answer:} within the prompt is removed.
+The placeholder was initially necessary to guide the not specifically trained \textit{Llama} model used in \cite{Paul_Keller}.\\
+\textbf{Second}, the book as an additional parsed context has a great impact on the format of the prompt.
+The introductory instruction and the respective parsed question within the prompt may unintentionally blur into the following text from the knowledge base.
+This potentially confuses the \ac{lm} and negatively impacts the output if not explicitly separated.
+Therefore, separating symbols are added to create a clear distinction between the respective parts of the prompts.
+%
+\begin{lstlisting}[language=Python, caption={The prompt template for QA}, label={lst:prompt-template}]
+    prompt = f"""
+    Instruction: You are given a question. Answer the question to your best knowledge.
+
+    ---------------
+
+    Question: {question}\n
+
+    ---------------
+
+    Context:
+    {context}
+    """
+    \end{lstlisting}
+    %
+\begin{quote}
+            
+\textbf{Experimental Premise vs. Optimisation:}\label{par:premise_prompt}\\
+    It is to be expected that further adjustment of the instructions within the prompt would significantly improve the generated output.
+    Even a simple, explicit restriction within the prompt on the length of the answer would, for example, guide the \ac{lm} to formulate answers more precisely and concisely and refrain from lengthy elaborations.
+    This would potentially minimise the expected and unwanted truncation of the generated answer.
+    Due to the set response limit of $512$ token within the \ac{api} - orchestration, the answer is simply cut, when the limit has been reached.
+    At this point, the premise of direct comparison prevails.
+    The minimal adjustments to the prompt were necessary in order to achieve comparable results.
+    Any further changes would create an entirely new scenario.
+    A direct comparison would then no longer be justifiable.
+\end{quote}
+
+\subsection{Retrieval Augmented Generation Pipeline}\label{sub:rag_implementation}
+
+The \ac{rag} pipeline was implemented following the theoretical concept specified in the \cref{ch:approach}.
+%
+The configuration of the key Steps is described in the following.
+%
+\subsubsection{Duplicate Prevention}
+
+The general implementation approach is a cost-saving and cost-efficient configuration.
+For this reason, the time-consuming and computationally expensive chunking and embedding process is only invoked if the required data inside the \ac{db} is not already present.
+The function \texttt{backend/vector\_db\_manager.py} queries the target collection using a \texttt{scroll\_filter} with a limit of $1$.
+Following this logic, the system efficiently verifies whether payloads with the defined \texttt{chunk\_types} already exists within the \ac{db}.
+Based on the returned results, only the creation and ingestion process of the missing chunks is triggered.
+%
+\subsubsection{Hybrid Chunking Strategy}\label{sub:hybrid_chunking_sol}
+As described in \cref{par:chunking_approach} the chunking implementation was planned to rely solely on the \textit{semantic chunking} method.
+However, multiple test runs revealed that all resulting chunks failed to meet the minimum score threshold during retrieval.
+The pipeline was forced to parse the prompt without additional context for the generation Step.
+This led to a \enquote{fruitless} answer, as the \acp{lm} responded on pre-trained knowledge.
+The output generated in this process showed mainly to types of responses:
+\begin{itemize}
+    \item The respective \ac{lm} was unable to answer the parsed question.
+    \item The statements contained within the answer did not show any scientifically relevant answers.
+\end{itemize}
+%
+To compensate for that, a hybrid strategy was implemented.
+The \ac{rag} pipeline now executes two distinct chunking processes.
+The knowledge base is populated with two types of chunks to ensure that at least one relevant payload is retrieved.
+This decision led to the desired goal of high quality output.
+%
+\noindent \textbf{1. Semantic Chunking}
+
+Initially, chunks are produced by \textbf{Semantic Chunking}. 
+Therefore \textit{LangChain}s \texttt{interquartile} method is chosen and implemented by modifying the original template from \cite{langchainsemantic}.\\
+The created \textit{LangChain} \texttt{SemanticChunker} instance is configured with \texttt{FastEmbedEmbeddings} using the default \texttt{BAAI/bge-small-en} embedding model (see \cref{par:api_generation_rationale}) and a\\ \texttt{breakpoint\_threshold\_type="interquartile"}.
+The interquartile range can be scaled by the keyword argument \texttt{breakpoint\_threshold\_amount} and was unmodified and therefore defaults to a value of $1.5$.
+%
+\begin{lstlisting}[language=python, caption={Interquartile Chunking}, label={lst:interquartile_chunk}]
+def _get_fastembed_embeddings() -> FastEmbedEmbeddings:
+
+    return FastEmbedEmbeddings(model_name=config_manager.get_embedding_model())
+
+
+(...)
+def _get_semantic_chunker(
+    breakpoint_threshold_type: str = "interquartile",
+) -> SemanticChunker:
+    """Return a cached SemanticChunker with interquartile breakpoints."""
+
+    return SemanticChunker(
+        _get_fastembed_embeddings(),
+        breakpoint_threshold_type=breakpoint_threshold_type,
+    )
+\end{lstlisting}
+%
+Within the \ac{rag} pipeline the \texttt{process\_file\_for\_rag} function loads the source text, generates the \textit{semantic chunks} and expands their metadata with relevant entries (e.g., \texttt{chunk\_type="semantic"}, \texttt{chunk\_id}, \texttt{total\_chunks}) for subsequent evaluation.
+The meta data allows for later filtering and further precise processing of relevant chunks.
+%
+
+\noindent \textbf{2. Fixed-Size Chunking}
+
+The secondary and added path provides the fallback to retrieve relevant input as context for the generation Step.
+%
+\textbf{Fixed-Size Chunking} does not focus on the preservation of contextual relationships, as described in \cref{sub:chunking_prel}.
+Nevertheless, this method provides an artificial contextual relationship between the chunks due to content overlap.
+
+A \texttt{RecursiveCharacterTextSplitter} is instantiated from \textit{LangChain}.
+The \textit{splitter} uses the \texttt{cl100k\_base} tokeniser provided by the \texttt{tiktoken} library.
+As a result, the knowledge base is first tokenised.
+On this basis, the chunk length can be determined using the \textit{token} count rather than the raw characters, This information is relevant for subsequent \ac{api} interaction in the process.
+After \textit{tokenisation} the \textit{splitter} creates chunks with \texttt{chunk\_size\_tokens=1000} and \texttt{chunk\_overlap\_tokens=400}.
+These chunks were tagged with multiple meta data entries relevant to subsequent evaluation (see \cref{lst:output_file_structure_answered_rag_para})
+This particular setting of the parameters \\ \texttt{chunk\_size\_tokens} and \texttt{chunk\_overlap\_tokens} is selected to ensure that the semantic context is preserved across chunk boundaries without creating excessive redundancy.
+%
+
+\noindent \textbf{Embedding and Vector Storage - FastEmbed}\label{par:embedding_workflow}
+
+The management of \ac{db} vectors within the \ac{rag} pipeline is implemented by a centralised \textit{FastEmbed} workflow.
+%
+
+\noindent \textbf{Centralised Configuration}
+
+The \texttt{ConfigManager} provides the \textit{FastEmbed}-compatible model identifier of the embedding model used (default value \texttt{BAAI/bge-small-en}).
+This centralised approach ensures that the same embedding model is used for both, the ingestion and retrieval paths within the pipeline.
+Modifying the \texttt{EMBEDDING\_MODEL} environment variable will change the embedding model, allowing for a potential comparison of outcome.
+%
+
+The \ac{db} data management is setup to prevent a mismatch and loss of data during \ac{db} ingestion the system queries.
+It therefore compares the output vector dimensionality of the active embedding model and the expected data structure of the \ac{db}.
+If a mismatch is determined, the respective structures can be adapted.
+%
+
+\noindent \textbf{Embedding at Ingestion Time}\label{par:embedding_ingestion_solution}
+
+During the initially processing of the knowledge base, following the \textit{chunking} Step, the system calls \ac{db} specific method \texttt{add\_documents()}.
+
+Each previously produced and provided \textit{LangChain} \texttt{Document} chunk is wrapped into a\\ \texttt{Document(text=\dots, model=self.embedding\_model\_name)} object.
+
+This object is then sent to the \textit{Qdrant} \ac{db} service, which runs inside the dedicated \textit{Docker container}, using \textit{Qdrant} clients \texttt{upsert} batch command.
+Because the \textit{Qdrant} service is installed with the \textit{FastEmbed} feature, the vector embedding is executed entirely server-side within the container (\cref{lst:Qdrant-data-mount}).
+Local resource constraints do not influence this process.
+%
+This means the application only sends raw text (chunks) and the respective meta data payload to the \textit{Qdrant} service.
+\textit{Qdrant} then generates the vectors internally and stores them with the assigned payload and the corresponding \texttt{chunk\_id}.
+%
+
+\noindent \textbf{Embedding at Query-Time}\label{par:embedding_query_solution}
+
+The retrieval process follows an identical pattern to ingestion.
+The \texttt{methods/vector\_db\_manager.py} receives the raw query string, parsed from the respective question file or the \ac{ui}.
+The query is then wrapped into the same \texttt{models.Document} object as in \cref{par:embedding_ingestion_solution}.
+This object is then sent to the \textit{Qdrant} service to execute the query \textit{embedding} using the same \textit{FastEmbed} pipeline.
+%
+\subsection{Embedding side effects}\label{subsec:embed_problem}
+The \texttt{BAAI/bge-small-en} (see \cref{par:embedding_rationale}) tokeniser normalised all tokens during the embedding process.
+This resulted, for example, in acronyms such as \enquote{tHIS} being converted into the single token \enquote{this}.
+The corresponding embedded vector thus carries the semantics of \enquote{define the term \textbf{this}}, making correct interpretation impossible.
+As a result, the similarity search leads to an empty return for such a question.
+Here, too, rationality had to be decided upon premise. 
+Therefore, questions that could lead to semantic misinterpretation due to normalisation are expanded with the acronyms written out.
+\enquote{define the term \textbf{this}} would then be parsed as \enquote{define the term \textbf{this} (transinstitutional hospital information system.}
+%
+\subsubsection{Vector Storage and Retrieval}\label{subsub:storage_retrieval_db}
+
+Both types of chunks are ingested into the \ac{db} using the instantiated \texttt{QdrantManager}.
+The \texttt{QdrantManager} wraps every \textit{Qdrant} vector-store operation.
+Each chunk, either \texttt{chunk\_type="semantic"} or\\ \texttt{chunk\_type="fixed"} following (see \cref{par:embedding_workflow}) is converted into a \textit{point} and stored inside the \ac{db}.
+In the context of the \textit{Qdrant} vector database, a \textit{point} consist of three parts:
+\begin{enumerate}
+    \item \textbf{ID}: A unique identifier for the specific chunk. These \textit{ID}s allow for precise filtering and analysis of the corresponding \textit{Payload}
+    \item \textbf{Vector}: The mathematical representation of the text chunk.
+    As implemented, the embedding process produces vectors with $384$ dimensions.
+    \item \textbf{Payload}: The actual text content.
+    As implemented, the payloads contain the text chunks from \citet{bb2} combined with all parsed meta data.
+    The meta data holds values such as the \texttt{source} and \texttt{chunk\_type}.
+\end{enumerate}
+The final ingestion into the \ac{db} is also executed by \textit{Qdrant} services, running server-side, where the created \textit{points} are stored inside the dedicated \textit{Qdrant} collection.
+The respective \texttt{collection} functions as a specific container where all the corresponding \enquote{points} are stored.
+Following the approach, only one container is produced for the single knowledge base \citet{bb2}.
+%
+
+The \textit{Qdrant} \ac{db} is deployed using the official \textit{Qdrant Docker image}, with a persistent \textit{Docker volume}.
+This setup is configured to ensure a reproducible and consistent storage of the vectorised and embedded knowledge base. 
+%
+\subsubsection{Retrieval and Filtering}\label{sub:retrieval_filter_db}
+At query time, the \ac{rag} pipeline's core retrieval logic is handled by the \texttt{\_retrieve\_rag\_documents} function.
+%
+\noindent \textbf{Raw Vector Query}
+
+Vector search and retrieval also uses the \textit{Qdrant} client for a unified setup with direct, high-performance \ac{db} querying.
+The parsed user query, here the \enquote{transformed} question from the data set, is first processed as described in \cref{par:embedding_query_solution}.
+%
+As soon as the user query is transformed into its vector representation, it can be used for the \ac{db} data query.
+Therefore, \textit{Qdrant} scores the user query by applying \textit{similarity search} against the embedded \textit{points} inside the collection.
+
+Setting \texttt{with\_payload=True} also retrieves the stored meta data.
+
+The query parameter \texttt{limit=top\_k} with \texttt{top\_k} is set to $15$.
+The \texttt{limit} instructs the retriever to fetch the \textit{top\_k} most similar chunks in relation to the representation of the query vector.
+%
+\paragraph{Scenario of the searching student - RAG}
+We set this process of \texttt{top\_k} retrieval in relation to the scenario of the student searching for answers.
+The limited retrieval represents, for example, the targeted search for sections related to the question within \citet{bb2}.
+Since there may be many potential sections to find, the student decides to read the first $15$ sections and then stops.
+In the best case, the student has extracted enough knowledge to answer the question in a knowledge-based and factually correct way.
+%
+\noindent \textbf{Minimum Score}
+
+All retrieved chunks are filtered according to a minimum threshold.
+Such a threshold ensures that amongst the \texttt{top\_k} only the most relevant and thereby the most contributing remained.
+The \ac{db} returns the retrieved \texttt{documents} as \texttt{ScoredPoint} with a meta data entry \texttt{score}.
+A high \texttt{score} corresponds to \enquote{high relevancy} in relation to the initial query.
+\texttt{ScoredPoint} falling below the defined and configurable threshold (set via the \texttt{RAG\_MIN\_SCORE} environment variable) are filtered out.
+The threshold is set at a value of $0.85$.
+%
+\subsubsection{Prompt Formatting and API Call}\label{sub:prompt_api_rag}
+
+The set of retrieved and filtered text chunks is then forwarded and aggregated into a combined \texttt{document\_texts} object.
+This object is then parsed into the prompt template (see \cref{lst:prompt-template}).
+If all retrieved \texttt{documents} fall below the threshold, an empty list is forwarded.
+
+No additional input for the generation Step as context would contradict the concept of \enquote{augmenting} in a \ac{rag} pipeline.
+
+The initial exclusive use of chunks produced by \textit{semantic chunking} led to this very lack of augmentation.
+As the previous retrieval process returned an empty list.
+
+The decision to perform the \textit{chunking} Step again with a new approach (fixed-size) was therefore crucial for genuine \enquote{augmentation}.
+The retrieval Step is able to return relevant chunks of type \texttt{fixed\_size}.
+Allowing for a subsequent augmented prompt for the generation Step.
+%
+
+With the finalised and enriched prompt template the pipeline invokes the selected \ac{lm} for answer generation.
+The pipeline separates into processing via \textit{OpenRouter} and \textit{Blablador} \ac{api} and is further described at \cref{subsub:api_call_common_bla}
+%
+\newpage
+\subsection{Large Context Window Pipeline}
+
+The implementation of the \ac{lcw} method is designed to test and evaluate the \enquote{out of the box} \ac{lcw} capability of the selected \acp{llm}.
+The results generated are then compared based on defined metrics.
+This process involves several key implementation stages.
+%
+\subsubsection{Core Function and Input}
+
+The primary interface is the\\ \texttt{methods/LCW/process\_large\_context\_window} function. 
+Here, a core set of input arguments is accepted that define the \ac{lcw} process:
+\begin{itemize}
+    \item  The \textbf{user prompt} is parsed as the \texttt{question} argument.
+    During a question batch run \texttt{question} is populated by the \enquote{transformed} entry from the input data set (see \cref{sec:approach:questions}, (\cref{sub:data_in})).
+    It is also possible to parse an individually defined query from the \ac{ui}.
+    \item The \textbf{\texttt{llm\_name}} argument represents the \ac{ui} display name\\ ((e.g., \enquote{DeepSeek\_Chat\_V3}), which is then mapped to the official \ac{api} model identifier (\cref{lst:llm_name-maping}).
+    \item The \textbf{\texttt{document\_texts}} argument is a dictionary that expects document names (e.g., filenames) as keys and their corresponding raw text as values.
+    \item A unique question \texttt{id} is required for evaluation alignment and error handling and is passed through the pipeline.
+    \item The variable \textit{document\_texts} is combined with the instruction and the user query within the prompt (\cref{lst:prompt-template}).
+    \item The optional argument \texttt{q\_type} which was assigned according to the question types (used were \texttt{single, multi, transfer} during the batch run.\\
+    \item The optional argument \textbf{\texttt{error\_status}} that was set to \enquote{no\_errors} or \enquote{errors} based on the occurrence of minor intentional spelling and grammar errors in the question.
+    The appropriate setting of this variable is necessary for filtering and correct parsing during the evaluation pipeline.
+    \item Also, the canonical fields \texttt{transformed}, \texttt{true\_answer}, \texttt{num\_answers} and \texttt{source} can be provided here if not parsed by the respective helper or if needed to be changed for an override.
+\end{itemize}
+%
+\subsubsection{Context Aggregation}
+
+Following the ingestion and upload process described in \cref{subsec:knowledge_base_upload} a \texttt{document\_texts} dictionary is created with the corresponding data.
+This dictionary can either be filled with input
+from the locally persistent knowledge base or session-state uploads.
+Input can consist of possibly one or multiple texts (e.g., multiple book text) , which are then joined to a single string.
+Individual texts are separated by \enquote{\textbackslash n \textbackslash n|}.
+The respective identifying input file names are parsed as a list of ordered keys.
+%
+\subsubsection{Prompt Formatting and API Call}\label{subsub:prompt_api_lcw}
+%
+With the context aggregated, the next Step is the construction of the prompt.
+%
+The \texttt{process\_large\_context\_window()} function as the orchestrator passes all necessary arguments (\texttt{llm\_name},  \enquote{transformed} question, \texttt{combined\_context}) for the \ac{api} call.
+From this point on, prompt construction and parsing, as well as the \ac{api} call, are similar to the process used in the \ac{rag} method (see \cref{subsub:api_call_common}).
+%
+\paragraph{Scenario of the searching student - LCW}
+We set this process context aggregation in relation to the scenario of the student searching for answers.
+The aggregation and parsing of all available knowledge to the \ac{lm} represents, for example, collecting all books and placing them in front of the student.
+The subsequent processing of the knowledge base, in this scenario only one book, by \ac{lm} represents the student reading the entire content of the book at once.
+However, \ac{lm} do not read the content straight, from top to bottom.
+To illustrate the actual processing of input by an \ac{lm} detailed in \cref{sec:lm}, we need to abstract.
+We describe the underlying techniques allowing an \ac{lm} to \enquote{read}, in this scenario, as additional \textbf{notepads} of different colour.
+These notepads, which are then created by the student, have the following abstract functions:
+\begin{itemize}
+    \item Representing passages and sections of text
+    \item Summarising sections of varying sizes and with different topics and content
+    \item Describing the contextual relationships between the notes already created
+\end{itemize}
+%
+The book is now littered with notepads of different colours, each representing different information.
+Next, a question is to be answered based on the content of the book processed in this way.
+In theory, all relevant and necessary information is written down on the notes, therefore, easily accessible and can be searched quickly.
+%
+\subsubsection{API Call - OpenRouter}\label{subsub:api_call_common_OR}
+The \texttt{OpenRouterClient} maps the displayed and app internal \texttt{llm\_name} value to its specific \textit{OpenRouter} \ac{api} identifier and triggers the generation call via the \\texttt{OpenRouterClient.get\_completion}.:
+%
+\begin{lstlisting}[language=Python, caption={Mapping of Models Names - App Internal to API}, label={lst:llm_name-maping}]
+
+# Map LLM names to OpenRouter model IDs
+model_map = {
+    "GPT_4_1_Mini": "openai/gpt-4.1-mini",
+    "Gemini_2_5_Flash": "google/gemini-2.5-flash-preview",
+    "Llama_4_Scout": "meta-llama/llama-4-scout",
+    "DeepSeek_Chat_V3": "deepseek/deepseek-chat-v3-0324"}
+\end{lstlisting}
+%
+\subsubsection{API Call - Common}\label{subsub:api_call_common}
+
+The decoupled design of model mapping for both providers cleanly translates the internal app settings and user selection into the specific technical parameter needed for the final \ac{api} call.
+It ensures that the correct model is invoked for generation.
+Furthermore, the list of \ac{lm} can be flexible and customised.
+
+The \texttt{temperature} for the generation is hard-coded to \texttt{0.0} for deterministic answers (see \cref{def:determenism_approach}).
+The \texttt{max\_token} \ac{api} argument is set to $512$, following the conditions in \cite{Paul_Keller}.
+As mentioned in \cref{subsec:large_context_api_pipeline} the restricting number of tokens could be implemented in the instruction within the prompt text.
+\cite{Paul_Keller} mentioned that the \acp{lm} used in his approach provided an answer predominantly within the scope of $512$, without an explicit instruction (\cref{par:premise_prompt}.
+During the course of this experiment, a rather alternating result is observed with regard to compliance with any token limits without explicit instructions.
+Interim test results do not show a clear pattern in the length of the generated output.
+Therefore, the decision is made to use the original prompt without explicit restrictions to continue to create conditions that were as uniform to \cite{Paul_Keller} as possible.
+This decision follows the premise, but potentially misleads the comparative assessment of the results.
+%
+\subsubsection{Data Persistence and Evaluation Schema}
+%
+The generated question received within the \ac{api} response is then saved following the strict evaluation schema described in \cref{subsub:output_generated_or} (OpenRouter) and \cref{subsub:output_generated_bla}.
+
+The processing and preparation of the answers generaded for the subsequent evaluation, completes \textit{Task $2.2$} (\cref{task:2_2_processing}.
+The implementation of both methods, \ac{rag} and \ac{lcw} within this application, enables automatic answering of the questions about information systems in healthcare and their management using \citet{bb2} as a knowledge base.
+Thereby, \textit{Task $2.1$} (\cref{task:2_1_auto_generate}) of \textit{Goal $2$} (\cref{def:goal 2}) is achieved.
+%
+\subsubsection{API Call - Blablador}\label{subsub:api_call_common_bla}
+
+The Blablador API interface requires the \ac{api} call to contain aliases instead of clear model IDs.
+These aliases are then mapped to the respective \ac{lm} ID on the server side.
+As the underlying models provided behind the aliases can change, the server sided mapping avoids naming issues on the client site.
+\begin{lstlisting}[language=Python, caption={Mapping of Models Names - App Internal to API}, label={lst:llm_name-maping_bla}]
+# Map LLM names to Blablador model aliases.
+BLABLADOR_ALIAS_FAST = "alias-fast"
+BLABLADOR_ALIAS_LARGE = "alias-large"
+BLABLADOR_ALIAS_MAP = {
+    BLABLADOR_ALIAS_FAST: "Ministral_8B_Instruct_2410",
+    BLABLADOR_ALIAS_LARGE: "Qwen3_VL_32B_Instruct_FP8",
+}
+\end{lstlisting}
+Before the \ac{api} call the combined prompt is processed via the \textit{tiktoken} token counter.
+The Blablador AI platform does not offer an overview or detailed documentation of \ac{api} calls made.
+This upfront Step allows for a more detailed analysis of the input.
+If the token counter returns count above the supported context window of a model, the parsed data can be adjusted or truncated.
+%
+\paragraph{Parameter Setting}
+The \textit{OpenRouter} and \textit{Blablador} \ac{api} both accept a \texttt{max\_token} parameter.
+
+For the \textit{OpenRouter} \ac{api}, this only defines the token output limit of the \ac{api} response.
+It is important to note that this limit is not forwarded as an additional instruction to the respective \ac{lm}.
+The generated output is simply truncated strictly according to the limit on the provider site.
+This is done regardless of whether any previous generated information is lost as a result.
+It may result in incomplete outputs being returned.
+
+At this point there is an important distinction between the providers.
+
+When using the \texttt{max\_token} parameter for the \textit{Blablador} \ac{api} call, the defined limit does not only restrict the length of the returned output, but also the token available for \textit{reasoning}.
+Thus, when defining a limit of $512$ token, these \textit{tokens} are rapidly consumed by the reasoning process of the respective model.
+Furthermore, the available number of tokens is probably already insufficient for the reasoning process.
+
+As the reasoning Step is prior to the generation of the final answer generation, certainly no token is available for that Step.
+The returned \texttt{content} value is therefore constantly \texttt{null} as no response could be generated.
+
+\paragraph{Prompt and Pipeline Adaption}
+The reasoning process and output generation can not be influenced separately by parameters.
+
+Here, the decision is made not to force the token limit by using a local token counter, but instead to adjust the prompt.
+This implementation is not equal to a strict, uninstructed limit as used in the \textit{OpenRouter} pipeline.
+It rather allows for a comparison of outputs without the potential loss of information.
+Thus, the inability to use the \texttt{max\_limit} limit parameter as intended is interpreted as an opportunity to expand the previous approach.
+This strategy departs from the initial scenario.
+At the same time, does it allow for a better assessment of the quality of the \ac{lm} output. 
+
+In order to implement the expansion of the approach, the sentence \enquote{Only use {token} tokens to generate the answer} was added to the initial prompt for the \textit{OpenRouter} pipeline (see \cref{lst:prompt-template}).
+Where the placeholder variable \texttt{{token}} is set to $512$.
+
+\paragraph{Inconsistent Availability}
+During the \ac{lcw} pipeline run using the Blablador \ac{api}, continuous \ac{api}-request problems become apparent.
+First, the \ac{api} sited processing time  for individual requests is remarkably high.
+A \texttt{reading time} of up to 5 minutes is necessary to avoid process failure.
+This leads to considerably long runtimes per question file.
+Second, the respective models are regularly unavailable.
+The \ac{api} responses thus either contain an error message or only provide a usable response after long request time outs.
+Even frequent repetitions of the request regularly lead to no generated output.
+This leads to output files that contain Error messages instead of generated answers.
+%
+\subsection{Output}\label{subsub:output_generated}
+%
+Several output files are created to clearly structure the answers generated and prepare them for the evaluation Steps.
+%
+The meta data stored inside the files varies according to the method and provider used. 
+%
+\subsubsection{Output - Common}\label{subsub:output_generated_or}
+
+Canonical data entries are consistent within all files, as they are necessary for further evaluation filtering and processing:
+\begin{lstlisting}[language=json, caption={*\_answered.json File Structure, Method "lcw"}, label={lst:output_file_structure_answered_lcw_common}]
 {
 Naming Pattern:
 {{llm}_{method}_{type}_{error-status}_answered.json}
@@ -187,19 +680,51 @@ File Format with canonical entries:
 }
 \end{lstlisting}
 
+\noindent\textbf{Output - Blablador}\label{subsub:output_generated_bla}
+The output data stored by the \textit{Blablador} pipeline for both \ac{lcw}  and \ac{rag} contains more detailed data concerning the tokens created and used before and during the \ac{api} call.
+
+\begin{lstlisting}[language=json, caption={*\_answered.json File Structure, Method "lcw"}, label={lst:output_file_structure_answered_lcw_or}]
+{
+Naming Pattern:
+{{llm}_{method}_{type}_{error_status}_answered_{token_limit}.json}
+{GPT_4_1_Mini_lcw_single_no_errors_answered_no_limit.json}
+
+
+File Format with canonical entries and additional data:
+{
+    "id": "{id}",
+    "question": "{original question}",
+    "transformed": "{Transforemd question}",
+    "generated": "{Generated answer},
+    "num_answers": {num_answer},
+    "type": "{type}", (e.g., "single")
+    "error_status": "no errors",
+    "llm": "{llm}", (e.g., GPT_4_1_Mini)
+    "method": "lcw",
+    "answer_timestamp": "{timestamp}",
+    "source": "{source}",
+    "details": {
+      "provider": "blablador",
+      "model_alias": "alias-fast",
+      "prompt_method": "no_token_limit",
+      "token_limit": "none",
+      "prompt_tokens_count": {tiktoken token count},
+      "prompt_tokens_count_local": {tiktoken token count, truncated if necessary},
+      "prompt_tokens_count_provider": {token count provided within API response},
+      "context_length": {tittoken token count of context},
+    },
+    "prompt_method": "no_token_limit",
+    "token_limit": "none"
+  }
+}
+\end{lstlisting}
 %
+\subsubsection{1. RAG Output}
 
-The \ac{rag} pipeline assigns and uses multiple meta data entries for different tasks.
-As a result, two different output files are generated, each for a dedicated purpose.\\
-
-\noindent\textbf{RAG Output File - Core Evaluation}
-
-This evaluation file following the naming pattern\\
-\{llm\}\_\{method\}\_\{type\}\_\{error-status\}\_answered.json was generated with relevant meta data for the subsequent core and automated evaluation steps.
-All canonical fields are present.
-In addition, retrieval details are stored, displaying the basic information extracted from the retrieval and generation process.
-
-
+The \ac{rag} pipeline generates two different output files for each parameter combination.
+A respective output file, as provided in \cref{lst:output_file_structure_answered_rag_core}, stores all canonical and additional fields produced to allow the subsequent evaluation Steps.
+Here, the additional fields show the basic retrieval data.
+%
 \begin{lstlisting}[language=json, caption={$*$\_answered.json File Structure, Method "rag"}, label={lst:output_file_structure_answered_rag_core}]
 {
 Naming Pattern:
@@ -251,13 +776,13 @@ File Format with canonical entries:
       }
 }
 \end{lstlisting}
+%
+\subsubsection{2. RAG Output}
 
-\noindent\textbf{2. RAG Output File - Additional Parameter Data}
-
-This file was created for potential evaluation of the \ac{rag} specific parameters set for retrieval and generation to analyse their influence on the generated answers.
-
+This file is created for potential evaluation of the \ac{rag} specific parameters set for retrieval and generation.
+Therefore, the file stores more specific retrieval details for further analysis of the retrieval and generation process.
+The respective files is not used for subsequent Steps within the pipeline.
 \begin{lstlisting}[language=json, caption={rag/{date}.json File Structure, Method "rag"}, label={lst:output_file_structure_answered_rag_para}]
-{
 {
     "id": "q0034",
     "question": "Wie wuerden sie die PWE eines KIS gestalten?",
@@ -295,16 +820,557 @@ This file was created for potential evaluation of the \ac{rag} specific paramete
         {...}
 }
 \end{lstlisting}
+%
+In general, if a file already exists, new generated results are appended to the data inside the respective file.
+%
+\section{Evaluation Pipeline}\label{sec:evaluation_pipeline}
 
-If a file already exists, new generated results were appended to the data inside the respective file.
+After the process of answer generation using both methods, the answers are automatically evaluated using the metrics defined in \cref{sec:evaluation_methodology_approach}.
 
-\subsubsection{Output - Evaluation File}
+The evaluation pipeline consists of several sub-Steps and implements \textit{Task $1.4$} \cref{task:1_4_automatic_eval}.
+The first Step is the extraction of subanswers, which forms the basis for all subsequent semantic comparisons.
+%
+\subsection{Step 1: Semantic Subanswer Extraction}\label{sub:subanswer_extr_eval}
 
-The evaluation of the generated answers was divided into several sub-steps and the corresponding data was documented and saved in the output file.
-In step 1 of the evaluation pipeline, subanswers within the respective answers were extracted, resulting in the following data structure scheme.
+This section details the implementation of the \textit{Step 1 -Subanswer extraction} pipeline, which has been implemented using the \textit{DeepEval} framework.
+The goal of this first evaluation Step is to iteratively retrieve the respective \texttt{true\_answer}, as well as the \texttt{generated} answer from the provided data set.
+This Step therefore also represents the first Step towards the implementation of Task $3.2$ \cref{task:3_2_processing_results}.
 
+Both text units are then separated into a list of discrete, comparable semantic sub-units.
+The separation process is executed according to a detailed and guiding prompt template (see \cref{par:prompt_definition-Step1}).
+%
+\subsubsection{Metric Implementation}\label{subsub:metric_impl_Step1}
 
-\begin{lstlisting}[language=json, caption={Evaluation File Structure - Step 1}, label={lst:evaluation_file_structure_step1}]
+The entry point for this metric is a \textit{DeepEval} orchestrator.
+It delegates the semantic subanswer extraction to a dedicated and customised \textit{DeepEval} metric with the implemented \enquote{llm-as-a-judge} feature.
+For the instructed segmentation of the text, multiple values are parsed to the \enquote{llm-as-a-judge} within the prompt:
+\begin{itemize}
+    \item The texttt{num\_answers} entry as the the expected count of subanswers.
+    \item The initial \texttt{transformed} question.
+    The structure of the question provides important information about the potential answer.
+    If the question consists of two sub-questions, it can be expected that the answer will be structured similarly.
+    \item The \texttt{generated} answer or \texttt{gold} answer. 
+\end{itemize}
+%
+During the metric initialisation the \texttt{gold} and \texttt{generated} template are loaded and used to build a \textit{LangChain} \texttt{PromptTemplate} for the subanswer extraction.
+The configured \ac{lm} as the \enquote{llm-as-a-judge} is set to \texttt{Gemin\_2\_5\_Flash} during the batch runs.
+%
+All \textit{llm-as-a-judge} calls use the same \texttt{openrouter\_client} with deterministic settings, a fixed \texttt{temperature} of $0.0$ and a \texttt{max\_tokens} limit of $700$.
+The execution of \ac{api} calls for the \enquote{llm-as-a-judge} process is to be executed asynchronously to remain compatible with \textit{DeepEval}'s async-native design.
+%
+\subsubsection{Subanswer Extraction - "Gold" }
+The automatic subanswer extraction of the \texttt{gold} answers repeatedly leads to unsatisfactory results during test runs
+
+As mentioned, the value \texttt{num\_answers} with the respective answer to be extracted was iteratively inserted into the prompt template for each \ac{api} call.
+The prompt itself explicitly instructs the evaluating \ac{lm} that the number of extracted subanswers and the value of \texttt{num\_answers} have to be exactly the same.
+
+The analysis of the extracted subanswers returned show that the quantity of subanswers matches the expected value.
+At the same time, the quality reveals the weaknesses of the system.
+In many cases, the subanswers extracted do not contextually match the actual subanswers identified by follow-up human analysis.
+This is probably due to the complexity of some responses and the lack of expertise of the extracting \ac{lm}. 
+Individual contextual relationships within the provided answers are not understood and recognised.
+
+Therefore, the \texttt{gold} answers are not processed by the \enquote{llm-as-a-judge} feature.
+Instead, they are simply parsed unaltered into the respective \texttt{*\_evaluated.json} file.
+The extraction and separation of the subanswer were then performed manually on the basis of human analysis.
+%
+\subsubsection{Subanswer Extraction - "Generated"}
+
+The \texttt{generated} answer is processed by the \textit{llm-as-a-judge} feature.
+The \texttt{\_a\_extract\_generated} method formats the dedicated prompt from  \texttt{subanswer\_prompt\_generated.md} that provides instructions for the extraction and formatting of the output.
+%
+\paragraph{Prompt Definition}\label{par:prompt_definition-Step1}
+
+Several test runs are executed, whereby only short and focused prompts are parsed to the \ac{llm}.
+The subanswers extraction using this approach does not appear to show a clear pattern.
+Occasionally, very high numbers of subanswers are generated, even though only $1$ or $2$ are expected.
+It is therefore clear, that the guiding prompt requires a precise definition and detailed descriptions of the evaluation approach and the corresponding requirements.
+
+Several iterations were necessary to define the effective and target-oriented instructions and directions for the \ac{lm} judge.
+The output format defined within the prompt had to be adapted several times, as parsing errors frequently occurred, causing the loss of output data generated.
+
+Initially, \textit{JSON} was defined as the required output format, but this did not allow for any error tolerance on the part of the generating \ac{llm} during extraction. 
+Thus, the inconsistent output format generated did not make a consistent retrieval of the output data possible despite possibly satisfactory subanswer extraction. 
+The subsequent format of a \textit{list} was also unsuccessful.
+
+The difficulty here was the separator between potentially several subanswers.
+The comma (symbol - \enquote{,}) could not be chosen, as this also possibly occurs within the subanswers.
+Thus, despite several variants with additional brackets and symbols to distinguish the special separator, it led to the unwanted splitting of successive subanswers.
+This was also further affected by the inconsistency of a uniform output as in previous approaches.
+
+The use of \textit{tags} finally led to the desired results of consistent output by the respective \ac{lm} and thereby desired extractions of the values obtained.
+The structure of the final prompt template was also used for the subsequent Steps of the evaluation pipeline.
+\paragraph{Prompt Construction}
+The custom judge template first defines the required evaluation persona the \ac{lm} is supposed to embody.:
+\begin{lstlisting}[language=Markdown, caption={Subanswer Extraction - Role}, label={lst:prompt_role_Step1}]
+<Role>
+        You are an expert semantic analyst, a high-fidelity semantic decomposition engine and linguistic processor. 
+        Your specialty is identifying and isolating conceptually coherent units of information or knowledge within a body of text.
+        You are meticulous, precise, and flawlessly adhere to structured output formats.
+        </Role>
+\end{lstlisting}
+
+This establishes a structured guidance and fundamental approach for the \ac{lm} judge before defining the actual \texttt{PrimaryPurpose} and \texttt{CoreTask}:
+\begin{lstlisting}[language=Markdown, caption={Subanswer Extraction - Core Task}, label={lst:prompt_core_tasks_Step1}]
+<CoreTask>
+        Your core task is to first analyse the inital and orginal *QUESTION* to understand its structure (e.g., does it ask for definition of one thing or a comparison of two things?).
+        Then, you will analyse the provided *GENERATED ANSWER* and divide it into a list of self-contained subanswers that align with the structure of the *QUESTION* subanswers.
+        A subanswer should represent a **SINGLE** distinct subject or topic being discussed.
+        The respective subanswer thereby extracted then includes the core description of that subject and all of its potential followup explanations, examples and contextual elaborations.
+        </CoreTask>
+\end{lstlisting}
+%
+The direct logical and contextual connection between the initial question and the \texttt{generated} answer as a combined input within the prompt shows to be decisive for a qualitative output.
+%
+\begin{lstlisting}[language=Markdown, caption={Subanswer Extraction - Input}, label={lst:prompt_input_Step1}]
+<Input_Data>
+        <Data_Item name="QUESTION">
+            <Description>The initial question that was asked. Use this as your primary guide for how to analyse and segment the *GENERATED ANSWER*</Description>
+            <Value>{question}</Value>
+        <Data_Item>
+        <Data_Item name="GENERATED ANSWER">
+            <Description>The text from which you will extract the conceptual subanswers, based on the structure and context of the *QUESTION*.</Description>
+            <Value>{generated}</Value>
+        </Data_Item>
+    </Input_Data>
+\end{lstlisting}
+%
+The following \texttt{<Detailed\_Instructions\_And\_Rules>} section contains $9$ detailed \texttt{rules}. 
+These \texttt{rules} provide a guiding methodology.
+The focus is on verbatim decomposition of the \texttt{generated} text in direct and explicit contextual and structural relation to the initial question into distinct, self-contained, coherent units.
+These units are defined by subject boundaries that meet strict requirements for structure, accuracy and scope.
+%
+Based on the experiences described in \cref{par:prompt_definition-Step1}, a specific output \texttt{Format} is defined and instructed to be able to retrieve the respective subanswer values within the \ac{api} response.
+\begin{lstlisting}[language=Markdown, caption={Subanswer Extraction - Output Format}, label={lst:prompt_output_format_Step1}]
+<Output_Specification>
+        <Format>
+            Your response **MUST ONLY** consist of one or more subanswers, with each subanswer individually wrapped in &lt;sub_answer&gt; and &lt;/sub_answer&gt; tags.
+            Provide **NO** extra commentary, **NO** lists, **NO JSON**, and **NO** other text.
+        </Format>
+        <Example_Output_Format>
+            <Description>This example shows the **PRECISE** structure and format for your final output. Your output **MUST** be a continuous block of text containing these tags.</Description>
+            <Example>
+            <sub_answer>This is the first complete sub-answer, which can contain (parentheses) and commas, without anyissues.</sub_answer><sub_answer>This is the second complete sub-answer, which can contain (parentheses) and commas, without any issues.</sub_answer>
+            </Example>
+        </Example_Output_Format>
+    </Output_Specification>
+\end{lstlisting}
+%
+The final prompt used for the \texttt{generated} subanswer extraction can be reviewed in \textit{subanswe\_prompt\_generated.md}.
+%
+\subsubsection{API Call}
+The interaction with the \ac{api}-accessed \ac{lm} judge is managed by a \texttt{OpenRouterLLM} wrapper, which particularly calls the defined \ac{llm} asynchronously via \textit{OpenRouter} parsing the constructed prompt template.
+Every \ac{api} call enforces deterministic parameters: 
+\begin{quote}
+    A \texttt{temperature} set to a value of $0.0$.\\
+    A \texttt{max\_token} limit of $700$
+\end{quote}
+%
+Since the subanswer extraction is explicitly intended to be verbatim (see \cref{lst:prompt_core_tasks_Step1}), the generated output is expected to be the same length as the original \texttt{generated} answer.
+Nevertheless, possible minor deviation due to inconsistencies in the persistence of symbols from the original text are expected.
+Therefore, the \textit{token} limit was set only slightly above that used in the answer generation (\cref{subsub:api_call_common}).
+This allows minor inconsistencies and unexpected deviations without the loss of data.
+%
+\subsubsection{Generated Output}
+The pipeline then parses the \ac{api} response and extract the text relevant content from within the \texttt{<sub\_answer>\dots</sub\_answer>} tags by performing a strict regex search.
+If no tags are found, the parser gracefully returns an empty list.
+%
+\subsubsection{Data Persistency}
+The extracted results are stored using the \texttt{write\_evaluation\_entry} function, which executes an atomic upsert operation with the respective unique \texttt{id}.
+The subanswers extracted from \texttt{generated} are saved as list items for the \texttt{\enquote{generated}} entry within the \texttt{\enquote{details}} field (see \cref{lst:evaluation_file_structure_Step1}.
+The value of \texttt{true\_answer} is copied and added as a single unaltered value for the \texttt{\enquote{gold}} entry within \texttt{\enquote{details}}
+The completion of the subanswer extraction is the first part of Goal $4$, Task A$4.1$ (\cref{task:4_1_automatic_eval}) and Task $4.2$ (\cref{task:4_2_automatic_eval_test}).
+\newpage
+\subsection{Step 2: Question Understanding Evaluation}\label{sub:Step2_eval}
+In the second Step of the evaluation pipeline, the \texttt{generated} answers are assessed to verify:
+\begin{quote}
+Whether the generating \ac{llm} correctly understood the user query?
+\end{quote}
+%
+The evaluation is based on the definition for \enquote{Question Understanding} from \cref{def:qu_understanding_approach}.
+The assessment of \textit{Question Understanding} is independent of the quality of the \texttt{generated} answer. 
+A \textit{llm-as-a-judge} is used to score the relationship between the original \texttt{transformed} question and the \texttt{generated} answer to determine a clear statement according to the metric.
+%
+\subsubsection{Metric Implementation}
+
+\paragraph{Data Dependency and Orchestration}\label{par:data_orchestrate_Step2}
+This Step depends on the successful completion of Step 1, as it operates directly on the output files (\texttt{*\_evaluated.json}).
+The orchestrator fetches the data records from the respective \texttt{*\_evaluated*.json} files.
+The specific and required entries \texttt{transformed} and \texttt{generated} are then extracted from the data.
+%
+\paragraph{Prompt Construction}
+The evaluation logic is controlled by the \texttt{QuestionUnderstandingMetric}.
+The metric is defined with the \texttt{OpenRouterLLM} wrapper instance from Step~1 and creates a customised \textit{DeepEval} \texttt{LLMTestCase}.
+The \texttt{LLMTestCase} combines the \texttt{transformed} question retrieved as \texttt{input} and \texttt{generated} answer as \texttt{actual\_output}.
+%
+The custom judging template for the metric is loaded once per metric instance.
+The template follows the instruction approach applied in Step 1 to first define the required evaluation persona:
+\begin{lstlisting}[language=Markdown, caption={Question Understanding - Prompt - Role }, label={lst:prompt_role_Step2}]
+<Role>
+         You are meticulous QA analyst and comprehensive evaluator.
+         You are specialised in evaluating a generated answer to clearly assess whether it clearly shows that the question it answers has been understood or not.
+         </Role>
+\end{lstlisting}
+This establishes a structured guidance and fundamental approach for the \ac{llm} judge before defining the actual \texttt{PrimaryPurpose} and \texttt{CoreTask}:
+%
+\begin{lstlisting}[language=Markdown, caption={Question Understanding - Prompt - Purpose and Task }, label={lst:prompt_purpose_task_Step2}]
+<PrimaryPurpose>
+         Assess whether the `GENERATED ANSWER` shows a *clear understanding* of the `QUESTION`.
+         </PrimaryPurpose>
+         <CoreTask>
+         Your core task is to analyse both the `QUESTION` and the `GENERATED ANSWER`. 
+         You will then determine whether the `GENERATED ANSWER` *accurately interprets and fully addresses the specific constraints, requirements of the expected answer and intent* of the `QUESTION`.
+         </CoreTask>
+\end{lstlisting}
+%
+The \textit{Scoring Criteria} are then defined, instructing a clear binary score and additional reasoning for the score value determined ($0/1$).
+In addition, a specifically required output \textit{Format} is defined and instructed to be able to retrieve the particular \textit{score} and \textit{reason} values within the \ac{api} response.
+%
+\begin{lstlisting}[language=Markdown, caption={Question Understanding - Prompt - Output Format}, label={lst:prompt_purpose_output_format_Step2}]
+<Format>
+        Your response **MUST** consist of two subanswers wrapped in individual tags:
+        **list** containing **exactly two string items**:
+        1.  *First*, the **numerical** score: `'1'` (for understood) or `'0'` (for not understood).
+        The **numerical** score **MUST** be wrapped in &lt;score&gt; and &lt;/score&gt; tags.
+        2.  *Second*, a short, one-sentence **string** item reasoning for your decision.
+        The string **MUST** be wrapped in &lt;reason&gt; and &lt;/reason&gt; tags.
+        Provide **NO** extra commentary, **NO** lists, **NO JSON**, and **NO** other text.
+        </Format>
+\end{lstlisting}
+%
+The retrieved values of \texttt{transformed} and \texttt{generated} are then mapped to the respective placeholder variables within the template:
+\begin{lstlisting}[language=Markdown, caption={Question Understanding - Prompt - Input}, label={lst:prompt_purpose_input_Step2}]
+<Input_Data>
+         <Data_Item name="QUESTION">
+             <Description>The original question that was asked.</Description>
+             <Value>{question}</Value>
+         </Data_Item>
+         <Data_Item name="GENERATED ANSWER">
+            <Description>The answer provided by the Large Language Model that you must evaluate.</Description>
+            <Value>{generated_answer}</Value>
+        </Data_Item>
+    </Input_Data>
+\end{lstlisting}
+%
+The final prompt used for the \enquote{Question Understanding} metric can be reviewed in \textit{Question\_Understanding\_prompt.md}.
+%
+\subsubsection{API Call}\label{par:api_call_Step2}
+The final \ac{api} call is made asynchronously where the constructed prompt template is parsed to the respective \acp{lm}
+This \textit{llm-as-a-judge} call applies the same parameters settings (e.g., \texttt{temperature} $= 0$) as the generative call in Step 1.
+The metric thereby executes iteratively and asynchronously for each \texttt{transformed} and \texttt{generated} coupled entry and the corresponding \texttt{id} entry.
+%
+\subsubsection{Generated output}
+
+The \enquote{judge} is explicitly instructed to return a binary score and a reason for the determined score, wrapped within specific tags as in \cref{lst:prompt_purpose_output_format_Step2}.
+A score of \texttt{$1$} indicates that the \texttt{generated} answer directly addresses or correctly interprets the question or the questions. 
+A score of \texttt{$0$} indicates a failure to understand or address the question/questions within the query.
+%
+\subsubsection{Data Persistence}
+
+The generated results from the generated \textit{llm-as-a-judge} response are formatted and inserted into the existing evaluation file from Step 1 as atomic updates.
+The extracted data from the generated output is therefore prepared as a structured \texttt{details} object and also documented as a top-level \texttt{understand:{score}} data entry (\cref{lst:evaluation_file_structure_understand_Step2}.
+The completion of the \enquote{Question Understanding} metric is the second part of Goal $4$, Task A$4.1 $\cref{task:4_1_automatic_eval} and Task $4.2$ \cref{task:4_2_automatic_eval_test}.
+%
+\newpage
+\subsection{Step 3: Explainability Evaluation}\label{sub:Step3_eval}
+
+In the final stage of the semantic and contextual evaluation pipeline, Step 3, the \texttt{generated} answers are assessed to verify:\\
+\begin{quote}
+Whether the generating \ac{llm} has provided any \textbf{explanation} for the knowledge or statements provided.
+\end{quote}
+%
+The evaluation is based on the  definition for \enquote{Explainability} from \cref{def:explainability_approach} and is independent of the quality of the \texttt{generated} answer. 
+Step 3 also uses the \textit{llm-as-a-judge}) to score the presence of any explanation within the provided answer.
+%
+\subsubsection{Metric Implementation}
+
+\paragraph{Data Dependency and Orchestration}\label{par:data_orchestrate_Step3}
+The entry point of the Step 3 pipeline, \texttt{orchestrator/evaluate\_explainability()}, requires the same input arguments as in the previous Step.
+It also operates directly on the dataset from Step 1.
+The orchestrator retrieves \texttt{transformed} question and \texttt{generated} answer entries from the respective \texttt{*\_evaluated.json} for further processing.
+
+\paragraph{Prompt Construction}
+The evaluation logic is controlled by the \texttt{ExplainabilityMetric}.
+The metric is defined similar to the Step 2 \textit{Understandibility} evaluation pipeline and creates a customised \textit{DeepEval} \texttt{LLMTestCase}.
+The process then follows the same deterministic execution pattern as \texttt{QuestionUnderstandingMetric} (\cref{par:api_call_Step2}).
+The custom judging template for the metric is loaded once per metric instance.
+The template follows the instruction approach applied in Step $1$ and $2$ to first define the required evaluation persona:
+\begin{lstlisting}[language=Markdown, caption={Explainability - Prompt - Role }, label={lst:prompt_role_Step3}]
+<Role>
+         You are a specialized evaluation expert focused on assessing the communicative quality of answers. Your task is to determine the extent to which a generated answer provides a **context-specific explanation of the arguments and facts it contains**.
+         </Role>
+\end{lstlisting}
+This establishes a structured guidance and fundamental approach for the \ac{llm} judge before defining the actual \texttt{PrimaryPurpose} and \texttt{CoreTask}:
+\begin{lstlisting}[language=Markdown, caption={Explainability - Prompt - Purpose and Task }, label={lst:prompt_purpose_task_Step3}]
+<PrimaryPurpose>
+         Analyse and evaluate the `GENERATED ANSWER` with regard to an **EXPLANATION** of the arguments and facts or the other generated results therein as defined in "KeyAttributesToEmbody".
+         </PrimaryPurpose>
+         <CoreTask>
+         Your core task is to determine the extent to which the `GENERATED ANSWER` provides plausible and appropriate reasoning or argumentation. The answer is **explained** if it contains an explanation, justification, or descriptive context beyond a mere statement of fact.
+         </CoreTask>
+\end{lstlisting}
+%
+Similarly to the previous Steps, the scoring criteria instructs a clear binary score and a \texttt{reason} for the scored value determined.
+In addition, a specifically required output \texttt{format} is demanded to be able to retrieve the particular \texttt{score} and \texttt{reason} values from the \ac{api} response.
+%
+The completion of the \enquote{Explainability} metric is the third part of Goal $4$, Task A$4.1$ (\cref{task:4_1_automatic_eval}) and Task $4.2$ (\cref{task:4_2_automatic_eval_test}).
+%
+\newpage
+\subsection[Step 4.1: Correctness]{Step 4.1: Correctness - Evaluation of Subanswers}\label{sub:Step4_1_eval}
+%
+In Step $4.1$ of the evaluation pipeline, the quality of all the subanswers extracted from the \enquote{generated} answers is assessed.
+The assessment results in individual scores for each generated subanswer.
+%
+This evaluation is the first part of the \textit{Correctness} assessment.
+The respective subanswers, as identified by Step 1, \textit{Semantic Subanswer Extraction} (\cref{sub:subanswer_extr_eval}), are classified according to $4$ categories:
+\begin{enumerate}\label{def:correctness_3_cat}
+    \item \textbf{Correct} - Score '1': The individual subanswer matches at least one subanswer of the golden true subanswers with regard to fact and content. 
+    \item \textbf{Helpful} - Score '2': The individual subanswer does \textbf{not} match at least one subanswer of the golden true subanswers with regard to fact and content.
+    Nevertheless, the subanswer is assessed as \textbf{factually correct} due to the additional context.
+    It is further classified as \textit{helpful} in relation to the original question.
+    \item \textbf{Not Helpful} - Score '0': The individual subanswer can not be assigned to either of the other two categories.
+    This category 
+    It is either incorrect according to the knowledge base or unrelated to the question.
+\end{enumerate}
+%
+The respective values are collected and inserted into the data scheme of the previous evaluation Step.
+
+The resulting micro-level classification of \textit{Step $4.1$} then allows the generated answer to be further classified at the macro level (Step 2 - Correctness).
+%
+\subsubsection{Metric Implementation}
+
+\paragraph{Data Dependency and Orchestration}\label{par:data_orchestrate_Step4_1}
+The \textit{Correctness} evaluation process depends on the successful completion of Step 1, \textit{Semantic Subanswer Extraction} (\cref{sub:subanswer_extr_eval}).
+It works directly on the output files (\texttt{*\_evaluated.json}) and processes the extracted subanswers.
+The necessary data records from the respective \texttt{*\_evaluated.json} files are retrieved.
+These are the subanswer entries of both \texttt{gold} and \texttt{generated}, as well as the \texttt{transformed} question.
+
+The \textit{Correctness} evaluation is primarily based on a direct comparison of a single generated subanswer to the list of subanswers from the golden \texttt{true\_answer}.
+%
+
+The evaluation logic is controlled by the \texttt{CorrectnessMetric}.
+The metric is also defined with the \texttt{OpenRouterLLM} wrapper instance from Step~1 and creates a customised \textit{DeepEval} \texttt{LLMTestCase}.
+%
+\paragraph{Prompt Construction}
+%
+The custom judging template for the metric is loaded once per metric instance.
+The template follows a similar instruction approach to the previous evaluation Steps.
+As described in the following, the evaluation workflow also requires the knowledge base \citet{bb2} as a context input.
+
+First, the required evaluation persona is defined.
+However, the subsequent structure of the prompt then differs significantly due to the complexity and size of the parsed content.
+%
+\begin{lstlisting}[language=Markdown, caption={Correctness - Prompt - Role }, label={lst:prompt_role_Step4}]
+<Role>
+You are an expert, highly analytical evaluator.
+Your core task is to analyze a *SINGLE* 'GENERATED_SUBANSWER' against a set of 'TRUE_SUBANSWERS'.
+If and **ONLY** if **NO** direct match is found, you will then evaluate it against the 'QUESTION' and 'BACKGROUND_CONTEXT_DATA'.
+</Role>
+\end{lstlisting}
+%
+Instructions regarding the evaluation workflow are already included in the \textit{role} descriptions.
+Due to the complexity of the instructions, the respective details and focal points of the evaluation workflow must be straightforward and repeatedly specified.
+%
+
+The prompt receives multiple context inputs - \textit{Generated Subanswer}, \textit{True Subanswers}, \textit{Question} and \textit{Context}.
+The \textit{Context} is again the entire book content as for the \ac{lcw} method.
+
+Subsequent to the definition of the \texttt{role}, key attributes for the judge to follow, such as \textit{objectivity} according to the provided data , are defined.
+In contrast to the previous prompt approach, the required output format is already specified at this point.
+\newpage
+%
+\begin{lstlisting}[language=Markdown, caption={Correctness - Prompt - Output format }, label={lst:prompt_purpose_task_Step4}]
+<Attribute>
+Precise: You strictly adhere to the output format: &lt;score&gt; and &lt;/score&gt;
+Return **EXACTLY** one line in this format: &lt;score&gt;0|1|2&lt;/score&gt;&lt;reason&gt;...&lt;/reason&gt;
+The output **MUST** contain exactly one &lt;score&gt; ('<score>') tag and one &lt;reason&gt; ('<reason>') tag, with absolutely **NO** other text **OUTSIDE** the tags.
+...
+\end{lstlisting}
+%
+Subsequent to the main \texttt{Attributes} to embody is the workflow description with a Step-by-Step instruction.
+%
+\begin{lstlisting}[language=Markdown, caption={Correctness - Prompt - Workflow Step 1 }, label={lst:prompt_workflow_Step4}] 
+<Evaluation_Workflow>
+...
+<Step_1_Primary_Matching>
+         <Goal>Check for a direct factual and content-related match with the `TRUE_SUBANSWERS`.</Goal>
+...
+\end{lstlisting}
+%
+At this point, depending on the outcome of the \texttt{Primary\_Matching}, the evaluation workflow either assigns a score of $1$ and stops or proceeds to \texttt{Step\_2\_Contextual\_Fact\_Check}.
+%
+\begin{lstlisting}[language=Markdown, caption={Correctness - Prompt - Workflow Step 2 }, label={lst:prompt_workflow_Step4_2}]
+<Evaluation_Workflow>
+<Step_2_Contextual_Fact_Check>
+        <Goal>
+        If **NO** direct match was found in Step 1, evaluate the un-matched `GENERATED_SUBANSWER` for contextual helpfulness.</Goal>
+         <Action>
+         Fact-check the 'GENERATED_SUBANSWER' against the provided 'BACKGROUND_CONTEXT_DATA' and analyse its relevance to the 'QUESTION'.</Action>
+...
+\end{lstlisting}
+In \texttt{Step\_$2$\_Contextual\_Fact\_Check} two outcomes are possible.
+%
+\begin{lstlisting}[language=Markdown, caption={Correctness - Prompt - Workflow Step 4 - Condition A }, label={lst:prompt_workflow_Step4_2_CA}]
+<Condition_A_Helpful>Is the `GENERATED_SUBANSWER` factually supported by the 'BACKGROUND_CONTEXT_DATA' **AND** does it provide relevant, bonus information to answer the `QUESTION`?
+...
+\end{lstlisting}
+If \textit{Condition A} is satisfied, a score of $2$ is assigned and the evaluation stops.
+
+Following that logic, if \textit{Condition A} is \textbf{not} satisfied, \textit{Condition B} is the remaining option.
+%
+\begin{lstlisting}[language=Markdown, caption={Correctness - Prompt - Workflow Step 2 }, label={lst:prompt_workflow_Step4_3}]
+<Condition_B_Not_Helpful>
+         Is the `GENERATED_SUBANSWER` contradicted by the 'BACKGROUND_CONTEXT_DATA', impossible to verify using the 'BACKGROUND_CONTEXT_DATA', totally off-topic, or nonsensical?
+...
+\end{lstlisting}
+%
+A score of $0$ is assigned and the evaluation stops.
+At this point, further instructions regarding the output are added.
+%
+\begin{lstlisting}[language=Markdown, caption={Correctness - Prompt - Forcing Output for Score '0'}, label={lst:prompt_workflow_Step4_4}]
+FORCING FUNCTION FOR SCORE 0: 
+To assign a Score of '0', your '<reason'>' **MUST** start with one of these exact three prefixes: "[Contradicted]", "[Unverifiable]", or "[Off-topic]".
+\end{lstlisting}
+%
+This is essential for the subsequent filtering, aggregation and the final clear statement concerning the \textit{Correctness} categories.
+%
+In general, the respective score \texttt{value} and \texttt{reason} for either outcome are to be wrapped by specific tags as in the previous metrics.
+%
+The retrieved values of the respective subanswers, the context and the question are mapped to the corresponding placeholder variables within the template.
+%
+
+During test runs, the evaluating \ac{lm} shows to be distracted by the parsed context input during inference.
+It is assumed that the comprehensive technical information within the context leads to a loss of focus on important and specific instructions prior to it.
+%
+The evaluation workflow and the specific instructions regarding the output were therefore inserted again in abbreviated form after the context.
+%
+The final prompt used for the \textit{Correctness} metric can be reviewed in \textit{gold\_generated\_eval\_prompt.md}.
+%
+\subsubsection{API Call}\label{par:api_call_Step_4_1}
+
+The \textit{llm-as-a-judge} \ac{api} call applies the exact same parameters (e.g., \texttt{temperature} $0$) as the generative call in the previous Steps.
+The metric thereby executes iteratively and asynchronously for each individual generated \texttt{subanswer}.
+%
+\subsubsection{Data Persistence}
+
+The generated results from the generated \textit{llm-as-a-judge} response are formatted and inserted into the existing evaluation file from Step 1 as atomic updates.
+The structured \texttt{details} object within the output files is provided at  (\cref{lst:evaluation_file_structure_understand_Step2}.
+%
+\subsection[Step 4.2: Correctness]{Step 4.2: Correctness - Classification}\label{sub:Step4_2_correct}
+
+The output data of Step $4.1$ is filtered and aggregated.
+The aggregation results in a score value for the data entry \texttt{answered} and \texttt{points}.
+%
+
+The implemented deterministic processing logic first assigns the respective scores to each subanswer individually.
+
+Possible values are $0,1,2,3,4$.
+This assessment expands the original value system defined in \cref{sub:metrics_eval_approach}.
+Due to the inconsistency of the \textit{llm$-as-a-$jduge} output, an adjustment of the values is necessary.
+This allows for valuable and more realistic performance evaluation:
+
+\begin{itemize}
+    \item \textit{Not answered} ($0$)
+    \item \textit{Correct} ($1$)
+    \item \textit{Incorrect} ($2$)
+    \item \textit{Partially correct} ($3$)
+    \item \textit{Correct without explicit index} ($4$)
+\end{itemize}
+%
+For every generated subanswer that has been rated by the previous Step $4.1$, an additional \texttt{reason} for the score assigned must be provided by the \ac{llm} judge.
+
+The extracted scores are then filtered according to the indices and additional phrases within the \texttt{reason}.
+%
+\subsubsection{Classification}
+
+The classification by the \ac{llm}-judge proves to be inconsistent and ambiguous.
+Specific keyword and prefix recognition is therefore implemented.
+This allows for crucial diagnostic metrics of the \textit{score} $-$ \textit{reason} combinations to be executed.
+
+The respective \texttt{reason} is tagged following diagnostic metric analysis.
+%
+\paragraph{Score $- 1$}
+
+If a score of $1$ is assigned, the \texttt{reason} must explicitly refer by index to the corresponding golden true subanswer that has been matched.
+
+If a generated subanswer receives a score of $1$ but lacks a parseable, valid index reference, it is flagged as a \texttt{joker}. 
+
+A \texttt{joker} is relevant during the subsequent aggregation.
+Thus, flagged subanswers are not categorically devalued for the overall results.
+The subsequent aggregation process follows a deterministic sequence of rules.
+%
+\paragraph{Score $- 0$}
+
+The judge is instructed to provide prefixes if a score of $0$ is assigned (see \cref{lst:prompt_workflow_Step4_4}).
+
+Following the specific keyword and prefix recognition corresponding flags are activated:
+\begin{itemize}
+    \item \textbf{Hard Incorrect}: If contradictory phrasing or misaligning statements, with regard to the knowledge base, are detected.
+    Results in the \texttt{hard\_incorrect\_triggered} flag.
+    \item \textbf{Off-Topic}: If the prefix \enquote{Off-topic} or similar keywords are detected for all subanswers of a \texttt{generated\_answer}.
+    Results in the \texttt{off\_topic\_only} flag.
+    \item \textbf{Unverifiable:} If the detected keywords determine an unverifiable case.
+\end{itemize}
+
+\subsubsection{Evaluation Mode}
+
+The implemented framework diverges into specific evaluation modes.
+These policy modes are defined as:
+\begin{itemize}
+    \item \texttt{strict\_truth\_mode}
+    \item \texttt{evidence\_sensitive\_mode}
+\end{itemize}
+%
+Depending on the mode, edge cases are handled differently, for example:
+\begin{itemize}
+    \item Unverifiable subanswers
+    \item Subanswers with a \texttt{score} of $1$ without index specific match (\texttt{joker}
+    \item Answers consisting of subanswers with a \texttt{score} of $2$
+    \item Underfit (\texttt{num\_answers} $\geq$ \texttt{total\_answers} and \texttt{points} $\geq 0$) without \textit{hard incorrect} subanswers 
+\end{itemize}
+
+The \enquote{strict truth} policy classifies such cases as \textit{incorrect}.
+
+The \enquote{evidence-sensitive} policy, for example, classifies subanswers with a \texttt{score} of \num{2} as \enquote{helpful} and subsequently allows for an overall assessment of answers as \enquote{partially correct}.
+This policy is referred to as \enquote{exam} mode in the output data.
+This evaluation approach is more tolerant if the subanswers of a generated answer and therefore the overall generated answer do not directly match we the \texttt{true\_answer}.
+As in an exam, answers and subanswers that are contextually similar or helpful with regard to the question and supported by the knowledge base can result in the \enquote{correct} - class.
+
+The respective data entries \texttt{answered.strict} and \texttt{answered.exam} allow for a site-by-site evaluation.
+
+A complete and comprehensive workflow can be reviewed in the public \textit{Github} repository.
+
+\subsection[Step 4.3: Correctness]{Step 4.3: Correctness - Aggregation}\label{sub:Step4_3_correct}
+To analyse the \textit{Correctness} of the generated answers, all numerical evaluations scores of the questions are aggregated per \textit{mode}, \textit{method}, \textit{llm}, \textit{type} and \textit{source}.
+The resulting values are then used to calculate the \textit{Macro F1} score according to the formulas defined in \cref{sub:metrics_eval_approach}.
+The evaluations are based on a comparison of the extracted subanswers from the \texttt{generated} answers with the manually extracted subanswers from the \texttt{true\_answer}s.
+%
+The completion of the \enquote{Correctness} metric is the fourth part of Goal 4, Task A$4.1$ (\cref{task:4_1_automatic_eval}) and Task $4.2$ \cref{task:4_2_automatic_eval_test}
+\subsection{Step 5: Robustness}
+The robustness of a model describes its ability to generate a correct answer even with incorrect input (\cref{def:robustness_approach}).
+For this purpose, in addition to the orginal set of questions, a dedicated set with the altered versions of the questions containing minor spelling and grammatical errors is used.
+The respective set is processed by both methods in the same way as the original set of questions.
+
+The robustness evaluation refers to all answered questions which are answered correctly if entered as either the correct and incorrect version.
+The respective incorrectly answered questions are extracted from the output file after the generation process.
+
+The calculation of the results is analogous to the calculation of the \textit{Correctness} metric (see \cref{def:correctness_approach}). 
+Whereby, not the number of questions contained in the potentially reduced robustness data set, but the number of all existing questions is used for the calculation of the \textit{Macro F1} value.
+%
+
+The implementation of the \textit{Robustness} metric finalises Goal 1 \cref{def:goal 1}. 
+The reproducibility aspect of Goal $1$ is being realised by providing the corresponding code on the \textit{GitHub} platform.
+All metrics allow the execution of the automatic evaluation relevant to Goal $4$, Task A$4.1$ (\cref{task:4_1_automatic_eval}) and Task $4.2$ (\cref{task:4_2_automatic_eval_test}).
+% 
+%
+\section{Output - Evaluation}
+
+The evaluation of the generated answers is, as described, divided into several sub-Steps.
+The corresponding data is documented and saved in the output file.
+\subsection{Step 1 - Subanswer Extraction}\label{subsub:output_1_subanswer}
+In Step 1 of the evaluation pipeline, subanswers within the respective answers are extracted, resulting in the following data structure scheme.
+%
+\begin{lstlisting}[language=json, caption={Evaluation File Structure - Step 1 Subanswer Extraction - Example}, label={lst:evaluation_file_structure_Step1}]
 {
 Naming Pattern:
 {{llm}_{method}_{type}_{error-status}_evaluated.json}
@@ -312,7 +1378,7 @@ Naming Pattern:
 
 Example:
 {
-    "id": "q0022",
+    "id": "q0010",
     "llm": "Gemini_2_5_Flash",
     "method": "lcw",
     "type": "single",
@@ -327,36 +1393,37 @@ Example:
       "retrieval": [],
       "sub_answers": {
         "gold": [
-          "IHE stands for Integrating the Healthcare Enterprise ..."
+          "A Hospital Information system is the socio-technical subsystem of hospitals..."
         ],
         "generated": [
-          "IHE stands for **Integrating the Health care Enterprise** ..."
+          "A **hospital information system (HIS)** is the socio-technical subsystem of a hospital that..."
         ]
       }
     },
     "source": "IS_2022_09_27",
-    "true_answer": "IHE stands for Integrating the Healthcare Enterprise ...",
-    "generated": "IHE stands for **Integrating the Health care Enterprise** ...",
-    "transformed": "What is IHE?",
-    "question": "Was ist IHE?"
+    "true_answer": "A Hospital Information system is the socio-technical subsystem of hospitals...",
+    "generated": "A **hospital information system (HIS)** is the socio-technical subsystem of a hospital that...",
+    "transformed": "Define the term \"hospital information system\".",
+    "question": "Definieren Sie den Begriff \"Krankenhausinformationssystem\"."
   },
 
   {...}
 
 }
 \end{lstlisting}
+%
+\subsection{Step 2 - Understandability}\label{subsub:output_1_understand}
+In Step 2 of the evaluation pipeline, the \texttt{Question Understanding} metric is assessed.
+The respective value is collected and inserted into the previous data scheme of Step 1, resulting in the additional meta data entry for each \texttt{id}:
 
-In step 2 of the evaluation pipeline, the \texttt{Question understanding} metric was assessed.
-The respective value was collected and inserted into the previous data scheme of step 1, resulting in the additional meta data entry for each \texttt{id}:
-
-\begin{lstlisting}[language=json, caption={Evaluation File Structure - Step 2}, label={lst:evaluation_file_structure_understand_step2}]
+\begin{lstlisting}[language=json, caption={Evaluation File Structure - Step 2}, label={lst:evaluation_file_structure_understand_Step2}]
 {
     "id": "q0022",
     {...}
    "details": {
     {...},
     "question\_understanding": {
-            "understand": {score},
+            "understand": {score} (0 - not understood, 1 - understood),
             "reason": "{reason}",
             "raw": "<score>{score}</score><reason>{reason}</reason>",
             "status": "success/failure"
@@ -368,570 +1435,118 @@ The respective value was collected and inserted into the previous data scheme of
     }
 }
 \end{lstlisting}
+%
+\subsection{Step 3 - Explainability}\label{subsub:output_3_explain}
+In Step 3 of the evaluation pipeline, the \texttt{Explainability} metric is assessed.
+The respective value is collected and inserted into the previous data scheme of Step 2, resulting in the additional meta data entry for each \texttt{id}.
 
-In step 3 of the evaluation pipeline, the \texttt{Explainability} metric was assessed.
-The respective value was collected and inserted into the previous data scheme of step 2, resulting in the additional meta data entry for each \texttt{id}:
-
-\begin{lstlisting}[language=json, caption={Evaluation File Structure - "Explain"- Step 2}, label={lst:evaluation_file_structure_explain_step2}]
+\begin{lstlisting}[language=json, caption={Evaluation File Structure - "Explain"- Step 2}, label={lst:evaluation_file_structure_explain_Step2}]
 {
     "id": "q0022",
     {...}
-    "understand": {value}
-    "explain": {value} (0 - not explained, 1 - explained)
+    "understand": {score}
+    "explain": {score} (0 - not explained, 1 - explained)
+    {...}
+    "explainability": {
+        "explain": 1,
+        "reason": "The answer provides detailed explanations, comparisons, and contextual reasoning for the differences between PMS and PDMS, marking it as \"explained\".",
+        "raw": "<score>1</score><reason>The answer provides detailed explanations, comparisons, and contextual reasoning for the differences between PMS and PDMS, marking it as \"explained\".</reason>",
+        "status": "success"
+      },
+}
+\end{lstlisting}
+%
+\subsection{Output - Step 4.1 - Correctness}\label{subsub:output_4_1_correct}
+
+The process results in the additional meta data object \enquote{correctness} for each \texttt{id}.
+The individual subanswer classification scores and reasons, as well as the evaluation \texttt{status} and raw judge output are stored within individual entries.
+Further, a combined overview of the scores is stored, as exemplified in \cref{lst:evaluation_file_structure_points_Step_4_1}.
+%
+\begin{lstlisting}[language=json, caption={Evaluation File Structure - 4.1 Correctness - Example}, label={lst:evaluation_file_structure_points_Step_4_1}]
+"items": [
+          {
+            "subanswer": {subanswer},
+            "score": 1,
+            "reason": "The generated subanswer correctly identifies developing a strategic information management plan as an activity of strategic planning, directly matching TRUE_SUBANSWER #1.",
+            "status": "success",
+            "subanswer_index": 1,
+            "raw": "<score>1</score><reason>The generated subanswer correctly identifies developing a strategic information management plan as an activity of strategic planning, directly matching TRUE_SUBANSWER #1.</reason>"
+          }
+        ]
+        ...
+        },
+        "correctness": {
+            "evaluated": 1,
+            "failed": 0,
+            "correct": 1,
+            "helpful": 0,
+            "not_helpful": 0
+            }
+\end{lstlisting}
+%
+\subsection{Output - Step 4.2 - Correctness}\label{subsub:output_4_1_correct}
+\textit{Step 4.2 - Correctness} aggregates the prior individual classification of the subanswers to determine a final \textit{answered} score.
+The decision rule applied, as well as the classification determined by both evaluation policies are stored within a \texttt{correctness_aggregation} object as shown in \cref{lst:evaluation_file_structure_points_Step2}.
+
+\begin{lstlisting}[language=json, caption={Evaluation File Structure - Step 4.2 - Correctness - Example }, label={lst:evaluation_file_structure_points_Step2}]
+{
+    },
+      "correctness_aggregation": {
+        "decision_rule": "E",
+        "answered": 1,
+        "answered_strict": 1,
+        "answered_exam": 1,
+        "answered_final": 1,
+        "answered_label": "correct",
+        "matched_gold_indices": [
+          1,
+          2
+        ],
+        "missing_gold_indices": [],
+        "score_counts": {
+          "0": 0,
+          "1": 2,
+          "2": 0
+        },
+        "score1_items_without_index": 0,
+        "joker_count": 0,
+        "explicit_match_count": 2,
+        "hard_incorrect_triggered": false,
+        "off_topic_only": false,
+        "unverifiable_case": "none",
+        "notes": {
+          "reason": "All items scored 1 with full explicit gold-index coverage."
+        }
+      }
+      
+    [...]
+
+    "id": "q0022",
+    {...}
+    "answered": 1,
+    "points": 2,
+    "total_answers": 2,
+    "num_answers": 2,
     {...}
 }
 \end{lstlisting}
 
-In step 4 of the evaluation pipeline, the quality of the extracted subanswers of the \enquote{generated} answer was assessed.
-The assessment resulted in a score for \enquote{points}.
-The respective value was collected and inserted into the previous data scheme of step 2, resulting in the additional meta data entry \enquote{points} for each \texttt{id}:
+The  \textit{Robustness} metric workflow generates the same output data.
+To make it easy to distinguish between the records, the error status is specifically stored and highlighted in the file name, the individual \texttt{id}s and further the metadata:
 
-\begin{lstlisting}[language=json, caption={Evaluation File Structure - "Points" - Step 2}, label={lst:evaluation_file_structure_points_step2}]
-{
-    "id": "q0022",
-    {...}
-    "understand": {value}
-    "explain": {value}
-    "points": {score}
-    {...}
+\texttt{{mode}}\_{method}\_{type}\_\textcolor{blue}{no\_errors}\_evaluated.json} $\to$ \texttt{{mode}}\_{method}\_{type}\_\textcolor{red}{errors}\_evaluated.json}
+
+\begin{lstlisting}[language=json, caption={Evaluation File Structure - Robustness - Example }, label={lst:evaluation_file_robustness}]
+Example file - {DeepSeek_Chat_V3_lcw_multi_no_errors_evaluated.json}
+
+    {
+    "id": "qSm001",
+    "llm": "DeepSeek_Chat_V3",
+    "method": "lcw",
+    "type": "multi",
+    "error_status": "errors",
 }
 \end{lstlisting}
 
 
-%%%%
-\section{Implementation of QA Methods} 
-%(Task A2.1)
-
-This section details the technical implementation of the two distinct \ac{qa}-methods (\cref{sec:method_implementation}.
-It describes how each pipeline was constructed within the \ac{qa} and evaluation application to process user queries (here predefined questions as in \citet{Paul_Keller}) using \citet{bb2} as the knowledge base for automatic answer generation from the selected \ac{llm}s.
-
-%%%
-\subsection{Context Preparation and Aggregation}\label{subsec:context_prep_common}
-
-Before any query can be processed, both methods require the collection and processing of the respective knowledge base in order to integrate or further process.
-%
-This process was therefore created as an independent interface to be used by either method.
-%
-\subsubsection{Knowledge Base and Upload Ingestion}\label{subsec:knowledge_base_upload}
-
-The primary source text is loaded via \texttt{modules/book/content/book\_loader.py}.
-There, the \texttt{load\_book\_content} function resolves the path to the default knowledge base (used was \citetitle{bb2}) or other user provided files from the \texttt{data/book} directory.
-This loader dynamically dispatches to \textit{LangChain}'s \texttt{TextLoader}, \texttt{PyPDFLoader}, \texttt{Docx2txtLoader} based on the file extension and concatenates all page contents.
-Following this pipeline, once ingested and stored, a subsequent \ac{lcw} run can refer to the respective document according to the file name.
-A knowledge base can either be accessed via session state, therefore, being only available until the end of each session or permanently stored within the respective directory on disk.
-For such files being provided at runtime, \texttt{backend/file\_processor.py} handles ingestion.
-It accepts an uploaded binary, streams it to a temporary file and uses the appropriate loader for further processing.
-%
-
-\subsubsection{Prompt Template}
-
-Two minor adaptations to the original prompt from \citet{Paul_Keller} were introduced.
-\textbf{First}, as all \ac{lm} used are pre-trained in answering questions, the additional placeholder \enquote{Answer:} within the prompt was removed.
-The placeholder was initially necessary to guide the not specifically trained \textit{Llama} model used in \cite{Paul_Keller}.\\
-\textbf{Second}, the book as an additional parsed context has a great impact on the format of the prompt.
-The introductory instruction and the respective question may unintentionally blur into the following text,  potentially confusing the \ac{lm} and negatively impacting the output if not explicitly separated.
-Therefore, separating symbols were added to create a clear distinction between the respective parts of the prompts.
-%
-\begin{lstlisting}[language=Python, caption={The Prompt Template for QA}, label={lst:prompt-template}]
-    prompt = f"""
-    Instruction: You are given a question. Answer the question to your best knowledge.
-
-    ---------------
-
-    Question: {question}\n
-
-    ---------------
-
-    Context:
-    {context}
-    """
-    \end{lstlisting}
-    %
-\begin{quote}
-            
-\textbf{Experimental Premise vs. Optimisation:}\label{par:premise_prompt}\\
-    It is to be expected that further adjusting the instructions within the prompt would significantly improve the generated output.
-    Even a simple, explicit restriction within the prompt on the length of the answer would, for example, guide the \ac{lm} to formulate answers more precisely and concisely and refrain from lengthy elaborations.
-    This would potentially minimise the expected and unwanted truncation of the generated answer due to the set response limit of $512$ token within the \ac{api} - orchestration which simply cuts the answer when the limit has been reached.
-\end{quote}
-
-\subsection{Retrieval Augmented Generation Pipeline}\label{sub:rag_implementation}
-
-
-Following the theoretical concept specified in the \cref{ch:approach}, the \ac{rag} pipeline was implemented to operate locally within the resource constraints for the retrieval phase before making a remote \ac{api} call for the generation phase.
-The configuration of the key steps is described in the following.
-%
-\subsection{Duplicate Prevention}
-
-A cost-preserving guard logic was implemented to ensure that the time-consuming and computationally expensive chunking and embedding process is only invoked if the required data inside the \ac{db} is not already present.
-The function \texttt{\_collection\_has\_chunk\_type} in \texttt{backend/vector\_db\_manager.py} queries the target collection using a \texttt{scroll\_filter} with a limit of $1$.
-Following this logic the system efficiently verifies whether payloads with both defined \texttt{chunk\_types} (\enquote{semantic} or \enquote{fixed}) already exists within the \ac{db}.
-Based on the returned results, only the creation and ingestion process of the missing chunks is triggered.
-%
-\subsection{Hybrid Chunking Strategy}
-As described in \cref{par:chunking_approach} the chunking implementation was planned to rely solely on the \textit{semantic chunking} method based on an \texttt{interquartile} breakpoint threshold.
-However, multiple test runs revealed that all resulting chunks failed to meet the minimum score threshold during retrieval from the \ac{db}.
-The pipeline was forced to parse the prompt without additional context for the generation step which led to a \enquote{fruitless} answer, as the \ac{lm}s responded on pre-trained knowledge.
-The output generated in this process usually stated that the respective \ac{lm} was unable to answer the parsed question or contained statements based on the best internal knowledge of the respective \ac{lm}, which resulted in no scientifically relevant answers.\\\\
-%
-To compensate for that, a hybrid strategy was implemented.
-The \ac{rag} pipeline now executes two distinct chunking processes, populating \cite{bb2} with two types of chunks to ensure that at least one relevant payload is retrieved.
-This decision led to the desired goal of high quality output.
-
-\subsubsection{1. Semantic Chunking}
-
-\textit{LangChain}s \texttt{interquartile} method was chosen and implemented by modifying the original template from \cite{langchainsemantic}.\\
-The created \textit{LangChain} \texttt{SemanticChunker} instance is configured with \texttt{FastEmbedEmbeddings} using the default \texttt{BAAI/bge-small-en} embedding model (see \cref{par:api_generation_rationale}) and a\\ \texttt{breakpoint\_threshold\_type="interquartile"}.
-The interquartile range can be scaled by the keyword argument \texttt{breakpoint\_threshold\_amount} and was unmodified and therefore defaults to a value of $1.5$.
-
-\begin{lstlisting}[language=python, caption={Interquartile Chunking}, label={lst:interquartile_chunk}]
-
-
-def _get_fastembed_embeddings() -> FastEmbedEmbeddings:
-    """Return a cached FastEmbed embeddings. Default embedding model is used.
-    Which is bge-large-en-v1.5 by default"""
-
-    return FastEmbedEmbeddings(model_name=config_manager.get_embedding_model())
-
-
-(...)
-def _get_semantic_chunker(
-    breakpoint_threshold_type: str = "interquartile",
-) -> SemanticChunker:
-    """Return a cached SemanticChunker with interquartile breakpoints."""
-
-    return SemanticChunker(
-        _get_fastembed_embeddings(),
-        breakpoint_threshold_type=breakpoint_threshold_type,
-    )
-\end{lstlisting}
-
-The \texttt{process\_file\_for\_rag} function loads the source text (here \cite{bb2}), generates the \textit{semantic chunks} and expands their metadata with relevant entries (e.g., \texttt{chunk\_type="semantic"}, \texttt{chunk\_id}, \texttt{total\_chunks}) for subsequent evaluation.\\\\
-%
-
-\subsubsection{2. Fixed-Size Chunking}
-
-The secondary and added path, managed by\\ \texttt{backend/fixed\_chunk\_processor.py}, provides the fallback to retrieve relevant input as context for the generation step of the \ac{rag} pipeline.
-
-To segment the text of \citet{bb2} into manageable \textit{chunks} for the \textit{embedding} process, the \texttt{ingest\_book\_with\_fixed\_chunks} function instantiates a \texttt{RecursiveCharacterTextSplitter} from \textit{LangChain}.
-The \textit{splitter} uses the \texttt{cl100k\_base} tokenizer provided by the \texttt{tiktoken} library, allowing for determination of chunk length based on token count rather than raw characters.
-After \textit{tokenisation} the \textit{splitter} creates chunks with \texttt{chunk\_size\_tokens=1000} and \texttt{chunk\_overlap\_tokens=400}.
-These chunks were tagged with multiple meta data entries relevant to subsequant evaluation (see \cref{lst:output_file_structure_answered_rag_para})
-This setting was selected to ensure that the semantic context was preserved across chunk boundaries without creating excessive redundancy.
-%
-\subsection{Embedding and Vector Storage}\label{subsubsec:embedding_workflow}
-
-The management of \ac{db} vectors within the \ac{rag} pipeline is implemented by a centralised \textit{FastEmbed} workflow.
-
-\subsubsection{Centralised Configuration}
-
-The \texttt{backend/config\_manager.py/ConfigManager} provides the \textit{FastEmbed}-compatible model identifier (default value \texttt{BAAI/bge-small-en}).
-The retrieved value is used for both the ingestion and retrieval paths to keep the \textit{vectors} consistent and to follow the rationale described in \cref{par:embedding_rationale}.
-Modifying the \texttt{EMBEDDING\_MODEL} environment variable and redeploying the \textit{Qdrant} container will change the embedding model, allowing for a potential comparison of outcome according to the embedding model and its capabilities used.
-To ensure that the collection schema always matches the vector size generated by the active embedding model, \texttt{\_create\_collection} queries \textit{Qdrant} for the output dimensionality embedding model using \textit{Qdrant}s \texttt{client.get\_embedding\_size()}.
-%
-\subsubsection{Embedding at Ingestion Time}\label{subsub:embedding_ingestion_solution}
-When \texttt{methods/vector\_db\_manager.py/add\_documents()} is called,\\ it prepares each \textit{LangChain} \texttt{Document} chunk by wrapping it in a\\ \texttt{Document(text=..., model=self.embedding\_model\_name)} object.\\
-This object is then sent to the \textit{Qdrant} service, which runs inside the dedicated \textit{Docker container}, using \textit{Qdrant} clients \texttt{upsert} batch command.
-Because the \textit{Qdrant} service is installed with the \textit{FastEmbed} feature, the vector embedding is executed etnriely server-side inside the container (\cref{lst:Qdrant-data-mount}).
-Local resource constraints do not influence this process.
-
-This means the application only sends raw text (chunks) and the respective meta data payload to the \textit{Qdrant} sevice.
-\textit{Qdrant} then generates the vectors internally and stores them with the assigned payload and the corresponding \texttt{chunk\_id}.
-%
-\subsubsection{Embedding at Query-Time}\label{subsub:embedding_query_solution}
-
-The retrieval process follows an identical pattern to ingestion.\\
-The \texttt{\_query\_collection} function from \texttt{methods/vector\_db\_manager.py} receives the the raw query string, parsed from the respective question file or the \ac{ui}.
-The query is then wrapped into the same \texttt{models.Document} object as in \cref{subsub:embedding_ingestion_solution}.
-This object is then sent to the \textit{Qdrant} service to execute the query \textit{embedding} using the same \textit{FastEmbed} pipeline.
-The resulting query \textit{vector} is then immediately scored against the stored chunk vectors to find the most relevant following the logic desribed in \cref{sub:retrieval_filter_db} .
-%
-\subsection{Vector Storage and Retrieval}\label{sub:storage_retrieval_db}
-
-Both types of chunks are ingested into the \ac{db} using the instantiated \texttt{QdrantManager}.
-The \texttt{QdrantManager} wraps every \textit{Qdrant} vector-store operation.
-Each chunk, either \texttt{chunk\_type="semantic"} or\\ \texttt{chunk\_type="fixed"} following (see \cref{subsubsec:embedding_workflow}) is converted into a \textit{point} and stored inside the \ac{db}.
-The final ingestion into the \ac{db} is also executed by \textit{Qdrant} services, running server-side, where the create \textit{points} (vector embedded \texttt{Document} records) are stored inside the dedicated \textit{Qdrant} collection.
-These \textit{points} consist of unique \texttt{chunk\_id}s, the generated vector representation of the complete data record and a payload containing all parsed meta data.\\\\
-%
-The \textit{Qdrant} \ac{db} was deployed using the official \textit{Qdrant Docker image}, with a persistent \textit{Docker volume} configured to ensure consistent storage of the vectorised and embedded knowledge base for reproducible setup. 
-
-\subsection{Retrieval and Filtering}\label{sub:retrieval_filter_db}
-At query time, the \ac{rag} pipeline's core retrieval logic is handled by the \texttt{\_retrieve\_rag\_documents} function.
-%
-\subsubsection{Raw Vector Query}
-
-Vector search and retrieval has been implemented using the \textit{Qdrant} client with the \texttt{QdrantClient.query\_points} method for a unified setup with direct, high-performance \ac{db} querying.
-The parsed user query (\enquote{transformed, \cref{sub:data_in_out}}) is processed as described in \cref{subsub:embedding_query_solution}(\enquote{transformed, \cref{sub:data_in_out}}) and used for the \ac{db} data query for a specified collection.
-\textit{Qdrant} scores the user query by applying similarity search against the embedded \textit{points} inside the collection.
-Setting \texttt{with\_payload=True} also retrieves the stored meta data.
-The query parameter \texttt{limit=top\_k} with \texttt{top\_k} set to $15$ instructs the retriever to fetch the \textit{top\_k} most similar chunks.
-%
-\subsection{Minimum Score}
-
-All retrieved chunks were filtered according to a minimum threshold, ensuring thaht amongst the \texttt{top\_k} only the most relevant and thereby the most contributing remained.
-The \ac{db} returns the retrieved \texttt{documents} as \texttt{ScoredPoint} with a meta data entry \texttt{score}, as a high \texttt{score} corresponds to highly relevant to the initial query.
-\texttt{ScoredPoint} falling below the defined and configurable threshold (set via the \texttt{RAG\_MIN\_SCORE} environment variable) are filtered out.
-The threshold is set at a value of $0.85$.
-%
-
-\subsection{Prompt Formatting and API Call}\label{sub:prompt_api_rag}
-
-The set of retrieved and filtered \texttt{documents} is then forwarded and aggregated into \texttt{document\_texts}, which is then parsed into the prompt template (see \cref{lst:prompt-template}).
-If all retrieved \texttt{documents} fall below the threshold, an empty list is forwarded.
-%to the generation step as context to the prompt, while retrieval meta data with per-source counters (\cref{lst:output_file_structure_answered_rag_core}) is updated and parsed. 
-
-\subsubsection{API Call}\label{subsub:api_call_common}
-The \texttt{temperature} is hard-coded to \texttt{0.0} for deterministic answers (see \cref{def:determenism_approach}).
-With the finalised and enriched prompt template (\cref{lst:prompt-template}) the pipeline invokes the selected \ac{lm} for answer generation via \texttt{OpenRouterClient.get\_completion}, which also maps the displayed and app internal \texttt{llm\_name} value to its specific \textit{OpenRouter} \ac{api} identifier using \texttt{ConfigManager.get\_llm\_config()}:
-%
-\begin{lstlisting}[language=Python, caption={Mapping of Models Names - App Internal to API}, label={lst:llm_name-maping}]
-
-# Map LLM names to OpenRouter model IDs
-model_map = {
-    "GPT_4_1_Mini": "openai/gpt-4.1-mini",
-    "Gemini_2_5_Flash": "google/gemini-2.5-flash-preview",
-    "Llama_4_Scout": "meta-llama/llama-4-scout",
-    "DeepSeek_Chat_V3": "deepseek/deepseek-chat-v3-0324"}
-\end{lstlisting}
-This decoupled design cleanly translates the internal app settings and user selection into the specific technical parameter needed for the final \ac{api} call, ensuring that the correct model is invoked for generation.
-Furthermore, the list of \ac{llm} can be flexible and customised.\\\\
-
-The \texttt{max\_token} \ac{api} argument is set to $512$, following the conditions in \cite{Paul_Keller}.
-As mentioned in \cref{subsec:large_context_api_pipeline} the restricting number of tokens could have been implemented into the instruction within the prompt text.
-\cite{Paul_Keller} mentioned that the \ac{lm}s used in his approach provided an answer predominantly within the scope of $512$, without an explicit instruction (\cref{par:premise_prompt}.
-During the course of this experiment, a rather alternating result was observed with regard to compliance with any token limits without explicit instructions.
-Interim test results did not show a clear pattern in the length of the generated output.
-Therefore, the decision was made to use the original prompt without explicit restrictions to continue to create conditions that were as uniform to \cite{Paul_Keller} as possible.
-This decision follows the premise, but potentially misleads the comparative assessment of the results.
-%
-\newpage
-\subsection{Large Context Window Pipeline}
-
-The implementation of the \ac{lcw} method was designed to test and evaluate the \enquote{out of the box} \ac{lcw} capability of the selected \ac{llm}s and compare the quality of the results.
-This process involves several key implementation stages based on the \textit{Python} code in the \texttt{backend/methods/LCW/lcw.py}.
-
-\subsection{Core Function and Input}
-
-The pipeline's primary interface is the\\ \texttt{methods/LCW/process\_large\_context\_window} function. 
-It accepts a core set of input arguments that define the \ac{lcw} process:\\\\
-The \textbf{user prompt} is parsed as the \texttt{question} argument.
-During a question batch run \texttt{question} was populated by the \enquote{transformed} entry from the input data set (see \cref{sec:approach:questions}, (\cref{sub:data_in_out})) but can also be an individually defined query from the \ac{ui}.\\\\
-The \textbf{\texttt{llm\_name}} argument represents the \ac{ui} display name\\ ((e.g., \enquote{DeepSeek\_Chat\_V3}), which is mapped to the official \ac{api} model identifier (\cref{lst:llm_name-maping}) further down the pipeline\\ by the \texttt{ConfigManager}.\\\\
-The \textbf{\texttt{document\_texts}} argument is a dictionary that expects document names (e.g., filenames) as keys and their corresponding raw text as values.
-A unique question \texttt{id} is required for evaluation alignment and error handling and is passed through the pipeline.
-The variable \textit{document\_texts} is combined with the instruction and the user query within the prompt (\cref{lst:prompt-template}).\\
-
-The optional argument \texttt{q\_type} which was assigned according to the question types (used were \texttt{single, multi, transfer} during the batch run.\\
-The optional argument \textbf{\texttt{error\_status}} that was set to \enquote{no\_errors} or \enquote{errors} based on the occurrence of minor intentional spelling and grammar errors in the question and necessary for filtering and the evaluation pipeline.\\
-Also, the canonical fields \texttt{transformed}, \texttt{true\_answer}, \texttt{num\_answers} and \texttt{source} can be provided here if not parsed by the respective helper or if needed to be changed for an override.
-%
-
-\subsubsection{Context Aggregation}
-
-Following the ingestion and upload process described in \cref{subsec:knowledge_base_upload} a \texttt{document\_texts} dictionary was created with the corresponding data.  
-Once the \texttt{document\_texts} received the appropriate and individual input, either the persistent book or session-state uploads, it is passed to the helper function \texttt{backend/methods/common.py/\_combine\_context()}
-The input arguments for the \texttt{\_combine\_context()} function are as described possibly one or multiple texts, which are then joined to a single string, where each text is separated by \enquote{\textbackslash n \textbackslash n|} with the respective identifying file names as a list of ordered keys.
-%
-\subsection{Prompt Formatting and API Call}\label{sub:prompt_api_lcw}
-
-With the context aggregated, the next step is the construction of the prompt for the \ac{llm}.
-%
-The \texttt{process\_large\_context\_window()} function as the orchestrator passes all necessary arguments (\texttt{llm\_name}, the \enquote{transformed} question and \texttt{combined\_context}) for the \ac{api} call to the
-\texttt{get\_answer\_with\_large\_context} function.
-From this point on, prompt construction and parsing, as well as the \ac{api} call are similar to the process used in the \ac{rag} method (see \cref{subsub:api_call_common}).
-\subsection{Data Persistence and Evaluation Schema}
-
-The generated question within the \ac{api} response is then awaited and, if received, saved following the strict evaluation schema described in \cref{subsub:output_generated} and displayed in \cref{lst:output_file_structure_answered_lcw}.
-
-
-\section{Problems}
-The \texttt{BAAI/bge-small-en} (see \cref{par:embedding_rationale}) tokeniser normalised all tokens, transforming \enquote{tHIS} to the single token \enquote{this}.
-Following normalisation, the embedded vector carries the semantics of \enquote{Define the term this}, which led to an empty return of the similarity search for such questions.
-
-\section{Evaluation Pipeline}\label{sec:evaluation_pipeline}
-
-Following the process of answer generation by both methods, the predominant automated evaluation of the answers using the defined metrics follows.
-The evaluation pipeline consists of several sub-steps starting with the extraction of subanswers, which forms the basis for all subsequent semantic comparisons.
-
-the \ac{lcw} and \ac{rag} answer generation pipelines, a robust evaluation framework is required to measure their performance.
-This framework is executed in distinct stages, beginning with the extraction of sub-answers, which is the foundational step for all subsequent semantic comparisons.
-This section details the implementation of the Step 1 subanswer extraction pipeline, which has been implemented using the \textit{DeepEval} framework.
-
-
-
-\subsection{Step 1: Semantic Sub-Answer Extraction}
-
-This section describes the implementation of the automatic subanswer extraction using the \textit{DeepEval} framework.
-The goal of this first step is to iteratively retrieve the respective text unit of the \texttt{true\_answer} entry, hereafter referred to as \texttt{gold}, from the provided data set, as well as the \texttt{generated} answer and separate them into a list of discrete, comparable semantic units.
-The separation process is executed according to a detailed and guiding prompt template.
-
-
-\subsubsection{Metric Implementation}\label{subsub:metric_impl_step1}
-
-The entry point for each answered record into the pipeline is the \textit{DeepEval} orchestrator \texttt{backend/evaluation/step1/evaluate\_subanswers\_only\_deepeval} function.
-It delegates the semantic subanswer extraction to a dedicated and customised \textit{DeepEval} metric with the implemented \enquote{llm-as-a-jduge} feature.
-The orchestrator \texttt{backend/evaluation/step1/deepeval/orchestrator.py} parses the texttt{num\_answers} entry, as the expected count of subanswers inside \texttt{gold}, and a prepared \texttt{OpenRouterLLM} instance when constructing the metric.
-The configured \ac{llm} for \texttt{OpenRouterLLM} was set to \texttt{GPT\_4\_1\_Mini} during the batch runs.
-During the metric initialisation the \texttt{gold} and \texttt{generated} template are loaded and used to build a \textit{LangChain} \texttt{PromptTemplate} for the \texttt{gold} and \texttt{generated} answer extraction.
-All \textit{llm-as-a-judge} calls use the same \texttt{openrouter\_client} with deterministic settings, a fixed \texttt{temperature} of $0.0$ and a \texttt{max\_tokens} limit of $700$.
-The execution of \ac{api} calls for the \enquote{llm-as-a-judge} process is implemented to be executed asynchronously to remain compatible with \textit{DeepEval}'s async-native design.
-
-\subsubsection{"Gold" Answer Extraction}
-The automatic subanswer extraction of the \texttt{gold} answers with the described setup repeatedly led to unsatisfactory results within test runs:
-\begin{quote}
-The value \texttt{num\_answers} with the respective answer to be extracted was iteratively inserted into the prompt template for each \ac{api} call.
-The prompt itself explicitly instructed the \ac{lm} that the number of extracted subanswers and the value of \texttt{num\_answers} had to be exactly the same.
-The analysis of the extracted subanswers returned showed that the quantity of subanswers matched the expected value, while the quality revealed the weaknesses of the system.
-In many cases, the extracted subanswers did not contextually match the actual subanswers identified by human analysis.
-The was probably due to the complexity of some responses and the lack of expertise of the extracting \ac{lm} to understand and recognise individual contextual relationships within the provided answers.
-A further analysis of the respective entries revealed that in some cases the expected number of subanswer was not clearly identifiable in the actual answer.
-\end{quote}
-Therefore, the \texttt{gold} answers are not processed by the \enquote{llm-as-a-judge} feature but instead simply parsed unaltered into the respective \texttt{*\_evaluated.json} file.
-The extraction and separation of the subanswer were then performed manually on the basis of human analysis.
-
-\subsubsection{"Generated" Answer Extraction}
-
-The \texttt{generated} answer was processed by the \textit{llm-as-a-judge} feature.
-The \texttt{\_a\_extract\_generated} method formats the dedicated prompt from  \texttt{subanswer\_prompt\_generated.md} that provides instructions for the extraction and formatting of the output.
-
-\paragraph{Prompt Definition}\label{par:prompt_definition-step1}
-
-During the execution of several test runs where only short and focused prompts were parsed to the \ac{llm}.
-As the subanswers extraction by this approach did not appear show a clear pattern and occasionally generated very high numbers of subanswers when only $1$ or $2$ were expected, it became clear that the guiding prompt required a precise definition and detailed descriptions of the evaluation approach and the according requirements.
-Several iterations were necessary to define the effective and target-oriented instructions and directions for the \ac{llm} judge.
-The output format had to be adapted several times, as parsing errors frequently occurred.
-Initially, \textit{JSON} was defined as the required output format, but this did not allow for any error tolerance on the part of the generating \ac{llm} during extraction. 
-Thus, the inconsistent output format generated did not make a consistent retrieval of the output data possible despite possibly satisfactory subanswers extraction. 
-The subsequent format of a \textit{list} was also unsuccessful.
-The difficulty here was the separator between potentially several subanswers.
-The comma (symbol - \enquote{,}) could not be chosen, as this also possibly occurs within the subanswers and thus, despite several variants with additional brackets and symbols to distinguish the special separator, led to the unwanted splitting of successive subanswers.
-This was also further affected by the inconsistency of a uniform output as in previous approaches.
-The use of \textit{tags} finally led to the desired results of consistent output by the respective \ac{llm} and thereby desired extractions of the values obtained.
-The structure of the final prompt template was also used for the succeeding steps of the evaluation pipeline.
-\paragraph{Prompt Construction}
-The custom judge template first defines the \ac{llm}'s required evaluation persona:
-\begin{lstlisting}[language=Markdown, caption={Subanswer Extraction - Role}, label={lst:prompt_role_step1}]
-<Role>
-        You are an expert semantic analyst, a high-fidelity semantic decomposition engine and linguistic processor. 
-        Your specialty is identifying and isolating conceptually coherent units of information or knowledge within a body of text.
-        You are meticulous, precise, and flawlessly adhere to structured output formats.
-        </Role>
-\end{lstlisting}
-
-This establishes a structured guidance and fundamental approach for the \ac{llm} judge before defining the actual \texttt{PrimaryPurpose} and \texttt{CoreTask}:
-\begin{lstlisting}[language=Markdown, caption={Subanswer Extraction - Core Task}, label={lst:prompt_core_tasks_step1}]
-<CoreTask>
-        Your core task is to first analyse the inital and orginal *QUESTION* to understand its structure (e.g., does it ask for definition of one thing or a comparison of two things?).
-        Then, you will analyse the provided *GENERATED ANSWER* and divide it into a list of self-contained subanswers that align with the structure of the *QUESTION* subanswers.
-        A subanswer should represent a **SINGLE** distinct subject or topic being discussed.
-        The respective subanswer thereby extracted then includes the core description of that subject and all of its potential followup explanations, examples and contextual elaborations.
-        </CoreTask>
-\end{lstlisting}
-
-It was shown that the direct logical and contextual connection between the initial question and the \texttt{generated} answer as a combined input within the prompt was decisive for a qualitative output.
-
-\begin{lstlisting}[language=Markdown, caption={Subanswer Extraction - Input}, label={lst:prompt_input_step1}]
-<Input_Data>
-        <Data_Item name="QUESTION">
-            <Description>The initial question that was asked. Use this as your primary guide for how to analyse and segment the *GENERATED ANSWER*</Description>
-            <Value>{question}</Value>
-        <Data_Item>
-        <Data_Item name="GENERATED ANSWER">
-            <Description>The text from which you will extract the conceptual subanswers, based on the structure and context of the *QUESTION*.</Description>
-            <Value>{generated}</Value>
-        </Data_Item>
-    </Input_Data>
-\end{lstlisting}
-
-The following \texttt{<Detailed\_Instructions\_And\_Rules>} section contains $9$ detailed \texttt{rules}. 
-These \texttt{rules} provide a guiding methodology focused on verbatim decomposition of the \texttt{generated} text in direct and explicit contextual and structural relation to the initial question into distinct, self-contained, coherent units defined by subject boundaries that meet strict requirements for structure, accuracy and scope.
-
-Based on the experiences described in \cref{par:prompt_definition-step1}, a specific output \texttt{Format} is defined and instructed to be able to retrieve the respective subanswer values within the \ac{api} response.
-\begin{lstlisting}[language=Markdown, caption={Subanswer Extraction - Output Format}, label={lst:prompt_output_format_step1}]
-
-<Output_Specification>
-        <Format>
-            Your response **MUST ONLY** consist of one or more subanswers, with each subanswer individually wrapped in &lt;sub_answer&gt; and &lt;/sub_answer&gt; tags.
-            Provide **NO** extra commentary, **NO** lists, **NO JSON**, and **NO** other text.
-        </Format>
-        <Example_Output_Format>
-            <Description>This example shows the **PRECISE** structure and format for your final output. Your output **MUST** be a continuous block of text containing these tags.</Description>
-            <Example>
-            <sub_answer>This is the first complete sub-answer, which can contain (parentheses) and commas, without anyissues.</sub_answer><sub_answer>This is the second complete sub-answer, which can contain (parentheses) and commas, without any issues.</sub_answer>
-            </Example>
-        </Example_Output_Format>
-    </Output_Specification>
-\end{lstlisting}
-
-The final prompt used for the \texttt{generated} subanswer extraction can be reviewed in \textit{subanswe\_prompt\_generated.md}.
-%
-\subsubsection{API Call}
-The interaction with the \ac{api}-accessed \ac{llm} judge is managed by the \texttt{OpenRouterLLM} wrapper from \texttt{evaluation/step1/deepeval/custom\_llm.py}, which particularly calls the defined \ac{llm} asynchronously via \textit{OpenRouter} parsing the constructed prompt template.
-Every \ac{api} call enforces deterministic parameters: 
-\begin{quote}
-    A \texttt{temperature} set to a value of $0.0$.\\
-    A \texttt{max\_token} limit of $700$
-\end{quote}
-
-Since the subanswer extraction is explicitly  intended to be verbatim (see \cref{lst:prompt_core_tasks_step1}), the generated output is expected to be the same length as the original \texttt{generated} answer, with possibly minor deviation due to inconsistencies in the persistence of symbols from the original text.
-Therefore, the \textit{token} limit was set only slightly above that used in the answer generation (\cref{subsub:api_call_common}) to tolerate slight inconsistencies and unexpected deviations without data loss.
-
-\subsubsection{Generated Output}
-The pipeline then uses the \texttt{SubAnswerTagListParser} to parse the \ac{api} response and extract the text relevant content from within the \texttt{<sub\_answer>...</sub\_answer>} tags by performing a strict regex search.
-If no tags are found, the parser gracefully returns an empty list.
-%
-\subsubsection{Data Persistency}
-The extracted results are stored using the \texttt{write\_evaluation\_entry} function, which executes an atomic upsert operation with the respective unique \texttt{id}.
-The extracted subanswers from \texttt{generated} are saved as list items for the \texttt{\enquote{generated}} entry within the \texttt{\enquote{details}}(see \cref{lst:evaluation_file_structure_step1}.
-The value of \texttt{true\_answer} was copied and added as a single unaltered value for the \texttt{\enquote{gold}} entry within \texttt{\enquote{details}}
-
-\newpage
-\subsection{Step 2: Question Understanding Evaluation}\label{sub:step2_eval}
-In the second step of the evaluation pipeline, the \texttt{generated} answers are assessed to verify:
-\begin{quote}
-Whether the generating \ac{llm} correctly understood the user query?
-\end{quote}
-%
-The evaluation is based on the definition for \enquote{Question Understanding} from \cref{def:qu_understanding_approach} and is independent of the quality of the \texttt{generated} answer. 
-A special \ac{llm} evaluator (\textit{llm-as-a-judge}) is used to score the relationship between the original \texttt{transformed} question and the \texttt{generated} answer.
-
-\subsubsection{Metric Implementation}
-
-\paragraph{Data Dependency and Orchestration}\label{par:data_orchestrate_step2}
-This step depends on the successful completion of Step 1, as it operates directly on the output files (\texttt{*\_evaluated.json}).
-The orchestrator \texttt{evaluation/step2/deepeval/orchestrator.py} fetches the data records using \texttt{read\_evaluation\_entry()} from the respective \texttt{*\_evaluated.json} files and then extracts the specific and required entries, \texttt{transformed} and \texttt{generated} via \texttt{\_extract\_prompt\_inputs()}.
-
-\paragraph{Prompt Construction}
-The evaluation logic is controlled by the \texttt{QuestionUnderstandingMetric}.
-The metric is defined with the \texttt{OpenRouterLLM} wrapper instance from Step~1 and creates a customised \textit{DeepEval} \texttt{LLMTestCase}.
-The \texttt{LLMTestCase} combines the \texttt{transformed} question retrieved as \texttt{input} and \texttt{generated} answer as \texttt{actual\_output}.
-
-The custom judging template \texttt{backend/evaluation/step2/Question\_Understanding\_prompt.md} for the metric is loaded once per metric instance.
-The template follows the instruction approach applied in step 1 to first define the \ac{llm}'s required evaluation persona:
-\begin{lstlisting}[language=Markdown, caption={Question Understanding - Prompt - Role }, label={lst:prompt_role_step2}]
-<Role>
-         You are meticulous QA analyst and all-encompassing evaluator.You are specialised in evaluating a generated answer to clearly assess whether it clearly shows that the question it answers has been understood or not.
-         </Role>
-\end{lstlisting}
-This establishes a structured guidance and fundamental approach for the \ac{llm} judge before defining the actual \texttt{PrimaryPurpose} and \texttt{CoreTask}:
-
-\begin{lstlisting}[language=Markdown, caption={Question Understanding - Prompt - Purpose and Task }, label={lst:prompt_purpose_task_step2}]
-<PrimaryPurpose>
-         Assess whether the `GENERATED ANSWER` shows a *clear understanding* of the `QUESTION`.
-         </PrimaryPurpose>
-         <CoreTask>
-         Your core task is to analyse both the `QUESTION` and the `GENERATED ANSWER`. 
-         You will then determine whether the `GENERATED ANSWER` *accurately interprets and fully addresses the specific constraints, requirements of the expected answer and intent* of the `QUESTION`.
-         </CoreTask>
-
-\end{lstlisting}
-
-The \texttt{Scoring Criteria} are then defined, instructing a clear binary score and additional \texttt{reason}ing for the score value determined($0/1$).
-In addition, a specifically required output \texttt{Format} is defined and instructed to be able to retrieve the particular \texttt{score} and \texttt{reason} values within the \ac{api} response.
-
-\begin{lstlisting}[language=Markdown, caption={Question Understanding - Prompt - Output Format}, label={lst:prompt_purpose_output_step2}]
-<Format>
-        Your response **MUST** consist of two subanswers wrapped in individual tags:
-        **list** containing **exactly two string items**:
-        1.  *First*, the **numerical** score: `'1'` (for understood) or `'0'` (for not understood).
-        The **numerical** score **MUST** be wrapped in &lt;score&gt; and &lt;/score&gt; tags.
-        2.  *Second*, a short, one-sentence **string** item reasoning for your decision.
-        The string **MUST** be wrapped in &lt;reason&gt; and &lt;/reason&gt; tags.
-        Provide **NO** extra commentary, **NO** lists, **NO JSON**, and **NO** other text.
-        </Format>
-
-\end{lstlisting}
-
-
-The retrieved values of \texttt{transformed} and \texttt{generated} are then mapped to the respective placeholder variables within the template:
-\begin{lstlisting}[language=Markdown, caption={Question Understanding - Prompt - Input}, label={lst:prompt_purpose_input_step2}]
-<Input_Data>
-         <Data_Item name="QUESTION">
-             <Description>The original question that was asked.</Description>
-             <Value>{question}</Value>
-         </Data_Item>
-         <Data_Item name="GENERATED ANSWER">
-            <Description>The answer provided by the Large Language Model that you must evaluate.</Description>
-            <Value>{generated_answer}</Value>
-        </Data_Item>
-    </Input_Data>
-\end{lstlisting}
-
-The final prompt used for the \enquote{Question Understanding} metric can be reviewed in \textit{Question\_Understanding\_prompt.md}.\\\\
-
-\subsubsection{API Call}\label{par:api_call_step2}
-\texttt{QuestionUnderstandingMetric.measure} finally calls the \ac{api}, asynchronously parsing the constructed prompt template.
-This \textit{llm-as-a-judge} call applies the exact same parameters (e.g., \texttt{temperature} $0$) as the generative call in Step 1.
-The metric thereby executes iteratively and asynchronously for each \texttt{transformed} and \texttt{generated} coupled entry and the corresponding \texttt{id} entry.
-%
-\subsubsection{Generated output}
-
-The \enquote{judge} is explicitly instructed to return a binary score and a reason for the determined score, wrapped within specific tags as in \cref{lst:prompt_purpose_output_step2}.
-A score of \texttt{$1$} indicates that the \texttt{generated} answer directly addresses or correctly interprets the question or the questions. 
-A score of \texttt{$0$} indicates a failure to understand or address the question or the questions within the query.
-
-\subsubsection{Data Persistence}
-
-The generated results from the generated \textit{llm-as-a-judge} response are formatted and inserted into the existing evaluation file from Step 1 as atomic updates.
-The extracted data from the generated output are therefore prepared as a structured details object (\texttt{details["question\_understanding"]}) and converted into a top-level \texttt{understand:{score}} data object (\cref{lst:evaluation_file_structure_understand_step2}.
-
-\newpage
-\subsection{Step 3: Explainability Evaluation}\label{sub:step3_eval}
-
-In the final stage of the semantic and contextual evaluation pipeline, Step 3, the \texttt{generated} answers are assessed to verify:\\
-\begin{quote}
-Whether the generating \ac{llm} has provided any \textbf{explanation} for the knowledge or statements provided.
-\end{quote}
-
-The evaluation is based on the  definition for \enquote{Explainability} from \cref{def:explainability_approach} and is independent of the quality of the \texttt{generated} answer. 
-Step 3 also utilises the \ac{llm} evaluator (\textit{llm-as-a-judge}) to score the presence of any explanation within the provided answer.
-
-\subsubsection{Metric Implementation}
-
-\paragraph{Data Dependency and Orchestration}\label{par:data_orchestrate_step3}
-The entry point of the Step 3 pipeline, \texttt{orchestrator/evaluate\_explainability()}, requires the same input arguments as in the previous step, while also operating directly with the dataset from Step 1 (\texttt{*\_evaluated.json}).
-The orchestrator retrieves \texttt{transformed} question and \texttt{generated} answer entries from the respective \texttt{*\_evaluated.json} for further processing.
-
-\paragraph{Prompt Construction}
-The evaluation logic is controlled by the \texttt{ExplainabilityMetric}.
-The metric is defined as in Step~2 and creates a customised \textit{DeepEval} \texttt{LLMTestCase}, while following the same deterministic execution pattern as \texttt{QuestionUnderstandingMetric} (\cref{par:api_call_step2}).
-The custom judging template \texttt{backend/evaluation/step2/Explainability\_prompt.md} for the metric is loaded once per metric instance.
-The template follows the instruction approach applied in Step $1$ and $2$ to first define the \ac{llm}'s required evaluation persona:
-\begin{lstlisting}[language=Markdown, caption={Explainability - Prompt - Role }, label={lst:prompt_role_step3}]
-<Role>
-         You are a specialized evaluation expert focused on assessing the communicative quality of answers. Your task is to determine the extent to which a generated answer provides a **context-specific explanation of the arguments and facts it contains**.
-         </Role>
-\end{lstlisting}
-This establishes a structured guidance and fundamental approach for the \ac{llm} judge before defining the actual \texttt{PrimaryPurpose} and \texttt{CoreTask}:
-\begin{lstlisting}[language=Markdown, caption={Explainability - Prompt - Purpose and Task }, label={lst:prompt_purpose_task_step3}]
-<PrimaryPurpose>
-         Analyse and evaluate the `GENERATED ANSWER` with regard to an **EXPLANATION** of the arguments and facts or the other generated results therein as defined in "KeyAttributesToEmbody".
-         </PrimaryPurpose>
-         <CoreTask>
-         Your core task is to determine the extent to which the `GENERATED ANSWER` provides plausible and appropriate reasoning or argumentation. The answer is **explained** if it contains an explanation, justification, or descriptive context beyond a mere statement of fact.
-         </CoreTask>
-\end{lstlisting}
-
-Similarly to the previous steps, the \texttt{Scoring Criteria} are defined, instructing a clear binary score and additional \texttt{reason}ing for the scored value determined ($0/1$).
-In addition, a specifically required output \texttt{Format} is demanded to be able to retrieve the particular \texttt{score} and \texttt{reason} values within the \ac{api} response.
-\subsubsection{Generated output}
-
-
-\subsubsection{Data Persistence}
-%
-\subsection{Step 4: Correctness}
-To analyse the \textit{correctness} of the generated answers, all numerical evaluations scores of the questions were counted per \texttt{method}, \texttt{llm} and \texttt{type} and \texttt{source}.
-The resulting values were then used to calculate the \textit{Macro F1} score according to the defined formulas in \cref{subsec:metrics_eval_approach}.
-The evaluations are based on a comparison of the extracted subanswers from the \texttt{generated} answers with the manually extracted subanswers from the \texttt{true\_answer}s.
-%
-\subsection{Step 5: Robustness}
-The robustness of a model describes its ability to generate a correct answer even with incorrect input (\cref{def:robustness_approach}).
-For this purpose, in addition to the orginal set of questions, the dedicated set, provided by \citet{Paul_Keller}, with the altered versions of the questions containing minor spelling and gammatical errors was used (see \cref{par:robustness_approach}).
-The respective set was processed by both methods in the same way as the original set of questions.
-As the robustness evaluation refers to correctly answered questions, which are also answered correctly if initially entered as the incorrect version, the respective previously incorrect questions were extracted from the output file after the generation process.
-The respective output set then only containes questions that the model had previously correctly answered.
-The calculation of the results is analogous to the calculation of the \textit{correctness} metric (see \cref{def:correctness_approach}). 
-Whereby not the number of questions contained in the potentially reduced robustness data set, but the number of all existing questions was used for the calculation of the \textit{Macro F1} value.
-%
+ 

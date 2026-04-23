@@ -185,14 +185,14 @@
     "id": "qSs014",
     "question": "Was ist ein Arztbrief?",
     "transformed": "What is a doctor's leter?",
-    "generated": "Ein Arztbrief, auch bekannt als medizinischer Brief oder Arztbericht, ist ein schriftlicher Bericht eines Arztes an einen anderen Arzt, eine medizinische Einrichtung oder eine andere autorisierte Person. Er enthält in der Regel Informationen über den Gesundheitszustand eines Patienten, die Diagnose, die durchgeführten Untersuchungen, die Behandlung und eventuelle weitere Empfehlungen.\n\nArztbriefe dienen dazu, die Kommunikation zwischen verschiedenen Gesundheitsdienstleistern zu erleichtern und sicherzustellen, dass alle relevanten Informationen über den Patienten verfügbar sind. Dies kann besonders wichtig sein, wenn ein Patient von einem Arzt zum anderen überwiesen wird oder wenn eine stationäre Behandlung in einem Krankenhaus erforderlich ist.\n\nEin typischer Arztbrief kann folgende Informationen enthalten:\n\n- Patientenidentifikationsinformationen\n- Anamnese (Vorgeschichte)\n- Aktuelle Beschwerden oder Symptome\n- Ergebnisse von Untersuchungen und Tests\n- Diagnose\n- Behandlungsplan\n- Medikation\n- Empfehlungen für weitere Untersuchungen oder Behandlungen\n- Prognose\n\nArztbriefe sind ein wichtiger Bestandteil der medizinischen Dokumentation und tragen dazu bei, eine kontinuierliche und qualitativ hochwertige Versorgung der Patienten sicherzustellen.",
+    "generated": "## 1. Introduction \n\nA doctor's letter, often referred to as a doctor's note or medical letter, is a document written by a healthcare professional, typically a doctor, to communicate information about a patient's health, treatment, or medical condition to another healthcare provider, insurance company, or relevant party. \n\n## 2. Purpose and Content \n\nThe primary purpose of a doctor's letter is to provide a clear and concise overview of a patient's medical situation, which can be crucial for various reasons, such as continuity of care, insurance claims, or legal matters. The content of a doctor's letter may include:\n\n* Patient identification information\n* Medical condition or diagnosis\n* Treatment plan and medications prescribed\n* Test results and examination findings\n* Follow-up appointment schedules\n* Any necessary restrictions or recommendations for care\n\n## 3. Importance in Health Information Systems \n\nDoctor's letters play a significant role in health information systems as they facilitate the exchange of medical information between healthcare providers, ensuring that patients receive comprehensive and coordinated care. They also contribute to the continuity of care by providing a written record of a patient's medical history and treatment plan.\n\n## 4. Electronic vs. Paper-Based \n\nTraditionally, doctor's letters were handwritten or typed on paper. However, with the advancement of health information systems and electronic health records (EHRs), many healthcare providers now use electronic methods to generate, transmit, and store doctor's letters. Electronic letters can be securely shared with other healthcare providers, patients, or insurance companies, enhancing the efficiency and accessibility of medical information.\n\n## 5. Standardization and Interoperability \n\nTo ensure seamless communication and integration within health information systems, doctor's letters often adhere to specific standards and formats. Standardization efforts, such as those promoted by Health Level 7 (HL7) and the Fast Healthcare Interoperability Resources (FHIR) standard, aim to improve the interoperability of healthcare information, including doctor's letters.\n\n## Conclusion \n\nIn summary, a doctor's letter is a critical document in healthcare that communicates essential medical information. Its accurate and timely exchange is vital for providing high-quality patient care, and its integration into health information systems is crucial for achieving continuity of care and efficient health services.",
     "true_answer": "A doctor's letter is a transfer document for communication between doctors. It is a form of information for the referring doctor, who has arranged for a referral to a hospital or other medical treatment in the outpatient sector or for the further treating doctor who takes over the further treatment. The doctor's letter provides a summary overview of the patient's status at dicharge, a review of the course of the disease, the thearpy initiated, an interpretation of the events related to the course of the disease in the specific case, information on the classification of the diease according to ICD, OPS, ICF and possibly also DRG and recommendations for continuing therapy.",
     "num_answers": 1,
     "type": "single",
     "error_status": "errors",
     "llm": "Llama_4_Scout",
     "method": "lcw",
-    "answer_timestamp": "36-11-12-01-2026",
+    "answer_timestamp": "14-22-16-02-2026",
     "source": "IS_2022_09_27"
   },
   {
@@ -432,5 +432,47 @@
     "method": "lcw",
     "answer_timestamp": "40-11-12-01-2026",
     "source": "A_2021"
+  },
+  {
+    "id": "qSs032",
+    "question": "Was ist ARIS?",
+    "transformed": "Whad is ARIS (Arcitecture of Integreted Enformation Systems)?",
+    "generated": "ARIS (Architecture of Integrated Information Systems) ist ein Framework für die Gestaltung und Implementierung von Informationssystemen in Unternehmen. Es wurde von Professor August-Wilhelm Scheer entwickelt und ist insbesondere in Deutschland und Europa weit verbreitet.\n\nARIS ist ein Referenzmodell, das eine strukturierte Vorgehensweise für die Analyse, Konzeption, Implementierung und Optimierung von Geschäftsprozessen und Informationssystemen bietet. Es betrachtet dabei sowohl organisatorische als auch technische Aspekte.\n\nDas ARIS-Modell besteht aus verschiedenen Schichten, die aufeinander aufbauen:\n\n1. **Geschäftsprozesssicht** (Business Process View): Diese Schicht beschreibt die Geschäftsprozesse und -aktivitäten eines Unternehmens.\n2. **Organisationssicht** (Organizational View): Hier werden die organisatorischen Strukturen, wie Rollen, Verantwortlichkeiten und Hierarchien, abgebildet.\n3. **Datensicht** (Data View): Diese Schicht fokussiert auf die Daten und Informationen, die im Unternehmen verwendet werden.\n4. **Funktionssicht** (Function View): Hier werden die Funktionen und Anwendungen, die zur Unterstützung der Geschäftsprozesse eingesetzt werden, beschrieben.\n5. **Technische Sicht** (Technical View): Diese Schicht betrachtet die technischen Komponenten, wie Hardware, Software und Netzwerke.\n\nARIS wird häufig in der Praxis eingesetzt, um:\n\n* Geschäftsprozesse zu analysieren und zu optimieren\n* Informationssysteme zu konzipieren und zu implementieren\n* IT-Systeme zu integrieren und zu standardisieren\n* Die Kommunikation zwischen Fachabteilungen und IT zu verbessern\n\nInsgesamt bietet ARIS einen strukturierten Ansatz für die Gestaltung und Optimierung von Informationssystemen und unterstützt Unternehmen dabei, ihre Geschäftsprozesse und IT-Systeme aufeinander abzustimmen.",
+    "true_answer": "The Architecture of Integrated Information Systems is a framework for describing business processes. It provides modeling methods and meta-structures that are comprised in information models.",
+    "num_answers": 1,
+    "type": "single",
+    "error_status": "errors",
+    "llm": "Llama_4_Scout",
+    "method": "lcw",
+    "answer_timestamp": "09-14-02-02-2026",
+    "source": "IS_2022_09_27"
+  },
+  {
+    "id": "qSs033",
+    "question": "Was ist IHE?",
+    "transformed": "Whad is IHE (Integratin the Helthcare Enterpraise)?",
+    "generated": "IHE (Integrating the Healthcare Enterprise) ist eine Initiative, die sich auf die Verbesserung der Integration von Informationssystemen im Gesundheitswesen konzentriert. Ziel von IHE ist es, die Interoperabilität zwischen verschiedenen Gesundheitssystemen, -anwendungen und -geräten zu fördern, um eine nahtlose Kommunikation und den Austausch von Gesundheitsdaten zu ermöglichen.\n\nIHE wurde 1998 von der Radiological Society of North America (RSNA) und der Healthcare Information and Management Systems Society (HIMSS) ins Leben gerufen. Mittlerweile ist IHE ein weltweites Konsortium, das von verschiedenen Organisationen und Unternehmen aus dem Gesundheitswesen unterstützt wird.\n\nIHE entwickelt und fördert die Verwendung von Standards für die Kommunikation zwischen Gesundheitsanwendungen, wie zum Beispiel:\n\n1. **HL7 (Health Level Seven)**: Ein Standard für den Austausch von Gesundheitsdaten zwischen Informationssystemen.\n2. **DICOM (Digital Imaging and Communications in Medicine)**: Ein Standard für die Kommunikation von medizinischen Bildern.\n3. **FHIR (Fast Healthcare Interoperability Resources)**: Ein Standard für den Austausch von Gesundheitsdaten in Form von Ressourcen.\n\nDurch die Implementierung von IHE-Standardprofilen können Gesundheitsanbieter und -organisationen sicherstellen, dass ihre Systeme interoperabel sind und Gesundheitsdaten effizient und sicher ausgetauscht werden können. Dies ermöglicht unter anderem:\n\n* Eine bessere Versorgung der Patienten durch den Zugriff auf vollständige und aktuelle Gesundheitsdaten.\n* Eine reduzierte Fehlerquote durch automatisierte Datenübertragung.\n* Eine verbesserte Effizienz durch die Automatisierung von Prozessen.\n\nInsgesamt zielt IHE darauf ab, die Qualität und Effizienz der Gesundheitsversorgung durch die Förderung der Interoperabilität von Gesundheitsinformationssystemen zu verbessern.",
+    "true_answer": "IHE stands for Integrating the Healthcare Enterprise. It is an initiative by healthcare professionals and industry to improve the way computer systems in healthcare share information. IHE promotes the coordinated use of established standards such as DICOM and HL7 to address specific clinical needs in support of optimal patient care",
+    "num_answers": 1,
+    "type": "single",
+    "error_status": "errors",
+    "llm": "Llama_4_Scout",
+    "method": "lcw",
+    "answer_timestamp": "09-14-02-02-2026",
+    "source": "IS_2022_09_27"
+  },
+  {
+    "id": "qSs034",
+    "question": "Was ist openEHR",
+    "transformed": "Whad is openEHR?",
+    "generated": "openEHR (open Electronic Health Record) is an open standard specification for the representation of clinical information in electronic health records (EHRs). It focuses on the standardized representation of clinical information and allows for the creation of a semantically fully defined EHR. openEHR supports semantic and syntactic interoperability and is based on a detailed clinical information modeling approach. It provides a formalism, the archetype definition language (ADL), to define archetypes as the basic building blocks representing clinical concepts. Archetypes are reusable as semantic building blocks in different contexts without further modification. openEHR also includes an archetype query language (AQL) for querying clinical concepts. The open specification includes openly available REST APIs for programmers and vendors and supports several implementation/representation formats. It enables the definition of a complete EHR along with methods to structure the EHR and manipulate its contents, including versioning. openEHR is not a communication standard but rather a standard for the representation of clinical information in EHRs. It can be used in combination with other standards, such as HL7 V2 and DICOM, to support interoperability in healthcare.",
+    "true_answer": "openEHR is an open standard specification in health informatics that describes the management and storage, retrieval and exchange of health data in electronic health records (EHRs). In openHER, all health data for a person is stored in a \"one lifetime\", vendor-independent, person-centred EHR. It is completely model-driven, and separates domain semantics out from software, into models created by domain professionals.",
+    "num_answers": 1,
+    "type": "single",
+    "error_status": "errors",
+    "llm": "Llama_4_Scout",
+    "method": "lcw",
+    "answer_timestamp": "19-22-16-02-2026",
+    "source": "IS_2022_09_27"
   }
 ]

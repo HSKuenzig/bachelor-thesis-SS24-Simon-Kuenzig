@@ -46,7 +46,7 @@
     %*******************************************************
     %\phantomsection
     %\addcontentsline{toc}{chapter}{\lstlistlistingname}
-    %\pdfbookmark[1]{\lstlistlistingname}{lol}
+    \pdfbookmark[1]{\lstlistlistingname}{lol}
     %\lstlistoflistings
 
     %\vspace{8ex}
@@ -55,9 +55,10 @@
     % Acronyms
     %*******************************************************
     %\phantomsection
-    \pdfbookmark[1]{Acronyms}{acronyms}
-    \markboth{\spacedlowsmallcaps{Acronyms}}{\spacedlowsmallcaps{Acronyms}}
-    \chapter*{Acronyms}
-    \input{FrontBackmatter/Acronym.tex}
-
 \endgroup
+\cleardoublepage
+\pdfbookmark[1]{Acronyms}{acronyms}
+\markboth{\spacedlowsmallcaps{Acronyms}}{\spacedlowsmallcaps{Acronyms}}
+\chapter*{Acronyms}
+\input{FrontBackmatter/Acronym.tex}
+

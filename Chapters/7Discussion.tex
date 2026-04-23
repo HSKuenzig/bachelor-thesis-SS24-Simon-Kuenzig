@@ -1,63 +1,163 @@
 %*****************************************
 \chapter{Discussion}\label{ch:discussion}
 %*****************************************
-\section{Potential Improvements for the RAG Pipeline}
 
-Future work may investigate the optimisation of the \ac{rag} pipeline.
-The implementation within this thesis was designed to be functional and effective for the primary goal of a comparative evaluation, rather than being exhaustively fine-tuned for peak performance. 
-Consequently, several parameters, such as \enquote{top\_k} and \enquote{Chunk\_size}, were set to sensible, commonly used values without empirical \textit{A/B testing}.
-Systematically and detailed testing of the configuration settings could significantly enhance the pipeline's efficiency and the quality of its output.
+The results of this work show that leveraging the \ac{lcw} capabilties of \acp{llm} and the implementation of these models within \ac{rag} provide precise knowledge retrieval and high-quality output within \ac{qa}.
+The method applied expectedly outperformed the continual pre-training method from \citet{Paul_Keller}.
+The \acp{llm} tested here show better reasoning and \textit{Question Understanding} skills.
+It has been demonstrated that the capability of large-context windows within \ac{qa} in domain-specific areas question the necessity of \ac{rag}.
+
+However, using the models \enquote{out-of-the-box} and implementing similar settings as in \citet{Paul_Keller} introduces methodological trade-offs and limitations.
+To potentially improve the performance of both method pipelines, \cref{ch:futurework} suggests several adaptations and extensions that can be investigated.
+
+\section{Limitations of the Method Setup}
+
+The method approaches for \ac{qa} using \acp{llm} with \citet{bb2} as knowledge base were particularly implemented to assess the models used \enquote{out-of-the-box-}.
+The goal then was a direct comparison with \citet{Paul_Keller}, as well as between the models and methods.
+Therefore, neither prompt engineering nor fine-tuning was deliberately applied.
+
+This meets the premise of the experimental setup but, at the same time, clearly limits the potential performance of the models used.
+
+Following the premise of creating a similar scenario as in \citet{bb2}, the token limit for the generated output was set to $512$.
+The implementation showed that the models  generated answers during inference that extended the token limit set.
+Although some models answered briefly without specific instructions, other models elaborated broadly, thereby generating a lot of \enquote{noise}.
+Such behaviour was punished during evaluation, particularly by the \textit{Correctness} metric.
+
+The \textit{OpenRouter} provider truncated the generated text on the server side.
+As a result, the respective answers retrieved from the \ac{api} repsonse appeared to be incomplete.
+In longer answers that contained larger amounts of noise, the truncation led to a significant loss of information.
+  
+Nevertheless, the \enquote{noise} provided information that could be evaluated as an understanding \textit{Understandability} of the question and the ability to provide an explanation \textit{Explainability}.
+However, the content that remained after the truncation often did not contain a sufficient amount of valuable information in terms of facts.
+This lead to a weak performance with regard to \textit{Correctness} was achieved.
 %
-\subsection{Chunk Size}
-Possible improvements start with the configuration of the embedding.
-The size of the chunks should be adapted to the source.
-An in-depth analysis of the complexity and style of the literature could help to define the ideal chunk size and the appropriate overlap.
-Detailed literature with a high number of concrete, clearly formulated facts, data and knowledge per sentence may allow for a smaller chunk size and lower overlap.
-On the other hand, a text with extensive wording and paraphrasing of complex content requires larger chunks and overlap in order not to lose the context.
+
+In contrast, the \textit{Blablador} pipeline demonstrated the positive impact of implementing the token limit as an explicit instruction within the prompt.
+This avoided hard cuts, preserved valuable information and enabled an undistorted evaluation of the generated output.
 %
-\subsection{Top-K}
-Further optimisation of \ac{rag} can be achieved by adjusting the parameter \enquote{top-k}, the number of document snippets retrieved during the retrieval process.
-The choice of \textit{k} is a critical consideration.
-Retrieving a larger number of extracts from the database may seem advantageous, as they provide more context to the \ac{llm}.
-However, this also increases the likelihood that irrelevant or redundant information (\enquote{noise}) will be processed.
-This \enquote{noise} can dilute the relevant context, possibly causing relevant details to be lost from focus and leading to a deterioration in the \textit{precision} and conciseness of the answer ultimately generated.
-Experimental studies would vary the parameter value while analysing the quality of the generated output by the respective \ac{llm}.
-Identifying the highest possible quality of output likely correlates with the inclusion of a \textit{k} and a \textit{threshold}.
+
+Furthermore, implementing the access to the \acp{lm} via \ac{api} providers solved the problem of local hardware limitations and the accessibility of \ac{llm}.
+At the same time, it led to practical limitations and challenges.
+The \ac{api} availability, latency, and request timeouts had a significant negative impact on the workflow using the models provided by \textit{Blablador}.
+
+Data privacy remains an issue for the usage of \ac{lm} by commercial \ac{api} providers and \ac{ai} platforms in general.
+The \enquote{black box} of server sided data processing can not provide any guarantees for the discreet and delicate handling of user data.
 %
-\subsection{Cost}
-Furthermore, practical considerations of cost and latency are directly tied to the number and size of the retrieved snippets. 
-A larger \textit{k} value results in a longer prompt being sent to the generative model, which in turn leads to higher \ac{api} costs and increased response times.
-For the target group of students and practitioners operating under resource constraints, these factors are of significant importance.
+\section{Parametric Bias vs. Non-parametric Knowledge}
 
-Future research should therefore aim to identify the optimal balance.
-Industry practice often suggests that a top-k value between $5$ and $10$ snippets provides a good compromise for many applications. A higher value ($10\geq$ should probably only be considered when it is known that the required information is highly distributed throughout the knowledge base.
-The selected \ac{llm} should also have robust capabilities in dealing with very long and complex contexts, which can now be nearly regarded as a given standard due to rapid advances in technology and skills.
+\acp{lm} are pre-trained on massive datasets, which pre-define their internal knowledge base.
 
+Health Information Systems as a topic within medical informatics holds fundamental core definitions that are specific to and provided by \citet{bb2}.
+These definitions may contradict the general literature or common usage on which the respective \ac{lm} has been pre-trained on.
+The internal knowledge and the additional knowledge provided during inference are therefore in conflict.
+Similarly to the findings of \citet{Paul_Keller}, this conflict is evident during the execution of the experiment.
+%
+\section{Compromises due to the methodology}
 
-To move beyond heuristics, a systematic investigation is recommended. This could involve conducting a series of A/B tests or a grid search, varying both the chunk size and the top-k value, and measuring the impact on the evaluation metrics, particularly the Macro-F1 score and the automated DeepEval scores for faithfulness and relevance. Such an empirical approach would determine the ideal configuration for this specific knowledge base and question set, providing a valuable blueprint for developing a highly optimised, rather than merely functional, QA system.
+The implementation and subsequent comparison of the \ac{rag} and \ac{lcw} methods reveal their respective strengths and weaknesses.
+Both in relation to \ac{qa} using a large and comprehensive knowledge base.
+%
+\subsection{LCW - Method}
 
+The \ac{lcw} method is quite simple in its overall architectural setup.
+The knowledge base is read and parsed to the respective \ac{lm} as a coherent text unit (string) within the prompt.
 
-----
-possibities to discuss:
+Due to the size of the parsed context, the models sometimes seem to be distracted and therefore unable to find and extract relevant knowledge with regard to the question.
+If no relevant knowledge could be found in the knowledge base, the models would sometimes generated an answer based on its pre-trained, internal knowledge.
+This potential misinformation is difficult to identify as such in the subsequent analysis.
+The output usually provides plausible information.
+However, in detail, it actually deviates from the ground truth provided by the knowledge base.
+This type of answer is the most harmful, as students and practitioners are the ones who interpret it.
+They lack the necessary corrective expert knowledge, which could result in them learning incorrect fundamentals. 
+%
+\subsection{RAG - Method}
 
-additional ranking,deduplication, semantic expansion, post‑hoc re-ranking. --> future improvements
+Within the implemented \ac{rag} pipeline the retrieval accuracy was the most problematic parameter.
+The first applied interquartile semantic chunking, could not return context that met the required similarity threshold.
+This, again, resulted in the models answering based on their pre-trained knowledge or claiming that the provided context is insufficient to answer the question.
+The latter is the outcome to be preferred in that scenario but was not constantly applied by the \acp{lm}.
 
-- Score ordering manipulations (e.g., rescoring, blending multiple queries).
-- MMR 
-- Vector quantisation / HNSW parameter tuning (M, $ef_construct, ef_search$).
-- Sparse/dense hybrid (e.g., BM25 + vector fusion).
-- Multi-vector / multimodal fields.
-- Sharding or payload indexing optimisation (e.g., indexing frequently filtered - payload fields).
-- Reranking with a cross-encoder after initial recall.
-Time decay / recency weighting.
-- Semantic attribute weighting (e.g., boosting certain metadata categories).
-- Query expansion 
-- Using Qdrant's native gRPC for lower latency (LangChain uses HTTP client).
+The final hybrid chunking strategy partly solved the problem.
 
+The thereby increased quantity of available chunks resulted in chunks meeting the threshold during retrieval.
+However, these retrieved chunks occasionally provided distracting \enquote{noise}.
+For example, a retrieved chunk contained an unrelated question involving \enquote{++} symbols.
+The models misinterpreted the initial question to be related to the additional question.
+The generated answer mainly referred to the second question and provided no useful content.
 
+By definition, the \ac{rag} system consists of several components.
+Each component plays an important role for the quality of output and can be individually enhanced and adapted.
+Some of these available adaptions are described in \cref{ch:futurework}.
+%
+\section{Automated Evaluation}
 
+The manual assessment and classification of the generated answers, as applied in \citet{Paul_Keller}, was replaced by an automated \enquote{LLM-as-a-judge} pipeline.
+This implementation using the \textit{DeepEval} framework enabled an efficient and automatic evaluation process.
 
+While this approach simplifies reproduction and guarantees scalability, it comes with some compromises.
+%
+\subsection{LLM-as-a-jduge}
 
+The evaluating \ac{lm} instructed by a dedicated prompt often struggled to accurately separate the golden and generated answer into the required distinct semantic units.
+
+The \ac{lm} as a judge and within \textit{Step $1$} also acting as the subanswer extractor, follows the defined instructions within the prompt while being influenced by its internal bias.
+
+The underlying and instructing prompt cannot specify every possible nuance during the evaluation, which already limits the quality of result at this level.
+
+Another factor of inconsistency during the evaluation was the formulation of the questions.
+For example, the \texttt{single} question often contained formulations that indicated that at least $2$ subanswers were expected within the answer.
+The fixed expected count of subanswers, however, required only $1$ subanswer.
+F
+\begin{lstlisting}[language=json, caption={Mismatch between question and expected subanswer count}, label={lst:disctracting_question}]
+    {
+    "transformed": "How would you describe the scope and tasks of the following activities of managing information systems: Daily monitoring of network availability and network failures",
+    "num_answers": 1
+    }
+\end{lstlisting}
+%
+The evaluating \ac{lm} is instructed to directly integrate the initial question and the expected number of subanswers into the extraction process.
+the question at \cref{lst:disctracting_question} indicates the answer to separated into at least $2$ contextual units.
+One unit relates to the \enquote{scope}, while the other is concerned with the \enquote{tasks}.
+The responsible judge now has to follow the instructed rule to separated distinct contextual units.
+At the same time, it has to merge both units back into a single subanswer according to the expected count.
+%
+The issue becomes all the more siginificant the higher the expected number of subanswers.
+%
+All these possibilities and contextual nuances of the evaluation process must be defined in the prompt.
+%
+In conclusion, a subanswer extraction based on human assessment would, in the first place, simplify the process.
+In the second place, it would improve the results of this step and the subsequent evaluation steps.
+
+The \textit{Correctness} metric significantly depends on the quality of the output of \textit{Step $1$}.
+Th necessary textit{Correctness} classification of the subanswers extracted is also significantly influenced by the instructing prompt.
+The classification into \textit{correct}, \textit{incorrect}, \textit{not answered} is, in theory, quite distinct.
+In practice, however, the interpretation of \textit{correct} and \textit{incorrect} is nuanced:
+\begin{itemize}
+    \item How should similar phrasing and incomplete matches in the subanswers by assessed?
+    \item What if the subanswer contains knowledge that is factually correct but does not directly correspond to any golden true subanswer, yet is helpful in answering the question?
+\end{itemize}
+%
+The guiding phrasing of the evaluation workflow posed a great challenge.
+The evaluation should reflect the actual quality of the generated answer.
+However, the instructing prompt had to find an appropriate level of complexity.
+
+In conclusion, a classification by a human expert would result in a more reliable and probably more realistic representation of the model and method performance.
+
+\section{Achievement of the set Goals}
+
+The defined Goals (\cref{sec:goals}) could be achieved.
+Goal G1 (\cref{def:goal 1}) was established by implementing a reproducible open-source application using Docker.
+By using \ac{api} provider to use \ac{sota} \ac{llm} and running the application via Docker, the implemented setup is not restricted by resource-constraints.
+
+Goal G2 (\cref{def:goal 2} and G3 (\cref{def:goal 3} were achieved, as the application automatically answered the domain-specific questions using \citet{bb2}
+as knowledge base.
+Finally, Goal G4 (\cref{def:goal 4} is met by implementing an automated evaluation framework that compared the models and methods according to the defined metrics and criteria.
+
+The results demonstrate that the evaluated \acp{llm} are highly effective at accurately extracting, processing and reproducing the comprehensive domain-specific knowledge contained in \citet{bb2}.
+
+The \ac{lcw} method achieved better results than the \ac{rag} method.
+However, this does not allow for a general conclusion.
+It must be interpreted in direct relation to the specific setup implemented here.
 
 
 

@@ -516,5 +516,19 @@
     "method": "lcw",
     "answer_timestamp": "17-20-01-10-2025",
     "source": "A_2021"
+  },
+  {
+    "id": "qM0038",
+    "question": "Wie kann man Krankenhausinformationssysteme vergleichen?",
+    "transformed": "How can hospital information systems be compared?",
+    "generated": "Hospital information systems can be compared using a multidimensional taxonomy that characterizes different architectural styles. This taxonomy focuses on the computer-based part of hospital information systems at the logical tool layer and considers the following facets:\n\n1.  **Number of Databases:**\n    *   **DB^1 Architecture (Central Architecture):** This style involves a single database system storing all patient-related data. All application systems store their data in this central database, which is open for access and storage. This can be achieved if application software products are from the same vendor, self-developed, or if an appropriate API and standards are in place.\n    *   **DB^n Architecture (Distributed Architecture):** In this style, multiple application components store data persistently in their own database systems. This is common when using commercial software from several different vendors, leading to redundant storage of patient-related data across different systems (e.g., patient administration system, LIS, RIS).\n    *   **Mixed DB^1/DB^n Architectures:** In practice, most hospital information systems exhibit a mixed style, where a significant portion might be DB^1, but other components introduce DB^n elements.\n\n2.  **Number of Application Systems:**\n    *   **AC^1 Architecture (Monolithic Architecture):** The entire health information system consists of only one computer-based application system that supports most functions. This typically correlates with a DB^1 architecture.\n    *   **AC^n Architecture (Modular Architecture):** This involves multiple application components to support different functions. While often associated with DB^n, modular architectures can still be DB^1 if all components connect to a single central database (e.g., through an open platform).\n\n3.  **Number of Application Software Products and Vendors:**\n    *   **V^1 Architecture (Homogeneous/All-in-One Architecture):** The system uses software from only one vendor, regardless of the number of application systems. This emphasizes a unified approach.\n    *   **V^n Architecture (Heterogeneous Architecture):** The system comprises software from several different vendors.\n    *   **Best-of-Breed Architecture:** A specific type of (AC^n, V^n) architecture where different application systems are chosen from various vendors to get the \"best\" product for each specific need. This is typically DB^n.\n\n4.  **Communication Pattern:**\n    *   **CP^n Architecture (Spaghetti Architecture):**",
+    "true_answer": "(Referenzmodelle, Taxonomy)",
+    "num_answers": 2,
+    "type": "multi",
+    "error_status": "no_errors",
+    "llm": "Gemini_2_5_Flash",
+    "method": "lcw",
+    "answer_timestamp": "02-01-10-02-2026",
+    "source": "A_2021"
   }
 ]

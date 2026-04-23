@@ -2256,5 +2256,98 @@
         "filtered_out_by_source": {}
       }
     }
+  },
+  {
+    "id": "qSs032",
+    "question": "Was ist ARIS?",
+    "transformed": "Whad is ARIS (Arcitecture of Integreted Enformation Systems)?",
+    "generated": "ARIS (Architecture of Integrated Information Systems) is a framework for enterprise modeling and business process management. It was developed by August-Wilhelm Scheer in the early 1990s. ARIS provides a structured approach to analyzing, designing, and implementing business processes by using multiple views (or perspectives) to represent different aspects of an organization.\n\n### Key Features of ARIS:\n1. **Multi-Dimensional Modeling**: ARIS uses multiple interconnected views to describe business processes, including:\n   - **Data View**: Focuses on data structures and information flow.\n   - **Function View**: Represents business functions or activities.\n   - **Organization View**: Describes organizational units and hierarchies.\n   - **Output View**: Covers outputs like products or services.\n   - **Control View**: Integrates the other views to show process flows.\n\n2. **Phases of Business Process Lifecycle**:\n   - **Requirements Definition**: Capturing business needs.\n   - **Design Specification**: Creating detailed process models.\n   - **Implementation Description**: Translating models into executable workflows.\n   - **Execution**: Running and monitoring processes.\n   - **Monitoring & Optimization**: Analyzing performance for improvements.\n\n3. **Tool Support**: ARIS is supported by software tools (e.g., **ARIS Express** or **ARIS Business Architect**) that help visualize, analyze, and optimize processes.\n\n4. **Industry Applications**: Widely used in manufacturing, logistics, finance, and IT for process standardization, ERP system implementation (e.g., SAP), and digital transformation.\n\n### Purpose:\nARIS helps organizations streamline operations, reduce complexity, and align IT systems with business goals by providing a clear, visual representation of processes.\n\nWould you like more details on a specific aspect of ARIS?",
+    "true_answer": "The Architecture of Integrated Information Systems is a framework for describing business processes. It provides modeling methods and meta-structures that are comprised in information models.",
+    "num_answers": 1,
+    "type": "single",
+    "error_status": "errors",
+    "llm": "DeepSeek_Chat_V3",
+    "method": "rag",
+    "answer_timestamp": "14-17-02-02-2026",
+    "source": "IS_2022_09_27",
+    "details": {
+      "retrieval": [],
+      "retrieval_summary": {
+        "total": 0,
+        "by_source": {},
+        "retrieval_strategy": "similarity"
+      },
+      "retrieval_filtering": {
+        "min_score": 0.85,
+        "total_candidates": 15,
+        "retained": 0,
+        "filtered_out": 15,
+        "filtered_out_by_source": {
+          "book.md": 15
+        }
+      }
+    }
+  },
+  {
+    "id": "qSs033",
+    "question": "Was ist IHE?",
+    "transformed": "Whad is IHE (Integratin the Helthcare Enterpraise)?",
+    "generated": "IHE (Integrating the Healthcare Enterprise) is a global initiative that aims to improve the way healthcare computer systems share information. It focuses on enhancing interoperability—ensuring that different healthcare IT systems can communicate and work together effectively.  \n\n### Key Aspects of IHE:  \n1. **Standards-Based:** IHE promotes the use of established healthcare IT standards (e.g., HL7, DICOM, FHIR) to enable seamless data exchange.  \n2. **Profiles:** It develops technical frameworks called *Integration Profiles*, which specify how systems should implement standards for specific use cases (e.g., radiology workflows, patient referrals).  \n3. **Testing & Certification:** IHE organizes *Connectathons* where vendors test their systems for compliance with IHE profiles, ensuring real-world interoperability.  \n4. **Cross-Domain Collaboration:** IHE addresses needs across domains like radiology, cardiology, laboratory, and public health.  \n\n### Goals:  \n- Reduce integration costs.  \n- Improve care coordination.  \n- Support secure, accurate data sharing across healthcare organizations.  \n\nIHE is not a standard itself but a framework to apply existing standards consistently. Organizations like HIMSS, RSNA, and IHE International drive its adoption.  \n\nLet me know if you'd like details on specific IHE profiles or domains!",
+    "true_answer": "IHE stands for Integrating the Healthcare Enterprise. It is an initiative by healthcare professionals and industry to improve the way computer systems in healthcare share information. IHE promotes the coordinated use of established standards such as DICOM and HL7 to address specific clinical needs in support of optimal patient care",
+    "num_answers": 1,
+    "type": "single",
+    "error_status": "errors",
+    "llm": "DeepSeek_Chat_V3",
+    "method": "rag",
+    "answer_timestamp": "15-17-02-02-2026",
+    "source": "IS_2022_09_27",
+    "details": {
+      "retrieval": [],
+      "retrieval_summary": {
+        "total": 0,
+        "by_source": {},
+        "retrieval_strategy": "similarity"
+      },
+      "retrieval_filtering": {
+        "min_score": 0.85,
+        "total_candidates": 15,
+        "retained": 0,
+        "filtered_out": 15,
+        "filtered_out_by_source": {
+          "book.md": 15
+        }
+      }
+    }
+  },
+  {
+    "id": "qSs034",
+    "question": "Was ist openEHR",
+    "transformed": "Whad is openEHR?",
+    "generated": "**Answer:**  \nopenEHR is an open standard specification for electronic health records (EHRs) that enables the creation, storage, sharing, and interoperability of health data across different systems and organizations. It provides a vendor-neutral, flexible framework for structuring clinical data using **archetypes** (reusable definitions of clinical concepts) and **templates** (combinations of archetypes tailored to specific use cases).  \n\n### Key Features of openEHR:  \n1. **Standardized Data Models**: Uses a formal ontology (based on the **Archetype Object Model**) to ensure consistent representation of clinical data.  \n2. **Separation of Data and Logic**: Distinguishes between the underlying reference model (fixed) and clinical content definitions (flexible archetypes).  \n3. **Interoperability**: Supports FHIR, HL7, and other standards to integrate with existing healthcare systems.  \n4. **Open-Source Ecosystem**: Includes tools like the **EHRbase** platform and **Better** clinical modeling suite.  \n\n### Use Cases:  \n- National EHR systems (e.g., Norway’s Helsenorge).  \n- Research datasets (e.g., cancer registries).  \n- Personalized medicine and AI-driven analytics.  \n\nDeveloped by the **openEHR Foundation**, it aims to overcome vendor lock-in and improve data quality in healthcare.  \n\nLet me know if you'd like deeper details on any aspect!",
+    "true_answer": "openEHR is an open standard specification in health informatics that describes the management and storage, retrieval and exchange of health data in electronic health records (EHRs). In openHER, all health data for a person is stored in a \"one lifetime\", vendor-independent, person-centred EHR. It is completely model-driven, and separates domain semantics out from software, into models created by domain professionals.",
+    "num_answers": 1,
+    "type": "single",
+    "error_status": "errors",
+    "llm": "DeepSeek_Chat_V3",
+    "method": "rag",
+    "answer_timestamp": "15-17-02-02-2026",
+    "source": "IS_2022_09_27",
+    "details": {
+      "retrieval": [],
+      "retrieval_summary": {
+        "total": 0,
+        "by_source": {},
+        "retrieval_strategy": "similarity"
+      },
+      "retrieval_filtering": {
+        "min_score": 0.85,
+        "total_candidates": 15,
+        "retained": 0,
+        "filtered_out": 15,
+        "filtered_out_by_source": {
+          "book.md": 15
+        }
+      }
+    }
   }
 ]
