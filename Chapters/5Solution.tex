@@ -1484,9 +1484,9 @@ Further, a combined overview of the scores is stored, as exemplified in \cref{ls
             }
 \end{lstlisting}
 %
-\subsection{Output - Step 4.2 - Correctness}\label{subsub:output_4_1_correct}
+\subsection{Output - Step 4.2 - Correctness}\label{subsub:output_4_2_correct}
 \textit{Step 4.2 - Correctness} aggregates the prior individual classification of the subanswers to determine a final \textit{answered} score.
-The decision rule applied, as well as the classification determined by both evaluation policies are stored within a \texttt{correctness_aggregation} object as shown in \cref{lst:evaluation_file_structure_points_Step2}.
+The decision rule applied, as well as the classification determined by both evaluation policies are stored within a \texttt{correctness\_aggregation} object as shown in \cref{lst:evaluation_file_structure_points_Step2}.
 
 \begin{lstlisting}[language=json, caption={Evaluation File Structure - Step 4.2 - Correctness - Example }, label={lst:evaluation_file_structure_points_Step2}]
 {
@@ -1534,7 +1534,7 @@ The decision rule applied, as well as the classification determined by both eval
 The  \textit{Robustness} metric workflow generates the same output data.
 To make it easy to distinguish between the records, the error status is specifically stored and highlighted in the file name, the individual \texttt{id}s and further the metadata:
 
-\texttt{{mode}}\_{method}\_{type}\_\textcolor{blue}{no\_errors}\_evaluated.json} $\to$ \texttt{{mode}}\_{method}\_{type}\_\textcolor{red}{errors}\_evaluated.json}
+\texttt{{mode}\_{method}\_{type}\_\textcolor{blue}{no\_errors}\_evaluated.json} $\to$ \texttt{{mode}\_{method}\_{type}\_\textcolor{red}{errors}\_evaluated.json}
 
 \begin{lstlisting}[language=json, caption={Evaluation File Structure - Robustness - Example }, label={lst:evaluation_file_robustness}]
 Example file - {DeepSeek_Chat_V3_lcw_multi_no_errors_evaluated.json}
