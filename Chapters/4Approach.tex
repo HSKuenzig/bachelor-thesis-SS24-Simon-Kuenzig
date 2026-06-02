@@ -211,7 +211,7 @@ By using \acp{api}, advanced \acp{llm} with large context window sizes can be us
     \noindent \textbf{language} $=$ \textit{English}\newline
     \noindent \textbf{parameters} $=$ $364$ Million\newline
     \noindent \textbf{size} = $133$MB)\newline
-    creates vectors with $384$ dimensions.
+    creates vectors with $384$ dimensions.\todo{besser formatieren}
     
     Comparison and analysis of advanced embedding techniques and various models are not subject of this work (see \cref{ch:discussion}).
     
@@ -219,7 +219,7 @@ By using \acp{api}, advanced \acp{llm} with large context window sizes can be us
     \paragraph{Rationale for Dedicated Embedding Model}\label{par:embedding_rationale}
     Ideally, for a direct unaltered comparison of both methods and as originally intended, the same \ac{lm} would be used for all steps.
     However, there are some arguments against this.
-    
+    \todo{die tilde wird bei mir nicht angezeigt wenn ich es mit tectonic baue}
     For example, the \ac{api} costs associated with \textit{embedding} numerous text \textit{chunks} (\texttildelow{}$120-160$k tokens) would far exceed the predefined low-cost constraint.
     
     Furthermore, \acp{lm} often differ in their specialised capabilities based on their design goals.
@@ -248,6 +248,7 @@ By using \acp{api}, advanced \acp{llm} with large context window sizes can be us
     
 \noindent\textbf{Retrieval Process:}\newline
     The retrieval process will also be facilitated by \textit{Qdrants FastEmbed}.
+		\todo{bitte auf das unterkapitel mit der erklärung der cosine similarity verweisen}
     Its integrated similarity metric, such as \textit{cosine similarity}, will handle the process of identifying relevant snippets from the \ac{db}.
     As the same \acp{lm} will be used for both method pipelines, the respective \textit{context window} allows for the choice of a high value for \texttt{top\_k}.
     
@@ -303,7 +304,7 @@ It allows selecting the \ac{qa} \textit{method}, question \textit{type} and the 
 Furthermore, files can be uploade to be processed for question retrieval or as a knowledge base.
 %
 \subsection{Backend Service for Orchestration}\label{subsec:backend_service} 
-    The \textit{backend}s responsibilities include:\\
+    The \textit{backend}s responsibilities include:\\\todo{Besser formatieren, Groß- und Kleinschreibung konsistent halten.}
     \noindent \textbf{managing and formatting} user queries and questions in the form of prompts.\\
     \noindent \textbf{accessing and parsing} the \citet{bb2} text.\\
     \noindent \textbf{Interacting} with \textit{Qdrant} for
@@ -354,7 +355,9 @@ The same calculations are performed in total and separately for $3$ question cat
     \textit{Precision} is defined as the proportion of retrieved or generated facts within an answer that are actually correct in relation to the ground truth.
     \textit{Precision} measures the accuracy of the generated information.
     In fields such as medicine, where scientific and factual correctness and completeness are always sought, maximising precision is often prioritised, as highlighted by \citet{Paul_Keller}:\\
-    \( \text{Precision} = \frac{|\text{Correct Items}|}{|\text{Generated Items}|} \).
+    \todo{Die mathematischen Gleichungen / Definitionen nicht so an die Absätze quetschen.
+		Ist das inline math? Besser display math benutzen.}
+		\( \text{Precision} = \frac{|\text{Correct Items}|}{|\text{Generated Items}|} \).
     %
     
     %
