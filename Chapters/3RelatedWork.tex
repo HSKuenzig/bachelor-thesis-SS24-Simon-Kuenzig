@@ -80,7 +80,7 @@ The non-parametric memory is accessed via a pre-trained neural retriever.
 the input, and the seq2seq model [\dots] then conditions on these latent documents together with the input to generate the output} \citep[p.2]{lewis2020ragnlp}
 The resulting system is referred to as \textbf{retrieval-augmented generation (RAG)}.
 %
-\citet{lewis2020ragnlp}s approach differs from previous work on proposed architectures to enrich the system by the ability to access knowledge without training the \ac{lm} used for specific tasks from scratch.
+The approach presented by \citet{lewis2020ragnlp} differs from previous work on proposed architectures to enrich the system with specific knowledge. It introduces the ability to access knowledge without training the \acp{lm} used for specific tasks from scratch.
 Combining parametric and non-parametric memory with generation for knowledge-intensive tasks has achieved state-of-the-art results in the open domain \ac{qa}, as well as abstractive \ac{qa}.
 
 It was also found that the \ac{rag} approach generates less hallucinations. Factually correct texts were generated more often compared to the non-augmented \ac{bart} model used \citep{lewis2020ragnlp}.
@@ -110,10 +110,10 @@ In applying the developed framework at the time available \ac{sota} \ac{lm} used
 %
 
 %
-The particular implementation of long-context- \ac{llm}s as generator in \ac{rag} and thus an optimal design of \ac{rag} remained under-explored \citep{jin2024longcontextllmsmeetrag}.
+The particular implementation of long-context- \acp{llm} as generator in \ac{rag} and thus an optimal design of \ac{rag} remained under-explored \citep{jin2024longcontextllmsmeetrag}.
 %
 Therefore, \citet{jin2024longcontextllmsmeetrag} investigated the impact of the amount of retrieved passages on the generation step.
-In particular, by leveraging the long-context windows of \ac{llm}.
+In particular, by leveraging the long-context windows of \acp{llm}.
 \citet{jin2024longcontextllmsmeetrag} observed that an increasing number does not consistently improve performance.
 At a certain point, the unconsidered increase of passages causes a decrease in retrieval quality caused by irrelevant information (\enquote{noise}).
 
@@ -122,7 +122,7 @@ At a certain point, the unconsidered increase of passages causes a decrease in r
 Therefore, \citet{jin2024longcontextllmsmeetrag} proposes three methods: ($1$) \textbf{Retrieval reordering} based on retrieval scores.
 This directly relates to the results of \citet{liu2024lostmiddle}.
 Documents with higher scores placed at the beginning and end of the input sequence guide the respective \ac{lm} towards more relevant information \citep{jin2024longcontextllmsmeetrag}.\\
-Further optimisation of the \acp{lm} can be achieved by ($2$) \textbf{Implicit robustness} fine-tuning and ($3$) \textbf{Implicit robustness fine-tuning}.\todo{zweimal das gleiche}
+Further optimisation of the \acp{lm} can be achieved by ($2$) \textbf{Implicit robustness} and ($3$) \textbf{Fine-tuning}.
 Hence, justifying the additional computational cost with the ability to \enquote{discern relevant information from noise within the retrieved context} \citep[p.2]{jin2024longcontextllmsmeetrag}.
 %
 

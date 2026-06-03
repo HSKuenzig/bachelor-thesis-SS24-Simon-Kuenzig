@@ -331,7 +331,7 @@ This decision led to the desired goal of high quality output.
 \noindent \textbf{1. Semantic Chunking}
 
 Initially, chunks are produced by \textbf{Semantic Chunking}. 
-Therefore \textit{LangChain}s \texttt{interquartile} method is chosen and implemented by modifying the original template from \cite{langchainsemantic}.\\
+Therefore \textit{LangChain}'s \texttt{interquartile} method is chosen and implemented by modifying the original template from \cite{langchainsemantic}.\\
 The created \textit{LangChain} \texttt{SemanticChunker} instance is configured with \texttt{FastEmbedEmbeddings} using the default \texttt{BAAI/bge-small-en} embedding model (see \cref{par:api_generation_rationale}) and a\\ \texttt{breakpoint\_threshold\_type="interquartile"}.
 The interquartile range can be scaled by the keyword argument \texttt{breakpoint\_threshold\_amount} and was unmodified and therefore defaults to a value of $1.5$.
 %

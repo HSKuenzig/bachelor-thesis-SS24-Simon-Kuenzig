@@ -206,13 +206,13 @@ By using \acp{api}, advanced \acp{llm} with large context window sizes can be us
 \noindent\textbf{Embedding Generation:}\newline
     The selected knowledge base, as well as the user query have to be initially embedded (\cref{sec:embeddings}).
     Subsequently, they need to be stored inside the \textit{Qdrant} Vector-\ac{db}.
-    \endquote{FastEmbed} is \textit{Qdrant}s standard method to enable quick embeddings without the need for more powerful computational resources and advanced embedding methods.
-    Using \textit{FastEmbed} with \textit{Qdrant}s default embedding model with the default settings:
-    \noindent \textbf{language} $=$ \textit{English}\newline
-    \noindent \textbf{parameters} $=$ $364$ Million\newline
-    \noindent \textbf{size} = $133$MB)\newline
-    creates vectors with $384$ dimensions.\todo{besser formatieren}
-    
+    \enquote{FastEmbed} is \textit{Qdrant}'s standard method to enable quick embeddings without the need for more powerful computational resources and advanced embedding methods.
+    Using \textit{FastEmbed} with \textit{Qdrant}'s default embedding model with the default settings below creates vectors with $384$ dimensions:
+    \begin{itemize}
+        \item \textbf{Language} = \textit{English}
+        \item \textbf{Parameters} = $364$ Million
+        \item \textbf{Size} = $133$\,MB
+    \end{itemize}
     Comparison and analysis of advanced embedding techniques and various models are not subject of this work (see \cref{ch:discussion}).
     
 %
@@ -220,7 +220,7 @@ By using \acp{api}, advanced \acp{llm} with large context window sizes can be us
     Ideally, for a direct unaltered comparison of both methods and as originally intended, the same \ac{lm} would be used for all steps.
     However, there are some arguments against this.
     \todo{die tilde wird bei mir nicht angezeigt wenn ich es mit tectonic baue}
-    For example, the \ac{api} costs associated with \textit{embedding} numerous text \textit{chunks} (\texttildelow{}$120-160$k tokens) would far exceed the predefined low-cost constraint.
+    For example, the \ac{api} costs associated with \textit{embedding} numerous text \textit{chunks} ($\sim 120-160$k tokens) would far exceed the predefined low-cost constraint.
     
     Furthermore, \acp{lm} often differ in their specialised capabilities based on their design goals.
     The selected models excel in complex reasoning and text generation.
@@ -248,8 +248,7 @@ By using \acp{api}, advanced \acp{llm} with large context window sizes can be us
     
 \noindent\textbf{Retrieval Process:}\newline
     The retrieval process will also be facilitated by \textit{Qdrants FastEmbed}.
-		\todo{bitte auf das unterkapitel mit der erklärung der cosine similarity verweisen}
-    Its integrated similarity metric, such as \textit{cosine similarity}, will handle the process of identifying relevant snippets from the \ac{db}.
+    Its integrated similarity metric, such as \textit{cosine similarity} (see \cref{subsec:cosine_similarity}), will handle the process of identifying relevant snippets from the \ac{db}.
     As the same \acp{lm} will be used for both method pipelines, the respective \textit{context window} allows for the choice of a high value for \texttt{top\_k}.
     
     It should be noted that the quantity of chunks is not guaranteed to be proportional to the quality of output generated.
@@ -304,14 +303,15 @@ It allows selecting the \ac{qa} \textit{method}, question \textit{type} and the 
 Furthermore, files can be uploade to be processed for question retrieval or as a knowledge base.
 %
 \subsection{Backend Service for Orchestration}\label{subsec:backend_service} 
-    The \textit{backend}s responsibilities include:\\\todo{Besser formatieren, Groß- und Kleinschreibung konsistent halten.}
-    \noindent \textbf{managing and formatting} user queries and questions in the form of prompts.\\
-    \noindent \textbf{accessing and parsing} the \citet{bb2} text.\\
-    \noindent \textbf{Interacting} with \textit{Qdrant} for
-    \textit{embedding} generation and local \ac{rag} retrieval.\\
-    \noindent \textbf{Handling} external \ac{api} calls to the selected \acp{lm}.\\
-    \noindent \textbf{Receiving and Processing} generated responses.
-    \noindent \textbf{triggering} evaluation scripts.
+    The \textit{backend}'s responsibilities include:
+    \begin{itemize}
+        \item \textbf{Managing and formatting} user queries and questions in the form of prompts.
+        \item \textbf{Accessing and parsing} the \citet{bb2} text.
+        \item \textbf{Interacting} with \textit{Qdrant} for \textit{embedding} generation and local \ac{rag} retrieval.
+        \item \textbf{Handling} external \ac{api} calls to the selected \acp{lm}.
+        \item \textbf{Receiving and processing} generated responses.
+        \item \textbf{Triggering} evaluation scripts.
+    \end{itemize}
 \subsection{Docker Containerisation}\label{subsec:docker}
 
 The general implementation approach is to ensure an easy setup and reproducibility.
@@ -354,34 +354,38 @@ The same calculations are performed in total and separately for $3$ question cat
 \label{def:precision_approach}
     \textit{Precision} is defined as the proportion of retrieved or generated facts within an answer that are actually correct in relation to the ground truth.
     \textit{Precision} measures the accuracy of the generated information.
-    In fields such as medicine, where scientific and factual correctness and completeness are always sought, maximising precision is often prioritised, as highlighted by \citet{Paul_Keller}:\\
-    \todo{Die mathematischen Gleichungen / Definitionen nicht so an die Absätze quetschen.
-		Ist das inline math? Besser display math benutzen.}
-		\( \text{Precision} = \frac{|\text{Correct Items}|}{|\text{Generated Items}|} \).
-    %
+    In fields such as medicine, where scientific and factual correctness and completeness are always sought, maximising precision is often prioritised, as highlighted by \citet{Paul_Keller}:
+		\[
+        \text{Precision} = \frac{|\text{Correct Items}|}{|\text{Generated Items}|}.
+        \]
+        %
     
     %
  \noindent\textbf{Recall}\\
  \label{def:recall_approach}
     Recall measures the completeness of the generated information.
-    For this purpose, the proportion of all expected correct facts (for a complete answer) that the model has successfully included in its answer is calculated:\\
+    For this purpose, the proportion of all expected correct facts (for a complete answer) that the model has successfully included in its answer is calculated:
     %
-    \( \text{Recall} = \frac{|\text{Correct Items}|}{|\text{Expected Correct Items}|} \).
-    %
+    \[
+    \text{Recall} = \frac{|\text{Correct Items}|}{|\text{Expected Correct Items}|}.
+    \]%
     
     %
-\noindent\textbf{F1-Score}\\
-    \label{def:F1-score_approach}
-    Represents the harmonic mean of precision and recall, offering a single, balanced measure of performance:\\ \( F_1 = 2 \times \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}} \).
+\noindent\textbf{F1-Score}\label{def:F1-score_approach}\\
+    Represents the harmonic mean of precision and recall, offering a single, balanced measure of performance:\\
+    \[
+    F_1 = 2 \times \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}}
+    \]
     %
 \paragraph{Macro-F1 vs. Micro-F1:}
 %
 When evaluating the performance of a  \ac{qa}-system, usually sets of queries are used for the assessment of continuous and overall quality of output.
 Therefore, individual \textit{F1-scores} have to be accumulated to calculate into an overall average.
 
-There are two main methods for this aggregation, \textit{Micro F1-score and Macro F1-score}:\\
+There are two main methods for this aggregation, \textit{Micro F1-score and Macro F1-score}:
+
 To calculate the \textit{Micro-average/Micro F1}, all individually correctly generated and expected items are collected together across all questions. 
-Finally, a uniting \textit{Micro F1-Score} is calculated:\\
+Finally, a uniting \textit{Micro F1-Score} is calculated:
 \begin{align}
     C      & = S \cap G                                 \\
     prec   & = \frac{|C_{q}|}{|S_{q}|}                  \\
@@ -408,8 +412,8 @@ Further metrics, as presented and applied in \citet{Paul_Keller}, included in th
 %
 
 %
-\noindent\textbf{Correctness}\newline
-\label{def:correctness_approach}\textit{The fundamental assessment of factual accuracy against a reliable source (e.g., \citet{bb2}) or expert consensus (e.g, official sample solutions for exam questions).}
+\noindent\textbf{Correctness}\label{def:correctness_approach}\newline
+\textit{The fundamental assessment of factual accuracy against a reliable source (e.g., \citet{bb2}) or expert consensus (e.g, official sample solutions for exam questions).}
 
 \citet{Paul_Keller} implemented this through manual comparison, classifying each generated answer as \enquote{Correct}, \enquote{False} or \enquote{Not Answered}.
 This forms a core part of the evaluation necessary for the \textit{Macro-F1 score}.
@@ -438,13 +442,12 @@ This possible deliberate homogeneity is thus decisive for this exclution of the 
 %
 
 %
-\noindent\textbf{Robustness}
-\label{def:robustness_approach}\newline
+\noindent\textbf{Robustness}\label{def:robustness_approach}\newline
 \textit{An answer is considered \textit{robust} if it is correct even with incorrect or disrupted question input.}
 
 In a real-world application scenario, human users will not be able to provide ideal query inputs without corrective \textit{prompting techniques}. 
 Grammar errors and typos may occur. 
-\citet{Paul_Keller} tested this by evaluating the performance of \ac{llm}s on queries where such mistakes were deliberately introduced.
+\citet{Paul_Keller} tested this by evaluating the performance of \acp{llm} on queries where such mistakes were deliberately introduced.
 The deliberately and wrongfully altered questions from \citet{Paul_Keller} will also be included into the respective generation and evaluation pipelines.
 \begin{lstlisting}[language=json, caption={Example Intentional Errors and Typos}, label={lst:ex_intentional_errors_typos}]
     Example:
@@ -453,8 +456,8 @@ The deliberately and wrongfully altered questions from \citet{Paul_Keller} will 
         }
 \end{lstlisting}
 %
-\noindent\textbf{Explainability}
-\label{def:explainability_approach}\newline\textit{The extent to which the \ac{lm} provides plausible and appropriate reasoning or argumentation within the answer.
+\noindent\textbf{Explainability}\label{def:explainability_approach}\newline
+\textit{The extent to which the \ac{lm} provides plausible and appropriate reasoning or argumentation within the answer.
 An answer is considered \textit{explained} if it contains an explanation.}
 
 \citet{Paul_Keller} has provided a manual evaluation of this quality.
@@ -483,7 +486,7 @@ Both \textit{DeepEval} and custom metric calculations and evaluations are integr
 The results are systematically compared: 
 \begin{itemize}
     \item \ac{rag} vs. \ac{lcw} for each \ac{api} accessed \ac{llm}
-    \item Performance across the selected \ac{llm}s
+    \item Performance across the selected \acp{llm}
     \item Comparison against the benchmark results provided by \citet{Paul_Keller} (which included \textit{GPT-4} performance)
     \end{itemize}
 The analysis focuses on individual results with consideration of trade-offs between methods, models, \ac{api} costs and performance.

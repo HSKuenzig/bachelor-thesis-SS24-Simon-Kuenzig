@@ -543,7 +543,7 @@ The \textbf{context window} defines the boundaries of what a model can see, but 
 This distinction between \textit{nominal capacity} and \textit{effective attention} is the main challenge when attempting to process knowledge sources such as \citet{bb2} textbook.
 %
 \subsection{Chunking}\label{sub:chunking_prel}
-Despite the expanded capacity of modern \ac{lm}s, dividing texts into smaller segments remains a necessity.
+Despite the expanded capacity of modern \acp{lm}, dividing texts into smaller segments remains a necessity.
 %
 \begin{definition}
 \textbf{Chunking} is the process of dividing longer textual sequences into smaller, contextually meaningful segments (\textit{chunks}).
@@ -678,7 +678,7 @@ Vector databases operate in a continuous multi-dimensional semantic space.
 Data (e.g., text chunks of \citet{bb2}) is transformed into vectors (see \cref{subsec:token_prel}, \cref{sec:encoding} and \cref{sec:embeddings}).
 The number of \textbf{dimensions} corresponds to the output vector size of the embedding model.
 The \textit{BAAI/bge-small-en} standard model would generate $384$ dimensions.
-For comparison, \textit{OpenAi}s \texttt{text-embedding-3-small} would generate $1536$ \citep{OpenAi2024embeddings}.
+For comparison, \textit{OpenAi}'s \texttt{text-embedding-3-small} would generate $1536$ \citep{OpenAi2024embeddings}.
 Each dimension represents a latent semantic feature that allows the \ac{db} to capture contextual meaning.
 %
 \subsubsection{Database Management System}\label{subsub:dbm}
@@ -791,7 +791,7 @@ The method of accessing a \ac{lm} for inference influences capability, accessibi
 %
 \begin{itemize}
     \item \textbf{API-based Inference:} 
-    Through \ac{api}s, \ac{lm} that are provided and hosted by third-party providers can be accessed for individual application.
+    Through \acp{api}, \acp{lm} that are provided and hosted by third-party providers can be accessed for individual application.
     This allows the use of high-performance \acp{llm} without potential local hardware restrictions.
     The \ac{api} usage usually comes with usage costs, privacy considerations, and limited control over the execution environment.
 \item \textbf{Local Inference:}
