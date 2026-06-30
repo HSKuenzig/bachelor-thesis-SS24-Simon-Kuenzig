@@ -9,7 +9,7 @@
 
 \begin{titlepage}
 	% if you want the titlepage to be centered, uncomment and fine-tune the line below (KOMA classes environment)
-	\begin{addmargin}[-1cm]{-3cm}
+	\begin{addmargin}[-1cm]{-2cm}
     \begin{center}
         \large
 		
@@ -23,29 +23,43 @@
             \color{Maroon}\LARGE{\spacedallcaps{\myTitle}} \\ \bigskip
         \endgroup
 
-        %Der Fakultät für Mathematik und Informatik \\ der Universität Leipzig eingereichte \\\vfill
+        %Der Medizinischen Fakultät \\ der Universität Leipzig eingereichte \\\vfill
 
         \vfill \bigskip
 
-        {\Huge BACHELOR THESIS} \vfill\medskip
+        {\Huge BACHELORARBEIT} \vfill\medskip
 
-        for achieving the academic degree \\\vfill
+        zur Erlangung des akademischen Grades \\\vfill
 
         {\LARGE Bachelor of Science}\\
         (B. Sc.)\\\vfill
 
         %im Fachgebiet \mySubject vorgelegt von\\\vfill
 
-		Submitted by\\\vfill
-
-        \textbf{\myName}\\
-		Subject \mySubject{}\vfill%Anpassen in classicthesis-config.tex
+		%vorgelegt von\\\vfill
+        \centering
+        \begin{tabularx}{\textwidth}{lr}
+        Leipzig, den \myTime    &vorgelegt von\\
+                                    &\myName\\
+                                    &Studiengang \mySubject{}\\
+        \end{tabularx}
+        %\textbf{\myName}\\
+		%Fachgebiet \mySubject{}\vfill%Anpassen in classicthesis-config.tex
 
         %geboren am {\mybirthday} in {\mybirthtown}, {\mybirthcountry} \\\vfill
+        
+        %Leipzig, den \myTime\vfill
 
-        Leipzig, \myTime\vfill
+        \vspace{2em}
 
-
+        Betreuender Hochschullehrer | Betreuer: \mySupervisor\\
+        % Zugehörigkeit: (nur nötig, falls beide Betreuer unterschiedliche Zugehörigkeit haben)
+        %Betreuer | Zweitgutachter: \myProf (bei Bachelorarbeit gibt es nur einen)\\
+        % Achtung: Es gibt hier zwei Fälle:
+        % Option 1: Der offizielle Betreuer ist Professor:in. In diesem Fall ist der betreuende Hochschullehrer als erstes anzugeben.
+        % Wenn hauptsächlich ein wissenschaftlicher Mitarbeiter die Betreuung übernimmt, kann dieser darunter angegeben werden.
+        % Option 2: Der offizielle Betreuer ist promoviert, hat aber keine Professur. In diesem Fall ist in der ersten Zeile der Betreuer anzugeben, in der zweiten Zeile der Zweitgutachter, der in diesem Fall eine Professur haben muss.
+        Zugehörigkeit: \myFaculty, \myDepartment % falls abweichend von eigenem Department hier ersetzen
 
 
 

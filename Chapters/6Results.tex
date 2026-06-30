@@ -50,6 +50,7 @@ The benchmark results shown in \cref{tab:one_shot_llm,tab:total_par_llm,tab:qa_l
             Llama-4-Scout       & $109B$ ($17B$ active)  & $10M$      & $0.10 / 0.30$ \\
             DeepSeek-V3-0324    & $671B$ (37B activated) & $128,000$  & $0.20 / 0.77$  \\
             Qwen3-32B           & $32.8B$                & $131,072$  & free  \\
+            Ministral-8B        & $8B$                   & $128,000$  & free \\
             Gemini-2.5-Flash    & $400B$                 & $1M$       & $0.30 / 2.50$\\
             GPT-4.1-Mini        & $\approx 7B$           & $1M$       & $0.40 / 1.60$   \\
             
@@ -95,7 +96,7 @@ These alternatives also remain highly attractive in terms of privacy and resourc
 All models are used \enquote{out of the box} through their respective \ac{api} providers.
 The models \textit{Llama-4-Scout}, \textit{DeepSeek-V3}, \textit{Gemini-2.5-Flash}, and \textit{GPT-4.1-Mini} are accessed via \textit{OpenRouter}.
 
-The \textit{Qwen3-VL-32B-Instruct} model is accessed via the \textit{Blablador} platform.
+The \textit{Qwen3-VL-32B-Instruct} and \textit{Ministral-8B-Instruct-2410} models are accessed via the \textit{Blablador} platform.
 
 \section{Evaluation Results}
 The comparison criteria are \textit{Correctness}, \textit{Explainability}, \textit{Question Understanding}, and \textit{Robustness} as specified in \cref{sec:evaluation_methodology_approach}.
@@ -152,6 +153,13 @@ The following corresponding designations are used to label the axes of the respe
 \caption[Question sources of the evaluation dataset]{Question sources contained in the evaluation dataset}\label{tab:eval_question_sources}
 \end{table}
 %
+\paragraph{Exclusion of Ministral-8B-Instruct-2410}
+During inference using both the \textit{Qwen3-VL-32B-Instruct} and \textit{Ministral-8B-Instruct-2410} from \textit{Blablador}, the models were frequently unresponsive and the \ac{api} responded with error messages.
+
+Despite the adjustments made to the \ac{api} request, the model \textit{Ministral-8B-Instruct-2410} was unable to generate any responses (see \cref{par:inconsistent_blablador}).
+This behaviour ultimately led to \textit{Ministral-8B-Instruct-2410} being excluded from the evaluation process.
+
+%
 
 \subsection{Correctness analysis}\label{sec:correctness_results}
 \subsubsection{Total numbers}
@@ -169,7 +177,7 @@ There are two evaluation modes that determined the respective category of the ge
     \item \textit{Strict} Mode
     \item \textit{Exam} Mode
 \end{itemize}
-%
+
 \begin{table}[H]
     \centering
     \caption[Correctness - Answered - Total Numbers - \textit{Strict} Mode]{Total aggregated evaluation scores grouped by model and method - Mode \textit{Strict}.}

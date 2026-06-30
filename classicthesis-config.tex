@@ -47,11 +47,11 @@
 \newcommand{\myTitle}{Question Answering on the textbook "Health Information Systems" using Large Language Models\xspace}
 \newcommand{\mySubtitle}{\xspace}
 \newcommand{\myDegree}{\xspace}
-\newcommand{\myName}{Simon Künzig\xspace}
+\newcommand{\myName}{Künzig, Simon\xspace}
 \newcommand{\mybirthday}{18.12.1993}
 \newcommand{\mybirthtown}{Hannover}
 \newcommand{\mybirthcountry}{Germany}
-\newcommand{\myProf}{Dr. Konrad Höffner\xspace}
+\newcommand{\myProf}{\xspace}
 \newcommand{\myOtherProf}{Prof. Name2\xspace}
 \newcommand{\mySupervisor}{Dr. Konrad Höffner\xspace}
 
@@ -61,10 +61,10 @@
 %\newcommand{\myFaculty}{Faculty of Mathematics and computer science\xspace}
 %\newcommand{\mySubject}{Computer Science}
 
-\newcommand{\myFaculty}{Medical Faculty\xspace}
-\newcommand{\myDepartment}{Institute for Medical Informatics, Statistics and Epidemiology\xspace}
-\newcommand{\myUni}{Leipzig University\xspace}
-\newcommand{\mySubject}{Medical Informatics}
+\newcommand{\myFaculty}{Medizinische Fakultät\xspace}
+\newcommand{\myDepartment}{Institut für Medizinische Informatik, Statistik und Epidemiologie\xspace}
+\newcommand{\myUni}{Universität Leipzig\xspace}
+\newcommand{\mySubject}{Informatik B. Sc.\xspace}
 
 %\newcommand{\myFaculty}{Faculty of Mathematics and computer science\xspace}
 %\newcommand{\myDepartment}{Institute for computer science\xspace}
@@ -191,6 +191,7 @@
 % ********************************************************************
 % Her Majesty herself
 % ********************************************************************
+\PassOptionsToPackage{hyperfootnotes=false}{hyperref}
 \usepackage{classicthesis}
 
 
@@ -424,5 +425,12 @@
 }[keywords, comments, strings]
 \usepackage{cleveref}
 \usepackage{cuted}
+\makeatletter
+\AtBeginDocument
+ {
+   \def\ltx@label#1{\cref@label{#1}}%add braces
+   \def\label@in@display@noarg#1{\cref@old@label@in@display{#1}}%remove braces
+ }
+\makeatother
 \newtheorem{definition}{Definition}
 
