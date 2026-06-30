@@ -109,7 +109,7 @@ Another factor of inconsistency during the evaluation was the formulation of the
 For example, the \texttt{single} question often contained formulations that indicated that at least $2$ subanswers were expected within the answer.
 The fixed expected count of subanswers, however, required only $1$ subanswer.
 F
-\begin{lstlisting}[language=json, caption={Mismatch between question and expected subanswer count}, label={lst:disctracting_question}]
+\begin{lstlisting}[language=json, caption={Mismatch between question and expected subanswer count}, label={lst:answered_question}]
     {
     "transformed": "How would you describe the scope and tasks of the following activities of managing information systems: Daily monitoring of network availability and network failures",
     "num_answers": 1
@@ -117,7 +117,7 @@ F
 \end{lstlisting}
 %
 The evaluating \ac{lm} is instructed to directly integrate the initial question and the expected number of subanswers into the extraction process.
-The question at \cref{lst:disctracting_question} indicates the answer to separated into at least $2$ contextual units.
+The question at \cref{lst:answered_question} indicates the answer to separated into at least $2$ contextual units.
 One unit relates to the \enquote{scope}, while the other is concerned with the \enquote{tasks}.
 The responsible judge now has to follow the instructed rule to separated distinct contextual units.
 At the same time, it has to merge both units back into a single subanswer according to the expected count.

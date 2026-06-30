@@ -9,7 +9,7 @@ Therefore, the student wants to extract this specific knowledge related to speci
 Instead of reading the entire book each time, the student could use the index to look up relevant knowledge within specific chapters (\textit{retrieval}) or try to memorise the entire book content (\textit{large context}).
 This chapter explains the technology that enables computers to perform precisely these different methods of knowledge acquisition: From \textbf{reading} the text (\ac{nlp}) to \textbf{understanding} and \textbf{reasoning} with it (\textit{Transformer}).
 From \textbf{finding} and \textbf{extracting} the respective knowledge to \textbf{answering} the students questions (\ac{qa}).
-All this based on the entire content (= \ac{lcw}) of \citetitle{bb2}  or only certain parts of it (= \ac{rag}).
+All this based on the entire content (= \ac{lcw}) of \citetitle{bb2} or only certain parts of it (= \ac{rag}).
 %
 \section{Knowledge Base}\label{sec:knowledgeb}
 As explained in the introduction, \citet{bb2} serves as the knowledge base for answering questions using \acp{lm}.
@@ -87,7 +87,7 @@ This retrieval process is the \enquote{R} in \ac{rag} (\textbf{R}etrieval \textb
 %
 Once the information and knowledge are retrieved and accessible, the system is supposed to generate an answer.
 \begin{definition}
-\ac{qa} is an area within \ac{nlp} and \ac{ir} that focusses on the development of systems designed to answer questions from users in natural language. 
+\ac{qa} is an area within \ac{nlp} and \ac{ir} that focuses on the development of systems designed to answer questions from users in natural language. 
 The entered question is first analysed to extract the intention of the query. 
 Based on this, relevant information is retrieved from a source, further processed using \ac{ir} technologies and then combined to a coherent answer \citep{Manning2008}.
 \end{definition}
@@ -156,7 +156,7 @@ The particular segmentation of the term \enquote{hospital information system} in
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.7\textwidth]{figures/tokenisation_gpt.jpg}
-    \caption{Visualisation of Tokenisation: \textit{GPT} \citet{gpt2025tokenizer}}
+    \caption[Visualisation of Tokenisation: GPT]{Visualisation of Tokenisation: \textit{GPT} \citet{gpt2025tokenizer}}
     \label{fig:tokenisation_example_1}
 \end{figure}
 
@@ -166,7 +166,7 @@ For example, if the term \enquote{information} is not in the vocabulary of the t
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.8\textwidth]{figures/tokenisation_gemini.jpg}
-    \caption{Visualisation of Tokenisation: \textit{Gemini} \citet{gemini2025tokenizer}}
+    \caption[Visualisation of Tokenisation: Gemini]{Visualisation of Tokenisation: \textit{Gemini} \citet{gemini2025tokenizer}}
     \label{fig:tokenisation_example-2}
 \end{figure}
 \newline
@@ -348,7 +348,7 @@ To understand the architecture of the \textit{Transformer}, it is necessary to k
     \textbf{Neural Networks} are computational models inspired by the biological structure of the human brain and consist of interconnected layers of nodes (neurons) that process information through weighted connections ~\citep{mcculloch1943logical}.
 \end{definition}
 %
-\ac{nn} use mathematical equations to  model the functions of the human brain.
+\ac{nn} use mathematical equations to model the functions of the human brain.
 A \ac{nn} consists of a series of neurons that have input and output connections to other neurons.
 If an individual threshold value is exceeded by the input signals, the respective triggered neuron then sends a signal as output.
 
@@ -375,7 +375,7 @@ Traditional machine learning methods relied mainly on manual feature engineering
 \textit{Deep learning} marked the transition from such manual feature learning to automatic hierarchical learning.
 This allows these networks to capture semantic nuances, ambiguities.
 Furthermore, they \enquote{understand} sophisticated, complex syntactic structures within extensive information input (large context sizes).
-This makes \acp{nn}, particularly in \acp{lm}, essential for tasks such as \ac{qa} based on complex and comprehensive knowledge basis (e.g., \citetitle{bb2}).
+This makes \acp{nn}, particularly in \acp{lm}, essential for tasks such as \ac{qa} based on complex and comprehensive knowledge basis ,e.g., \citetitle{bb2}.
 %
 \paragraph{Multimodality}
 %
@@ -395,7 +395,7 @@ As introduced by \citet{vaswani2017attention}, this specific neural network desi
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.8\textwidth]{figures/transformer.png}
-    \caption{The Transformer-Model Architecture, source: \citep{vaswani2017attention}}
+    \caption[The Transformer-Model Architecture]{The Transformer-Model Architecture, source: \citep{vaswani2017attention}}
     \label{figure:transformer}
 \end{figure}
 It was developed primarily to address the fundamental limitations of the \textbf{Sequence-to-Sequence (Seq2Seq)} Encoder-Decoder framework introduced by \citet{sutskever2014sequence}.
@@ -407,7 +407,7 @@ This architectural evolution of \ac{lm} by the introduction of the \textit{Trans
 Instead of relying on a single context vector, \textit{attention} allows the model to \enquote{scan} the entire input sequence based on positional embedding (see \cref{sub:position_embed_prel}.
 The mechanism then weighs the significance of different parts relative to each other, capturing widespread, global contextual dependencies. 
 By calculating these relevance \textit{attention} weights, the model creates a direct mathematical shortcut to \enquote{look back} to distant context.
-The model then focusses on the most relevant positions (source words) for the current generation step.
+The model then focuses on the most relevant positions (source words) for the current generation step.
 For example, it allows the model to understand that \enquote{\textbf{system}} is semantically related to \enquote{\textbf{hospital}} and \enquote{\textbf{information}}, regardless of their distance within the compound concept of a \enquote{\textbf{hospital information system}}.
 %
 Within the \textit{Transformer} architecture, this \textit{Self-Attention} mechanism is applied for both, understanding of the input and generating the output.
@@ -615,7 +615,7 @@ Each strategy attempts to establish an ideal balance between size and semantic i
     \end{itemize}
 \section{Retrieval Augmented Generation (RAG)}\label{sec:rag_prel}
 %
-While the \ac{lcw} approach focusses on the \textit{technical} feasibility of processing a book in context, \ac{rag} addresses the \textit{functional} requirements of accessing specific knowledge within a book.
+While the \ac{lcw} approach focuses on the \textit{technical} feasibility of processing a book in context, \ac{rag} addresses the \textit{functional} requirements of accessing specific knowledge within a book.
 %
 
 For a practitioner or student, the goal is rarely to process and access the entire content of a textbook, such as \citetitle{bb2}, at once.
@@ -646,7 +646,7 @@ How the respective data is stored is affected by both the specific needs of the 
 \subsubsection{Database Architectures}\label{sec:db_architectures}
 The choice of database architecture has a direct impact on how a knowledge base such as \citet{bb2} can be processed and integrated into the \ac{qa} pipeline for effective and efficient knowledge retrieval. 
 Various \ac{db} paradigms exist that are able to handle specific data formats and relationships.
-Since \citetitle{bb2} has been transitioned into a plain-text format, the primary requirement for the \ac{db} architecture is to only accommodate a single data modality - \textit{text}.!!
+Since \citetitle{bb2} has been transitioned into a plain-text format, the primary requirement for the \ac{db} architecture is to only accommodate a single data modality -- text.
 %
 \paragraph{Relational Databases}\label{par:rela_db} organise data using structured tables.
 Data within Relational Databases can be added, modified and retrieved using the \textbf{Structured Query Language} (SQL).
@@ -665,7 +665,7 @@ Whereas, a schema is the physical implementation of a data model.
 If the schema is \enquote{fixed}, every record follows the exact same structure and data type.
 \textbf{Unstructured data} includes formats such as text documents, images, audio, and video files, where the data is not organised in a tabular or relational structure. 
 The original content, as well as the preprocessed content by \citeauthor{Paul_Keller} within \citet{bb2} represents such \textit{unstructured data}.
-Therefore, it does not have a clear data model and a fixed schema and makes storage, retrieval and analyse difficult when using traditional database systems (\textit{Relational \ac{db}}).
+Therefore, it does not have a clear data model and a fixed schema and makes storage, retrieval and analysis difficult when using traditional database systems (\textit{Relational \ac{db}}).
 %
 \paragraph{NoSQL Databases}\label{par:nosql_db} are known for their flexible schemas that do not making them ideal for the handling of unstructured data.
 This category of \ac{db} includes various architectures, such \textit{graph databases}.
@@ -679,7 +679,7 @@ Due to these features, \textit{graph databases} are particularly suitable for ap
 In the context of \ac{rag}, \textit{graph databases} particularly support the retrieval of context-related information and knowledge.
 They use the natural relationships embedded in the data, thereby improving the coherence and accuracy of the generated answers.
 %
-Using the ability  approach is at the centre of the \ac{snik} project described in \cref{sec:snik_project}, for example.
+This ability is, for example, at the centre of approach of the \ac{snik} project described in \cref{sec:snik_project}.
 %
 \subsection{Vector Databases}\label{sec:vector_db}
 \begin{definition}
@@ -718,7 +718,7 @@ However, it tends to be less effective for complex queries that require a semant
 \newpage
 \subsection{Vector Based Similarity Search}\label{sec:vector_simil_search}
 \textbf{Vector based similarity search} retrieves relevant data by comparing vector embeddings (see \cref{sec:embeddings}).
-The \textbf{Approximate Nearest  Neighbour (ANN)} algorithms used within vector databases allow for \textbf{similarity search}.
+The \textbf{Approximate Nearest Neighbour (ANN)} algorithms used within vector databases allow for \textbf{similarity search}.
 \textit{Similarity search} finds vectors that are geometrically closest (most similar) to a query vector.
 The proximity is typically quantified using mathematical distance metrics:
 \begin{itemize}
@@ -814,7 +814,7 @@ The process of selecting subsequent \textit{tokens} during text generation is ty
 \end{enumerate}
 To ensure reproducibility of the evaluation results, accurate documentation and adjustment of these parameters are important.
 %
-\subsection{Access and Deployment of Language Models}
+\subsection[Access and Deployment of LMs]{Access and Deployment of Language Models}
 %
 The method of accessing a \ac{lm} for inference influences capability, accessibility and control in a potential application.
 %
@@ -824,7 +824,7 @@ The method of accessing a \ac{lm} for inference influences capability, accessibi
     This allows the use of high-performance \acp{llm} without potential local hardware restrictions.
     The \ac{api} usage usually comes with usage costs, privacy considerations, and limited control over the execution environment.
 \item \textbf{Local Inference:}
-    Execution of open-source models (such as the \textit{Llama-2} variants trained and evaluated by \citet{Paul_Keller}) on user-controlled hardware.
+    Execution of open-source models, such as the \textit{Llama-2} variants trained and evaluated by \citet{Paul_Keller}, on user-controlled hardware.
     The hardware used can range from single-user computers to institutional computing clusters (such as those used by \citeauthor{Paul_Keller} at the University of Leipzig). 
     This approach offers better control, improves data security and avoids direct costs per use.
     At the same time, it is fundamentally associated with indirect costs and resources, such as available computing power (RAM and GPU memory) and is thus often limited.
@@ -856,7 +856,7 @@ Users can interact with the application without a background in semantic web tec
 
 Direct feedback on the complexity of the questions and their respective category, while using the application, allows for a personalised experience. 
 The results show success as \ac{him} knowledge within \ac{snik} can be extracted by an application.
-Using that application\todo{rechtschreibung in der ganzen arbeit prüfen, es fehlen teilweise auch leerzeichen s. diese Seite vor dem Zitat} the knowledge can be processed and used to then semi-automatically generate individualised questions.
+Using that application the knowledge can be processed and used to then semi-automatically generate individualised questions.
 
 Although preferentially basic questions referring to singular facts were mainly positively evaluated by users. 
 The qualitative feedback on complex questions is mixed \citep{snikquiz}.
@@ -865,12 +865,5 @@ Further integration into courses and evaluation will show the possibilities of t
 \citet{snikquiz} supports the target group of students to understand and learn the knowledge contained in \ac{snik}.
 It thereby also provides understanding of the basic relationships and structures in the domain-specific area of \ac{him}.
 %
-The \enquote{\ac{snik}[-project] help[´s] health informatics students [to] acquire and practice the terminology of \ac{him}} \citep{sniktec}.
+The \enquote{\ac{snik}[-project] help[s] health informatics students [to] acquire and practice the terminology of \ac{him}} \citep{sniktec}.
 It shows how domain-specific knowledge can be extracted from literature sources using advanced techniques to allow new access to it obtained in this way.
-\todo{bitte unbedingt in der gesamten Arbeit Rechtschreibung und Grammatik sowie Zeichensetzung prüfen, z.B. aspell für LaTeX und reguläre Ausdrücke oder normale Suchausdrücke für die fehlenden Leerzeichen oder doppelten Klammern.
-Also u.a. Suche nach (ohne reg. Ausdruck):
-* "(("
-* "))"
-* ".("
-Und so weiter. Z.B. gibt es auch überflüssige Leerzeichen vor dem Punkt.
-}

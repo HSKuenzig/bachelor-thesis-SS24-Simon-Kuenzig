@@ -101,7 +101,7 @@ The \textit{Qwen3-VL-32B-Instruct} model is accessed via the \textit{Blablador} 
 The comparison criteria are \textit{Correctness}, \textit{Explainability}, \textit{Question Understanding}, and \textit{Robustness} as specified in \cref{sec:evaluation_methodology_approach}.
 The procedure for carrying out this comparison is described in \cref{sec:evaluation_pipeline}.
 This chapter presents and analysis the generated results step by step, categorised by the respective criteria.
-The presentation of the results focusses on the individual metrics and method pipelines as a basis for the comparison.
+The presentation of the results focuses on the individual metrics and method pipelines as a basis for the comparison.
 %
 \subsection{Evaluation Setup and Conditions}\label{subsec:eval_setup_conditions}
 
@@ -294,9 +294,9 @@ At the same time, the number of \textit{incorrect} answers remains remarkably hi
 Context leaks and the issues of precise and comprehensive retrieval when presented with the huge block of technical text -- comparable to looking for a \enquote{needle in a haystack} -- frequently lead to over-explanations or contextual ambiguities.
 In the format of a subanswer, these ambiguities are flagged as strict mismatches when compared to the \textit{golden} subanswers.
 
-The rate of \textit{not answerered} results is low ($8$ to $10$ for \textit{OpenRouter} and even down to $0$ for a version of \textit{Qwen3-VL-32B} with restrictions).
+The rate of \textit{not answered} results is low ($8$ to $10$ for \textit{OpenRouter} and even down to $0$ for a version of \textit{Qwen3-VL-32B} with restrictions).
 As the entire knowledge base is available directly in the input, models almost never refuse to answer due to \enquote{insufficient information}.
-The few \textit{not answerered} results were mostly due to repetitive nonsensical answers by the models, which cannot be explained by the context.
+The few \textit{not answered} results were mostly due to repetitive nonsensical answers by the models, which cannot be explained by the context.
 
 The most significant difference between the two pipelines is \ac{rag}'s ability to improve precise fact retrieval.
 For almost all models, switching from \ac{lcw} to \ac{rag} leads to an increase in the absolute number of \textit{Correct} classifications (Score $== 1$).
@@ -788,7 +788,7 @@ The resulting answer does not provide useful information or knowledge, but clear
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.9\textwidth, height=0.4\textheight, keepaspectratio]{figures/results/understandability_total_per_type.png}
-    \caption{Understandability - Total - Grouped by Type.}
+    \caption[Bar chart - Understandibility]{Bart Chart - Understandability - Total - Grouped by Type.}
     \label{fig:understandability_total_type}
 \end{figure}
 %

@@ -4,13 +4,16 @@
 \pdfbookmark[1]{Summary}{summary}
 \chapter*{Summary}
 \addcontentsline{toc}{chapter}{Summary}
-Extracting fragmented knowledge from academic textbooks is both complex and time-consuming. In medical informatics, intuitive and efficient access to subject-specific knowledge is of great educational importance. In this study, a reproducible, containerised open-source application was developed to automatically make the knowledge from the standard textbook *Health Information Systems: Architectures and Strategies* by Winter et al. (2023). The application implements and compares two methodological pipelines for answering questions: Retrieval-Augmented Generation (RAG) and Large Context Windows (LCW). The large language models used answered examination questions from the textbook as well as from modules at the University of Leipzig, the content of which is based on the book.
-The results of both pipelines were evaluated using an ‘LLM-as-a-judge’ framework based on Gemini-2.5-Flash.
+Extracting fragmented knowledge from academic textbooks is both complex and time-consuming.
+In medical informatics, intuitive and comprehensive access to subject-specific knowledge is of great pedagogical importance.
+In this study, a reproducible open-source application was developed to initially enable efficient access to the standard textbook \citetitle{bb2} by \citet{bb2}, as well as the extraction of knowledge from it.
+This is intended to facilitate an automated and standardised comparison of the generated results.
+The application implements and compares two methodological pipelines for answering questions using large language models (LLMs): Retrieval-Augmented Generation (RAG) and Large Context Windows (LCW).
+Within the application, the Large Language Models used answered examination questions from the textbook as well as from modules at the University of Leipzig, the content of which is based on the book.
+The results from both pipelines were evaluated using a \enquote{LLM-as-a-judge} framework based on Gemini-2.5-Flash.
 Finally, the evaluation results obtained in this process were compared for the models and methods used.
 It was found that RAG is the slightly superior and more stable method.
 RAG operates at a fraction of the cost and imposes critical factual constraints that prevent hallucinations and ensure high semantic robustness against noisy inputs.
-In contrast, the LCW method is highly susceptible to input distortions.
-In the evaluations, GPT-4.1-Mini achieved the highest F1 score of $0.518$ on textbook questions within the RAG pipeline.
 By contrast the free, open-source Qwen3-VL-32B model achieved an F1 score of $0.511$ within the LCW pipeline.
 Under a more lenient evaluation approach GPT-4.1-Mini answered up to $89\%$ of the exam questions either completely correctly or partially correctly, without hallucinating.
 Furthermore, they establish a reliable, reproducible evaluation framework for comparing modern knowledge retrieval systems for Question Answering (QA) in the domain of medical informatics.

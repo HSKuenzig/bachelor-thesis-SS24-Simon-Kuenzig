@@ -7,7 +7,7 @@ Both of these methods for knowledge processing and extraction are the subject of
 \section{LCW Models and Their Advancements}\label{sec:large_context}
 
 Recent advancements in \ac{lm} architectures have led to a significant increase in context window sizes.
-\ac{lm} have evolved from relatively short token limits (e.g., $2,048$ tokens in \textit{GPT-3}) to large windows exceeding $1{,}000{,}000$ tokens with the latest iterations of \ac{sota} \acp{llm} (e.g., \textit{Gemini $3$ Pro} \citet{Google2026Models}).\todo{diese doppelklammern würde ich dringend vermeiden, z.B. einfach Komma vor e.g. statt klammerung}
+\ac{lm} have evolved from relatively short token limits, e.g., $2,048$ tokens in \textit{GPT-3}, to large windows exceeding $1{,}000{,}000$ tokens with the latest iterations of \ac{sota} \acp{llm}, e.g., \textit{Gemini $3$ Pro} \citet{Google2026Models}.
 %
 Large context windows are a desirable feature in \acp{llm}, but due to, for example, high fine-tuning costs, the scarcity of long text context windows is limited\citep{ding2024longrope}.
 To avoid these resource-intensive approaches, current research is focusing on architectural modifications.
@@ -18,8 +18,8 @@ The performance of the models used is maintained in the process, while significa
 \citet{peng2024yarn} further emphasises that \ac{rope} effectively encodes positional information in transformer-based \ac{lm} to extend the initial smaller context window. 
 
 Due to the remaining limitations of \ac{rope} in generalising beyond the initial context encodings, \citet{peng2024yarn} demonstrates a compute-efficient adaptation for long-context applications.
-By applying \textit{YaRN} the tested \textit{LlaMa} models reached \ac{sota} performance  after fine-tuning on less than $\sim0.1\%$ of the original pre-training data.
-Thus, significantly reducing the overhead  \citep{peng2024yarn}.
+By applying \textit{YaRN} the tested \textit{LlaMa} models reached \ac{sota} performance after fine-tuning on less than $\sim0.1\%$ of the original pre-training data.
+Thus, significantly reducing the overhead \citep{peng2024yarn}.
 The fine-tuned models that were fine-tuned during the development and testing of \ac{yarn} have been made available online.
 By making the \ac{yarn} technology open source, the context window extension has been reproduced with other language models of individual choice to a context length of $128,000$ token \citep{peng2024yarn}.
 This is particularly relevant for \ac{rag} or \ac{qa} setups in resource-constrained environments.
@@ -31,7 +31,7 @@ A framework optimised for training long-context models with lower computational 
 Enabling an efficient context window extension during the \ac{pose}-training process that simulates long inputs using a fixed context window.
 Experimental adaptation shows that \ac{pose} significantly reduces overhead compared to full-length fine-tuning \citep{zhu2024poseefficientcontextwindow}.
 Therefore, possibly allowing implementation of less capable open-source \acp{llm} with thus extended context windows in projects with small hardware and time capabilities.
-\subsection{Domain-Specific Possibilities and Evaluation}
+\subsection[Domain-Specific Evaluation]{Domain-Specific Possibilities and Evaluation}
 
 In \citet{kinikogluI2025GPTGemini}, the performance of four of the most advanced models, \textit{ChatGPT-$4$o}, \textit{ChatGPT-o$1$}, \textit{Gemini $1.5$ Pro} and \textit{Gemini $2.0$ Advanced} was analysed on the Turkish Dental Specialist Examination (DUS) for 2020 and 2021.
 All models demonstrated a high level of proficiency in answering the examination question with notable differences in their performance metrics.
@@ -133,7 +133,7 @@ In the stage of the pre-retrieval process \textit{query optimisation} is used to
 A small specified \ac{lm} acts as a rewriter.
 Generating a rewritten query from the original input to improve retrieval techniques. 
 \citet{Ma2023QueryRF} emphasises on the importance of query adaptation.
-By the introduction of the \textit{Rewrite-Retrieve-Read} framework,  \citet{Ma2023QueryRF} offer a new perspective on enhancing retrieval-augmented \acp{llm}.
+By the introduction of the \textit{Rewrite-Retrieve-Read} framework, \citet{Ma2023QueryRF} offer a new perspective on enhancing retrieval-augmented \acp{llm}.
 Tested on open-domain and multiple-choice \ac{qa} tasks, the framework application shows consistent performance improvements, demonstrating its effectiveness and scalability.
 %
 \section{Conclusion}
