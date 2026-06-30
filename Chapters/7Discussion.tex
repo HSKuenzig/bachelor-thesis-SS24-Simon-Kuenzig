@@ -2,13 +2,13 @@
 \chapter{Discussion}\label{ch:discussion}
 %*****************************************
 
-The results of this work show that leveraging the \ac{lcw} capabilties of \acp{llm} and the implementation of these models within \ac{rag} provide precise knowledge retrieval and high-quality output within \ac{qa}.
+The results of this work show that leveraging the \ac{lcw} capabilities of \acp{llm} and the implementation of these models within \ac{rag} provide precise knowledge retrieval and high-quality output within \ac{qa}.
 The method applied expectedly outperformed the continual pre-training method from \citet{Paul_Keller}.
 The \acp{llm} tested here show better reasoning and \textit{Question Understanding} skills.
-It has been demonstrated that the capability of large-context windows within \ac{qa} in domain-specific areas question the necessity of \ac{rag}.
+It has been demonstrated that the capability of large-context windows within \ac{qa} in domain-specific areas question the necessity of \ac{rag} only to a small extent.
 
 However, using the models \enquote{out-of-the-box} and implementing similar settings as in \citet{Paul_Keller} introduces methodological trade-offs and limitations.
-To potentially improve the performance of both method pipelines, \cref{ch:futurework} suggests several adaptations and extensions that can be investigated.
+To potentially improve the performance of both meth\-od pipelines, \cref{ch:futurework} suggests several adaptations and extensions that can be investigated.
 
 \section{Limitations of the Method Setup}
 
@@ -47,7 +47,7 @@ The \enquote{black box} of server sided data processing can not provide any guar
 
 \acp{lm} are pre-trained on massive datasets, which pre-define their internal knowledge base.
 
-Health Information Systems as a topic within medical informatics holds fundamental core definitions that are specific to and provided by \citet{bb2}.
+\textit{Health Information Systems} as a topic within medical informatics holds fundamental core definitions that are specific to and provided by \citet{bb2}.
 These definitions may contradict the general literature or common usage on which the respective \ac{lm} has been pre-trained on.
 The internal knowledge and the additional knowledge provided during inference are therefore in conflict.
 Similarly to the findings of \citet{Paul_Keller}, this conflict is evident during the execution of the experiment.
@@ -66,6 +66,7 @@ Due to the size of the parsed context, the models sometimes seem to be distracte
 If no relevant knowledge could be found in the knowledge base, the models would sometimes generated an answer based on its pre-trained, internal knowledge.
 This potential misinformation is difficult to identify as such in the subsequent analysis.
 The output usually provides plausible information.
+
 However, in detail, it actually deviates from the ground truth provided by the knowledge base.
 This type of answer is the most harmful, as students and practitioners are the ones who interpret it.
 They lack the necessary corrective expert knowledge, which could result in them learning incorrect fundamentals. 
@@ -79,7 +80,7 @@ The latter is the outcome to be preferred in that scenario but was not constantl
 
 The final hybrid chunking strategy partly solved the problem.
 
-The thereby increased quantity of available chunks resulted in chunks meeting the threshold during retrieval.
+The resulting increase in the number of available chunks led to chunks reaching the threshold during retrieval.
 However, these retrieved chunks occasionally provided distracting \enquote{noise}.
 For example, a retrieved chunk contained an unrelated question involving \enquote{++} symbols.
 The models misinterpreted the initial question to be related to the additional question.
@@ -96,7 +97,7 @@ This implementation using the \textit{DeepEval} framework enabled an efficient a
 
 While this approach simplifies reproduction and guarantees scalability, it comes with some compromises.
 %
-\subsection{LLM-as-a-jduge}
+\subsection{LLM-as-a-Judge}
 
 The evaluating \ac{lm} instructed by a dedicated prompt often struggled to accurately separate the golden and generated answer into the required distinct semantic units.
 
@@ -116,12 +117,12 @@ F
 \end{lstlisting}
 %
 The evaluating \ac{lm} is instructed to directly integrate the initial question and the expected number of subanswers into the extraction process.
-the question at \cref{lst:disctracting_question} indicates the answer to separated into at least $2$ contextual units.
+The question at \cref{lst:disctracting_question} indicates the answer to separated into at least $2$ contextual units.
 One unit relates to the \enquote{scope}, while the other is concerned with the \enquote{tasks}.
 The responsible judge now has to follow the instructed rule to separated distinct contextual units.
 At the same time, it has to merge both units back into a single subanswer according to the expected count.
 %
-The issue becomes all the more siginificant the higher the expected number of subanswers.
+The issue becomes all the more significant the higher the expected number of subanswers.
 %
 All these possibilities and contextual nuances of the evaluation process must be defined in the prompt.
 %
@@ -129,7 +130,7 @@ In conclusion, a subanswer extraction based on human assessment would, in the fi
 In the second place, it would improve the results of this step and the subsequent evaluation steps.
 
 The \textit{Correctness} metric significantly depends on the quality of the output of \textit{Step $1$}.
-Th necessary textit{Correctness} classification of the subanswers extracted is also significantly influenced by the instructing prompt.
+The necessary \textit{Correctness} classification of the subanswers extracted is also significantly influenced by the instructing prompt.
 The classification into \textit{correct}, \textit{incorrect}, \textit{not answered} is, in theory, quite distinct.
 In practice, however, the interpretation of \textit{correct} and \textit{incorrect} is nuanced:
 \begin{itemize}
@@ -149,15 +150,13 @@ The defined Goals (\cref{sec:goals}) could be achieved.
 Goal G1 (\cref{def:goal 1}) was established by implementing a reproducible open-source application using Docker.
 By using \ac{api} provider to use \ac{sota} \ac{llm} and running the application via Docker, the implemented setup is not restricted by resource-constraints.
 
-Goal G2 (\cref{def:goal 2} and G3 (\cref{def:goal 3} were achieved, as the application automatically answered the domain-specific questions using \citet{bb2}
+Goal G2 (\cref{def:goal 2}) and G3 (\cref{def:goal 3}) were achieved, as the application automatically answered the domain-specific questions using \citet{bb2}
 as knowledge base.
-Finally, Goal G4 (\cref{def:goal 4} is met by implementing an automated evaluation framework that compared the models and methods according to the defined metrics and criteria.
+Finally, Goal G4 (\cref{def:goal 4}) is met by implementing an automated evaluation framework that compared the models and methods according to the defined metrics and criteria.
 
 The results demonstrate that the evaluated \acp{llm} are highly effective at accurately extracting, processing and reproducing the comprehensive domain-specific knowledge contained in \citet{bb2}.
 
 The \ac{lcw} method achieved better results than the \ac{rag} method.
 However, this does not allow for a general conclusion.
 It must be interpreted in direct relation to the specific setup implemented here.
-
-
 

@@ -10,12 +10,10 @@ This work addresses the extraction of domain-specific knowledge from \citet{bb2}
     \item Large Context Windows (LCW)
 \end{itemize}
 The proposed methodology establishes a reproducible generation and evaluation process using accessible \acp{llm}.
-\paragraph{Differences to the Comparative Work}
+\paragraph{Differences from the Comparative Work}
 Since this work is directly related and comparative to \citet{Paul_Keller}, the differences of the respective approach must be clearly defined.
-In general, manual training (continous pre-
-training) of any chosen \ac{lm} is explicitly excluded as a solution in the context of this work.
-Instead, the focus is on the existing
-pre-trained models that are used \enquote{out of the box}.
+In general, manual training (continuous pre-training) of any chosen \ac{lm} is explicitly excluded as a solution in the context of this work.
+Instead, the focus is on the existing pre-trained models that are used \enquote{out-of-the-box}.
 This means that no further adjustments are made to any selected model.
 %
 
@@ -32,16 +30,16 @@ The approach is divided into five distinct steps:
 \section{Knowledge Base Preparation}\label{sec:knowledge_base_prep}
 
 The knowledge base on which the \ac{qa} methods will be applied and evaluated in this thesis is the textbook \citetitle{bb2} by \citeauthor{bb2}. 
-Only by using the same source as \citet{Paul_Keller} is a direct comparison and reasonable evaluation of the generated output possible.
 
-The book content, including the graph examples, has been adapted and converted into machine readable plain format as described in \citet{Paul_Keller}.
-
+The book content, including the graph examples, has been adapted and converted into machine-readable plain format as described in \citet{Paul_Keller}.
 This pre-processing involved multiple steps:
 \begin{itemize}
     \item \textbf{Manual Extraction}: Converting the book content into \textit{Markdown} (\texttt{.md}) format, while using text symbols to represent specific formatting (e.g., tables).
     \item \textbf{Incomprehensible Formats:} Removing images and page artifacts (e.g., headers and footers).
     \item \textbf{Noise Reduction:} Text passages without useful knowledge or context, such as the \enquote{Foreword}, have been removed. 
 \end{itemize}
+The conversion process was part of the work of \citet{Paul_Keller} and the resulting plain text (.md) file was made available for this work.
+No further modifications were made to the provided file.
 %
 Although currently available \acp{llm} allow for \textit{multi-modal} input, such features are not considered due to the focus on direct comparison to \citet{Paul_Keller}.
 %
@@ -70,16 +68,16 @@ An example for each question category is provided in the following table.
 \toprule
 \textbf{Category} & \textbf{Question} & \textbf{Answer} \\
 \midrule
-Single Question & Define the term \enquote{hospital information system}. & A Hospital Information system is the socio-technical subsystem of for hospitals. It comprimises all data, information, and knowledge processing as well as the associated human or technical actors in their respective data, information, and knowledge processing roles. \\
+Single Question & Define the term \enquote{hospital information system}. & A Hospital Information system is the socio-technical subsystem of a hospital. It comprimises all data, information, and knowledge processing as well as the associated human or technical actors in their respective data, information, and knowledge processing roles. \\
 Multi-Fact Question & Compare HL7 V2 and HL7 FHIR. Explain at least three differences & Both used to exchange health information between application systems\newline
-Syntax HL7 v2: proprietay, ASCII-text\newline
+Syntax HL7 v2: proprietary, ASCII-text\newline
 Syntax HL7 FHIR: XML / JSON = easier to implement\newline
 Structure HL7 v2: fixed, hierarchical, fixed amount of segments and codes\newline
 Structure HL7 FHIR: flexible, modular, resource/element based \\
-Transferring Question & When is a model good in the context of health information systems? & A good models should be able to help understand and predict the behavior of the system or process. It should also be able to help design and evaluate health information systems. A reference architecture can be used to support the design of a proper HIS architecture that meets the various stakeholder concerns of HISs. This architecture should be able to show the HIS from a different angle, suitable for various stakeholders. \\
+Transferring Question & When is a model good in the context of health information systems? & A good model should be able to help understand and predict the behavior of the system or process. It should also be able to help design and evaluate health information systems. A reference architecture can be used to support the design of a proper HIS architecture that meets the various stakeholder concerns of HISs. This architecture should be able to show the HIS from a different angle, suitable for various stakeholders. \\
 \bottomrule
 \end{tabularx}
-\caption[Example question for each of the three catagory]{Example question for each catagory}\label{tab:question_categories}
+\caption[Example question for each of the three categories]{Example question for each category}\label{tab:question_categories}
 \end{table}
 %
 Although the number of available exams has increased, the additional tests and questions they contain are not included in the direct comparison.
@@ -92,7 +90,7 @@ The questions are then combined with the instructions within the prompt template
 
 A crucial step in establishing the evaluation approach is the selection of appropriate \acp{lm}.
 The focus is on the existing pre-trained models that are then used (\enquote{out of the box}).
-The choice is mainly be guided by the specific goals and constraints of the target group, students and practitioners.
+The choice will mainly be guided by the specific goals and constraints of the target group, students and practitioners.
 
 The size of \textit{context windows} of language models has been significantly expanded since \citet{Paul_Keller} (\cref{subsec:limit_context_prel}).
 As a result, more than just small parts of \citetitle{bb2} can be integrated into the prompt.
@@ -124,7 +122,7 @@ This decision is made to use the selected models as provided, (\enquote{out of t
 The \acp{llm} must be chosen accordingly.
 
 A complete search for potential \acp{lm} would go beyond the scope of this work.
-The search will therefore be carried out within a appropriate scoep.
+The search will therefore be carried out within an appropriate scope.
 %
 Given the numerous nuances of the available \acp{lm}, it is unlikely to make an ideal choice.
 %
@@ -150,7 +148,7 @@ The primary criteria for selecting \acp{lm} are the following:
 \end{itemize}
 %
 Based on these criteria, this work will investigate a selection of models.
-Primary candidates are those from the \textit{Deepseek} family (e.g., Deepseek Coder variants known for context length), \textit{OpenAI}'s \textit{GPT} series (e.g., \textit{GPT-$4$} models with varying sizes and context windows).
+Primary candidates are those from the \textit{DeepSeek} family (e.g., DeepSeek Coder variants known for context length), \textit{OpenAI}'s \textit{GPT} series (e.g., \textit{GPT-$4$} models with varying sizes and context windows).
 Furthermore, potentially newer \textit{Llama} family variants (e.g., \textit{Llama $3$}) or other suitable models emerging from the open-source community will be included.
 % 
 \newpage
@@ -170,8 +168,8 @@ This allows for a direct comparison of the impact of the models on the generated
 
 Reflecting the focus on prioritising accessibility (\cref{sec:motivation}), all interactions with the selected \acp{lm} will be conducted via \ac{api}.
 This decision had to be taken due to the infeasibility of locally running capable \acp{lm}.
-The respective \acp{llm} would have to be able to handle the full context of \citet{bb2} (>\kern-0.1em 120k tokens).
-Such models would not run within hardware constraints (~24GB VRAM).
+The respective \acp{llm} would have to be able to handle the full context of \citet{bb2} ($> 120k$ tokens).
+Such models would not run within hardware constraints (24GB VRAM) but require significantly more compute resources.
 By using \acp{api}, advanced \acp{llm} with large context window sizes can be used and evaluated in both methods.
 %
 \subsection[RAG Pipeline]{Retrieval Augmented Generation Pipeline}\label{subsec:rag_pipeline}
@@ -186,13 +184,21 @@ By using \acp{api}, advanced \acp{llm} with large context window sizes can be us
     The knowledge base \citet{bb2} must first be prepared by segmenting it into smaller \textit{chunks} (see \cref{sub:chunking_prel}).
     %
     \paragraph{Selection of Chunking Strategy}
-        The division of the text into adaptable fixed chunk lengths and a conceptual \textit{overlap} could be based on an individual assessment of the possible average complexity and length of elaboration of various topics within the book.
+        The division of the text into adaptable fixed chunk lengths and a conceptual \textit{overlap} could be based on, for example, the following 2 criteria:
+        \begin{enumerate}
+            \item Individual assessment of the possible average complexity
+            \item Length of elaboration of various topics within the book
+        \end{enumerate}
+        %
         The evaluation of such \enquote{ideal} chunk sizes would be simplified if executed by \acp{lm}.
-        Even if the values obtained for \enquote{chunk\_size} and \enquote{overlap} were individually customised for the book, the probability of ideas, topics and related descriptions being unintentionally divided is decisively high.
-        Even the artificial connection created by the \textit{overlap} can not avoid a regular break in context.
-        
-        \textit{LangChains} frameworks offers a range of \textit{chunking} methods within its \enquote{SemanticChunker} (e.g., \textit{percentile}, \textit{standard deviation}) to optimise the \textit{chunking} process and minimise contextual breaks in the respective text.
-        \citet{qu2025semantic_chunking} has shown that \enquote{\textit{semantic chunking} [has] occasionally improved performance} while being \enquote{highly context-dependent}.
+        Parameter values, such as \enquote{chunk\_size} and \enquote{overlap}, could be adjusted individually for the book.
+        Nevertheless, related content and topics would be unintentionally separated.
+        Even an \textit{overlap}, an artificial link between consecutive chunks, can not entirely prevent a break in context.
+        \textit{LangChains} frameworks offers a range of \textit{chunking} methods within its \enquote{SemanticChunker} (e.g., \textit{percentile}, \textit{standard deviation}).
+        Each method aims to optimise the \textit{chunking} process and minimise contextual breaks in the respective text.
+
+        \citet{qu2025semantic_chunking} has shown that \enquote{\textit{semantic chunking} [has] occasionally improved performance}.
+        At the same time, the performance is \enquote{highly context-dependent}.
         Selecting the optimal \textit{chunking} method from the \textit{LangChain} framework requires extensive comparison.
         The only guiding reference is \citet{langchainsemantic2024comparison}, where no clear superior method could be identified.
         
@@ -204,7 +210,7 @@ By using \acp{api}, advanced \acp{llm} with large context window sizes can be us
 
 %
 \noindent\textbf{Embedding Generation:}\newline
-    The selected knowledge base, as well as the user query have to be initially embedded (\cref{sec:embeddings}).
+    The selected knowledge base, as well as the user query has to be initially embedded (\cref{sec:embeddings}).
     Subsequently, they need to be stored inside the \textit{Qdrant} Vector-\ac{db}.
     \enquote{FastEmbed} is \textit{Qdrant}'s standard method to enable quick embeddings without the need for more powerful computational resources and advanced embedding methods.
     Using \textit{FastEmbed} with \textit{Qdrant}'s default embedding model with the default settings below creates vectors with $384$ dimensions:
@@ -219,15 +225,14 @@ By using \acp{api}, advanced \acp{llm} with large context window sizes can be us
     \paragraph{Rationale for Dedicated Embedding Model}\label{par:embedding_rationale}
     Ideally, for a direct unaltered comparison of both methods and as originally intended, the same \ac{lm} would be used for all steps.
     However, there are some arguments against this.
-    \todo{die tilde wird bei mir nicht angezeigt wenn ich es mit tectonic baue}
-    For example, the \ac{api} costs associated with \textit{embedding} numerous text \textit{chunks} ($\sim 120-160$k tokens) would far exceed the predefined low-cost constraint.
+    For example, the \ac{api} costs associated with \textit{embedding} numerous text \textit{chunks} ($\approx 120-160$k tokens) would far exceed the predefined low-cost constraint.
     
     Furthermore, \acp{lm} often differ in their specialised capabilities based on their design goals.
     The selected models excel in complex reasoning and text generation.
     They are, on the other hand, not optimised for other distinct tasks, such as \textit{chunking} or \textit{vector embeddings}. 
     
     The \ac{rag} application demands high-quality retrieval via similarity search using \textit{embeddings}.
-    Specialised\textit{embedding} models, such as the \textit{BAAI (Beijing Academy of Artificial Intelligence) General Embedding model \enquote{bge-large-en-v1.5}} provide superior performance in this regard. 
+    Specialised \textit{embedding} models, such as the \textit{BAAI (Beijing Academy of Artificial Intelligence) General Embedding model \enquote{bge-large-en-v1.5}} provide superior performance in this regard. 
     The decision to use a specialised, high-performance open-source embedding model represents a pragmatic choice - Optimising retrieval quality and cost-effectiveness for the \ac{rag} pipeline.
     %
 
@@ -248,7 +253,7 @@ By using \acp{api}, advanced \acp{llm} with large context window sizes can be us
     
 \noindent\textbf{Retrieval Process:}\newline
     The retrieval process will also be facilitated by \textit{Qdrants FastEmbed}.
-    Its integrated similarity metric, such as \textit{cosine similarity} (see \cref{subsec:cosine_similarity}), will handle the process of identifying relevant snippets from the \ac{db}.
+    Its integrated similarity metric, such as \textit{cosine similarity} (see \cref{sec:vector_simil_search}), will handle the process of identifying relevant snippets from the \ac{db}.
     As the same \acp{lm} will be used for both method pipelines, the respective \textit{context window} allows for the choice of a high value for \texttt{top\_k}.
     
     It should be noted that the quantity of chunks is not guaranteed to be proportional to the quality of output generated.
@@ -259,7 +264,7 @@ By using \acp{api}, advanced \acp{llm} with large context window sizes can be us
     This \texttt{score} defines the minimum relevance of a potential chunk for the respective query.
     Therefore, the \texttt{score} threshold can lead to the exclusion of additional chunks even before the \textit{top-k} value is reached.
     This prevents the \ac{lm} from being diluted by irrelevant input.
-    At the same time, \texttt{top\_k} exclude chunks that are still above the threshold value, leading to a loss of knowledge.
+    At the same time, \textit{top-k} exclude chunks that are still above the threshold value, leading to a loss of knowledge.
     Finding the perfect balance requires further experimentation.
     %
     
@@ -274,7 +279,7 @@ By using \acp{api}, advanced \acp{llm} with large context window sizes can be us
 \subsection{Large Context Window Pipeline}\label{subsec:large_context_api_pipeline}
 %
     This method will make use of the large context windows of the selected \acp{lm}.
-    As described in \cref{sec:large_context} the \ac{lm} directly process the entire text of the knowledge base.
+    As described in \cref{sec:large_context} the \ac{lm} directly processes the entire text of the knowledge base.
     This text will be combined with the user query and potentially additional context.
     %
     The \ac{lcw} pipeline includes the following sub-steps. 
@@ -298,9 +303,9 @@ In the view of \cref{def:goal 1}, the overall aim here is reproducibility.
 %
 \subsection[Frontend Interface]{Minimal Frontend Interface for Researcher Workflow}\label{subsec:frontend_interface}
 %
-A minimal frontend using \textit{Streamlit} will provide the researcher interface.
+A minimal frontend will provide the researcher interface.
 It allows selecting the \ac{qa} \textit{method}, question \textit{type} and the \ac{lm} for generation.
-Furthermore, files can be uploade to be processed for question retrieval or as a knowledge base.
+Furthermore, files can be uploaded to be processed for question retrieval or as a knowledge base.
 %
 \subsection{Backend Service for Orchestration}\label{subsec:backend_service} 
     The \textit{backend}'s responsibilities include:
@@ -315,8 +320,8 @@ Furthermore, files can be uploade to be processed for question retrieval or as a
 \subsection{Docker Containerisation}\label{subsec:docker}
 
 The general implementation approach is to ensure an easy setup and reproducibility.
-Therefore, the backend service, as well as the local components will be packaged using \textit{Docker}.
-The \textit{vector database}, \textit{embedding} , and the retrieval process will also be executed on the server side.
+Therefore, the backend service, as well as the local components are packaged using \textit{Docker}.
+The \textit{vector database}, \textit{embedding}, and the retrieval process are also executed on the server side.
 This implementation keeps the demands on local resources to a minimum.
 %
 \section{Evaluation Methodology}\label{sec:evaluation_methodology_approach}
@@ -330,7 +335,7 @@ The focus is on using the \textit{DeepEval} framework for automated and customis
 The \textit{DeepEval} framework provides a feature called \enquote{LLM-as-a-judge}.
 This feature provides a reliable, scalable and time-saving assessments of the respective \ac{lm} output. 
 As the name suggests, using the \textit{LLM-as-a-judge} feature allows the use of a \ac{lm} to assess output generated based on individual defined criteria.
-As custom metrics will be applied that match \citet{Paul_Keller}, the evaluating\ac{lm} will be guided by predefined and customised instructions.
+As custom metrics will be applied that match \citet{Paul_Keller}, the evaluating \ac{lm} will be guided by predefined and customised instructions.
 These instructions are formulated in dedicated prompts.
 
 Considering the extensive \ac{nlp} and reasoning capabilities of current modern \acp{lm}, the \textit{LLM-as-a-judge} feature can provide nuanced assessments that equate to \enquote{human expert} judgement with considerable reliability.
@@ -430,15 +435,15 @@ The models should always favour no answer over an incorrect answer.
 \noindent\textbf{Determinism}\\
 \label{def:determenism_approach}\textit{Determinism describes the reproducibility of an answer.
 An answer is considered deterministic if the same facts are contained in the answer with slight reformulations.}\\
-Different predefined hyper-parameter settings (e.g., \texttt{temperature=1}) for the \acp{lm} can cause variability in the generated answers.
+Different predefined hyperparameter settings (e.g., \texttt{temperature=1}) for the \acp{lm} can cause variability in the generated answers.
 The intentional control of such variability can to some extent show, intended or not intended, nondeterministic behaviour.
 Low \textit{temperature} settings (e.g., \textit{temperature}$=0$) are generally expected to be deterministic.
 In order to evaluate \enquote{determinism} in the evaluation process, the models assessed in \citet{Paul_Keller} were presented the same question $3$ times.
-By calling the respective \acp{llm} via \ac{api}, hyper-parameters, such as the \textit{temperature} variable, can be set individually.
+By calling the respective \acp{llm} via \ac{api}, hyperparameters, such as the \textit{temperature} variable, can be set individually.
 A similar approach as in \citet{Paul_Keller} (by asking the question $3$ times) will not be applied.
 Since slight reformulations within the answers to the same questions are within the scope of \textit{determinism}, the significance of this statistic is limited.
 As the \textit{temperature} will be set to $0$, homogeneity of the answers to the same question several times is expected.
-This possible deliberate homogeneity is thus decisive for this exclution of the metric.
+This possible deliberate homogeneity is thus decisive for this exclusion of the metric.
 %
 
 %
@@ -487,15 +492,15 @@ The results are systematically compared:
 \begin{itemize}
     \item \ac{rag} vs. \ac{lcw} for each \ac{api} accessed \ac{llm}
     \item Performance across the selected \acp{llm}
-    \item Comparison against the benchmark results provided by \citet{Paul_Keller} (which included \textit{GPT-4} performance)
     \end{itemize}
 The analysis focuses on individual results with consideration of trade-offs between methods, models, \ac{api} costs and performance.
 %
 \section{Reproducibility and Code Repository}\label{sec:reproducibility_approach}
 
-Another goal of the work is to ensure that the investigated models and methods are verifiable and the evaluation process is reusable.
-To achieve this, all code, input and output files, as well as the prepared knowledge base from \citet{bb2} are available in a public GitHub repository under an open licence.
+Another goal of the work is to ensure that the generation and evaluation process with the implemented models and methods can be reproduced.
+Therefore, all code, input and output files, as well as the prepared knowledge base from \citet{bb2} are available in a public GitHub repository under an open licence.
 The application will then be executable on a local machine using \textit{Docker}.
+The instructions to set up the application and run the pipelines are further detailed in \cref{app:installation_setup}.
 %
 
 

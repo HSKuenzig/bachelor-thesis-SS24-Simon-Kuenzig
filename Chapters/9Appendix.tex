@@ -7,6 +7,130 @@
 \addcontentsline{toc}{chapter}{Appendix}
 %*****************************************
 
+This appendix provides detailed technical specifications, configurations, procedural descriptions, and relevant code segments.
+Those details support the reproducibility by providing technical insights at relevant points.
+
 \section*{Prompt Templates and Code}\label{app:template_code}
-The complete prompt templates and the code used are available in a GitHub repository at ...
-The question sets and the generated data sets are provided at a dedicated repository available with the necessary access permissions.
+The complete prompt templates and the code used are available in a GitHub repository at:\\
+
+\url{https://github.com/HSKuenzig/bachelor-thesis}
+
+The question sets, and the generated data sets are provided at a dedicated repository available with the necessary access permissions.
+%
+\section*{Chunking Strategy Details and Implementation}\label{app:chunking_strategies}
+
+This section extents the description in\cref{sub:hybrid_chunking_sol}.
+It provides a more detailed configuration setup and concrete code listings of the two chunking strategies implemented within the application's hybrid chunking strategy.
+
+\subsection*{1. Semantic Chunking}
+For the initial segmentation of the original text of the knowledge base, a semantic approach is adopted - \textbf{interquartile chunking}. 
+This approach calculates the semantic distance between consecutive sentences.
+A new semantic section is identified as soon as the shift in context exceeds the calculated interquartile distance threshold.
+Major changes in topic are thus effectively treated as statistical outliers.
+
+Therefore, \textit{LangChain}'s \texttt{interquartile} method is chosen and implemented by modifying the original template from \cite{langchainsemantic}.\\
+The created \textit{LangChain} \texttt{SemanticChunker} instance is configured with \texttt{FastEmbedEmbeddings} using the default \texttt{BAAI/bge-small-en} embedding model (see \cref{par:api_generation_rationale}).
+The \texttt{breakpoint\_threshold\_type} is set to \texttt{"interquartile"}.
+
+The interquartile range can be scaled by a keyword argument:
+\begin{itemize}
+    \item \texttt{breakpoint\_threshold\_amount}: A float value that scales the interquartile range.
+    By adjusting this value, the sensitivity of the chunking process can be controlled.
+\end{itemize}
+The respective threshold was unmodified and uses the default of $1.5$.
+%
+Within the \ac{rag} pipeline the source text is loaded, \textit{semantic chunks} are generated.
+The generated chunks are further processed and their metadata is expanded with relevant entries (e.g., \texttt{chunk\_type="semantic"}, \texttt{chunk\_id}, \texttt{total\_chunks}) for subsequent evaluation.
+The resulting metadata allows for later filtering and further precise processing of relevant chunks.
+
+\subsection*{2. Fixed-Size Chunking}\label{app:sub:fixed_size_chunking}
+The secondary and added path provides the fallback to retrieve relevant input as context for the generation step.
+%
+\textbf{Fixed-Size Chunking} does not focus on the preservation of contextual relationships, as described in \cref{sub:chunking_prel}.
+Nevertheless, this method provides an artificial contextual relationship between the chunks due to content overlap.
+
+A \texttt{RecursiveCharacterTextSplitter} is instantiated from \textit{LangChain}.
+The \textit{splitter} uses the \texttt{cl100k\_base} tokeniser provided by the \texttt{tiktoken} library.
+As a result, the knowledge base is first tokenised.
+On this basis, the chunk length can be determined using the \textit{token} count rather than the raw characters.
+The realistic token count is relevant for subsequent \ac{api} interaction in the process, as it allows for the concrete control and calculation of the \textit{context window}.
+
+Following the \textit{tokenisation} the corresponding \textit{splitter} creates chunks with:
+\begin{itemize}
+    \item \texttt{chunk\_size\_tokens}: The maximum number of tokens allowed in a single chunk - Set to $1000$
+    \item \texttt{chunk\_overlap\_tokens}: The number of tokens that overlap between consecutive chunks - Set to $400$
+\end{itemize}
+These chunks were tagged with multiple metadata entries relevant to subsequent evaluation (see \cref{lst:output_file_structure_answered_rag_para})
+
+This particular setting of the chunk size and contextual overlap is selected to ensure preservation of semantic context across chunk boundaries without creating excessive redundancy.
+
+\section*{Vector Storage and Retrieval}\label{app:vector_storage_sretrieval}
+This section supplements the description of the storage and indexing workflow outlined in \cref{subsub:storage_retrieval_db}.
+
+Data ingestion, persistence, and vector-similarity queries are managed by a centralized abstraction class, the \texttt{QdrantManager}.
+This orchestrating \enquote{manager} maps application operations to network calls directed at the underlying vector database.
+Each \textit{chunk} (whether semantic or fixed-size) generated by the process of \textit{chunking} is converted into a structured \ac{db} record.
+Such a \ac{db} record is referred to as a \textit{point}.
+A standard \textit{Qdrant point} is defined by three primary elements:
+\begin{enumerate}
+    \item \textbf{ID}: A globally unique identifier (UUID v4 or integer) assigned to every chunk.
+    These \textit{ID}s allow for precise filtering and analysis of the stored data.
+    \item \textbf{Vector}: The mathematical representation (embedding) of the text chunk (see \cref{subsub:vocab_mapping}).
+    As implemented, the embedding process produces vectors with $384$ dimensions using cosine similarity (see \cref{sec:vector_simil_search}).
+    \item \textbf{Payload}: The actual text content.
+    As implemented, the payloads contain the text chunks from \citet{bb2} combined with all parsed metadata.
+    The metadata holds values such as the \texttt{source} and \texttt{chunk\_type} (e.g, \texttt{"semantic"} or \texttt{"fixed-size"}).
+\end{enumerate}
+
+The database engine runs isolated in a \textit{Docker container} using the official \textit{Qdrant} registry image which is automatically pulled on initial container startup.
+The resulting collection holding all \texttt{points} is mounted to a persistent \textit{Docker volume}.
+This setup ensures system persistence and prevents overhead costs on restart.
+Overall, the configuration is designed to provide reproducibility and consistent storage of the vectorised and embedded knowledge base. 
+%
+\section*{Installation and Setup}\label{app:installation_setup}
+This section describes the setup procedures and required configurations in order to deploy the containerised application environment.
+
+\subsection*{Prerequisites}
+To run the pipeline on a machine requires the following dependencies installed on the host system:
+\begin{enumerate}
+    \item \textbf{Git}: Version control client. Necessary to clone the code repository.
+    \item \textbf{Docker Service}: Docker Desktop or Docker Engine (latest version is recommended) to orchestrate the containerised services.
+    \item \textbf{API Services}: At least one \ac{api} authorisation key loaded as an environment variable:
+    \begin{itemize}
+        \item \texttt{OPENROUTER\_API\_KEY}: Set to access models from \textit{OpenRouter}.
+        \item \texttt{BLABLADOR\_API\_KEY}: Set to access models from \textit{Blablador}.
+    \end{itemize}
+    If other providers are chosen, the corresponding \ac{api} key and possibly the internal model mapping must be adapted.
+\end{enumerate}
+
+\subsection*{Deployment}\label{app:deployment}
+These following steps are required to deploy and launch the application:
+
+\begin{enumerate}
+    \item \textbf{Clone the Repository}:
+    Clone the codebase from the primary version control host and enter the root directory:
+\begin{lstlisting}[language=bash, caption={Cloning source directory}, xleftmargin=\leftmargin]
+git clone https://github.com/HSKuenzig/bachelor-thesis-code
+cd bachelor-thesis-code
+    \end{lstlisting}
+
+    \item \textbf{Configure Environment Variables}:
+    The project workspace contains a pre-configured template file named \texttt{.env}.
+    Edit this file to supply your \ac{api} authorisation keys:
+\begin{lstlisting}[language=bash, caption={Environment file keys}, xleftmargin=\leftmargin]
+OPENROUTER_API_KEY=your_openrouter_key
+BLABLADOR_API_KEY=your_blablador_key
+SITE_URL=http://localhost:8501
+\end{lstlisting}
+
+    \item \textbf{Orchestrate Containerised Services}:
+    Build and launch the stack (including the \ac{db} and web client services):
+\begin{lstlisting}[language=bash, caption={Starting docker service stack}, xleftmargin=\leftmargin]
+docker compose up --build -d
+\end{lstlisting}
+    \item \textbf{Access the Application}:
+    Open a web browser and navigate to the application endpoint hosted locally:
+    \begin{flushleft}
+    \url{http://localhost:8501}
+    \end{flushleft}
+\end{enumerate}

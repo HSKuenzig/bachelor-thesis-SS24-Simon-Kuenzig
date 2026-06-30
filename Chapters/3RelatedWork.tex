@@ -1,7 +1,7 @@
 %*****************************************
 \chapter{Related work}\label{ch:relatedWork}
 %*****************************************
-This chapter reviews research on \ac{lcw} and \ac{rag} advancements .
+This chapter reviews research on \ac{lcw} and \ac{rag} advancements.
 Both of these methods for knowledge processing and extraction are the subject of current \ac{ai} research and have experienced major advancements in recent time.
 %
 \section{LCW Models and Their Advancements}\label{sec:large_context}
@@ -20,7 +20,7 @@ The performance of the models used is maintained in the process, while significa
 Due to the remaining limitations of \ac{rope} in generalising beyond the initial context encodings, \citet{peng2024yarn} demonstrates a compute-efficient adaptation for long-context applications.
 By applying \textit{YaRN} the tested \textit{LlaMa} models reached \ac{sota} performance  after fine-tuning on less than $\sim0.1\%$ of the original pre-training data.
 Thus, significantly reducing the overhead  \citep{peng2024yarn}.
-The fine-tuned models that were fine-tuned during the development and testing of \ac{yarn} have been made available online .
+The fine-tuned models that were fine-tuned during the development and testing of \ac{yarn} have been made available online.
 By making the \ac{yarn} technology open source, the context window extension has been reproduced with other language models of individual choice to a context length of $128,000$ token \citep{peng2024yarn}.
 This is particularly relevant for \ac{rag} or \ac{qa} setups in resource-constrained environments.
 %
@@ -142,7 +142,7 @@ Due to this progress and a variety of requirements and specific and divers appli
 \citet{Li2024RetrievalAG} gives a detailed analysis of the advantages and disadvantage of \ac{rag} and \acp{llm} respectively.
 The direct comparison shows that the use of the respective method in applications such as \ac{qa} is accompanied by compromises on both sides:
 \begin{itemize}
-    \item Intensive computing cost and time expenditure due to pre-training and fine-tuning (\ac{lcllm}).
+    \item High computational cost and time expenditure for pre-training and fine-tuning (\ac{lcllm}).
     \item Hallucinations while generating output (\ac{lcllm}).
     \item Closed-source \ac{llm} models do not allow for further usage and extension (\ac{lcllm}).
     \item Potentially outdated knowledge due to pre-training on static data snapshots 
@@ -161,11 +161,11 @@ This framework attempts to dynamically select the most suitable method to optimi
 Overall \citet{Li2024RetrievalAG} confirm that, under optimal computational conditions, \acp{lcllm} generally outperform retrieval-based approaches.
 However, \ac{rag} remains more efficient for short quires or limited computation scenarios.
 %
-\section{Perspective and Developmentens}
+\section{Perspective and Developments}
 
 Both methods are constantly evolving.
-Currently available applications combine and integrate various technologies and methods for information processing and generation.
-Just four years have passed since the fascination of the \textit{ChatGPT} moment in $2022$ to the multi-modal, agentic appliactions of today.
+Currently, available applications combine and integrate various technologies and methods for information processing and generation.
+Just four years have passed since the fascination of the \textit{ChatGPT} moment in $2022$ to the multi-modal, agentic applications of today.
 These applications demonstrate that an isolated evaluation of models and methods is increasingly taking a back role in evaluations.
 
 \textit{Google Gems}, for example, offers the creation of a custom \ac{ai} expert \citet{Google2025Gemsoverview}.

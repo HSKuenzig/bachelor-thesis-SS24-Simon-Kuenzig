@@ -18,23 +18,41 @@ First, such a model must be available for public access outside generative \ac{a
 Access can be gained either via an aggregator or by running the model on local hardware.
 
 %
-\subsection{Prompt engineering}
+\subsection{Prompt Engineering}\label{sub:prompt_engineering}
 As mentioned in the approach, prompt engineering would significantly improve the generated output.
 By using current prompting techniques, it would be possible to guide the respective \ac{lm} to the ideal answer.
-As implemented in the Blablador pipeline, a clear restriction on the output length within the prompt avoids truncating generated information by a hard-coded \texttt{max\_token} parameters.
-Such a small adaption has already an significant impact on the output quality.
+As implemented in the \textit{Blablador} pipeline, a clear restriction on the output length within the prompt avoids truncating generated information by a hard-coded \texttt{max\_token} parameters.
+Such a small adaption has already a significant impact on the output quality.
 
 The \textit{llm-as-a-judge} is an efficient feature, but its quality and reliability of output also depend on the instructing prompt.
 Such an approach could improve the output with regard to efficiency and quality.
 
 The choice of the \ac{lm} provider influences the usability, availability and capability of the respective \ac{lm}.
-As shown in the method applied, the differ the
  %
-\section[Potential Improvements for the LCW pipeline]{LCW pipeline}
+\section[Improvements - LCW pipeline]{Potential Improvements for the LCW pipeline}
 
+Future work could focus on various structural and operational improvements to the \ac{lcw} pipeline.
+As this pipeline is straightforward without much complexity, its main architecture of monolithic context-capture presents challenges in terms of cost, latency and noise sensitivity.
+\subsection{Query Normalisation}
+As identified in the evaluation, the performance of the \ac{lcw} pipeline is negatively affected when queries contain spelling errors.
+The direct comparison revealed significant weaknesses in terms of the models’ robustness.
+For a scientific study such as this one, it is of interest to process the deliberately \enquote{incorrect} input data without modification.
+As it represents the realistic human input.
 
+To address this weakness, future work should incorporate an automated step to normalise the queries.
+This is already standard practice in commercial \ac{ai} chat platforms, such as \textit{ChatGPT} and \textit{Gemini}.
+In these systems pre-processing (query rewriting, spelling correction, optimised prompting) of the initial input runs automatically in the background.
+Only in this way will a realistic assessment of the model’s performance, as well as the full utilisation of its actual capabilities, be meaningful.
+This approach complements \cref{sub:prompt_engineering}.
 
-\section[Potential Improvements for the RAG Pipeline]{RAG Pipeline}
+\subsection{Context Structuring}
+Currently, the knowledge base is read and parsed directly into the prompt template in an unprocessed plain text format.
+However, there are no clear structural boundaries.
+This can lead to instructions and context becoming blurred, which confuses the model and potentially causes it to lose its train of thought.
+Future implementations could be adapted to incorporate structured context integration.
+Semantic XML markers (e.g. by extending the explicit separation of chapters, sections or definitions) and embedding structural guides could be used to divide the text.
+Thus, the model’s internal attention mechanisms could locate and refer to relevant facts more precisely.
+\section[Improvements - RAG Pipeline]{Potential Improvements for the RAG Pipeline}
 
 Future work may investigate the optimisation of the \ac{rag} pipeline.
 The implementation within this thesis was designed to be functional and effective.
@@ -78,8 +96,8 @@ The following improvements and adaptations could be implemented:
 \begin{itemize}
     \item A more capable embedding model, leading to higher vector dimensions and possibly improving context consistency and answer generation. 
     \item Semantic attribute weighting for the retrieval.
-    Prioritising certain metadata and correspindg chunks depending on the knowledge base and the current topic of question.
-    \item Maximal Marginal Relevance (MMR). Apply MMR for document reranking, to ensure the documents sent to the generator are both relevant and diverse.
+    Prioritising certain metadata and corresponding chunks depending on the knowledge base and the current topic of question.
+    \item Maximal Marginal Relevance (MMR). Apply MMR for document re-ranking, to ensure the documents sent to the generator are both relevant and diverse.
 \end{itemize}
 The possible improvements could be investigated using an empirical approach.
 This would allow for the ideal configuration for a specific knowledge base and question set to be determined.
@@ -91,4 +109,4 @@ In \ac{ai} application users often share data without restriction and without cr
 This aspect has become even more important in the era of \textit{agentic systems}.
 \ac{lm} in the role of an agent are allowed to act unrestricted and autonomously on private systems and data.
 The data is then processed in the black box of the underlying platform processes, uncontrolled and unregulated by the user.
-\textit{Helmholtz AI} guarentees a transparent data privacy, but that is not a common standard on commercial \ac{ai} platforms and \ac{lm} aggregators.
+\textit{Helmholtz AI} guarantees a transparent data privacy, but that is not a common standard on commercial \ac{ai} platforms and \ac{lm} aggregators.

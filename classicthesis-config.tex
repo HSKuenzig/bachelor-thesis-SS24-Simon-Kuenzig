@@ -53,7 +53,7 @@
 \newcommand{\mybirthcountry}{Germany}
 \newcommand{\myProf}{Dr. Konrad Höffner\xspace}
 \newcommand{\myOtherProf}{Prof. Name2\xspace}
-\newcommand{\mySupervisor}{\xspace}
+\newcommand{\mySupervisor}{Dr. Konrad Höffner\xspace}
 
 %\newcommand{\myFaculty}{Institut für Mathematik und Informatik\xspace}
 %\newcommand{\mySubject}{Informatik}
@@ -74,7 +74,7 @@
 %\newcommand{\mySubject}{Medizininformatik M. Sc.\xspace}% neuer Master
 
 \newcommand{\myLocation}{Leipzig\xspace}
-\newcommand{\myTime}{\xspace} 
+\newcommand{\myTime}{06.07.2026\xspace} 
 \newcommand{\myVersion}{\classicthesis}
 
 % ********************************************************************
@@ -148,6 +148,7 @@
 % ****************************************************************************************************
 % 4. Setup floats: tables, (sub)figures, and captions
 % ****************************************************************************************************
+\usepackage{float}
 \usepackage{booktabs}
 \usepackage{tabularx} % better tables that are smaller than the text width
 \usepackage{tabulary} % better tables that are wider than the text width
@@ -297,6 +298,10 @@
 % ****************************************************************************************************
 
 % ****** Custom
+\usepackage{url}
+\makeatletter
+\g@addto@macro{\UrlBreaks}{\do\/\do\-\do\.\do\=\do\_\do\?\do\&\do\a\do\b\do\c\do\d\do\e\do\f\do\g\do\h\do\i\do\j\do\k\do\l\do\m\do\n\do\o\do\p\do\q\do\r\do\s\do\t\do\u\do\v\do\w\do\x\do\y\do\z\do\A\do\B\do\C\do\D\do\E\do\F\do\G\do\H\do\I\do\J\do\K\do\L\do\M\do\N\do\O\do\P\do\Q\do\R\do\S\do\T\do\U\do\V\do\W\do\X\do\Y\do\Z\do\1\do\2\do\3\do\4\do\5\do\6\do\7\do\8\do\9\do\0}
+\makeatother
 \usepackage{todonotes}
 \usepackage{csquotes}
 \usepackage{listings}

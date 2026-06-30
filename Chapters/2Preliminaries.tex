@@ -2,10 +2,10 @@
 \chapter{Preliminaries}\label{ch:preliminaries}
 %*****************************************
 
-In order to understand how an application can be designed to \enquote{learn} or extract and process knowledge from any textbook such \citet{bb2}, we must first deconstruct the underlying technologies and processes.
+In order to understand how an application can be designed to \enquote{learn} or extract and process knowledge from any textbook such as \citet{bb2}, we must first deconstruct the underlying technologies and processes.
 To illustrate the approach presented, let us consider the example of a student preparing for an exam in \enquote{Medical Informatics}.
 That means that the student needs relevant knowledge.
-Therefore, the student wants to extract this specific, in relation to specific questions, knowledge from a book, such as \citet{bb2}.
+Therefore, the student wants to extract this specific knowledge related to specific questions.
 Instead of reading the entire book each time, the student could use the index to look up relevant knowledge within specific chapters (\textit{retrieval}) or try to memorise the entire book content (\textit{large context}).
 This chapter explains the technology that enables computers to perform precisely these different methods of knowledge acquisition: From \textbf{reading} the text (\ac{nlp}) to \textbf{understanding} and \textbf{reasoning} with it (\textit{Transformer}).
 From \textbf{finding} and \textbf{extracting} the respective knowledge to \textbf{answering} the students questions (\ac{qa}).
@@ -14,14 +14,14 @@ All this based on the entire content (= \ac{lcw}) of \citetitle{bb2}  or only ce
 \section{Knowledge Base}\label{sec:knowledgeb}
 As explained in the introduction, \citet{bb2} serves as the knowledge base for answering questions using \acp{lm}.
 It is therefore essential to first understand why this book serves this purpose.\\
-\enquote{In order to professionally deal with \ac{his} [\dots] well-educated informaticians are needed}\citep[p.e40]{Ammenwerth2017FvS}.
-Therefore, leading experts in the field of medical informatics, including Winter, Ammenwerth and Haux, have already published the third edition of this book.
+\enquote{In order to professionally deal with \ac{his} [\dots] well-educated informaticians are needed} \citep[p.e40]{Ammenwerth2017FvS}.
+Therefore, leading experts in the field of medical informatics, including Winter, Ammenwerth, and Haux have already published the third edition of this book.
 The book teaches the essential scientific foundations for the field of medical informatics. 
 It defines the precise terms and theoretical frameworks necessary for analysing, understanding and potentially improving complex socio-technical systems within health care.
 Among the most important contributions are:
 \begin{itemize}
     \item \textbf{Information and knowledge logistics:}
-    In \citet{bb2} this is defined as the goal of \ac{his} \enquote{aiming at making the right information and knowledge available at the right time, at the right place, to the right people, and in the right form so that these people can make the right decisions.}\citep[p.19]{bb2}
+    In \citet{bb2} this is defined as the goal of \ac{his} \enquote{aiming at making the right information and knowledge available at the right time, at the right place, to the right people, and in the right form so that these people can make the right decisions.} \citep[p.19]{bb2}
     This heuristic serves as an effective evaluation metric to assess the quality of information systems within a \ac{his}.
     %
     \item \textbf{Interoperability standards:} A comprehensive overview of modern healthcare standards is provided and explained in context.
@@ -33,12 +33,12 @@ Among the most important contributions are:
 \citet{bb2} is a seminal work in the field and documents the profound changes in \textit{medical informatics} over the last two decades.
 The book emphasises and identifies the necessary transition from an institution-orientated focus and perspective towards person-centred care models.
 This transition represents the modern understanding that health is a continuous state that is influenced across different \textit{life situations}.
-Within the scenarios of \enquote{life situations} information processing expands from self-contained \enquote{Hospital Information Systems} to \enquote{Health Information Systems} that are transinstitutionally interconnected.
-Thereby, including institutions, such as rehabilitation centers, nursing homes, outpatient clinics and the patient's personal environment. 
+Within the scenarios of \enquote{life situations} information processing expands from self-contained \enquote{Hospital Information Systems} to \enquote{Health Information Systems} which are transinstitutionally interconnected.
+Thereby, including institutions, such as rehabilitation centres, nursing homes, outpatient clinics and the patient's personal environment. 
 The resulting comprehensive, interconnected health information systems require efficient and high-quality \textbf{information and knowledge logistics}.
 In \citet{bb2} this is defined as the goal of \ac{his}. 
 \enquote{\textit{Information and knowledge logistics} aims at making the right information and knowledge available at the right time, at the right place, to the right people,
-and in the right form so that these people can make the right decisions.}\citep[p.19]{bb2}
+and in the right form so that these people can make the right decisions.} \citep[p.19]{bb2}
 \subsection{Intellectual and Academic Relevance}
 \citetitle{bb2} has international influence and significance, serving as the foundation for teaching and research in \textit{medical informatics}.
 For example, the book is the main subject of teaching the module \enquote{Health Information Systems (International Frank - van Swieten - Lectures)} at universities in Amsterdam, Braunschweig, Heidelberg/Heilbronn, Leipzig and UMIT Tirol.
@@ -46,27 +46,27 @@ An international joint study module on strategic information management in \ac{h
 \citetitle{bb2} thus also serves as the intellectual and educational basis for the \textbf{International Frank van Swieten Lectures}.
 These lectures provide a forum for critical and constructive presentation and discussion of current conditions and potential future development.\\
 The book provides knowledge and conveys an understanding of high-quality \ac{his}, while providing the tools to achieve them.
-On this basis, readers, such as students and practitioners are able, among others things, to:
+On this basis, readers, such as students and practitioners are able, among other things, to:
 \begin{itemize}
     \item Describe health information systems and their architecture
     \item Design the architecture and infrastructure of various information systems in medicine
-    \item Explain/apply/critically assess types of integration and integrity as well as relevant standards for health information systems
+    \item Explain/apply/critically assess types of integration, integrity and relevant standards for health information systems
     \item Evaluate and compare health information systems in terms of quality and integration techniques used
 \end{itemize}
 %
-Because \enquote{Health information systems (HIS) were, are currently, and, as far as we can see, will also be in future one of the most important areas for biomedical and health informatics.}\citep[p.e40]{Ammenwerth2017FvS}, the book is of such relevance.
+Because \enquote{Health information systems (HIS) were, are currently, and, as far as we can see, will also be in future one of the most important areas for biomedical and health informatics.} \citep[p.e40]{Ammenwerth2017FvS}, the book is of such relevance.
 At the same time, it becomes clear why a fast and efficient access to the knowledge within the content in \citet{bb2} is desirable.
 %
 \section{Natural Language Processing (NLP)}\label{sec:nlp_prel}
 The fundamental goal of this work is to have a computer system understand and answer questions based on text from \citet{bb2}.
 \begin{definition}
     \ac{nlp} \enquote{is concerned with the automated processing of human language. It addresses the analysis and generation of written and spoken language [\dots].
-    [\dots] \ac{nlp} can be seen as the applied side of computational linguistics [\dots] concerned with formal analysis and computational modeling of language at the intersection of linguistics, computer science, and psychology.}\citep[p.1]{meurer2021nlp}
+    [\dots] \ac{nlp} can be seen as the applied side of computational linguistics [\dots] concerned with formal analysis and computational modelling of language at the intersection of linguistics, computer science, and psychology.} \citep[p.1]{meurer2021nlp}
 \end{definition}
 %\citet{meurer2021nlp}
 The importance of \ac{nlp} for current research and application has increased significantly, particularly with the development of powerful \acp{lm} that can accomplish complex linguistic tasks.
 \ac{nlp} focuses on tasks such as question answering, summarisation, named entity recognition, and machine translation, all of which require a nuanced understanding of both syntax and semantics.
-This work focusses on two specific sub-disciplines of \ac{nlp}:
+This work focuses on two specific sub-disciplines of \ac{nlp}:
 \textit{Information Retrieval} and \textit{Question Answering}.
 %
 \subsection{Information Retrieval}\label{subsec:ir}
@@ -75,13 +75,13 @@ Before a system can answer a question about a specific topic, it must retrieve t
 \begin{definition}\label{def:ir}
 \enquote{Information retrieval (IR) is finding material (usually documents) of
 an unstructured nature (usually text) that satisfies an information need
-from within large collections (usually stored on computers).}\citep[p.1]{ManningRaghavanSchuetze2008ir}
+from within large collections (usually stored on computers).} \citep[p.1]{ManningRaghavanSchuetze2008ir}
 \end{definition}
 %
 In the context of this thesis \ac{ir} describes the mechanism used to find the specific pages or paragraphs within \citet{bb2} that contain the answer to a question of a student or practitioner of \textit{medical informatics}.
 Traditionally, this involved keyword matching (e.g., searching for \enquote{hospital}, \enquote{information}, \enquote{system}).
 Modern \ac{ir} enables \textit{Semantic Search}, where the system retrieves information based on meaning and context (see \cref{sec:embeddings}, \cref{sec:vector_simil_search}) rather than simply matching words.
-This retrieval process is the \enquote{R} in one in \ac{rag} (\textbf{R}etrieval \textbf{A}ugmented \textbf{G}eneration) of the methods investigated, further described in \cref{sec:rag_prel}.
+This retrieval process is the \enquote{R} in \ac{rag} (\textbf{R}etrieval \textbf{A}ugmented \textbf{G}eneration) of the methods investigated, further described in \cref{sec:rag_prel}.
 %
 \subsection{Question Answering}\label{subsec:question_answering_prel}
 %
@@ -96,8 +96,8 @@ Based on this, relevant information is retrieved from a source, further processe
 \begin{itemize}
     \item \textbf{Open-Domain vs. Closed-Domain:} \textbf{Open} \ac{qa} answers questions using general knowledge (e.g., \enquote{What is a computer?}). 
     \textbf{Closed}-domain \ac{qa} is restricted to a specific source or subject, such as the \citet{bb2} scientific textbook.
-    \item \textbf{Extractive vs. Generative} \textbf{Extractive} \ac{qa} highlights the exact location of the respective text in the source.
-    During \textbf{Generative} \ac{qa}, an \ac{lm} generates a natural language answer based on the source text/knowledge base.
+    \item \textbf{Extractive vs. Generative:} \textbf{Extractive} \ac{qa} highlights the exact location of the respective text in the source.
+    During \textbf{Generative} \ac{qa}, a \ac{lm} generates a natural language answer based on the source text/knowledge base.
 \end{itemize}
 %
 \section{Language Models}\label{sec:lm}
@@ -112,7 +112,7 @@ They have a wide range of applications, including translation, text generation, 
 However, to process language in text form, \ac{lm} do not simply \enquote{read} raw text like a student or practitioner.
 The input must be prepared and transformed into a format that the model can compute.
 The main part of that transformational process is the segmentation of text into discrete units (\textit{tokens}).
-These \textit{tokens} are then mapping into a numerical vector space (\textit{embeddings})
+These \textit{tokens} are then mapped into a numerical vector space (\textit{embeddings})
 %
 \subsection{Tokens and Tokenisation}\label{subsec:token_prel}
 %
@@ -124,8 +124,8 @@ These \textit{tokens} are then mapping into a numerical vector space (\textit{em
 Tokens can represent multiple and different linguistic units, including:
 \begin{itemize}
   \item \textbf{Full words} (e.g., \textit{hospital})
-  \item \textbf{Subwords:} (e.g., \texttt{inter} + \texttt{oper} + \texttt{ability} (interoperability)
-  \item \textbf{Individual characters}, especially in character-level models (e.g., \textit{a,e,i,o,!?})
+  \item \textbf{Subwords:} (e.g., \texttt{inter} + \texttt{oper} + \texttt{ability} $\Rightarrow$ \textit{interoperability})
+  \item \textbf{Individual characters}, especially in character-level models (e.g., \textit{a, e, i, o, !, ?})
 \end{itemize}
 %
 The individual approach on how to segment them, directly affects the quality and interpretability of the model output.
@@ -180,7 +180,7 @@ The most common algorithms are \textit{Byte-Pair Encoding (BPE)} and \textit{Wor
     \textbf{Byte-Pair Encoding} (BPE) is a frequency-based compression algorithm adapted for \ac{nlp} by \citet{sennrich2016neural}. 
 \end{definition}
 %
-The \textit{BPE} algorithm starts by transforming the input text into a character- and byte-level representation.
+The \textit{BPE} algorithm starts by transforming the input text into a\\ character- and byte-level representation.
 Then, the most frequent pairs of subsequent characters or bytes are iteratively merged into new \textit{tokens}.
 This transformative process continues until a predefined vocabulary size is reached.
 The result is a compressed representation of the original text.
@@ -199,23 +199,23 @@ Similarly to \ac{bpe}, \textit{WordPiece} creates subword units of the original 
 At the same time, \textit{WordPiece} selects merge operations based on likelihood maximisation rather than simple frequency.
 Overall, the algorithm improves both model generalisation and semantic understanding.
 %
-\subsection[Consistent Tokenisation]
+\subsection{Consistent Tokenisation}
 Consistent \textit{tokenisation} is essential to ensure that the input is standardised for the \ac{lm}.
-This enables the \ac{lm} to process the input reliably and in a reproducibly manner.
+This enables the \ac{lm} to process the input reliably and in a reproducible manner.
 Since Transformer-based \ac{lm} rely on token-level embeddings, inconsistencies in the segmentation from text to \textit{tokens} can lead to significantly different results.
 Even if the underlying input text remains unchanged.
 %
 This is particularly relevant in relation to the following points:
 \begin{itemize}
     \item Reproducible benchmarking, as pursued in this thesis
-    \item objective model comparison, when evaluating multiple \ac{lm} or configurations
+    \item Objective model comparison, when evaluating multiple \ac{lm} or configurations
     \item Resource efficiency, since longer \textit{token} sequences incur greater memory and computational costs
 \end{itemize}
 %
 In practice, a text input that results in $120$ \textit{tokens} for one model could be split into $180$ \textit{tokens} by another model based on differences in tokenisation (see examples at \cref{subsub:example_token}.
 This variation affects latency, computational cost, and model comprehension, especially in length-sensitive architectures.
 %
-\subsubsection[Vocabulary and Mapping]{Predefined Vocabulary and Token-to-ID Mapping}
+\subsubsection[Vocabulary and Mapping]{Predefined Vocabulary and Token-to-ID Mapping}\label{subsub:vocab_mapping}
 %
 \begin{definition}
     A \textbf{predefined vocabulary} is a finite list of textual \textit{tokens}.
@@ -277,12 +277,12 @@ In the context of \acp{lm}, \textit{transformer}-based architectures and \ac{rag
 %
 \begin{definition}\label{def:semantic_embed}
 \textbf{Semantic embeddings} are dense vector representations of individual \textit{tokens} (e.g., words, subwords).
-They encode syntactic and semantic relationships based on distributional properties of language~\citep{Mikolov2013EfficientEO, pennington2014glove}.
+They encode syntactic and semantic relationships based on distributional properties of language ~\citep{Mikolov2013EfficientEO, pennington2014glove}.
 \end{definition}
 %
 \subsubsection{Static Semantic Embeddings}
 %
-In earlier neural models, such as \textit{Word2Vec}~\citep{Mikolov2013EfficientEO} and \textit{GloVe}~\citep{pennington2014glove}, \textit{embeddings} were \enquote{learned} by predicting how often words appear together.
+In earlier neural models, such as \textit{Word2Vec} ~\citep{Mikolov2013EfficientEO} and \textit{GloVe} ~\citep{pennington2014glove}, \textit{embeddings} were \enquote{learned} by predicting how often words appear together.
 These static \textit{embeddings} assign a single vector to each word.
 This mapping is independent of linguistic context, which limits their ability to disambiguate polysemous terms (e.g., \enquote{bank} as a financial institution versus a \enquote{riverbank}).
 %
@@ -304,8 +304,8 @@ This is achieved by using \textit{positional embeddings}.
 %
 \begin{definition}
 \textbf{Positional embeddings} are vectors that are combined with the individual \textit{token} embeddings.
-This combination ecnodes the position of a \textit{token} in a sequence.
-The positional parameter enables an order-aware processing in models based on self-attention~\citep{vaswani2017attention}.
+This combination encodes the position of a \textit{token} in a sequence.
+The positional parameter enables an order-aware processing in models based on self-attention ~\citep{vaswani2017attention}.
 \end{definition}
 %
 \subsubsection{Types of Positional Embeddings}
@@ -317,7 +317,7 @@ There are two primary types of \textit{positional embeddings}:
     This vector is often derived from sinusoidal functions as introduced by \citet{vaswani2017attention}.
     \item \textbf{Relative positional embeddings}:
     Relative positional embeddings encode the relative distance between \textit{tokens}, rather than their absolute positions. 
-    This approach has been shown to improve generalisation across sequence lengths~\citep{shaw2018self, dai2019transformer}.
+    This approach has been shown to improve generalisation across sequence lengths ~\citep{shaw2018self, dai2019transformer}.
 \end{itemize}
 %
 Relative positional representations allow \acp{lm} to focus on inter-token relations and dependencies without being limited by fixed input lengths.
@@ -345,7 +345,7 @@ The basic architecture of the \textit{Transformer} has since been modified for i
 To understand the architecture of the \textit{Transformer}, it is necessary to know the basics of neural networks.
 \ac{nn} were first described by \citet{neuronal_networks_first} and have undergone many changes and improvements since then.
 \begin{definition}
-    \textbf{Neural Networks} are computational models inspired by the biological structure of the human brain and consist of interconnected layers of nodes (neurons) that process information through weighted connections~\citep{mcculloch1943logical}.
+    \textbf{Neural Networks} are computational models inspired by the biological structure of the human brain and consist of interconnected layers of nodes (neurons) that process information through weighted connections ~\citep{mcculloch1943logical}.
 \end{definition}
 %
 \ac{nn} use mathematical equations to  model the functions of the human brain.
@@ -365,18 +365,17 @@ Each neuron applies a non-linear activation function to the weighted sum of its 
 \textit{Deep learning} extends, improves and builds upon the concept of \ac{nn}.
 In \citet{hinton2006fast} it was demonstrated that \textit{deep} \ac{nn} could effectively learn complex data representations by stacking multiple hidden layers creating a \textit{deep hierarchical structure}.
 In \textit{deep} \ac{nn}, the lower layers identify simple patterns.
-The subsequent higher layers combine these patterns to represent increasingly abstract and complex concepts~\citep[p.~436]{lecun2015deep}.
+The subsequent higher layers combine these patterns to represent increasingly abstract and complex concepts ~\citep[p.~436]{lecun2015deep}.
 
 \paragraph{Significance for modern \ac{nlp}}
 %
-
 The depth of these \acp{nn} allows for the modelling of complex non-linear relationships in natural language.
 As a result \acp{nn} can \enquote{learn} high-level representations from raw text.
 Traditional machine learning methods relied mainly on manual feature engineering.
 \textit{Deep learning} marked the transition from such manual feature learning to automatic hierarchical learning.
 This allows these networks to capture semantic nuances, ambiguities.
 Furthermore, they \enquote{understand} sophisticated, complex syntactic structures within extensive information input (large context sizes).
-This makes \acp{nn}, particularly in \acp{lm}, essential for tasks such as \ac{qa} based on compelex and comprehensive knowledge basis (e.g., \citetitle{bb2}).
+This makes \acp{nn}, particularly in \acp{lm}, essential for tasks such as \ac{qa} based on complex and comprehensive knowledge basis (e.g., \citetitle{bb2}).
 %
 \paragraph{Multimodality}
 %
@@ -396,7 +395,7 @@ As introduced by \citet{vaswani2017attention}, this specific neural network desi
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.8\textwidth]{figures/transformer.png}
-    \caption{The Transformer-Model Architecture \citep{vaswani2017attention}}
+    \caption{The Transformer-Model Architecture, source: \citep{vaswani2017attention}}
     \label{figure:transformer}
 \end{figure}
 It was developed primarily to address the fundamental limitations of the \textbf{Sequence-to-Sequence (Seq2Seq)} Encoder-Decoder framework introduced by \citet{sutskever2014sequence}.
@@ -438,14 +437,14 @@ These components build a bidirectional architecture to process input sequences a
 \paragraph{Pre-training Corpus}
 The resulting advantages in scalability and performance have allowed for the training of models on massive pre-training corpora.
 %
-One such corpus is, for example, the \enquote{\textit{REFINEDWEB}, a high-quality five trillion tokens web-only English pretraining dataset}\citep{penedo2023refinedwebdatasetfalconllm}.
+One such corpus is, for example, the \enquote{\textit{REFINEDWEB}, a high-quality five trillion tokens web-only English pre-training dataset} ~\citep{penedo2023refinedwebdatasetfalconllm}.
 This corresponds to approximately 42 million times the content of \citet{bb2} and is just one of the corpora used today for the pre-training of \ac{llm}.\\
 %
-The foundational \textit{Transformer} model was particularly idealised for \textit{sequence-to-sequence} tasks, such as translating languages~\citep{vaswani2017attention}.
+The foundational \textit{Transformer} model was particularly idealised for \textit{sequence-to-sequence} tasks, such as translating languages ~\citep{vaswani2017attention}.
 However, many later models have adapted and repurposed it for more specific applications. 
 The basic structure has been continuously modified over time, forming the foundation for many modern \acp{lm} such as \textit{BERT} (only \textit{Encoder}), \textit{GPT} (only \textit{Decoder}), and \textit{T5} (\textit{Encoder-Decoder}).
 
-These developments resulted in fundamental differences in the models and their ability to address a variety of \ac{nlp} problems~\citep{raffel2020exploring}.
+These developments resulted in fundamental differences in the models and their ability to address a variety of \ac{nlp} problems ~\citep{raffel2020exploring}.
 %
 The original transformer architecture can be seen at \cref{figure:transformer}.
 \subsection{Functionality of Transformer Models}
@@ -475,7 +474,7 @@ In specialised domains, such as \textit{medical informatics}, even deeper expert
 \begin{definition}\label{def:continual_pretaining}
 At this point, \textbf{continual pre-training} describes the process of further training a previously pre-trained \ac{lm} on a new, specialised dataset.
 In order to become individual experts in a domain or a specific task area, \ac{lm} are particularly \textbf{trained} for this purpose.
-By aplying \textbf{Continual pre-training}, the respective model is adapted to a specific area.
+By using \textbf{continual pre-training}, the respective model is adapted to a specific area.
 \end{definition}
 In this process, the weights of the respective model (see \cref{def:learnable_par}) are updated using new data while attempting to retain the knowledge from the initial training phase.
 An example of this approach can be found in \citet{Paul_Keller}.
@@ -512,20 +511,30 @@ This results in the loss of context, an interrupted chain of reasoning and poten
 A \textbf{context window} refers to the maximum number of input \textit{tokens} a \textit{Transformer} model can attend to at any point in time.
 In autoregressive models, this includes both the input prompt and all \textit{tokens} generated during \textit{inference}.
 \end{definition}
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=1.0\textwidth]{figures/context_window.jpg}
+    \caption{The concept of a context window}
+    \label{figure:context_window}
+\end{figure}
 %
+The \cref{figure:context_window} illustrates the concept of a \textit{context window} on the example of the definition of a \ac{his} from the \citet{bb2} textbook.
 \subsubsection[Limitations and Advancements]{Limitations and Advancements in Large Context Processing}\label{subsec:limit_context_prel}
 %
 The scalability of context windows is fundamentally constrained by the architecture of the \textit{Transformer}.
 The \textit{self-attention mechanism} compares every \textit{token} to every other token, resulting in quadratic computational complexity ($O(N^2)$).
 As the sequence length $N$ increases, the required computations and memory grow exponentially.
 This limited earlier models, such as
-the \textit{BERT-base} model to only support $512$ \textit{tokens}~\citep{devlin2019bert}, which roughly corresponds to the first subsection \textit{$1.1$ \enquote{Motivation and Objective of the Book}} of the \enquote{Introduction} section in \citet{bb2}.
+the \textit{BERT-base} model to only support $512$ \textit{tokens} ~\citep{devlin2019bert}, which roughly corresponds to the first subsection \textit{$1.1$ \enquote{Motivation and Objective of the Book}} of the \enquote{Introduction} section in \citet{bb2}.
 %
 The size of the context windows has been continuously extended through iterations of development.
-\textit{OpenAI}'s \textit{GPT-3}, commonly acknowledged as the start of \enquote{large} models ~\citep[p.1]{langlais2025commoncorpuslargestcollection}, is limited to $2048$ \textit{tokens}~\citep{gpt3} during a single \textit{inference} pass, allowing for an input slightly larger than the first two subsections of the introduction.
+\textit{OpenAI}'s \textit{GPT-3}, commonly acknowledged as the start of \enquote{large} models ~\citep[p.1]{langlais2025commoncorpuslargestcollection}, is limited to $2048$ \textit{tokens} ~\citep{gpt3} during a single \textit{inference} pass.
+Such a limitation allows for an input slightly larger than the first two subsections of the introduction.
 Recent architectural innovations have significantly expanded these limits, enabling \textbf{Large Context Windows (\textit{LCW}}) capable of directly processing a complete textbook.
 However, there is no uniform definition or threshold for \enquote{large context windows}. 
-Current models, such as \textit{GPT-$5$} and \textit{Anthropics} \textit{Claude $4$} can ingest up to a $1~million$ \textit{tokens}~\citep{openai2025gpt4, claude2025feature} allowing for significantly larger \textit{context windows}, an estimated $10$ times the book \citetitle{bb2}.
+Current models, such as \textit{GPT-$5$} and \textit{Anthropics} \textit{Claude $4$} can ingest up to a $1~million$ \textit{tokens} ~\citep{openai2025gpt4, claude2025feature}.
+This improvement allows for significantly larger \textit{context windows}, an estimated $10$ times the book \citetitle{bb2}.
 %
 The key technologies driving this expansion include the memory optimisation technique \textit{FlashAttention} \citep{dao2022flashattention}, which reduces memory bottlenecks.
 In addition, advanced position embedding techniques (e.g., \textit{RoPE}, see \cref{sec:large_context}) enable models to generalise to sequence lengths far beyond their training data.
@@ -538,7 +547,7 @@ Although modern architectures have theoretically solved the problem of input siz
 \small
 \textit{“Beyond a certain length, longer isn’t always better.”} – \citet{liu2024lostmiddle}
 \end{quote}
-Computational complexity, memory requirements, model degradation at extreme lengths~\citep{liu2024lostmiddle}, as well as availability are challenges to overcome.
+Computational complexity, memory requirements, model degradation at extreme lengths ~\citep{liu2024lostmiddle}, as well as availability are challenges to overcome.
 The \textbf{context window} defines the boundaries of what a model can see, but does not guarantee that the model can recall everything within those boundaries unchanged and in detail.
 This distinction between \textit{nominal capacity} and \textit{effective attention} is the main challenge when attempting to process knowledge sources such as \citet{bb2} textbook.
 %
@@ -560,7 +569,8 @@ The two main reasons why \textit{Chunking} is necessary are:
 %
 \subsubsection{Chunking Strategies}\label{subsub:chunking_strat}
 %
-Several \textit{chunking strategies} are used to structure input sequences, thereby balancing size and semantic integrity:
+Several \textit{chunking strategies} are used to structure input sequences.
+Each strategy attempts to establish an ideal balance between size and semantic integrity for the specific use case:
 %
 \begin{itemize}
     \item \textbf{Fixed-size chunking:}
@@ -573,7 +583,7 @@ Several \textit{chunking strategies} are used to structure input sequences, ther
     Overlapping chunks are created by shifting a fixed window across the input with some adaptable overlap (e.g., $1000$-token chunks with $4000$-token overlap, see \cref{sub:hybrid_chunking_sol}).
     In this process, each \textit{token} \enquote{attends} to a fixed-size window of \textit{tokens} around it.
     Stacking multiple layers of overlapping attention allows for a large receptive field.
-    This approach helps maintain contextual continuity across boundaries~\citep{beltagy2020longformerlongdocumenttransformer}.
+    This approach helps maintain contextual continuity across boundaries ~\citep{beltagy2020longformerlongdocumenttransformer}.
     Using preprocessed text from \citet{bb2} as an example, the \textit{sliding window} approach would generate $192$ chunks.
     %
     \item \textbf{Sentence- or paragraph-based chunking:} Input is segmented based on natural linguistic units.
@@ -582,24 +592,24 @@ Several \textit{chunking strategies} are used to structure input sequences, ther
     Chunks of different sizes are created due to varying sentence and paragraph lengths.
     Using \citet{bb2} as an example:
     \begin{itemize}
-        \item Approximately $2.100$ sentences within $\sim500$ paragraphs
+        \item Approximately $2.100$ sentences within $\approx500$ paragraphs
         \item Transitions from the $3LGM^2$ graph examples to sequences
         \item Abbreviations
         \item Table of Contents
     \end{itemize}
     Depending on the syntactic analysis of certain content, such as linearised graphs and the corresponding division of the various parts, \numrange{2,000}{4,000} chunks would be generated of the book content.
     %
-    \item \textbf{Semantic Chunking:}
-    \textbf{Semantic Chunking} is a context-aware chunking method.
-    It uses vector embeddings to identify semantic breaks within the text based on changes in topic.
-    
-    One such method is \textit{interquartile breakpoint detection} (IBD). 
+    \item \textbf{Semantic chunking:}
+    \textbf{Semantic chunking} is a context-aware chunking method.
+    It uses vector embeddings to identify semantic breaks within the text based on changes in topic.\\
+    One such method is \textit{interquartile breakpoint detection} (IBD).\\
     \textit{IBD} treats significant changes of topic as statistical outliers.
-    By analysing the distribution of semantic distances between consecutive sentences, the method calculates a dynamic threshold based on the \textit{interquartile range} (IQR).
-    A chunk boundary is only created if the similarity distance between the respective consecutive sentences exceeds a statistical threshold.
+    To detect these outliers, the method analysis the distribution of semantic distances between consecutive sentences.
+    Based on the \textit{interquartile range} (IQR) a dynamic threshold is then calculated.
+    A chunk boundary is only created if the similarity distance between the respective consecutive sentences exceeds the threshold.
     This ensures that the chunks remain semantically coherent and self-contained.
     %
-    \item \textbf{Hybrid Chunking:}
+    \item \textbf{Hybrid chunking:}
     This hybrid strategy combines multiple methods (e.g., \textit{semantic} and \textit{fixed-size}) while making use of their respective strengths.
     Generating multiple chunk variations for the same text increases the probability of retrieving relevant context.
     \end{itemize}
@@ -626,7 +636,7 @@ The following sections describe the typical process and the components required 
 %
 Before discussing how to retrieve information and knowledge using a \ac{rag} system, we must first investigate where and how this knowledge is stored.
 \begin{definition}\label{def:database}
-    A \textbf{database} is a collection of related data\citep{limited2010introduction}. 
+    A \textbf{database} is a collection of related data \citep{limited2010introduction}. 
     It is used and designed to efficiently handle data storage, retrieval, and management on computer systems. 
     It contains and arranges data in a manner that makes it accessible to a variety of applications.
 \end{definition}
@@ -634,9 +644,12 @@ Before discussing how to retrieve information and knowledge using a \ac{rag} sys
 How the respective data is stored is affected by both the specific needs of the application and the architectural design of the database model used.
 %
 \subsubsection{Database Architectures}\label{sec:db_architectures}
-\paragraph{Relational Databases}\label{par:rela_db}
-\textbf{Relational Databases} organise data using structured tables.
-Data within \textbf{Relational Databases} can be added, modified and retrieved using the \textbf{Structured Query Language} (SQL).
+The choice of database architecture has a direct impact on how a knowledge base such as \citet{bb2} can be processed and integrated into the \ac{qa} pipeline for effective and efficient knowledge retrieval. 
+Various \ac{db} paradigms exist that are able to handle specific data formats and relationships.
+Since \citetitle{bb2} has been transitioned into a plain-text format, the primary requirement for the \ac{db} architecture is to only accommodate a single data modality - \textit{text}.!!
+%
+\paragraph{Relational Databases}\label{par:rela_db} organise data using structured tables.
+Data within Relational Databases can be added, modified and retrieved using the \textbf{Structured Query Language} (SQL).
 
 Relational databases can \enquote{map} relationships between data points in their structure (e.g. ~$\textit{doctor} \xrightarrow{\text{works in}} \textit{hospital}$).
 However, other database types are more suitable for complex contextual relationships particularly within \textit{unstructured data}.
@@ -654,12 +667,10 @@ If the schema is \enquote{fixed}, every record follows the exact same structure 
 The original content, as well as the preprocessed content by \citeauthor{Paul_Keller} within \citet{bb2} represents such \textit{unstructured data}.
 Therefore, it does not have a clear data model and a fixed schema and makes storage, retrieval and analyse difficult when using traditional database systems (\textit{Relational \ac{db}}).
 %
-\paragraph{NoSQL Databases}\label{par:nosql_db}
-\textbf{NoSQL Databases} are known for their flexible schemas that do not  making them ideal for the handling of unstructured data.
+\paragraph{NoSQL Databases}\label{par:nosql_db} are known for their flexible schemas that do not making them ideal for the handling of unstructured data.
 This category of \ac{db} includes various architectures, such \textit{graph databases}.
 %
-\paragraph{Graph Databases}\label{par:graph_db}
-\textbf{Graph databases} are designed to store and manage data as a collection of nodes.
+\paragraph{Graph Databases}\label{par:graph_db} are designed to store and manage data as a collection of nodes.
 A node represents an entity, while the edges connected to a node capture the relationships between these entities \citep{Robinson2015}.
 The graph structure allows for an efficient processing and modelling of highly interconnected data.
 
@@ -674,7 +685,7 @@ Using the ability  approach is at the centre of the \ac{snik} project described 
 \begin{definition}
     A \textbf{Vector Database} is a database optimised for storing and querying vector embeddings.
 \end{definition}
-Vector databases operate in a continuous multi-dimensional semantic space.
+Vector databases operate in a continuous multidimensional semantic space.
 Data (e.g., text chunks of \citet{bb2}) is transformed into vectors (see \cref{subsec:token_prel}, \cref{sec:encoding} and \cref{sec:embeddings}).
 The number of \textbf{dimensions} corresponds to the output vector size of the embedding model.
 The \textit{BAAI/bge-small-en} standard model would generate $384$ dimensions.
@@ -687,7 +698,7 @@ Each dimension represents a latent semantic feature that allows the \ac{db} to c
     A \ac{dbms} is a software system that is designed to create a \ac{db} and execute operations on it.
 \end{definition}
 These operations are responsible for the definition, manipulation, and efficient retrieval of the stored data. 
-The responsibility of a \ac{dbms} is that prior, during and after operations the databases security and potential recovery is ensured during a failure or unforeseen process sequence. \citep{limited2010introduction}
+The responsibility of a \ac{dbms} is that prior, during and after operations the databases security and potential recovery is ensured during a failure or unforeseen process sequence \citep{limited2010introduction}.
 A database and \ac{dbms} together are defined as a \textit{database system}.  
 %
 \subsection{Retrieval Methods}\label{subsec:rag_retrieval}
@@ -704,19 +715,29 @@ Each method is suitable for specific data and query features and requirements.
 It is a simple and direct approach.
 However, it tends to be less effective for complex queries that require a semantic understanding and coherent retrieval of the context.
 %
+\newpage
 \subsection{Vector Based Similarity Search}\label{sec:vector_simil_search}
 \textbf{Vector based similarity search} retrieves relevant data by comparing vector embeddings (see \cref{sec:embeddings}).
-The \textbf{Approximate Nearest  Neighbor (ANN)} algorithms used within vector databases allow for \textbf{similarity search}.
+The \textbf{Approximate Nearest  Neighbour (ANN)} algorithms used within vector databases allow for \textbf{similarity search}.
 \textit{Similarity search} finds vectors that are geometrically closest (most similar) to a query vector.
 The proximity is typically quantified using mathematical distance metrics:
-\todo{das versteht man nicht ohne Abbildungen wenn man das nicht kennt.
-bitte an Beispielen illustrieren.}
 \begin{itemize}
     \item \textbf{Cosine Similarity:} Measures the cosine of the angle between two vectors.
     It is the standard for text embeddings, where a value of $1$ implies identical directions ($=$ identical meaning).
     \item \textbf{Euclidean Distance ($L2$):} Measures the straight-line distance between vector points.
     \item \textbf{Dot Product:} Calculates the sum of the products of corresponding vector components.  
 \end{itemize}
+%
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/Cosine_similarity.png}
+    \caption[Cosine Similarity Example]{Cosine Similarity Example - Query = "Hospital" - NearestNeighbours NN = 7 }
+    \label{figure:cosine_similarity}
+\end{figure}
+The figure \cref{figure:cosine_similarity} illustrates the concept of cosine similarity using the example query \enquote{Hospital}.
+The $7$ \textit{nearest neighbours} (most similar chunks, here highlighted in green) are shown in the vector space.
+Based on their respective cosine similarity values relative to the query vector \enquote{Hospital} these chunks are among the top-k retrieval results.
+These results would then be included into the \textit{augmentation} step of the \ac{rag} process (see \cref{figure:rag}).
 This semantic retrieval capability is essential and highly beneficial for the \ac{rag} architecture.
 It ensures that the respective \ac{lm} receives a high-quality input for the \textit{Generation} step.
 %
@@ -734,6 +755,14 @@ It ensures that the respective \ac{lm} receives a high-quality input for the \te
     The respective \ac{lm} processes this \textit{augmented} prompt to generate an answer based on the provided context.
     This step is referred to as \textit{in context learning}.
 \end{enumerate}
+The concept of \ac{rag} is visualised in \cref{figure:rag}.
+%
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/RAG - visualised.jpeg}
+    \caption{The RAG Architecture}
+    \label{figure:rag}
+\end{figure}
 %
 \section{Benefits and Distinction}
 The potential \textbf{benefits of \ac{rag}} include enhanced factual consistency and scope of knowledge in highly specific domains.
@@ -744,7 +773,7 @@ As an alternative to resource-intensive continual pre-training, \ac{rag} offers 
 %
 \section{Interacting with Language Models: Inference}\label{sec:inference}
 %
-As explained in \cref{def:inference}, an \ac{lm} applies its inherent knowledge learned in the \textit{inference phase} to perform tasks based on new inputs, referred to as \textbf{prompts}.
+As explained in \cref{def:inference}, a \ac{lm} applies its inherent knowledge learned in the \textit{inference phase} to perform tasks based on new inputs, referred to as \textbf{prompts}.
 %
 \subsection{Prompting Techniques}
 %
@@ -763,23 +792,23 @@ Key strategies for prompting:
     This textual learning can guide the model to more accurate or appropriate responses.
     \item \textbf{Chain-of-Thought (CoT) Prompting:}\label{item:cot} This more advanced technique requires the model to articulate its thought process step by step in response to the task at hand before providing the final answer.
     This is often done by including examples of such reasoning in the prompt or by explicitly instructing the model to \enquote{think step by step}.
-    \ac{cot} can improve performance on tasks that require multi-step logic.
+    \ac{cot} can improve performance on tasks that require multistep logic.
 \end{enumerate}
 Effective prompting can sometimes involve adapting the input format to the specific model's characteristics. 
 For example, \citet{Paul_Keller} found it necessary to rephrase direct questions into sentence completions for the base \textit{Llama 2} model.
 %
 \subsection{Generation Parameters}
 %
-The process of selecting subsequent \textit{tokens} during text generation is typically probabilistic (see \cref{def:inference} and can be modulated using several parameters:
+The process of selecting subsequent \textit{tokens} during text generation is typically probabilistic (see \cref{def:inference}) and can be modulated using several parameters:
 \begin{enumerate}
     \item \textbf{Temperature:}\label{item:temperature} This parameter scales the probabilities of the next potential \textit{tokens}.
     \textit{Lower temperatures}, approaching a \textit{temp} value of $0$ make the selection process more deterministic.
     The most probable \textit{tokens} are favoured, thereby leading to more focused, yet potentially more repetitive outputs.
     \textit{Higher temperatures} increase randomness.
-    Less likely \textit{tokens} may be selected, which can improve diversity and creativity but the output might suffer from an increased incoherence.
+    Less likely \textit{tokens} may be selected, which can improve diversity and creativity, but the output might suffer from increased incoherence.
     \citet{Paul_Keller} chose a temperature of $0.9$ for the evaluations, indicating that some level of variability was accepted.
-    The \textit{temperature} setting have a direct influence on the reproducibility.
-    If multiple answes are generated fo the same query, the \textit{temperature} determines the degree of determinism and resulting comparability.
+    The \textit{temperature} setting has a direct influence on the reproducibility.
+    If multiple answers are generated for the same query, the \textit{temperature} determines the degree of determinism and resulting comparability.
     \item \textbf{Top-k Sampling:}\label{item:top-k} The choice for the next \textit{token} to be predicted is limited to the top \textit{k} options.
     \item \textbf{Top-p (Nucleus) Sampling:}\label{item:top-p} The next generated \textit{token} is selected from the smallest possible set of \textit{tokens} whose cumulative probability value exceeds a threshold \textit{p}.
 \end{enumerate}
@@ -808,13 +837,13 @@ The method of accessing a \ac{lm} for inference influences capability, accessibi
 %
 The \ac{snik} ontology is a domain ontology developed at the Institute of Medical Informatics, Statistics and Epidemiology (IMISE) at the University of Leipzig.
 An expert interview dealing with \ac{him}, text books on \ac{him} and frameworks were converted to a domain ontology.
-The knowledge of these entities was concentrated and modeled as a \ac{rdf}, while each entity is represented as a sub-ontology within \ac{snik}.
+The knowledge of these entities was concentrated and modelled as a \ac{rdf}, while each entity is represented as a sub-ontology within \ac{snik}.
 The sub-ontologies are theoretically independent.
 %
 \subsection{The SNIK-Graph}
 %
-Upon that structure, by the interactive visualisation of the graph, the potential for tuition scenarios was demonstrated\citep{snikgraphposter}.\\
-\enquote{[E]asy access over a multi-view web interface and [visual accessibility to extracted knwoledge, relations and the intertwined content-related connections \ac{snik} provides and supports teaching and learning [applications][\dots]}\citep{sniktec}.
+Upon that structure, by the interactive visualisation of the graph, the potential for tuition scenarios was demonstrated \citep{snikgraphposter}.
+\enquote{[E]asy access over a multi-view web interface and visual accessibility to extracted knowledge, relations and the intertwined content-related connections \ac{snik} provides and supports teaching and learning [applications][\dots]} \citep{sniktec}.
 Hence, it enables \enquote{users to interact with the ontology without installing specialized tools.}
 The work of \citet{snikgraphposter} emphasised the requirement to provide the knowledge within the ontology more intuitively to students and teachers.
 It does so by reducing the prior skills needed to use and interact with the knowledge base, \ac{snik}.\\[1em]
@@ -827,10 +856,10 @@ Users can interact with the application without a background in semantic web tec
 
 Direct feedback on the complexity of the questions and their respective category, while using the application, allows for a personalised experience. 
 The results show success as \ac{him} knowledge within \ac{snik} can be extracted by an application.
-Using that appliaction\todo{rechtschreibung in der ganzen arbeit prüfen, es fehlen teilweise auch leerzeichen s. diese Seite vor dem Zitat} the knowledge can be processed and used to then semi-automatically generating individualised questions.
+Using that application\todo{rechtschreibung in der ganzen arbeit prüfen, es fehlen teilweise auch leerzeichen s. diese Seite vor dem Zitat} the knowledge can be processed and used to then semi-automatically generate individualised questions.
 
 Although preferentially basic questions referring to singular facts were mainly positively evaluated by users. 
-The qualitative feedback on complex questions is mixed.\citep{snikquiz}
+The qualitative feedback on complex questions is mixed \citep{snikquiz}.
 Further integration into courses and evaluation will show the possibilities of the application and possibly highlight its limitations.
 %
 \citet{snikquiz} supports the target group of students to understand and learn the knowledge contained in \ac{snik}.
